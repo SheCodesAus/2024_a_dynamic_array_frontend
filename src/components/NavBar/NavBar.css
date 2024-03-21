@@ -1,0 +1,118 @@
+@import '../../index.css';
+
+/* Styling images */
+.logo{
+    width:3rem;
+    height:3rem;
+    margin-left:20px;
+}
+
+.burger-menu{
+    width:2.5rem;
+    height:2.5rem;
+}
+
+.name{
+    width: 10rem;
+    height:auto;
+}
+
+/* NavBar Styling */
+.navbar{
+    background-color:var(--light-gray);
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    height:80px;
+    overflow:hidden;
+    box-sizing: border-box;
+    z-index:1000;
+}
+
+.nav-items{
+    display:flex;
+    justify-content: center;
+}
+
+.menuItems{
+    display:flex;
+    gap:40px;
+    list-style:none; 
+    margin-right:20px;
+}
+
+.menuItems a{
+    text-decoration: none;
+    font: var(--headline-sm);
+    color: var(--black);
+}
+
+.menuItems a:hover{
+    color:var(--light-red);
+}
+
+.signup ul{
+display:flex;
+list-style: none;
+gap:20px;
+margin-right:20px;
+}
+
+.signup a{
+text-decoration: none;
+font: var(--headline-sm);
+color: var(--black);
+}
+
+.signup a:hover{
+    color:var(--light-red);
+}
+
+.burger-menu{
+    display:none;
+}
+
+.logo-link{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+/* Hamburger Menu for small screens*/
+
+@media screen and (max-width:830px){
+
+    .navbar{
+        flex-direction:column;
+        align-items:flex-start;
+        z-index:1000;
+    }
+    .nav-items{
+        position: absolute;
+        top:0;
+        right:0;
+        margin-right: 10%;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2rem; 
+        z-index:1000;
+    }
+    .burger-menu{
+        display:block;
+       
+    }
+    .menuItems{
+        display:none;
+    }
+    .menuOpenStyle{
+        display:flex;
+    }
+    .signup{
+        display:none;
+    }
+}
