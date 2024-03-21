@@ -1,0 +1,71 @@
+
+/* Banner Section */
+
+.banner{
+    width: 100vw;
+    height: 65vh;
+    position: absolute;
+    overflow:hidden;
+    display:flex;
+   justify-content: space-between;
+}
+
+.wave{
+    object-fit:cover;
+    position:absolute;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    z-index: -1;
+    opacity: 0.5;
+}
+
+.header{
+    position: relative;
+    display:flex;
+    flex-direction:row;
+    width: 100%;
+    padding:5em;
+}
+
+.header-text{
+    width:50%;
+    height: 100vh;
+    text-align:left;
+    justify-content: left;
+    align-items: left;
+    margin:50px auto;
+}
+
+.header-img{
+    width:50%;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+}
+
+.group-img{
+    border-radius:15%;
+    width:25em;
+    height:25em;
+    margin-top:2rem;
+    margin-right:10rem;
+}
+
+.header-headline{
+    font: var(--headline-xl);
+    color: var(--dark-blue);
+    text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+    0px -4px 10px rgba(255,255,255,0.3);
+}
+
+.header-subheadline{
+    font: var(--body-lg);
+    color: var(--dark-blue);
+    text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+    0px -4px 10px rgba(255,255,255,0.3);
+}
+
+/*Statement Section*/
+
