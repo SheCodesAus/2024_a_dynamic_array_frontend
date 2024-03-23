@@ -83,24 +83,36 @@ const handleSubmit = (event) => {
                 placeholder="Select Area"
                 onChange={handleChange}
             />
-        </div>
-            <label htmlFor="state">State:</label>
-            <input 
-                type="select" // add dropdown picklist info here
-                id="state" 
-                placeholder="Select State"
-                onChange={handleChange}
-            />  
         <div>
+            <label htmlFor="state">State:</label>
+            <select 
+                id="state_select"
+                onChange={handleChange}>
+                    {/* options to be fetched by API in future release */}
+                <option value="WA">WA</option>
+                <option value="ACT">ACT</option>
+                <option value="NSW">NSW</option>
+                <option value="QLD">QLD</option>
+                <option value="VIC">VIC</option>
+                <option value="TAS">TAS</option>
+                <option value="SA">SA</option>
+            </select> 
         </div>
-            <label htmlFor="country">State:</label>
-            <input 
-                type="select" // add dropdown picklist info here
-                id="country" 
-                placeholder="Select Country"
-                onChange={handleChange}
-            />  
-        <div>          
+        <div>
+            <label htmlFor="country">Country:</label>
+            <select 
+                id="country_select"
+                onChange={handleChange}>
+                    {/* options to be fetched by API in future release */}
+                <option value="Australia">Australia</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Indonesia">Indonesia</option>
+                <option value="Vietnam">Vietnam</option>
+                <option value="Singapore">Singapore</option>
+                <option value="China">China</option>
+                <option value="Thailand">Thailand</option>
+            </select> 
+        </div>          
         </div>
         <div>
             <label htmlFor="picture_url">Profile Picture URL:</label>
@@ -168,7 +180,7 @@ const handleSubmit = (event) => {
         <div>
             <label htmlFor="contact_preference">Contact Preference:</label>
             <select 
-                id="contact_preference"
+                id="contact_preference_select"
                 onChange={handleChange}>
                 <option value="email">Email</option>
                 <option value="facebook">Facebook</option>
