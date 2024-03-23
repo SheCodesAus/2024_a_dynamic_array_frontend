@@ -13,7 +13,7 @@ function CreateProfileForm() {
         state: "",
         country: "",
         picture_url : "",
-        is_hidden : False,
+        is_hidden : "False",
         number_of_endorsements : 0,
         facebook_url : "",
         instagram_url : "",
@@ -166,13 +166,17 @@ const handleSubmit = (event) => {
             />       
         </div>
         <div>
-            <label htmlFor="contact_preference">Portfolio URL:</label>
-            <input 
-                type="select" // add dropdown picklist info here
-                id="contact_preference" 
-                placeholder="select contact preference"
-                onChange={handleChange}
-            />       
+            <label htmlFor="contact_preference">Contact Preference:</label>
+            <select 
+                id="contact_preference"
+                onChange={handleChange}>
+                <option value="email">Email</option>
+                <option value="facebook">Facebook</option>
+                <option value="instagram">Instagram</option>
+                <option value="github">Github</option>
+                <option value="linkedin">Linkedin</option>
+                <option value="portfolio">Portfolio</option>
+            </select> 
         </div>
         <div>
             <label htmlFor="is_seeking_mentorship">Seeking Mentorship?:</label>
