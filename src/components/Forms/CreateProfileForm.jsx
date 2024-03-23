@@ -63,7 +63,7 @@ const handleSubmit = (event) => {
                 );
     };
     }
-}
+
     return (
     <form>CREATE A PROFILE
         <div>
@@ -197,5 +197,5 @@ const handleSubmit = (event) => {
         </button>    
     </form>  
     );
-
+    }
 export default CreateProfileForm;
