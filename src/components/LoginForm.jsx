@@ -22,9 +22,8 @@ const handleChange = (event) => {
 
 const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("handlesubmit called")
     if (!credentials.username || !credentials.password) {
-        console.log("missing username or password");
+        alert("Please fill in all fields");// unsure if this will work, needs testing
     } else if (credentials.username && credentials.password){
         postLogin(
             credentials.username, 
