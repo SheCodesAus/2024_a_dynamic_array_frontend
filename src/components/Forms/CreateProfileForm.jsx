@@ -1,5 +1,5 @@
 import { useState } from "react";
-import postProfile from "../../api/post-proile";
+import postProfile from "../../api/post-profile";
 
 import { useNavigate } from "react-router-dom"; // import the useNavigate hook
 import { useAuth } from "../../hooks/use-auth";
