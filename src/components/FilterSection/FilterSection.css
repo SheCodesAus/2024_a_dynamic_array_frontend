@@ -1,0 +1,8 @@
+@import '../../index.css';
+
+.filter-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:4rem;
+}
