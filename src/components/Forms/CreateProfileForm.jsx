@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React,  {useState} from "react";
 import postProfile from "../../api/post-profile";
 
 import { useNavigate } from "react-router-dom"; // import the useNavigate hook
 import { useAuth } from "../../hooks/use-auth";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 
 function CreateProfileForm() {
     const navigate = useNavigate();// use the navigate hook
@@ -21,8 +22,8 @@ function CreateProfileForm() {
         linkedin_url : "",
         portfolio_url : "",
         contact_preference : "",
-        is_open_to_mentor : "",
-        is_seeking_mentorship : "",
+        is_open_to_mentor : "False",
+        is_seeking_mentorship : "False",
     });
 
 const handleChange = (event) => {
@@ -32,6 +33,12 @@ const handleChange = (event) => {
         [id]: value,
     }));
 };
+
+// handleOptionChange = changeEvent => {
+//     this.setState({
+//       selectedOption: changeEvent.target.value
+//     });
+//   };
 
 const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,9 +75,10 @@ const handleSubmit = (event) => {
     <form>CREATE A PROFILE
         <div>
             <label htmlFor="bio">Bio:</label>
-            <input 
-                type="textarea" 
-                id="bio" 
+            <textarea 
+                id="bio"
+                rows={4}
+                cols={50} 
                 placeholder="Write a bio of at least 3 sentences"
                 onChange={handleChange}
             />
@@ -190,27 +198,17 @@ const handleSubmit = (event) => {
                 <option value="portfolio">Portfolio</option>
             </select> 
         </div>
-        <div>
-            <label htmlFor="is_seeking_mentorship">Seeking Mentorship?:</label>
-            <input 
-                type="radio button"
-                id="seeking_mentorship_selection" 
-                onChange={handleChange}
-            />
-        </div>
-        <div>
-            <label htmlFor="is_open_to_mentoring">Open to being a Mentor?:</label>
-            <input 
-                type="radio button"
-                id="open_to_mentoring_selection" 
-                onChange={handleChange}
-            />
-        </div>
+
+        Seeking Mentorship?<ToggleSwitch Name="is_seeking_mentorship" />
+        Open to Mentor?<ToggleSwitch Name="is_open_to_mentor" />
+        Set Profile to Hidden<ToggleSwitch Name="is_hidden" />
+        
         <button 
             type="submit" 
             onClick={handleSubmit}>
-                Sign up
-        </button>    
+                Create Profile
+        </button>
+
     </form>  
     );
     }
