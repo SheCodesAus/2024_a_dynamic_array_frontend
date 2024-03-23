@@ -9,6 +9,7 @@ import ContactPage from "./pages/ContactPage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import CreateProfilePage from "./pages/CreateProfilePage.jsx";
 import { AuthProvider } from "./components/AuthProvider.jsx";
 
 const router = createBrowserRouter([
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "/contact", element: <ContactPage /> },
       { path: "/signup", element: <SignUpPage /> },
       { path: "/login", element: <LoginPage /> },
+      { path: "/create-profile", element: <CreateProfilePage /> },
     ],
   },
 ]);
