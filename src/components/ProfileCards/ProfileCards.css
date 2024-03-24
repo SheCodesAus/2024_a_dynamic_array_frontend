@@ -1,10 +1,53 @@
 @import '../../index.css';
 
-.profile-homepage{
-    display:flex;
-    margin: 4rem 4rem;
-    background-color:var(--light-blue);
-    width: full;
-    height: 20rem;
-    padding: 4rem;
+.profile--card-container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    width: 92%;
+    max-width: 350px;
+}
+.profile--card-header{
+    padding: 0 16px;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    background-image: url(/src/assets/Profile/profile-card-bg.jpg);
+    background-size: cover;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+    height: 120px;
+}
+
+.profile-image img {
+    width: 68px; /* Adjust width and height as needed */
+    height: 68px;
+    border-radius: 50%; /* For a circular shape */
+}
+.profile--card-header .profile--card-header-share{
+    display: flex;
+    align-items: center;
+}
+
+
+.profile--card-header-share .profile-header-social-menu button{
+    width: 35px; /* Adjust width and height as needed */
+    height: 35px;
+    border-radius: 50%; /* For a circular shape */
+
+}
+.profile--card-header-share .profile-header-social-menu button:hover{
+    cursor: pointer;
+}
+
+.profile--card-body{
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+}
+.profile--card-footer{
+    padding: 24px;
+    display: flex;
+    flex-direction: row;
 }
