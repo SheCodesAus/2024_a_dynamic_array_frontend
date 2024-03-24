@@ -1,7 +1,8 @@
 import "../../components/ProfileCards/ProfileCards.css";
-import { BsShare } from "react-icons/bs";
+import { BsShare, BsFillCheckCircleFill, BsFacebook, BsGithub,BsLinkedin } from "react-icons/bs";
 
 function ProfileCards() {
+
     return (
 
         <div className="profile--card-container">
@@ -26,16 +27,38 @@ function ProfileCards() {
             </div>
 
             <div className="profile--card-body">
-                <p>Card Body...</p>
+                <div className=" profile--card-body-title">
+            Mentorship Status:
+                </div>
+                <div className="profile-Card-Body">
+                <div><BsFillCheckCircleFill/><span style={{marginLeft: "0.5rem"}}>Open to mentoring</span></div>
+                 <div><BsFillCheckCircleFill/><span style={{marginLeft: "0.5rem"}}>Seeking mentorship</span></div>
+                </div>
+                <hr className="hr"/>
             </div>
+
             <div className="profile--card-footer">
-                <div>
-                    <p>Card Footer...</p>
+
+
+                <div className="profile--card-footer-endorsement">
+                    <h4>Endorsement:</h4>
                 </div>
-                <div>
-                    <p>Card Footer...</p>
+                <div className="profile-card-action-container">
+
+
+                <div className="profile-card-footer-social-media">
+                    <a target="_blank" href="#"><BsFacebook
+                        style={{color: '#1877F2', width: "24px", height: "24px"}}/></a>
+                    <a target="_blank" href="#"><BsGithub
+                        style={{color: '#4078c0', width: "24px", height: "24px"}}/></a>
+                    <a target="_blank" href="#"><BsLinkedin
+                        style={{color: '#0077b5', width: "24px", height: "24px"}}/></a>
+
+                </div>
+                <button className="profile-card-footer-btn">Read More</button>
                 </div>
             </div>
+
 
         </div>
     );
