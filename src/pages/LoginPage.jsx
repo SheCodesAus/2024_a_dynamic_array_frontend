@@ -1,12 +1,17 @@
+import LoginForm from "../components/Forms/LoginForm";
+import { Link } from "react-router-dom";
+
 import "../components/Login/Login.css";
 
 function LoginPage() {
   return (
-    <>
-      <section className="login">
-        <h1>This is the login page</h1>
-      </section>
-    </>
+    <div>
+      <LoginForm />
+      OR
+      <p>
+        <Link to="/signup">Sign Up Here</Link>
+      </p>
+    </div>
   );
 }
 export default LoginPage;
