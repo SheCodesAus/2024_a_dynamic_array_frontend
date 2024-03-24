@@ -18,7 +18,6 @@ function HomePage() {
       </section>
 
       <Outlet />
-      <Footer />
     </>
   );
 }

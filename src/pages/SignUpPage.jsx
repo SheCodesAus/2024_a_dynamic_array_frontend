@@ -1,7 +1,11 @@
+import "../components/SignUp/SignUpPage.css";
+
 function SignUpPage() {
   return (
     <>
-      <h1>This is the about page</h1>
+      <section className="sign-up-page">
+        <h1>This is the sign page</h1>
+      </section>
     </>
   );
 }
