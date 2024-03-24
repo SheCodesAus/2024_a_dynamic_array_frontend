@@ -11,6 +11,13 @@
    padding: 2rem;
 }
 
+.diversitech-2{
+    flex:1;
+    margin:5rem auto;
+    padding: 2rem;
+    background-color: var(--light-blue);
+ }
+
 .name{
     width: 200px;;
     height:auto;
@@ -31,6 +38,9 @@
 
 @media screen and (max-width:830px){
 .diversitech{
+    display:none;
+}
+.diversitech-2{
     display:none;
 }
 

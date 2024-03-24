@@ -54,7 +54,6 @@ function SignupForm() {
         <div>
           <label htmlFor="first_name">First Name</label>
           <input
-            className="first-name"
             type="text"
             id="first_name"
             placeholder="First Name"
@@ -64,7 +63,6 @@ function SignupForm() {
         <div>
           <label htmlFor="last_name">Last Name</label>
           <input
-            className="last-name"
             type="text"
             id="last_name"
             placeholder="Last Name"
