@@ -12,10 +12,6 @@
     height:2.5rem;
 }
 
-.name{
-    width: 10rem;
-    height:auto;
-}
 
 /* NavBar Styling */
 .navbar{
@@ -37,6 +33,7 @@
 .nav-items{
     display:flex;
     justify-content: center;
+    z-index: 1001;
 }
 
 .menuItems{
@@ -90,7 +87,7 @@ color: var(--black);
     .navbar{
         flex-direction:column;
         align-items:flex-start;
-        z-index:1000;
+        z-index:10000;
     }
     .nav-items{
         position: absolute;
@@ -100,19 +97,22 @@ color: var(--black);
         flex-direction: column;
         align-items: flex-end;
         gap: 2rem; 
-        z-index:1000;
+        z-index:1002;
     }
     .burger-menu{
         display:block;
-       
+       z-index:10000;
     }
     .menuItems{
         display:none;
     }
     .menuOpenStyle{
         display:flex;
+        flex-direction: column;
+        z-index: 10000;
     }
     .signup{
         display:none;
     }
+  
 }
