@@ -1,7 +1,11 @@
+import "../components/About/AboutPage.css";
+
 function AboutPage() {
   return (
     <>
-      <h1>This is the about page</h1>
+      <section className="about">
+        <h1>This is the about page</h1>
+      </section>
     </>
   );
 }

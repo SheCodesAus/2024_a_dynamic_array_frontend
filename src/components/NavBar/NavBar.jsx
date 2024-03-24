@@ -56,7 +56,7 @@ function NavBar() {
         <div className="signup">
           <ul>
             <li>
-              <Link to="/signup">SignUp</Link>
+              <Link to="/signup">Sign Up</Link>
             </li>
             <li>
               {auth.token ? (
