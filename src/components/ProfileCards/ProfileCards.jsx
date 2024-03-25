@@ -1,12 +1,14 @@
 import "../../components/ProfileCards/ProfileCards.css";
+import ProfileCard from "./ProfileCard";
 
 function ProfileCards() {
   return (
-    <>
-      <section className="profile-homepage">
-        <h1>This is where the Profile Cards go</h1>
-      </section>
-    </>
+    <div className="profile-cards-container">
+      <ProfileCard />
+      <ProfileCard />
+      <ProfileCard />
+    </div>
   );
 }
+
 export default ProfileCards;
