@@ -3,6 +3,7 @@
 .signup-container{
     display:flex;
     background-color: var(--light-gray);
+    overflow:hidden;
 }
 
 .diversitech{
@@ -42,6 +43,10 @@
 }
 .diversitech-2{
     display:none;
+}
+.signup-container{
+    display:flex;
+    justify-content: center;
 }
 
 }
