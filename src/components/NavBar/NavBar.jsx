@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import "../NavBar/NavBar.css";
 import React, { useState } from "react";
+import { useAuth } from "../../hooks/use-auth";
 
 import close from "../../assets/NavBar/close.png";
 import menu from "../../assets/NavBar/menu.png";
@@ -9,10 +10,12 @@ import name from "../../assets/NavBar/name.png";
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { auth, setAuth } = useAuth();
 
-  {
-    /* Auth token permissions and login/logout states not yet implemented!*/
-  }
+  const handleLogout = () => {
+    window.localStorage.removeItem("token");
+    setAuth({ token: null });
+  };
 
   return (
     <>
@@ -53,10 +56,16 @@ function NavBar() {
         <div className="signup">
           <ul>
             <li>
-              <Link to="/signup">SignUp</Link>
+              <Link to="/signup">Sign Up</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              {auth.token ? (
+                <Link to="/" onClick={handleLogout}>
+                  Logout
+                </Link>
+              ) : (
+                <Link to="/login">Login</Link>
+              )}
             </li>
           </ul>
         </div>

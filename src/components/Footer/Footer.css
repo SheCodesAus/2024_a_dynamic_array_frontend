@@ -2,7 +2,7 @@
 
 .footer{
     background-color:var(--light-gray);
-    position:relative;
+    position:fixed;
     left:0;
     bottom:0;
     width:100%;
@@ -12,6 +12,23 @@
     align-items:center;
     overflow:hidden;
     box-sizing: border-box;
+}
+
+.footerItems{
+    display:flex;
+    gap:40px;
+    list-style:none; 
+    margin-right:20px;
+}
+
+.footerItems a{
+    text-decoration: none;
+    font: var(--headline-sm);
+    color: var(--black); 
+}
+
+.footerItems a:hover{
+    color:var(--light-red);
 }
 
 .footer-section{
