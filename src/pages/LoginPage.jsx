@@ -6,7 +6,7 @@ import name from "../assets/NavBar/name.png";
 
 function LoginPage() {
   return (
-    <div className="signup-container">
+    <section className="signup-container">
       <div class="diversitech-2">
         <h3>
           <img className="name" src={name} alt="Diversitech name logo" />
@@ -17,7 +17,7 @@ function LoginPage() {
       <div class="signup-form">
         <LoginForm />
       </div>
-    </div>
+    </section>
   );
 }
 export default LoginPage;

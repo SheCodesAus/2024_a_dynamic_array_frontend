@@ -1,13 +1,15 @@
 import CreateProfileForm from "../components/Forms/CreateProfileForm.jsx";
 
-import name from "../assets/NavBar/name.png";
-import "../components/CreateProfile/CreateProfile.css";
+import "../components/Forms/CreateProfile.css";
 
 function CreateProfilePage() {
   return (
     <>
-      <div></div>
-      <CreateProfileForm />
+      <section className="create-profile-container">
+        <div className="create-profile-form">
+          <CreateProfileForm />
+        </div>
+      </section>
     </>
   );
 }

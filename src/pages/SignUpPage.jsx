@@ -6,7 +6,7 @@ import name from "../assets/NavBar/name.png";
 function SignUpPage() {
   return (
     <>
-      <div className="signup-container">
+      <section className="signup-container">
         <div class="diversitech">
           <h3>
             <img className="name" src={name} alt="Diversitech name logo" />
@@ -17,7 +17,7 @@ function SignUpPage() {
         <div class="signup-form">
           <SignupForm />
         </div>
-      </div>
+      </section>
     </>
   );
 }
