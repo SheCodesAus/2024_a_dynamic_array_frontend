@@ -1,0 +1,7 @@
+.edit-action {
+    cursor: pointer;
+    color: blue;
+
+    .edit-action:hover {
+        text-decoration: underline;
+    }

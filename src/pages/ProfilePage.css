@@ -1,0 +1,11 @@
+@import '../../ProfilePage.css';
+
+
+
+.skill-tags {
+    color: rgba(27, 26, 26, 0.329);
+    font-size: 16px;
+    font-family: open-sans;
+    font-weight: 400;
+    line-height: 30px;
+}
