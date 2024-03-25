@@ -50,10 +50,11 @@ function NavBar() {
             <li>
               <Link to="/contact">Contact Us</Link>
             </li>
-          </ul>
-        </div>
-        <div className="signup">
-          <ul>
+            {/* </ul>
+        </div> */}
+
+            {/* <div className="signup">
+          <ul> */}
             <li>
               <Link to="/signup">Sign Up</Link>
             </li>
