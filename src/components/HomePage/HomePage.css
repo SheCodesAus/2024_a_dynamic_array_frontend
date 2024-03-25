@@ -9,7 +9,8 @@
     overflow:hidden;
     display:flex;
     flex-direction: column;
-   justify-content: space-between;
+    z-index:999;
+    justify-content: space-between;
 }
 
 .wave{
@@ -102,3 +103,4 @@
         margin:10px auto;
         }
     }
+

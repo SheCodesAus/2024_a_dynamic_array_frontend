@@ -1,17 +1,19 @@
 @import '../../index.css';
 
+
+
 .profile--card-container {
     display: flex;
     flex-direction: column;
     border: #EBE9EA solid 1px;
-    background-color: #fff;
+    background-color: white;
     color: rgba(0, 0, 0, 0.87);
     -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     border-radius: 10px;
-    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
     overflow: hidden;
-    max-width: 345px;
+    max-width: 345px;    
 }
 
 .profile--card-header {
@@ -25,6 +27,8 @@
     justify-content: space-between;
     align-items: center;
     height: 120px;
+    z-index:500;
+   
 }
 
 .profile-image img {
@@ -107,3 +111,4 @@
     height: 2rem;
     width: 6rem;
 }
+
