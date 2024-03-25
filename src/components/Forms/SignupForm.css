@@ -15,7 +15,7 @@ form h2{
     padding: 10rem;
     margin:0px auto;
     width:50vw;
-    height:100vh;
+    height:auto;
     background-color: var(--off-white);
 }
 
@@ -27,13 +27,17 @@ label{
     margin-bottom:0.5rem;
 }
 
-input{
+input, textarea, select{
     font-family: var(--body-sm);
     display:flex;
     width:100%;
     align-items: baseline;
     height: 3rem;
     border: solid 1px var(--light-gray);
+}
+
+textarea{
+    height:20vh;
 }
 
 .userbutton{
