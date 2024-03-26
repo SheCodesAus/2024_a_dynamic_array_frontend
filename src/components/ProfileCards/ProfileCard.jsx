@@ -9,7 +9,7 @@ import {
 
 function ProfileCard() {
   return (
-    <section className="container">
+    <section className="profile-card-body-container">
       <div className="profile--card-container">
         <div className="profile--card-header">
           <div className="profile-image">

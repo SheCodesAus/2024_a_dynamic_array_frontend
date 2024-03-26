@@ -7,7 +7,7 @@ import name from "../assets/NavBar/name.png";
 function LoginPage() {
   return (
     <section className="signup-container">
-      <div class="diversitech-2">
+      <div className="diversitech-2">
         <h3>
           <img className="name" src={name} alt="Diversitech name logo" />
         </h3>
