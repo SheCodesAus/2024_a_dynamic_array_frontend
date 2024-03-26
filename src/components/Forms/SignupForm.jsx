@@ -6,6 +6,7 @@ import { useNavigate, Link } from "react-router-dom"; // import the useNavigate 
 import { useAuth } from "../../hooks/use-auth";
 
 import "../../components/Forms/SignupForm.css";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 
 function SignupForm() {
   const navigate = useNavigate(); // use the navigate hook
@@ -16,6 +17,7 @@ function SignupForm() {
     first_name: "",
     last_name: "",
     email: "",
+    accepted_terms: "",
   });
 
   const handleChange = (event) => {
@@ -28,23 +30,26 @@ function SignupForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!user.username || !user.password) {
+    if (!user.username || !user.password ) {
       alert("Please fill in all fields");
-    } else if (user.username && user.password) {
-      postUser(
-        user.username,
-        user.password,
-        user.email,
-        user.first_name,
-        user.last_name
-      ).then(() => {
-        postLogin(user.username, user.password).then((response) => {
-          window.localStorage.setItem("token", response.token);
-          setAuth({ token: response.token });
-          navigate("/"); // redirect to home page
-        });
-      });
-    }
+    } else if (!user.accepted_terms) {
+        alert("Please accept the terms and conditions to continue");
+      } else if (user.username && user.password && user.accepted_terms) {
+          postUser(
+            user.username,
+            user.password,
+            user.email,
+            user.first_name,
+            user.last_name,
+            user.accepted_terms
+          ).then(() => {
+            postLogin(user.username, user.password).then((response) => {
+              window.localStorage.setItem("token", response.token);
+              setAuth({ token: response.token });
+              navigate("/"); // redirect to home page
+            });
+          });
+        }
   };
 
   return (
@@ -95,6 +100,14 @@ function SignupForm() {
             placeholder="Password"
             onChange={handleChange}
           />
+        </div>
+        <div className="accept_terms">
+          <div className="hide-profile">
+            <p>I have read the Privacy Policy and accept the Terms and Conditions</p>
+            <p>
+              <ToggleSwitch Name="accepted_terms" />
+            </p>
+          </div>
         </div>
         <button className="userbutton" type="submit" onClick={handleSubmit}>
           Sign up
