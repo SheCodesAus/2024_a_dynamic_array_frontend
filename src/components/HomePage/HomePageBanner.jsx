@@ -17,6 +17,7 @@ function Banner() {
             <p className="header-headline">Headline Text Goes Here</p>
             <p className="header-subheadline">Another line of text goes here</p>
             <button className="cta-button-banner">CTA Button</button>
+            <button className="cta-button-banner">CTA Button</button>
           </div>
           <div className="header-img">
             <img className="group-img" src={group}></img>
