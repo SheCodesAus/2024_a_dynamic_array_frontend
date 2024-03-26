@@ -104,9 +104,7 @@ function SignupForm() {
         <div className="accept_terms">
           <div className="hide-profile">
             <p>I have read the Privacy Policy and accept the Terms and Conditions</p>
-            <p>
-              <ToggleSwitch Name="accepted_terms" />
-            </p>
+            <ToggleSwitch Name="accepted_terms" />
           </div>
         </div>
         <button className="userbutton" type="submit" onClick={handleSubmit}>
