@@ -7,11 +7,11 @@ function Banner() {
   return (
     <>
       <section className="banner">
-        <img
+        {/* <img
           className="wave"
           src={wavebanner}
           alt="background banner image orange wavy lines in the background"
-        ></img>
+        ></img> */}
         <div className="header">
           <div className="header-text">
             <p className="header-headline">Headline Text Goes Here</p>
