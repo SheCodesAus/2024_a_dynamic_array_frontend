@@ -6,7 +6,6 @@ import { useAuth } from "../../hooks/use-auth";
 import close from "../../assets/NavBar/close.png";
 import menu from "../../assets/NavBar/menu.png";
 import logo from "../../assets/NavBar/logo.png";
-import name from "../../assets/NavBar/name.png";
 
 function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,10 +50,11 @@ function NavBar() {
             <li>
               <Link to="/contact">Contact Us</Link>
             </li>
-          </ul>
-        </div>
-        <div className="signup">
-          <ul>
+            {/* </ul>
+        </div> */}
+
+            {/* <div className="signup">
+          <ul> */}
             <li>
               <Link to="/signup">Sign Up</Link>
             </li>

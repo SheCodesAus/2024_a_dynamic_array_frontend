@@ -5,7 +5,6 @@ import "../components/HomePage/HomePage.css";
 import Statement from "../components/Statement/Statement.jsx";
 import FilterSection from "../components/FilterSection/FilterSection.jsx";
 import ProfileCards from "../components/ProfileCards/ProfileCards.jsx";
-import Footer from "../components/Footer/Footer.jsx";
 
 function HomePage() {
   return (

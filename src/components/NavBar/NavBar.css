@@ -7,10 +7,7 @@
     margin-left:20px;
 }
 
-.burger-menu{
-    width:2.5rem;
-    height:2.5rem;
-}
+
 
 
 /* NavBar Styling */
@@ -25,7 +22,6 @@
     justify-content: space-between;
     align-items:center;
     height:80px;
-    overflow:hidden;
     box-sizing: border-box;
     z-index:1000;
 }
@@ -33,6 +29,7 @@
 .nav-items{
     display:flex;
     justify-content: center;
+    align-items: center;
     z-index: 1001;
 }
 
@@ -84,35 +81,50 @@ color: var(--black);
 
 @media screen and (max-width:830px){
 
-    .navbar{
-        flex-direction:column;
-        align-items:flex-start;
-        z-index:10000;
-    }
+ 
     .nav-items{
         position: absolute;
         top:0;
         right:0;
-        margin-right: 10%;
         flex-direction: column;
-        align-items: flex-end;
-        gap: 2rem; 
-        z-index:1002;
+        gap: 1rem; 
+        z-index:1001;
+        display:flex;
+        justify-content: flex-end;
+        align-items:flex-end;
     }
     .burger-menu{
-        display:block;
-       z-index:10000;
+        display:flex;
+        justify-content:flex-end;
+        align-items:center;
+        width:2.5rem;
+        height:2.5rem;
+        z-index: 1001;
     }
+    
+
     .menuItems{
         display:none;
     }
     .menuOpenStyle{
         display:flex;
+        right:0;
+        left:0;
+        bottom:0;
         flex-direction: column;
-        z-index: 10000;
+        justify-content: flex-end;
+        align-items:center;
+        background-color: var(--light-gray);
+        height:auto;
+        width: 100vw;
+        z-index: 2000;
+        margin-right:0;
     }
     .signup{
         display:none;
     }
-  
+  close{
+    display:flex;
+
+  }
 }
