@@ -7,14 +7,14 @@ function SignUpPage() {
   return (
     <>
       <section className="signup-container">
-        <div class="diversitech">
+        <div className="diversitech">
           <h3>
             <img className="name" src={name} alt="Diversitech name logo" />
           </h3>
           <p className="illustration">An illustration belongs here</p>
         </div>
 
-        <div class="signup-form">
+        <div className="signup-form">
           <SignupForm />
         </div>
       </section>
