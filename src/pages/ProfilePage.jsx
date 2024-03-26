@@ -1,29 +1,32 @@
-import Footer from "../components/Footer/Footer.jsx";
-import NavBar from "./components/NavBar/NavBar.jsx";
-import { BsEdit, BsPlus } from "react-icons/bs";
+import { BsPlus } from "react-icons/bs";
+import { MdModeEdit } from "react-icons/md";
+import ExperienceCard from "./../components/ExperienceCard/ExperienceCard";
 
 function ProfilePage() {
   return (
     <div className="profile-page-container">
       <div className="profile-page-header">
         <div className="profile-image">
-          <img src="https://via.placeholder.com/68" alt="Profile Placeholder" />
+          <img
+            src="https://via.placeholder.com/150"
+            alt="Profile Placeholder"
+          />
         </div>
         <span>8 endorsements</span>
       </div>
-      <div>
-        <h3>Full name</h3>
+      <div className="profile-details">
+        <h3>Full Name</h3>
         <p>Current Position</p>
         <p>Location</p>
-      </div>
-      <div>
-        <button>Seeking mentorship</button>
-        <button>Open to mentorship</button>
+        <div className="profile-buttons">
+          <button>Seeking mentorship</button>
+          <button>Open to mentorship</button>
+        </div>
       </div>
       <hr className="hr" />
 
-      <div>
-        <h3>BIO:</h3>
+      <div className="bio-section">
+        <h3>Bio:</h3>
         <p>
           In publishing and graphic design, Lorem ipsum is a placeholder text
           commonly used to demonstrate the visual form of a document or a
@@ -32,15 +35,15 @@ function ProfilePage() {
         </p>
       </div>
       <hr className="hr" />
-      <div>
-        <h3>Skill tags:</h3>
+      <div className="skills-section">
+        <h3>Skill Tags:</h3>
         <div className="skill-tags">
           <div>Development</div>
           <div>Development</div>
           <div>Development</div>
         </div>
         <div>
-          <h3>Industry tags:</h3>
+          <h3>Industry Tags:</h3>
           <div className="industry-tags">
             <div>Security</div>
             <div>Security</div>
@@ -48,18 +51,31 @@ function ProfilePage() {
           </div>
         </div>
         <a target="_blank" href="#">
-          <BsEdit style={{ color: "#4078c0", width: "24px", height: "24px" }} />
+          <MdModeEdit
+            style={{ color: "#4078c0", width: "24px", height: "24px" }}
+          />
         </a>
       </div>
       <hr className="hr" />
-      <div>
+      <div className="experiences-section">
         <h3>Experiences</h3>
-        <a target="_blank" href="#">
-          <BsEdit style={{ color: "#4078c0", width: "24px", height: "24px" }} />
-        </a>
-        <a target="_blank" href="#">
-          <BsPlus style={{ color: "#4078c0", width: "24px", height: "24px" }} />
-        </a>
+        <div className="experience-icons">
+          <a target="_blank" href="#">
+            <MdModeEdit
+              style={{ color: "#4078c0", width: "24px", height: "24px" }}
+            />
+          </a>
+          <a target="_blank" href="#">
+            <BsPlus
+              style={{ color: "#4078c0", width: "24px", height: "24px" }}
+            />
+          </a>
+        </div>
+      </div>
+      <div className="experience-card-container">
+        <ExperienceCard />
+        <ExperienceCard />
+        <ExperienceCard />
       </div>
     </div>
   );
