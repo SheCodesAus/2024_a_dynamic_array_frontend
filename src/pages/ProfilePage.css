@@ -1,0 +1,63 @@
+@import '../../index.css';
+@import "../../components/ExperienceCard/ExperienceCard.css";
+
+
+.profile-page-container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+
+.profile-page-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    margin-right: 10px;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profile-details {
+    margin-bottom: 20px;
+}
+
+.profile-details h3 {
+    margin-top: 0;
+}
+
+.profile-buttons button {
+    margin-right: 10px;
+}
+
+.bio-section,
+.skills-section,
+.experiences-section {
+    margin-bottom: 20px;
+}
+
+.skill-tags,
+.industry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+}
+
+
+.skill-tags div,
+.industry-tags div {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+
+}
