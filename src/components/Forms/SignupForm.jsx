@@ -6,7 +6,6 @@ import { useNavigate, Link } from "react-router-dom"; // import the useNavigate 
 import { useAuth } from "../../hooks/use-auth";
 
 import "../../components/Forms/SignupForm.css";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 
 function SignupForm() {
   const navigate = useNavigate(); // use the navigate hook
@@ -19,15 +18,31 @@ function SignupForm() {
     email: "",
     accepted_terms: "",
   });
+    console.log(user.username, user.accepted_terms)
 
-  const handleChange = (event) => {
-    const { id, value } = event.target;
+//CHECKBOX STATE --------------------------------------------------------------
+  const [isChecked, setIsChecked] = useState(false);
+    console.log(isChecked);
+  
+//-----------------------------------------------------------------------------
+    console.log(user.username, user.accepted_terms, isChecked)
+
+  const toggleCheckbox = () => {
+    setIsChecked(!isChecked);
     setUser((prevUser) => ({
       ...prevUser,
-      [id]: value,
+      accepted_terms: !isChecked,
+    }));
+  };    
+
+  const handleChange = (event) => {
+      const { id, value } = event.target;
+      setUser((prevUser) => ({
+        ...prevUser,
+        [id]: value,
     }));
   };
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     if (!user.username || !user.password ) {
@@ -51,6 +66,8 @@ function SignupForm() {
           });
         }
   };
+
+
 
   return (
     <section className="form-container">
@@ -103,8 +120,16 @@ function SignupForm() {
         </div>
         <div className="accept_terms">
           <div className="hide-profile">
-            <p>I have read the Privacy Policy and accept the Terms and Conditions</p>
-            <ToggleSwitch Name="accepted_terms" />
+            {/* <p>I have read the Privacy Policy and accept the Terms and Conditions</p> */}
+            <label htmlFor="accepted_terms">I have read the Privacy Policy and accept the Terms and Conditions</label>
+            <input
+                type="checkbox"
+                id="accepted_terms"
+                checked={isChecked}
+                onChange={toggleCheckbox}
+              />
+              <label>{isChecked ? 'Checked' : 'Unchecked'}</label>
+                  {/* <ToggleSwitch Name="accepted_terms" /> */}
           </div>
         </div>
         <button className="userbutton" type="submit" onClick={handleSubmit}>
