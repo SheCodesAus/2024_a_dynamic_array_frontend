@@ -1,0 +1,106 @@
+@import '../../index.css';
+
+/* Banner Section */
+
+.banner{
+    margin:80px auto;
+    width: 100vw;
+    height: 65vh;
+    overflow:hidden;
+    display:flex;
+    flex-direction: column;
+    z-index:999;
+    justify-content: space-between;
+}
+
+.wave{
+    object-fit:cover;
+    position:fixed;
+    left:0;
+    height:100%;
+    width:100%;
+    opacity: 0.2;
+}
+
+.header{
+    
+    margin:10vh auto;
+    position: relative;
+    display:flex;
+    flex-direction:row;
+    width: 100%;
+    padding:5em;
+}
+
+.header-text{
+    width:50%;
+    height: 100vh;
+    text-align:left;
+    justify-content: left;
+    align-items: left;
+    margin:50px auto;
+}
+
+.header-img{
+   
+    width:50%;
+    height:100vh;
+    justify-content:center;
+    align-items:center;
+}
+
+.group-img{
+    border-radius:15%;
+    width:25em;
+    height:25em;
+    margin-right:10rem;
+}
+
+.header-headline{
+    font: var(--headline-xl);
+    color: var(--dark-blue);
+    text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+    0px -4px 10px rgba(255,255,255,0.3);
+}
+
+.header-subheadline{
+    font: var(--body-lg);
+    color: var(--dark-blue);
+    text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+    0px -4px 10px rgba(255,255,255,0.3);
+}
+
+/*Statement Section*/
+
+/* Media Queries */
+
+@media screen and (max-width:830px){
+    .banner{
+        display:flex;
+        flex-direction: row;
+    }
+   .header{
+    display:flex;
+    flex-direction: column;
+    height:50vh;
+    padding:20px;
+    justify-content: center;
+    align-items: center;
+   }
+   .header-text{
+    width:100%;
+    text-align:center;
+   }
+    .header-img{
+        width:60%;
+        height:auto;
+    }
+     .group-img{
+        border-radius:15%;
+        width:15em;
+        height:15em;
+        display:flex;
+        margin:10px auto;
+        }
+    }
+

@@ -1,0 +1,18 @@
+@import '../../index.css';
+
+.statement{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding:1rem;
+    text-align: center;
+}
+
+.statement-head-one, .statement-head-two{
+    font: var(--headline-md);
+}
+
+.statement-head-three{
+    margin-top:2rem;
+}

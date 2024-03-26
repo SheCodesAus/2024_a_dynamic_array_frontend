@@ -1,0 +1,14 @@
+@import '../../index.css';
+
+.cta-button-banner{
+    background-color: var(--med-blue);
+    color: var(--off-white);
+    width: 10em;
+    height: auto;
+    padding: 10px 25px;
+    margin-top: 2em;
+}
+
+.cta-button-banner:hover{
+    background-color: var(--light-red);
+}

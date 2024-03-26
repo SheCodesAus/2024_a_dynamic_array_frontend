@@ -1,0 +1,55 @@
+@import '../../index.css';
+
+.footer{
+    background-color:var(--light-gray);
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    overflow:hidden;
+    box-sizing: border-box;
+    z-index:1000;
+}
+
+.footerItems{
+    display:flex;
+    gap:40px;
+    list-style:none; 
+    margin-right:20px;
+}
+
+.footerItems a{
+    text-decoration: none;
+    font: var(--headline-sm);
+    color: var(--black); 
+}
+
+.footerItems a:hover{
+    color:var(--light-red);
+}
+
+.footer-section{
+    display:flex;
+    justify-content: center;
+}
+
+.socials ul{
+    display:flex;
+    list-style: none;
+    gap:20px;
+    margin-right:20px;
+}
+
+.socials a{
+    text-decoration: none;
+    font: var(--headline-sm);
+    color: var(--black);
+}
+
+.socials a:hover{
+    color:var(--light-red);
+}
