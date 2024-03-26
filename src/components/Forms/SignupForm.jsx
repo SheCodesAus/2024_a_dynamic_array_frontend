@@ -32,7 +32,7 @@ function SignupForm() {
     event.preventDefault();
     if (!user.username || !user.password ) {
       alert("Please fill in all fields");
-    } else if (!user.accepted_terms) {
+    } else if (user.accepted_terms = false) {
         alert("Please accept the terms and conditions to continue");
       } else if (user.username && user.password && user.accepted_terms) {
           postUser(
