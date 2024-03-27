@@ -16,7 +16,7 @@ form h2 {
     margin: 0px auto;
     height: auto;
     background-color: var(--off-white);
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
 
 }
 
@@ -25,8 +25,7 @@ label {
     display: flex;
     align-items: baseline;
     margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     margin-bottom: 4px;
 }
 
