@@ -18,23 +18,15 @@ function SignupForm() {
     email: "",
     accepted_terms: "",
   });
-    console.log(user.username, user.accepted_terms)
+  console.log("pre-submit:")
+  console.log(user.username, user.accepted_terms,user.password, user.email, user.first_name, user.last_name, user.accepted_terms)
 
 //CHECKBOX STATE --------------------------------------------------------------
   const [isChecked, setIsChecked] = useState(false);
-    console.log(isChecked);
-  
-//-----------------------------------------------------------------------------
-    console.log(user.username, user.accepted_terms, isChecked)
-
   const toggleCheckbox = () => {
-    setIsChecked(!isChecked);
-    setUser((prevUser) => ({
-      ...prevUser,
-      accepted_terms: !isChecked,
-    }));
-  };    
-
+    setIsChecked(!isChecked)
+    };
+//-----------------------------------------------------------------------------
   const handleChange = (event) => {
       const { id, value } = event.target;
       setUser((prevUser) => ({
@@ -45,18 +37,19 @@ function SignupForm() {
   
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!user.username || !user.password ) {
-      alert("Please fill in all fields");
-    } else if (user.accepted_terms = false) {
-        alert("Please accept the terms and conditions to continue");
+    user.accepted_terms = isChecked;
+    if (!user.username || !user.password || !user.accepted_terms) {
+      alert("Please provide a username, password, and accept the terms and conditions");
       } else if (user.username && user.password && user.accepted_terms) {
+        console.log("after-submit:")
+        console.log(user.username, user.accepted_terms,user.password, user.email, user.first_name, user.last_name, user.accepted_terms)
           postUser(
             user.username,
             user.password,
             user.email,
             user.first_name,
             user.last_name,
-            user.accepted_terms
+            user.accepted_terms,
           ).then(() => {
             postLogin(user.username, user.password).then((response) => {
               window.localStorage.setItem("token", response.token);
@@ -120,7 +113,6 @@ function SignupForm() {
         </div>
         <div className="accept_terms">
           <div className="hide-profile">
-            {/* <p>I have read the Privacy Policy and accept the Terms and Conditions</p> */}
             <label htmlFor="accepted_terms">I have read the Privacy Policy and accept the Terms and Conditions</label>
             <input
                 type="checkbox"
@@ -129,7 +121,6 @@ function SignupForm() {
                 onChange={toggleCheckbox}
               />
               <label>{isChecked ? 'Checked' : 'Unchecked'}</label>
-                  {/* <ToggleSwitch Name="accepted_terms" /> */}
           </div>
         </div>
         <button className="userbutton" type="submit" onClick={handleSubmit}>
