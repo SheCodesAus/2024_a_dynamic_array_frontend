@@ -17,9 +17,8 @@ async function postUser(username,password,email,first_name,last_name,accepted_te
             "accepted_terms": accepted_terms.toString(),
         }),
        
-    }); console.log(username,password,email,first_name,last_name,accepted_terms.toString())
+    }); 
     if (!response.ok){
-        console.log("response not OK")
         const fallbackError = "Error trying to signup";
         const data = await response.json().catch(() => {
             throw new Error(fallbackError);
