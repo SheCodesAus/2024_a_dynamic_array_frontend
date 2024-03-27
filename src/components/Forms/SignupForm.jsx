@@ -113,7 +113,12 @@ function SignupForm() {
         </div>
         <div className="accept_terms">
           <div className="hide-profile">
-            <label htmlFor="accepted_terms">I have read the Privacy Policy and accept the Terms and Conditions</label>
+            <label htmlFor="accepted_terms"> 
+              <p>I have read the 
+                <Link to="/privacy"> Privacy Policy </Link>
+                and accept the               
+                <Link to="/termsandconditions"> Terms and Conditions </Link></p>
+            </label>
             <input
                 type="checkbox"
                 id="accepted_terms"
