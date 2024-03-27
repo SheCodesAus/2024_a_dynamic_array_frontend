@@ -1,3 +1,40 @@
-.about{
+.about-container{
     margin-top:10vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    overflow:hidden;
+}
+
+.about-header-text{
+    display:flex;
+    flex-direction: column;
+    flex:1;
+    margin:2rem auto;
+    padding: 0rem 5rem;
+}
+
+.about-header-text h1{
+    margin-bottom: 1rem;
+}
+
+.about-illustration{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:0 auto;
+    flex:2;
+}
+
+.about-illustration img{
+    border: solid var(--light-gray) 1px;
+    margin:2rem auto;
+}
+
+.about-story{
+    padding:5rem;
+}
+
+.about-story h2{
+    margin-bottom: 1rem;
 }
