@@ -108,20 +108,19 @@ function SignupForm() {
           />
         </div>
         <div className="accept_terms">
-          <div className="hide-profile">
-            <label htmlFor="accepted_terms">
-              <p>I have read the
-                <Link to="/privacy"> Privacy Policy </Link>
-                and accept the
-                <Link to="/termsandconditions"> Terms and Conditions </Link></p>
-            </label>
+          <div className="accept_terms-container">
             <input
                 type="checkbox"
                 id="accepted_terms"
                 checked={isChecked}
                 onChange={toggleCheckbox}
-              />
-              <label>{isChecked ? 'Checked' : 'Unchecked'}</label>
+            />
+            <label className="accepted_terms-label" htmlFor="accepted_terms">I have read the
+                <Link to="/privacy"> Privacy Policy </Link> and accept the
+                <Link to="/termsandconditions"> Terms and Conditions </Link>
+            </label>
+
+            {/*<label>{isChecked ? 'Checked' : 'Unchecked'}</label>*/}
           </div>
         </div>
         <button className="userbutton" type="submit" onClick={handleSubmit}>

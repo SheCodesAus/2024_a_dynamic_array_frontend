@@ -58,7 +58,18 @@ input::placeholder {
     padding: 10px;
     /* Adjust the padding value as needed */
 }
-
+.accepted_terms-label{
+    display: inline-block;
+}
+.accept_terms-container{
+    display: flex;
+    margin-bottom: 3rem;
+    padding-top: 10px;
+    gap: 0 1rem;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+}
 
 @media screen and (min-width:576px) {
 
@@ -87,5 +98,8 @@ input::placeholder {
     }
     .signup-form div{
         width: 100%;
+    }
+    input[type=checkbox]{
+        width: 25px;
     }
 }
