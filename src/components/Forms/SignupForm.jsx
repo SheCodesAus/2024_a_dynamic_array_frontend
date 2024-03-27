@@ -18,8 +18,6 @@ function SignupForm() {
     email: "",
     accepted_terms: "",
   });
-  console.log("pre-submit:")
-  console.log(user.username, user.accepted_terms,user.password, user.email, user.first_name, user.last_name, user.accepted_terms)
 
 //CHECKBOX STATE --------------------------------------------------------------
   const [isChecked, setIsChecked] = useState(false);
@@ -41,8 +39,6 @@ function SignupForm() {
     if (!user.username || !user.password || !user.accepted_terms) {
       alert("Please provide a username, password, and accept the terms and conditions");
       } else if (user.username && user.password && user.accepted_terms) {
-        console.log("after-submit:")
-        console.log(user.username, user.accepted_terms,user.password, user.email, user.first_name, user.last_name, user.accepted_terms)
           postUser(
             user.username,
             user.password,
