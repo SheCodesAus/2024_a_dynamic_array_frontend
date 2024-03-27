@@ -2,13 +2,16 @@ import { useState } from "react";
 import "../Forms/ContactFormWithHelp.css";
 import "../Forms/SignupForm.css";
 import "../Buttons/CtaButton.css";
+import EmailDropdownMenu from "../EmailDropdown/EmailDropdownMenu";
 
 function ContactFormWithHelp() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [helpFormData, setHelpFormData] = useState({
     name: "",
     email: "",
     message: "",
+    subject: "",
   });
 
   const handleChange = (e) => {
@@ -30,7 +33,12 @@ function ContactFormWithHelp() {
       window.alert("Please enter a message ");
       return;
     }
+    if (!helpFormData.subject) {
+      window.alert("Please select a subject ");
+      return;
+    }
 
+    setIsLoading(true);
     try {
       const response = await fetch("https://formspree.io/f/mqkryavr", {
         method: "POST",
@@ -46,12 +54,15 @@ function ContactFormWithHelp() {
           name: "",
           email: "",
           message: "",
+          subject: "",
         });
       } else {
         console.error("Error submitting form:".error);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -80,10 +91,19 @@ function ContactFormWithHelp() {
             ></input>
           </div>
           <div>
+            <EmailDropdownMenu
+              name="subject"
+              id="subject"
+              setSelectedSubject={(subject) =>
+                setHelpFormData({ ...helpFormData, subject })
+              }
+            />
+          </div>
+          <div>
             <label htmlFor="message">Message</label>
             <textarea
               id="message"
-              name="name"
+              name="message"
               placeholder="Type your enquiry here"
               value={helpFormData.message}
               onChange={handleChange}
