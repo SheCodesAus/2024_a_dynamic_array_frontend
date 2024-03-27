@@ -32,7 +32,7 @@ function SignupForm() {
         [id]: value,
     }));
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     user.accepted_terms = isChecked;
@@ -109,10 +109,10 @@ function SignupForm() {
         </div>
         <div className="accept_terms">
           <div className="hide-profile">
-            <label htmlFor="accepted_terms"> 
-              <p>I have read the 
+            <label htmlFor="accepted_terms">
+              <p>I have read the
                 <Link to="/privacy"> Privacy Policy </Link>
-                and accept the               
+                and accept the
                 <Link to="/termsandconditions"> Terms and Conditions </Link></p>
             </label>
             <input

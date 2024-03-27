@@ -1,42 +1,59 @@
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing:inherit;
+  box-sizing: inherit;
 }
 
-html{
+html {
   scroll-behavior: smooth;
 }
 
 :root {
   /*page colors*/
- --bg-light:ffffff;
- --dark-blue: #2D3A8c;
- --med-blue: #647ACB;
- --light-blue: #E0E8F9;
- --off-white: #f5f7fa;
- --light-red: #DE3A11;
- --light-gray: #E4E7EB;
- --black: black;
+  --bg-light: ffffff;
+  --dark-blue: #2D3A8c;
+  --med-blue: #647ACB;
+  --light-blue: #E0E8F9;
+  --off-white: #f5f7fa;
+  --light-red: #DE3A11;
+  --light-gray: #E4E7EB;
+  --black: black;
+
+
+  /* Headline Styles */
+  --headline-xl: 600 37px/37px 'Open Sans', sans-serif;
+  /* Specialty Title */
+  --headline-lg: 600 24px/24px 'Open Sans', sans-serif;
+  /* Title - LG */
+  --headline-md: 600 20px/24px 'Open Sans', sans-serif;
+  /* Title - MD */
+  --headline-sm: 600 16px/22px 'Open Sans', sans-serif;
+  /* Title - SM */
+
+  /* Body Styles */
+  --body-lg: 400 16px/24px 'Open Sans', sans-serif;
+  /* Body Text - LG */
+  --body-sm: 400 14px/20px 'Open Sans', sans-serif;
+  /* Body Text - SM */
 
 
 
- /*font*/
- --headline-xl: 600 37px/1 'Open Sans', sans-serif;
- --headline-lg: 600 24px/1 'Open Sans', sans-serif;
- --headline-md: 600 20px/1 'Open Sans', sans-serif;
- --headline-sm: 600 16px/1 'Open Sans', sans-serif;
+  /*font*/
+  /* --headline-xl: 600 37px/1 'Open Sans', sans-serif;
+  --headline-lg: 600 24px/1 'Open Sans', sans-serif;
+  --headline-md: 600 20px/1 'Open Sans', sans-serif;
+  --headline-sm: 600 16px/1 'Open Sans', sans-serif;
 
- --body-lg: 400 16px/1 'Open Sans' sans-serif;
- --body-sm: 400 14px/1 'Open Sans' sans-serif;
+  --body-lg: 400 16px/1 'Open Sans', sans-serif;
+  --body-sm: 400 14px/1 'Open Sans', sans-serif; */
+
 }
-
 
 
 /*dark/light mode*/
@@ -45,9 +62,11 @@ html{
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }

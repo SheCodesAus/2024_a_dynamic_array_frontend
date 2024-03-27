@@ -1,48 +1,75 @@
 @import '../../index.css';
 
-form h2{
+form h2 {
     margin-bottom: 3rem;
     text-align: center;
 }
 
-.form-container{
-    top:0;
-    right:0;
-    display:block;
-    flex-direction:row;
+.form-container {
+    top: 0;
+    right: 0;
+    display: block;
+    flex-direction: row;
     align-items: center;
     justify-content: right;
-    padding: 10rem;
-    margin:0px auto;
-    width:50vw;
-    height:auto;
+    padding: 1rem;
+    margin: 0px auto;
+    height: auto;
     background-color: var(--off-white);
+    font-family: 'Open Sans';
+
 }
 
-label{
-    font-family: var(--body-lg);
-    display:flex;
-    align-items:baseline;
-    margin-top:1.5rem;
-    margin-bottom:0.5rem;
+label {
+    /* font-family: var(--body-lg); */
+    display: flex;
+    align-items: baseline;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Open Sans';
+    margin-bottom: 4px;
 }
 
-input, textarea, select{
-    font-family: var(--body-sm);
-    display:flex;
-    width:100%;
+input,
+textarea,
+select {
+    /* font-family: var(--body-sm); */
+    display: flex;
+    width: 100%;
     align-items: baseline;
     height: 3rem;
     border: solid 1px var(--light-gray);
+    border-radius: 4px;
 }
 
-textarea{
-    height:20vh;
+textarea {
+    height: 20vh;
 }
 
 
 
-.login-link{
+.login-link {
     margin-top: 2rem;
-    text-align:right;
+    text-align: right;
+}
+
+/* Add padding to placeholder text */
+input::placeholder {
+    padding: 10px;
+    /* Adjust the padding value as needed */
+}
+
+
+@media screen and (min-width:576px) {
+
+    .form-container {
+
+        padding: 7rem;
+    }
+
+    input,
+    textarea,
+    select {
+        max-width: 350px;
+    }
 }

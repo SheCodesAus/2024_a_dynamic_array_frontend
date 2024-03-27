@@ -1,103 +1,120 @@
 @import '../../index.css';
 
-.profile-form-container{
-    top:0;
-    display:block;
-    flex-direction:column;
+.profile-form-container {
+    top: 0;
+    display: block;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 10rem;
-    margin:0px auto;
-    width:50vw;
-    height:auto;
+    margin: 0px auto;
+    width: 50vw;
+    height: auto;
     background-color: var(--off-white);
 }
 
-.create-profile-container{
-    display:flex;
+.create-profile-container {
+    display: flex;
     background-color: var(--white);
     overflow: hidden;
-    top:0;
-    justify-content: center;
-   align-items: center;
-}
-
-.create-profile-form{
-    display:flex;
+    top: 0;
     justify-content: center;
     align-items: center;
 }
 
-.hide-profile{
-    display:flex;
-    justify-content: flex-end;
-    align-items: right;
-   margin-bottom:3rem;
+.create-profile-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.hide-profile {
+    display: flex;
+    margin-bottom: 3rem;
+    padding-top: 10px;
+    gap: 0 1rem;
 }
 
 .hide-profile p:first-child {
-    margin-right: 10px; 
+    margin-right: 10px;
 }
 
-.location, .preferences{
-    display:flex;
+.location,
+.preferences {
+    display: flex;
     justify-content: space-between;
 }
 
-.area-div, .state-div, .country-div, .email, .seeking-mentorship, .open-mentorship{
-flex:1;
-margin-right:2rem;
+.area-div,
+.state-div,
+.country-div,
+.email,
+.seeking-mentorship,
+.open-mentorship {
+    flex: 1;
+    margin-right: 2rem;
 }
 
-.country-div, .open-mentorship{
-    margin-right:0;
+.country-div,
+.open-mentorship {
+    margin-right: 0;
 }
 
-.open-mentorship, .seeking-mentorship{
+.open-mentorship,
+.seeking-mentorship {
     display: flex;
     margin: 8% auto;
 }
 
-@media screen and (max-width:830px){
-    .preferences, .location {
+@media screen and (max-width:830px) {
+
+    .preferences,
+    .location {
         display: flex;
-        flex-direction: column; /* Change to column layout on smaller screens */
-      }
-      
-      .email,
-      .seeking-mentorship,
-      .open-mentorship {
-        flex: 1;
-        margin-right: 0; /* Remove margin for all items */
-        margin-bottom: 1rem; /* Add bottom margin for better spacing */
-      }
-      
-      .email select,
-      .seeking-mentorship p,
-      .open-mentorship p {
-        margin-right: 2rem; /* Add right margin to create space between items */
-      }
-      
-      
-        .email {
-          order: 1; /* Change order to 1 to move email section to the top */
-        }
-      
-        .seeking-mentorship,
-        .open-mentorship {
-           margin:1rem auto;
-          order: 2;
-        }
-        .seeking-mentorship{
-            margin-bottom:0rem;
-        }
-        .open-mentorship{
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-       .profile-form-container{
-        width:80vw;
-       }
+        flex-direction: column;
+        /* Change to column layout on smaller screens */
     }
-    
-       
+
+    .email,
+    .seeking-mentorship,
+    .open-mentorship {
+        flex: 1;
+        margin-right: 0;
+        /* Remove margin for all items */
+        margin-bottom: 1rem;
+        /* Add bottom margin for better spacing */
+    }
+
+    .email select,
+    .seeking-mentorship p,
+    .open-mentorship p {
+        margin-right: 2rem;
+        /* Add right margin to create space between items */
+    }
+
+
+    .email {
+        order: 1;
+        /* Change order to 1 to move email section to the top */
+    }
+
+    .seeking-mentorship,
+    .open-mentorship {
+        margin: 1rem auto;
+        order: 2;
+    }
+
+    .seeking-mentorship {
+        margin-bottom: 0rem;
+    }
+
+    .open-mentorship {
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .profile-form-container {
+        width: 80vw;
+    }
+}
