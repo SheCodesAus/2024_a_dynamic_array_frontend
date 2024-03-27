@@ -4,5 +4,5 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding:4rem;
+    padding:1rem;
 }
