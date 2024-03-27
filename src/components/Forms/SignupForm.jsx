@@ -60,7 +60,7 @@ function SignupForm() {
 
   return (
     <section className="form-container">
-      <form>
+      <form className="signup-form">
         <h2>SIGN UP</h2>
         <div>
           <label htmlFor="first_name">First Name</label>
