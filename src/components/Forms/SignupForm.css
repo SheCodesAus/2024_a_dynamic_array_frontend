@@ -78,19 +78,6 @@ input::placeholder {
         padding: 7rem;
     }
 
-    /*input,*/
-    /*textarea,*/
-    /*select {*/
-    /*    max-width: 350px;*/
-    /*}*/
-    /*.signup-form{*/
-
-    /*    display: flex;*/
-    /*    flex-direction: column;*/
-    /*    justify-content: center;*/
-    /*    align-items: center;*/
-
-    /*}*/
     .signup-form {
         width: 50%;
         margin: 0 auto;
