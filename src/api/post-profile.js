@@ -14,7 +14,11 @@ async function postProile(
     contact_preference,
     is_open_to_mentor,
     is_seeking_mentorship) {
-    const url = `${import.meta.env.VITE_API_URL}/profiles/`;
+
+    const url = 
+    `${import.meta.env.VITE_API_URL}/profiles/`
+    // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
+        // `http://127.0.0.1:8000/profiles/`;
     const response = await fetch(url, {
         method: "POST",
         headers: {
