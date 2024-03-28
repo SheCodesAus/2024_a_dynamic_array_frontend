@@ -1,3 +1,50 @@
-.contact{
-    margin-top:10vh;
+@import '../../index.css';
+
+
+.contact-us-header{
+    margin: 10rem 5rem;
+    display:flex;
+    flex-direction: column;;
+
+}
+
+.contact-us-header h1{
+    margin-bottom: 1rem;
+}
+
+.contact-form-container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    margin: 0rem 5rem;
+}
+
+.contact-form{
+    flex:1;
+
+}
+
+.contact-form-illustration{
+    flex:2;
+    
+}
+
+.contact-form-illustration p{
+    display:flex;
+    justify-content: center;
+    border: black solid 1px;
+    margin: 1rem 10rem;
+    padding: 10rem 2rem;
+}
+
+@media screen and (max-width:830px) {
+    .contact-form-container{
+        display:flex;
+        flex-direction:column-reverse;
+        flex-wrap: wrap;
+        margin: 1rem 1rem;
+    }
+    .contact-form-illustration p{
+        margin: 0rem 1rem;
+    }
 }
