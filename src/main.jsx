@@ -14,6 +14,7 @@ import { AuthProvider } from "./components/AuthProvider.jsx";
 import TermsAndConditionsPage from "./pages/TermsConditionsPage.jsx";
 import PrivacyPage from "./pages/PrivacyPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
+import UpdatePasswordPage from "./pages/UpdatePasswordPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
       { path: "/privacy", element: <PrivacyPage /> },
       { path: "/termsandconditions", element: <TermsAndConditionsPage /> },
       { path: "/profile/:id", element: <ProfilePage /> },
+      { path: "/update-password", element: <UpdatePasswordPage /> },
     ],
   },
 ]);

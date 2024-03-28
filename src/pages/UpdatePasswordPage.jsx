@@ -1,10 +1,10 @@
-import LoginForm from "../components/Forms/LoginForm";
+import UpdatePasswordForm from "../components/Forms/UpdatePasswordForm";
 import { Link } from "react-router-dom";
 
-import "../components/Login/Login.css";
+import "../components/Forms/UpdatePassword.css";
 import name from "../assets/NavBar/name.png";
 
-function LoginPage() {
+function UpdatePasswordPage() {
   return (
     <section className="signup-container">
       <div className="diversitech-2">
@@ -15,10 +15,9 @@ function LoginPage() {
       </div>
 
       <div className="signup-form">
-        <LoginForm />
+        <UpdatePasswordForm />
       </div>
     </section>
   );
 }
-export default LoginPage;
-<LoginForm />;
+export default UpdatePasswordPage;
