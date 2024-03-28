@@ -1,8 +1,8 @@
-/* 
+/*
 
 .scss for toggle switch available here if you want to use some ideas for styling:
 
-https://www.sitepoint.com/react-toggle-switch-reusable-component/ 
+https://www.sitepoint.com/react-toggle-switch-reusable-component/
 
 */
 
@@ -18,6 +18,7 @@ https://www.sitepoint.com/react-toggle-switch-reusable-component/
     -moz-user-select: none;
     -ms-user-select: none;
     text-align: left;
+    max-width: 45px;
     &-checkbox {
       display: none;
     }
@@ -94,4 +95,3 @@ https://www.sitepoint.com/react-toggle-switch-reusable-component/
       }
     }
   }
-  

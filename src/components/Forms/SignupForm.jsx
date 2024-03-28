@@ -32,7 +32,7 @@ function SignupForm() {
         [id]: value,
     }));
   };
-  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     user.accepted_terms = isChecked;
@@ -60,7 +60,7 @@ function SignupForm() {
 
   return (
     <section className="form-container">
-      <form>
+      <form className="signup-form">
         <h2>SIGN UP</h2>
         <div>
           <label htmlFor="first_name">First Name</label>
@@ -108,20 +108,19 @@ function SignupForm() {
           />
         </div>
         <div className="accept_terms">
-          <div className="hide-profile">
-            <label htmlFor="accepted_terms"> 
-              <p>I have read the 
-                <Link to="/privacy"> Privacy Policy </Link>
-                and accept the               
-                <Link to="/termsandconditions"> Terms and Conditions </Link></p>
-            </label>
+          <div className="accept_terms-container">
             <input
                 type="checkbox"
                 id="accepted_terms"
                 checked={isChecked}
                 onChange={toggleCheckbox}
-              />
-              <label>{isChecked ? 'Checked' : 'Unchecked'}</label>
+            />
+            <label className="accepted_terms-label" htmlFor="accepted_terms">I have read the
+                <Link to="/privacy"> Privacy Policy </Link> and accept the
+                <Link to="/termsandconditions"> Terms and Conditions </Link>
+            </label>
+
+            {/*<label>{isChecked ? 'Checked' : 'Unchecked'}</label>*/}
           </div>
         </div>
         <button className="userbutton" type="submit" onClick={handleSubmit}>
