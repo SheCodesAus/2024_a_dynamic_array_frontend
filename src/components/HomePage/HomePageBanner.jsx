@@ -7,15 +7,16 @@ function Banner() {
   return (
     <>
       <section className="banner">
-        <img
+        {/* <img
           className="wave"
           src={wavebanner}
           alt="background banner image orange wavy lines in the background"
-        ></img>
+        ></img> */}
         <div className="header">
           <div className="header-text">
             <p className="header-headline">Headline Text Goes Here</p>
             <p className="header-subheadline">Another line of text goes here</p>
+            <button className="cta-button-banner">CTA Button</button>
             <button className="cta-button-banner">CTA Button</button>
           </div>
           <div className="header-img">

@@ -1,53 +1,55 @@
 @import '../../index.css';
 
-.signup-container{
-    display:flex;
+
+.signup-container {
+    display: flex;
     background-color: var(--light-gray);
-    overflow:hidden;
+    overflow: hidden;
 }
 
-.diversitech{
-   flex:1;
-   margin:5rem auto;
-   padding: 2rem;
+.diversitech {
+    flex: 1;
+    margin: 5rem auto;
+    padding: 2rem;
 }
 
-.diversitech-2{
-    flex:1;
-    margin:5rem auto;
+.diversitech-2 {
+    flex: 1;
+    margin: 5rem auto;
     padding: 2rem;
     background-color: var(--light-blue);
- }
-
-.name{
-    width: 200px;;
-    height:auto;
 }
 
-.illustration{
+.name {
+    width: 200px;
+    height: auto;
+}
+
+.illustration {
     border: black solid 1px;
     padding: 1rem;
     width: 200px;
     height: 200px;
 }
 
-.signup-form{
-   flex:3;
-} 
+.signup-form {
+    flex: 3;
+}
 
 /* Media Queries */
 
-@media screen and (max-width:830px){
-.diversitech{
-    display:none;
-}
-.diversitech-2{
-    display:none;
-}
-.signup-container{
-    display:flex;
-    justify-content: center;
-}
+@media screen and (max-width:830px) {
+    .diversitech {
+        display: none;
+    }
+
+    .diversitech-2 {
+        display: none;
+    }
+
+    .signup-container {
+        display: flex;
+        justify-content: center;
+    }
 
 }
-

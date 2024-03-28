@@ -1,5 +1,8 @@
 async function postLogin(username,password) {
-    const url = `${import.meta.env.VITE_API_URL}/api-token-auth/`;
+    const url = 
+    `${import.meta.env.VITE_API_URL}/api-token-auth/`
+    // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
+    // `http://127.0.0.1:8000/api-token-auth/`;
     const response = await fetch(url, {
         method: "POST",
         headers: {

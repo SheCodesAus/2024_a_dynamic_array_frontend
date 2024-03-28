@@ -206,17 +206,13 @@ function CreateProfileForm() {
           <div className="seeking-mentorship">
             <div className="hide-profile">
               <p>Seeking Mentorship</p>
-              <p>
                 <ToggleSwitch Name="is_seeking_mentorship" />
-              </p>
             </div>
           </div>
           <div className="open-mentorship">
             <div className="hide-profile">
               <p>Open to Mentoring</p>
-              <p>
                 <ToggleSwitch Name="is_open_to_mentor" />
-              </p>
             </div>
           </div>
         </div>
