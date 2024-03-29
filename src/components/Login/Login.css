@@ -5,7 +5,7 @@
     margin-top: 5rem;
 }
 
-.diversiTech-name-logo {
+.login-page-image-container {
   display: none;
 }
 
@@ -19,4 +19,25 @@
 
 .form-controller {
     width: 100%;
+}
+
+@media screen and (min-width:576px) {
+    .login-main-container {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 40% 30%;
+        gap: 0px 2rem;
+        height: 100%;
+        padding: 5rem;
+        margin: 5rem auto;
+    }
+    .login-page-image-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    .login-page-image-container img{
+        max-width: 500px;
+    }
 }
