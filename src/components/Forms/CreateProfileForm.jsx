@@ -5,10 +5,17 @@ import { useNavigate } from "react-router-dom"; // import the useNavigate hook
 import { useAuth } from "../../hooks/use-auth";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
+import SelectOptions from "../SelectOptions.jsx";
+
+
 
 function CreateProfileForm() {
   const navigate = useNavigate(); // use the navigate hook
   const { auth, setAuth } = useAuth();
+  const [city, setCity] = useState("--City--");
+  const [locationState, setLocationState] = useState("--State--"); // using locationState to avoid conflict with state keyword
+  const [country, setCountry] = useState("--Country--");
+  const [preference, setPreference] = useState("Email");
   const [profile, setProfile] = useState({
     bio: "",
     city: "",
@@ -27,19 +34,15 @@ function CreateProfileForm() {
     is_seeking_mentorship: "False",
   });
 
+  console.log(city, locationState, country)
   const handleChange = (event) => {
     const { id, value } = event.target;
     setProfile((prevProfile) => ({
       ...prevProfile,
       [id]: value,
     }));
+    console.log("before", profile.city, profile.state, profile.country)
   };
-
-  // handleOptionChange = changeEvent => {
-  //     this.setState({
-  //       selectedOption: changeEvent.target.value
-  //     });
-  //   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -105,12 +108,16 @@ function CreateProfileForm() {
             onChange={handleChange}
           />
         </div>
-
         <div className="location">
           <div className="area-div">
             <label htmlFor="area">Area</label>
-            <select id="area" onChange={handleChange}>
+            <select 
+              id="area" 
+              onChange={(e) => setCity(e.target.value)}
+              defaultValue={"--City--"}
+            >
               {/* options to be fetched by API in future release */}
+              <option value=""></option>
               <option value="North">NORTH</option>
               <option value="East">EAST</option>
               <option value="South">SOUTH</option>
@@ -119,8 +126,10 @@ function CreateProfileForm() {
           </div>
           <div className="state-div">
             <label htmlFor="state">State</label>
-            <select id="state_select" onChange={handleChange}>
+            <select id="state_select" 
+              onChange={(e) => setLocationState(e.target.value)} defaultValue={""}           >
               {/* options to be fetched by API in future release */}
+              <option value=""></option>
               <option value="WA">WA</option>
               <option value="ACT">ACT</option>
               <option value="NSW">NSW</option>
@@ -132,8 +141,9 @@ function CreateProfileForm() {
           </div>
           <div className="country-div">
             <label htmlFor="country">Country</label>
-            <select id="country_select" onChange={handleChange}>
+            <select id="country_select" onChange={(e) => setCountry(e.target.value)} defaultValue={""}>
               {/* options to be fetched by API in future release */}
+              <option value=""></option>
               <option value="Australia">Australia</option>
               <option value="New Zealand">New Zealand</option>
               <option value="Indonesia">Indonesia</option>
@@ -194,7 +204,7 @@ function CreateProfileForm() {
         <div className="preferences">
           <div className="email">
             <label htmlFor="contact_preference">Contact Preference</label>
-            <select id="contact_preference_select" onChange={handleChange}>
+            <select id="contact_preference_select" onChange={(e) => setPreference(e.target.value)} defaultValue={"Email"}>
               <option value="email">Email</option>
               <option value="facebook">Facebook</option>
               <option value="instagram">Instagram</option>
