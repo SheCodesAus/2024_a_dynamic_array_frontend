@@ -1,54 +1,69 @@
-import React, { useState } from "react";
+import React, { useState, setState } from "react";
 import postProfile from "../../api/post-profile";
 
 import { useNavigate } from "react-router-dom"; // import the useNavigate hook
 import { useAuth } from "../../hooks/use-auth";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
-import SelectOptions from "../SelectOptions.jsx";
-
 
 
 function CreateProfileForm() {
   const navigate = useNavigate(); // use the navigate hook
   const { auth, setAuth } = useAuth();
-  const [city, setCity] = useState("--City--");
-  const [locationState, setLocationState] = useState("--State--"); // using locationState to avoid conflict with state keyword
-  const [country, setCountry] = useState("--Country--");
-  const [preference, setPreference] = useState("Email");
+
   const [profile, setProfile] = useState({
     bio: "",
-    city: "",
-    state: "",
-    country: "",
     picture_url: "",
-    is_hidden: "False",
+    is_hidden: "false",
     number_of_endorsements: 0,
     facebook_url: "",
     instagram_url: "",
     github_url: "",
     linkedin_url: "",
     portfolio_url: "",
-    contact_preference: "",
-    is_open_to_mentor: "False",
-    is_seeking_mentorship: "False",
+    is_open_to_mentor: "false",
+    is_seeking_mentorship: "false",
   });
 
-  console.log(city, locationState, country)
+  const [city, setCity] = useState();
+  const changeCity = (e) => {
+    setCity(e.target.value);
+    profile.city = e.target.value;
+  };
+
+  const [location, setLocation] = useState(); // using location to avoid conflict with state keyword and the database currently only has location
+  const changeLocation = (e) => {
+    setLocation(e.target.value);
+    profile.location = e.target.value;
+  };
+  
+  const [country, setCountry] = useState();
+  const changeCountry = (e) => {
+    setCountry(e.target.value);
+    profile.country = e.target.value;
+  };
+
+  const [contact_preference, setPreference] = useState();
+  const changePreference = (e) => {
+    setPreference(e.target.value);
+    profile.contact_preference = e.target.value;
+  };
+  console.log("after", profile.contact_preference)
+
   const handleChange = (event) => {
     const { id, value } = event.target;
     setProfile((prevProfile) => ({
       ...prevProfile,
       [id]: value,
     }));
-    console.log("before", profile.city, profile.state, profile.country)
   };
+console.log("after profile set", profile.contact_preference)
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (
       !profile.bio ||
-      !(profile.city || profile.state || profile.country) ||
+      !(profile.city || profile.location || profile.country) ||
       !profile.contact_preference
     ) {
       alert(
@@ -58,12 +73,11 @@ function CreateProfileForm() {
       postProfile(
         profile.bio,
         profile.city,
-        profile.state,
+        profile.location,
         profile.country,
         profile.picture_url,
         profile.is_hidden,
         profile.number_of_endorsements,
-        profile.email_url,
         profile.facebook_url,
         profile.instagram_url,
         profile.github_url,
@@ -77,7 +91,7 @@ function CreateProfileForm() {
       });
     }
   };
-
+console.log("after", profile)
   return (
     <section className="profile-form-container">
       <form>
@@ -113,7 +127,8 @@ function CreateProfileForm() {
             <label htmlFor="area">Area</label>
             <select 
               id="area" 
-              onChange={(e) => setCity(e.target.value)}
+              value={city}
+              onChange={changeCity}
               defaultValue={"--City--"}
             >
               {/* options to be fetched by API in future release */}
@@ -126,8 +141,8 @@ function CreateProfileForm() {
           </div>
           <div className="state-div">
             <label htmlFor="state">State</label>
-            <select id="state_select" 
-              onChange={(e) => setLocationState(e.target.value)} defaultValue={""}           >
+            <select value ={location} id="state_select" 
+              onChange={changeLocation} defaultValue={""}>
               {/* options to be fetched by API in future release */}
               <option value=""></option>
               <option value="WA">WA</option>
@@ -141,7 +156,7 @@ function CreateProfileForm() {
           </div>
           <div className="country-div">
             <label htmlFor="country">Country</label>
-            <select id="country_select" onChange={(e) => setCountry(e.target.value)} defaultValue={""}>
+            <select value ={country} id="country_select" onChange={changeCountry} defaultValue={""}>
               {/* options to be fetched by API in future release */}
               <option value=""></option>
               <option value="Australia">Australia</option>
@@ -204,13 +219,13 @@ function CreateProfileForm() {
         <div className="preferences">
           <div className="email">
             <label htmlFor="contact_preference">Contact Preference</label>
-            <select id="contact_preference_select" onChange={(e) => setPreference(e.target.value)} defaultValue={"Email"}>
-              <option value="email">Email</option>
-              <option value="facebook">Facebook</option>
-              <option value="instagram">Instagram</option>
-              <option value="github">Github</option>
-              <option value="linkedin">Linkedin</option>
-              <option value="portfolio">Portfolio</option>
+            <select value= {contact_preference} id="contact_preference_select" onChange={changePreference}>
+              <option value="Email">Email</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Instagram">Instagram</option>
+              {/* <option value="Github">Github</option> */}
+              <option value="LinkedIn">LinkedIn</option>
+              {/* <option value="Portfolio">Portfolio</option> */}
             </select>
           </div>
           <div className="seeking-mentorship">
