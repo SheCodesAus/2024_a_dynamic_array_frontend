@@ -70,9 +70,20 @@ textarea::placeholder{
         width: 100%;
         max-height: 650px;
     }
-
+    .contact-form-illustration {
+        display: inline-block;
+    }
     .contact-form-illustration p{
         margin: 0rem 1rem;
     }
+
+    .contact-us-header {
+        display: flex;
+        flex-direction: column;
+        font-family: 'Open Sans', sans-serif;
+        margin: 2rem 5rem;
+    }
+
+
 
 }
