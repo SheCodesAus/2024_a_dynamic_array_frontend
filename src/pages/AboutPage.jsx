@@ -1,7 +1,6 @@
 import "../components/About/AboutPage.css";
 import name from "../assets/NavBar/name.png";
-import wholelogo from "../assets/About/wholelogo.png";
-
+import aboutimg from "../assets/Illustrations/aboutUs.svg"
 function AboutPage() {
   return (
     <>
@@ -13,19 +12,17 @@ function AboutPage() {
             inclusivity in the industry.
           </p>
           <p>
-            {" "}
             Through mentorship and showcasing talent, we pave the way for a more
             equitable future.
           </p>
         </div>
         <div className="about-illustration">
           <img
-            src={wholelogo}
+            src={aboutimg}
             alt="Diversitech's logo and slogan Tech for all by all"
           />
         </div>
-      </section>
-      <section className="about-story">
+      <div className="about-story">
         <h2> Empowering Diversity!</h2>
         <p>
           Our mission is to shatter stereotypes and break down barriers in the
@@ -47,6 +44,7 @@ function AboutPage() {
             for a more inclusive and equitable future.
           </p>
         </p>
+      </div>
       </section>
     </>
   );
