@@ -1,6 +1,22 @@
+.login-main-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-top: 5rem;
+}
 
+.diversiTech-name-logo {
+  display: none;
+}
 
+.login-form-container form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 350px;
+}
 
-.login{
-    margin-top:10vh;
+.form-controller {
+    width: 100%;
 }
