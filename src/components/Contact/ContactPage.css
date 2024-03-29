@@ -1,10 +1,23 @@
 @import '../../index.css';
 
-
+.contactus-main-container{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin-top: 5rem;
+}
+input, textarea, select{
+    font-family: 'Open Sans', sans-serif;
+}
+textarea::placeholder{
+    padding: 0.8rem;
+}
 .contact-us-header{
-    margin: 10rem 5rem;
+    /*margin-top: 5rem;*/
+    /*margin-bottom: 2rem;*/
     display:flex;
-    flex-direction: column;;
+    flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
 
 }
 
@@ -13,10 +26,11 @@
 }
 
 .contact-form-container{
-    display:flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    margin: 0rem 5rem;
+    display: flex;
+    /* width: 100%; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
 }
 
 .contact-form{
@@ -26,9 +40,17 @@
 
 .contact-form-illustration{
     flex:2;
-    
+
 }
 
+.diversitech-3{
+    flex: 1;
+    /*margin: 5rem auto;*/
+    padding: 2rem;
+}
+.contact-form-illustration{
+    display: none;
+}
 .contact-form-illustration p{
     display:flex;
     justify-content: center;
@@ -37,14 +59,20 @@
     padding: 10rem 2rem;
 }
 
-@media screen and (max-width:830px) {
+@media screen and (min-width:576px) {
     .contact-form-container{
         display:flex;
-        flex-direction:column-reverse;
+        flex-direction:row;
         flex-wrap: wrap;
-        margin: 1rem 1rem;
+        margin: 0rem 5rem;
     }
+        .contactus-page-image{
+        width: 100%;
+        max-height: 650px;
+    }
+
     .contact-form-illustration p{
         margin: 0rem 1rem;
     }
+
 }
