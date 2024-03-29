@@ -1,4 +1,4 @@
-import React, { useState, setState } from "react";
+import React, { useState } from "react";
 import postProfile from "../../api/post-profile";
 
 import { useNavigate } from "react-router-dom"; // import the useNavigate hook
@@ -48,7 +48,6 @@ function CreateProfileForm() {
     setPreference(e.target.value);
     profile.contact_preference = e.target.value;
   };
-  console.log("after", profile.contact_preference)
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -57,7 +56,6 @@ function CreateProfileForm() {
       [id]: value,
     }));
   };
-console.log("after profile set", profile.contact_preference)
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -91,7 +89,7 @@ console.log("after profile set", profile.contact_preference)
       });
     }
   };
-console.log("after", profile)
+
   return (
     <section className="profile-form-container">
       <form>
