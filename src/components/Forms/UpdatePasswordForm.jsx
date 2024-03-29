@@ -43,7 +43,7 @@ function UpdatePasswordForm() {
                 <div>
                     <label htmlFor="old_password">Old Password</label>
                     <input
-                    type="text"
+                    type="password"
                     id="old_password"
                     placeholder="Old Password"
                     onChange={handleChange}
@@ -52,7 +52,7 @@ function UpdatePasswordForm() {
                 <div>
                     <label htmlFor="new_password">New Password</label>
                     <input
-                    type="text"
+                    type="password"
                     id="new_password"
                     placeholder="New Password"
                     onChange={handleChange}
@@ -61,7 +61,7 @@ function UpdatePasswordForm() {
                 <div>
                     <label htmlFor="new_password_confirmed">Confirm New Password</label>
                     <input
-                    type="text"
+                    type="password"
                     id="new_password_confirmed"
                     placeholder="Confirm New Password"
                     onChange={handleChange}

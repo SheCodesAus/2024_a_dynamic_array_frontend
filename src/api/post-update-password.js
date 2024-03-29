@@ -3,14 +3,18 @@ async function postPasswordUpdate(
   new_password,
   new_password_confirmed
 ) {
+
   const url =
-    // `${import.meta.env.VITE_API_URL}/update-password/`
+    `${import.meta.env.VITE_API_URL}/update-password/`
     // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
-    `http://127.0.0.1:8000/users/`;
+    // `http://127.0.0.1:8000/update-password/`;
+  const token = window.localStorage.getItem('token');
+  
   const response = await fetch(url, {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Token ${token}`,
     },
     body: JSON.stringify({
       old_password: old_password,
