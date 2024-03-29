@@ -1,15 +1,37 @@
-@import '../../index.css';
 
+.signup-main-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+}
 
-.loginPageImage{
+.sign-up-form-image {
     display: none;
 }
 
 /* Media Queries */
 
-@media screen and (min-width:576px) {
+@media screen and (min-width: 576px) {
 
-    .loginPageImage{
-        display: inline-block;
+    .signup-main-container {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 40% 30%;
+        gap: 0px 2rem;
+        height: 100%;
+        padding: 5rem;
+        margin: 5rem auto;
+    }
+
+    .sign-up-form-image {
+        display: block;
+        max-width: 500px;
+        height: 500px;
+    }
+
+    .signup-page-side {
+        display: flex;
+        padding-top: 7.5rem;
+
     }
 }

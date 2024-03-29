@@ -114,7 +114,7 @@ function ContactFormWithHelp() {
               ></textarea>
             </div>
             <div>
-              <button className="userbutton">Submit</button>
+              <button className="btn btn-primary contactus-btn">Submit</button>
             </div>
             <div className="submit-success">
               {submitSuccess && (

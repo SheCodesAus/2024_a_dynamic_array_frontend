@@ -21,6 +21,10 @@
     width: 100%;
 }
 
+.login-btn{
+    margin: 3rem 0 0.6rem;
+}
+
 @media screen and (min-width:576px) {
     .login-main-container {
         display: grid;

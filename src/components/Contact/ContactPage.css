@@ -24,7 +24,9 @@ textarea::placeholder{
 .contact-us-header h1{
     margin-bottom: 1rem;
 }
-
+.contact-us-header{
+    margin-bottom: 2rem;
+}
 .contact-form-container{
     display: flex;
     /* width: 100%; */
