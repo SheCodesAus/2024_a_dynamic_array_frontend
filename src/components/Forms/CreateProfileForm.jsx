@@ -95,9 +95,7 @@ function CreateProfileForm() {
       <form>
         <div className="hide-profile">
           <p>Hide my profile</p>
-          <p>
             <ToggleSwitch Name="is_hidden" />
-          </p>
         </div>
         <h2>CREATE A PROFILE</h2>
 
@@ -235,7 +233,7 @@ function CreateProfileForm() {
           <div className="open-mentorship">
             <div className="hide-profile">
               <p>Open to Mentoring</p>
-                <ToggleSwitch Name="is_open_to_mentor" />
+              <ToggleSwitch Name="is_open_to_mentor" />
             </div>
           </div>
         </div>
