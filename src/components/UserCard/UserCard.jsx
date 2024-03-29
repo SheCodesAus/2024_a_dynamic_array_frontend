@@ -2,7 +2,7 @@ import "../../components/UserCard/UserCard.css";
 import { Link } from "react-router-dom";
 
 function UserCard(props) {
-    const { userData } = props;
+    const { userData, onDelete } = props;
     const userLink = `users/${userData.username}`;
 
     return (
@@ -12,7 +12,7 @@ function UserCard(props) {
                     <h5>{userData.username}</h5>
                 </Link>
                 <p>{userData.email}</p>
-                <button>Delete</button>
+                <button onClick={onDelete}>Delete</button>
             </div>
         </section>
     );

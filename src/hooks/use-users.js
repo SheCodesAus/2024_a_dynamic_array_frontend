@@ -17,7 +17,7 @@ function useUsers (){
             setIsLoading(false);
         });
     }, ([]));
-    return {users, isLoading, error};
+    return {users, isLoading, error, setUsers};
 
 }
 export default useUsers;
