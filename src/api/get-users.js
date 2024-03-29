@@ -14,9 +14,14 @@ async function getUsers(){
     
     if (!response.ok) {
         const fallbackError = "Error fetching users";
-        const data = await response.json().catch(() =>{throw new Error(fallbackError);
+
+        const data = await response.json().catch(() =>{
+            throw new Error(fallbackError);
         });
-        const errorMessage = data?.detail ?? fallbackError;
+        const errorMessage = data.detail ?? fallbackError;
+        if (errorMessage === "Invalid token.") {
+            throw new Error('You must be an admin user to access this page');
+        }
         throw new Error(errorMessage);
     }
     return await response.json();
