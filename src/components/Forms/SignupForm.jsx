@@ -123,7 +123,7 @@ function SignupForm() {
             {/*<label>{isChecked ? 'Checked' : 'Unchecked'}</label>*/}
           </div>
         </div>
-        <button className="userbutton" type="submit" onClick={handleSubmit}>
+        <button className="btn btn-primary" type="submit" onClick={handleSubmit}>
           Sign up
         </button>
         <p className="login-link">

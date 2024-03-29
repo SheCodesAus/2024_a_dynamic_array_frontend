@@ -5,7 +5,9 @@ import "../Forms/SignupForm.css";
 import "../Buttons/CtaButton.css";
 import EmailDropdownMenu from "../EmailDropdown/EmailDropdownMenu";
 
+
 function ContactFormWithHelp() {
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [helpFormData, setHelpFormData] = useState({
     name: "",
@@ -17,7 +19,7 @@ function ContactFormWithHelp() {
   const [state, handleSubmit] = useForm("xqkrybww");
 
   const handleChange = (e) => {
-    setHelpFormData({ ...helpFormData, [e.target.name]: e.target.value });
+    setHelpFormData({...helpFormData, [e.target.name]: e.target.value});
   };
 
   const handleFormSubmit = async (e) => {
@@ -112,7 +114,7 @@ function ContactFormWithHelp() {
             ></textarea>
           </div>
           <div>
-            <button className="userbutton" type="submit" disabled={isLoading}>
+            <button className="tn btn-primary contactus-btn" type="submit" disabled={isLoading}>
               {isLoading ? "Submitting..." : "Submit"}
             </button>
           </div>
@@ -126,4 +128,5 @@ function ContactFormWithHelp() {
     </>
   );
 }
+
 export default ContactFormWithHelp;
