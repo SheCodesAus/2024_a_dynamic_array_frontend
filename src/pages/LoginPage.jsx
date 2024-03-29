@@ -14,7 +14,7 @@ function LoginPage() {
         <p className="illustration">An illustration belongs here</p>
       </div>
 
-      <div class="signup-form">
+      <div className="signup-form">
         <LoginForm />
       </div>
     </section>
