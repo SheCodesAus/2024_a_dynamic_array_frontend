@@ -3,7 +3,7 @@ import postProfile from "../../api/post-profile";
 
 import { useNavigate } from "react-router-dom"; // import the useNavigate hook
 import { useAuth } from "../../hooks/use-auth";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
+import ToggleSwitch from "../Forms/ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
 
 
@@ -36,7 +36,7 @@ function CreateProfileForm() {
     setLocation(e.target.value);
     profile.location = e.target.value;
   };
-  
+
   const [country, setCountry] = useState();
   const changeCountry = (e) => {
     setCountry(e.target.value);
@@ -121,8 +121,8 @@ function CreateProfileForm() {
         <div className="location">
           <div className="area-div">
             <label htmlFor="area">Area</label>
-            <select 
-              id="area" 
+            <select
+              id="area"
               value={city}
               onChange={changeCity}
               defaultValue={"--City--"}
@@ -137,7 +137,7 @@ function CreateProfileForm() {
           </div>
           <div className="state-div">
             <label htmlFor="state">State</label>
-            <select value ={location} id="state_select" 
+            <select value ={location} id="state_select"
               onChange={changeLocation} defaultValue={""}>
               {/* options to be fetched by API in future release */}
               <option value=""></option>

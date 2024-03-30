@@ -1,8 +1,9 @@
 @import '../../index.css';
 
 .signup-form {
-margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
+
 form h2 {
     margin-bottom: 3rem;
     text-align: center;
@@ -58,11 +59,13 @@ input::placeholder {
     padding: 10px;
     /* Adjust the padding value as needed */
 }
-.accepted_terms-label{
+
+.accepted_terms-label {
     display: inline-block;
 
 }
-.accept_terms-container{
+
+.accept_terms-container {
     display: flex;
     margin-bottom: 1.5rem;
     padding-top: 10px;
@@ -72,26 +75,25 @@ input::placeholder {
     align-items: center;
 }
 
-.contactus-btn{
+.contactus-btn {
     margin: 3rem 0 0.6rem;
 }
 
-input[type=checkbox]{
+input[type=checkbox] {
     width: 25px;
 }
 
-@media screen and (min-width:576px) {
+@media screen and (min-width: 576px) {
 
 
-    .signup-form div{
+    .signup-form div {
         width: 100%;
     }
 
 
-.login-link {
-    margin-top: 2rem;
-    text-align: right;
-}
+    .login-link {
+        margin-top: 2rem;
+        text-align: right;
+    }
 }
 
-}
