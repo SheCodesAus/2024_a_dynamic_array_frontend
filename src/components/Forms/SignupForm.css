@@ -1,5 +1,8 @@
 @import '../../index.css';
 
+.signup-form {
+margin-bottom: 2rem;
+}
 form h2 {
     margin-bottom: 3rem;
     text-align: center;
@@ -15,7 +18,6 @@ form h2 {
     padding: 1rem;
     margin: 0px auto;
     height: auto;
-    background-color: var(--off-white);
     font-family: 'Open Sans', sans-serif;
 
 }
@@ -48,7 +50,7 @@ textarea {
 
 .login-link {
     margin-top: 1.2rem;
-    text-align: right;
+    text-align: center;
 }
 
 /* Add padding to placeholder text */
@@ -62,7 +64,7 @@ input::placeholder {
 }
 .accept_terms-container{
     display: flex;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     padding-top: 10px;
     gap: 0 1rem;
     flex-direction: row;
@@ -70,21 +72,8 @@ input::placeholder {
     align-items: center;
 }
 
-.userbutton{
-    margin-top: 2.5rem;
-    width: 100%;
-    height:2rem;
-    border-radius:1.5rem;
-    background-color: #19216c;
-    color: #fff;
-    font-weight: bold;
-}
-
-.userbutton:hover{
-
-    background-color: #bed0f7;
-    cursor: pointer;
-    color: #1f2933;
+.contactus-btn{
+    margin: 3rem 0 0.6rem;
 }
 
 input[type=checkbox]{
@@ -93,25 +82,14 @@ input[type=checkbox]{
 
 @media screen and (min-width:576px) {
 
-    .form-container {
 
-        padding: 7rem;
-    }
-
-    .signup-form {
-        width: 50%;
-        margin: 0 auto;
-
-    }
     .signup-form div{
         width: 100%;
     }
 
 
-.login-link{
+.login-link {
     margin-top: 2rem;
-    text-align:right;
-
+    text-align: right;
 }
-
 }
