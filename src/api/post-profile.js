@@ -1,7 +1,7 @@
-async function postProile(
+async function postProfile(
     bio,
     city,
-    state,
+    location,
     country,
     picture_url,
     is_hidden,
@@ -27,7 +27,7 @@ async function postProile(
         body: JSON.stringify({
             "bio": bio,
             "city": city,
-            "state": state,
+            "location": location,
             "country": country,
             "picture_url": picture_url,
             "is_hidden": is_hidden,
@@ -40,6 +40,8 @@ async function postProile(
             "contact_preference": contact_preference,
             "is_open_to_mentor": is_open_to_mentor,
             "is_seeking_mentorship": is_seeking_mentorship,
+            "tags": [],// to be implemented
+            "industries": [],// to be implemented
         })
     });
     if (!response.ok){
@@ -53,4 +55,4 @@ async function postProile(
     }
     return await response.json();
 }
-export default postProile;
+export default postProfile;
