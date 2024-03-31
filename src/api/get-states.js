@@ -1,4 +1,5 @@
-async function getCountries() {
+// This function will fetch the list of states from the API based on the selected country
+async function getStates(selectedCountry){
     var headers = new Headers();
     headers.append("X-CSCAPI-KEY", "akNCcDdWUndIVWk3SEZITG1lMWhvNkU4UWc0U1RsQmk0T3luQllseA==");
 
@@ -7,10 +8,18 @@ async function getCountries() {
     headers: headers,
     redirect: 'follow'
     };
+    const url = `https://api.countrystatecity.in/v1/countries/${selectedCountry.iso2}/states`;
+    const response = await fetch (url,requestOptions);
 
-    fetch("https://api.countrystatecity.in/v1/countries", requestOptions)
-    .then(response => response.text())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
+    if (!response.ok) {
+        const fallbackError = "Error fetching states";
+        const data= await response.json().catch(()=>{
+            throw new Error(fallbackError);
+        });
+        const errorMessage = data?.detail ?? fallbackError;
+        throw new Error(errorMessage);
+    }
+    const stateData = await response.json();
+    return stateData;
 }
-export default getCountries;
+export default getStates;
