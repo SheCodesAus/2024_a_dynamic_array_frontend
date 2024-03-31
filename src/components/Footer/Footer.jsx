@@ -8,7 +8,7 @@ function Footer() {
   return (
     <>
       <footer className="bg-dark">
-        <div className="footer-container">
+        <div className="main-container footer-container">
           <div className="footer-logo-link">
             <Link to="/">
               <img
@@ -28,7 +28,7 @@ function Footer() {
               </li>
             </ul>
           </div>
-          <div className="socials">
+          <div className="footer-socials">
             <ul>
               <li>
                 <Link className="linkedin-icon" to="/signup"> <FaLinkedin size={24}/></Link>
