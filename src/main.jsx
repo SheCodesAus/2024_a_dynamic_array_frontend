@@ -40,7 +40,7 @@ const router = createBrowserRouter([
       { path: "/profile/:id", element: <ProfilePage /> },
       { path: "/test", element: <TestPage /> },
       { path: "/users", element: <UsersPage /> },
-      { path: "/users/:username", element: <UserPage /> },
+      { path: "/users/:id", element: <UserPage /> },
       { path: "/update-password", element: <UpdatePasswordPage /> },
     ],
   },
