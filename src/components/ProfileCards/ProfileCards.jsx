@@ -1,9 +1,35 @@
 import "../../components/ProfileCards/ProfileCards.css";
 import ProfileCard from "./ProfileCard";
 import { useState, useEffect } from "react";
+import Paginate from "../ProfileCards/Paginate.jsx";
 
 function ProfileCards({ profiles }) {
   const [shuffledProfiles, setShuffledProfiles] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [profilesPerPage] = useState(3);
+
+  const indexOfLastProfile = currentPage * profilesPerPage;
+  const indexOfFirstProfile = indexOfLastProfile - profilesPerPage;
+  const currentProfiles = shuffledProfiles.slice(
+    indexOfFirstProfile,
+    indexOfLastProfile
+  );
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const previousPage = () => {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage !== Math.ceil(shuffledProfiles.length / postsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   useEffect(() => {
     const allProfiles = profiles.flat();
@@ -26,9 +52,19 @@ function ProfileCards({ profiles }) {
 
   return (
     <div className="profile-cards-container">
-      {shuffledProfiles.map((profile, index) => (
-        <ProfileCard key={index} profile={profile} />
-      ))}
+      <div className="paginate-section">
+        {currentProfiles.map((profile, index) => (
+          <ProfileCard key={index} profile={profile} />
+        ))}
+
+        <Paginate
+          profilesPerPage={profilesPerPage}
+          totalProfiles={shuffledProfiles.length}
+          paginate={paginate}
+          previousPage={previousPage}
+          nextPage={nextPage}
+        />
+      </div>
     </div>
   );
 }

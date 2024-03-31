@@ -15,6 +15,9 @@ function ProfileCard({ profile }) {
   const { user, isLoading, error } = useUser(profile.owner);
   const [username, setUsername] = useState("");
 
+  {
+    /* Retrieval of user first name and last name is still not working  */
+  }
   useEffect(() => {
     console.log("Inside useEffect");
     console.log("user:", user);
