@@ -16,6 +16,7 @@ import PrivacyPage from "./pages/PrivacyPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import UsersPage from "./pages/UsersPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
+import UpdatePasswordPage from "./pages/UpdatePasswordPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
       { path: "/profile/:id", element: <ProfilePage /> },
       { path: "/users", element: <UsersPage /> },
       { path: "/users/:username", element: <UserPage /> },
+      { path: "/update-password", element: <UpdatePasswordPage /> },
     ],
   },
 ]);
