@@ -8,7 +8,7 @@
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
@@ -98,7 +98,11 @@ html {
   cursor: pointer;
   color: #1f2933;
 }
-
+.main-container{
+  margin: 0;
+  padding: 0.4rem;
+  width: 100%;
+}
 /*dark/light mode*/
 @media (prefers-color-scheme: light) {
   :root {
@@ -112,5 +116,45 @@ html {
 
   button {
     background-color: #f9f9f9;
+  }
+}
+
+@media (min-width: 640px) {
+  .main-container{
+    margin: 0;
+    padding: 2rem;
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .main-container{
+
+    padding: 2rem;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1024px) {
+  .main-container{
+
+    padding: 2rem;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1280px) {
+  .main-container{
+
+    padding: 2rem;
+    width: 85%;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 1536px) {
+  .main-container{
+
+    padding: 2rem;
+    width: 75%;
+    margin: 0 auto;
   }
 }
