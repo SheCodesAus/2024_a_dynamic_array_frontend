@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       { path: "/termsandconditions", element: <TermsAndConditionsPage /> },
       { path: "/profile/:id", element: <ProfilePage /> },
       { path: "/users", element: <UsersPage /> },
-      { path: "/users/:id", element: <UserPage /> },
+      { path: "/users/:userId", element: <UserPage /> },
       { path: "/update-password", element: <UpdatePasswordPage /> },
     ],
   },
