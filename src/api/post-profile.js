@@ -47,15 +47,17 @@ async function postProfile(
         })
     });
     if (!response.ok){
-        const fallbackError = "Error trying to signup";
-        const data = await response.json().catch(() => {
+        if (response.status === 403) {
+            const data = await response.json();
+            console.log("data response", data)
+            const errorMessage = data.message 
+            throw new Error(errorMessage);
+        } else {
+            const fallbackError = "Error trying to create a profile.";
             throw new Error(fallbackError);
-        
-        });
-        console.log("data object from post-profile", data)
-        const errorMessage = data?.detail ?? fallbackError;
-        throw new Error(errorMessage);
-    }
+            }
+        }
     return await response.json();
 }
+
 export default postProfile;
