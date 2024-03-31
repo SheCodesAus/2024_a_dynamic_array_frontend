@@ -2,9 +2,11 @@ import UserCard from "../components/UserCard/UserCard";
 import useUsers from "../hooks/use-users";
 import deleteUser from "../api/delete-user";
 import { useNavigate } from "react-router-dom";
+import useAuth from "../hooks/use-auth";
 
 function UsersPage() {
     const navigate = useNavigate();
+    const { auth } = useAuth();
     const { users, isLoading, error, setUsers } = useUsers();
 
     if (isLoading) {
@@ -21,6 +23,7 @@ function UsersPage() {
             </div>
         );
     }
+
 
     const handleDeleteUser = async (userId) => {
         try {

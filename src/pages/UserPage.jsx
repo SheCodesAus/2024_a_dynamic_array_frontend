@@ -1,6 +1,9 @@
 import { useState } from "react";
 import useUser from "../hooks/use-user";
 import { useParams } from "react-router-dom";
+import UserDetails from "../components/UserCard/UserDetails";
+import EditUserForm from "../components/Forms/EditUserForm";
+
 
 
 function userPage() {
@@ -26,18 +29,18 @@ function userPage() {
     }
 
     return (
-        <div>
+        <div className="userdetails-main-container">
             {user && !isEditing && (
                 <div>
                     <UserDetails user={user} />
                     <button onClick={handleEditClick}>Edit</button>
                 </div>
-            )};
+            )}
             {isEditing && (
                 <EditUserForm user={user} onSave={handleSave}/>
             )}
         </div>
-    );
+    )
 };
 
 export default userPage;

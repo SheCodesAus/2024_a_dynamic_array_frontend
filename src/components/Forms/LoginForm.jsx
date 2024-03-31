@@ -27,9 +27,10 @@ function LoginForm() {
     } else if (credentials.username && credentials.password) {
       postLogin(credentials.username, credentials.password).then((response) => {
         window.localStorage.setItem("token", response.token);
+        window.localStorage.setItem("user_id", response.user_id);
         setAuth({
           token: response.token,
-          userID: response.user_id,
+          userId: response.user_id,
           username: response.username,
         });
         navigate("/"); // redirect to home page

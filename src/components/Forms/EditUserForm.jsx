@@ -1,11 +1,10 @@
 import { useState } from "react";
 import putUser from "../../api/put-user";
-import useAuth from "../../hooks/use-auth";
+import { useParams } from "react-router-dom";
 
 function EditUserForm(props) {
     const { user, onSave } = props;
     const { id } = useParams();
-    const { auth } = useAuth();
     const [updatedUser , setUpdatedUser ] = useState({
         id: user.id,
         username: user.username,
@@ -52,7 +51,7 @@ function EditUserForm(props) {
             <form>
                 <div>
                     <label htmlFor="username">Username:</label>
-                    <text
+                    <input
                     id="username"
                     value={updatedUser.username}
                     placeholder={updatedUser.username}
@@ -61,7 +60,7 @@ function EditUserForm(props) {
                 </div>
                 <div>
                     <label htmlFor="email">Email:</label>
-                    <email
+                    <input
                     id="email"
                     value={updatedUser.email}
                     placeholder={updatedUser.email}
@@ -70,7 +69,7 @@ function EditUserForm(props) {
                 </div>
                 <div>
                     <label htmlFor="first_name">First Name:</label>
-                    <text
+                    <input
                     id="first_name"
                     value={updatedUser.first_name}
                     placeholder={updatedUser.first_name}
@@ -79,7 +78,7 @@ function EditUserForm(props) {
                 </div>
                 <div>
                     <label htmlFor="last_name">Last Name:</label>
-                    <text
+                    <input
                     id="last_name"
                     value={updatedUser.last_name}
                     placeholder={updatedUser.last_name}

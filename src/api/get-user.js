@@ -1,7 +1,15 @@
 async function getUser(userId) {
     // const url = `${import.meta.env.VITE_API_URL}/users/${userId}`;
-    const response = await fetch(url, { method: "GET" });
-    const url=`http://127.0.0.1:8000/users/${userId}`;
+    const url=`http://127.0.0.1:8000/users/${userId}/`;
+    const token = window.localStorage.getItem('token');
+
+    const response = await fetch(url, { 
+      method: "GET",
+      headers: {
+        "Authorization": `Token ${token}`,
+      },
+    });
+
   
     if (!response.ok) {
       const fallbackError = `Error fetching user with user id ${userId}`;
@@ -16,4 +24,4 @@ async function getUser(userId) {
     return await response.json();
   }
   
-  export default getUser;
+export default getUser;
