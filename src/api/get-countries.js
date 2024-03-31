@@ -20,9 +20,9 @@ async function getCountries(){
         const errorMessage = data?.detail ?? fallbackError;
         throw new Error(errorMessage);
     }
-    const countryData = await response.json();
-    const countryNames = data.map(country => country.name);
-    return {countryNames, countries: countryData};
+    const countriesData = await response.json();
+    const countryNames = countriesData.map(country => country.name);
+    return {countryNames, countriesData};
 
 }
 export default getCountries;

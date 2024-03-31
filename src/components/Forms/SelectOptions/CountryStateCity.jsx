@@ -10,15 +10,16 @@ function CountryStateCitySelect() {
     const [states, setStates] = useState([]);
     const [cities, setCities] = useState([]);
     const [countries, setCountries] = useState([]);
-    const [countriesData, setCountriesData] = useState({ countryNames: [], countries: [] });
+    const [countriesData, setCountriesData] = useState([]);
+    const [countryNames, setCountryNames] = useState([]);
     const [selectedIso2, setSelectedIso2] = useState('');
 
 
     useEffect(() => {
-        getCountries().then(data => {
+        getCountries(countryNames).then(data => {
             setCountriesData(data);
         }).catch(error => {
-            console.error('Error fetching countries:', error);
+            console.error('Error fetching countries data:', error);
         });
     }, []); // Empty dependency array ensures useEffect runs only once on component mount
     
