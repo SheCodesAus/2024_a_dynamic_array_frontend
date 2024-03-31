@@ -1,19 +1,43 @@
+import { useState } from "react";
 import useUser from "../hooks/use-user";
+import { useParams } from "react-router-dom";
 
 
 function userPage() {
-    const { user, isLoading, error} = useUser();
+    const { userId } = useParams();
+    const { user, setUser, isLoading, error} = useUser(userId);
+    const [isEditing, setIsEditing] = useState(false);
+
+    const handleEditClick = () => {
+        setIsEditing(true);
+    };
+
+    const handleSave = (updatedUser) => {
+        setUser(updatedUser);
+        setIsEditing(false);
+    };
 
     if (isLoading) {
         return <p>Loading...</p>;
     }
 
     if (error) {
-        
+        return <p>{error.message}</p>;
     }
 
-
-    return <h1>This is a user page.</h1>;
-}
+    return (
+        <div>
+            {user && !isEditing && (
+                <div>
+                    <UserDetails user={user} />
+                    <button onClick={handleEditClick}>Edit</button>
+                </div>
+            )};
+            {isEditing && (
+                <EditUserForm user={user} onSave={handleSave}/>
+            )}
+        </div>
+    );
+};
 
 export default userPage;

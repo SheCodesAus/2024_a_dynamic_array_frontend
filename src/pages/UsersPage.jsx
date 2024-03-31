@@ -22,10 +22,10 @@ function UsersPage() {
         );
     }
 
-    const handleDeleteUser = async (id) => {
+    const handleDeleteUser = async (userId) => {
         try {
-            await deleteUser(id);
-            const updatedUsers = users.filter(user => user.id !== id);
+            await deleteUser(userId);
+            const updatedUsers = users.filter(user => user.id !== userId);
             setUsers(updatedUsers);
         } catch (error) {
             console.error('Error deleting user:', error);
