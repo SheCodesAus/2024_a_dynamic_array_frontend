@@ -132,58 +132,7 @@ function CreateProfileForm() {
             onChange={handleChange}
           />
         </div>
-<<<<<<< HEAD
-       <LocationDropdowns/>
-=======
-        <div className="location">
-          <div className="area-div">
-            <label htmlFor="area">Area</label>
-            <select 
-              id="area" 
-              value={city}
-              onChange={changeCity}
-              defaultValue={"--City--"}
-            >
-              {/* options to be fetched by API in future release */}
-              <option value=""></option>
-              <option value="North">NORTH</option>
-              <option value="East">EAST</option>
-              <option value="South">SOUTH</option>
-              <option value="West">WEST</option>
-            </select>
-          </div>
-          <div className="state-div">
-            <label htmlFor="state_select">State</label>
-            <select value ={location} id="state_select" 
-              onChange={changeLocation} defaultValue={""}>
-              {/* options to be fetched by API in future release */}
-              <option value=""></option>
-              <option value="WA">WA</option>
-              <option value="ACT">ACT</option>
-              <option value="NSW">NSW</option>
-              <option value="QLD">QLD</option>
-              <option value="VIC">VIC</option>
-              <option value="TAS">TAS</option>
-              <option value="SA">SA</option>
-            </select>
-          </div>
-          <div className="country-div">
-            <label htmlFor="country_select">Country</label>
-            <select value ={country} id="country_select" onChange={changeCountry} defaultValue={""}>
-              {/* options to be fetched by API in future release */}
-              <option value=""></option>
-              <option value="Australia">Australia</option>
-              <option value="New Zealand">New Zealand</option>
-              <option value="Indonesia">Indonesia</option>
-              <option value="Vietnam">Vietnam</option>
-              <option value="Singapore">Singapore</option>
-              <option value="China">China</option>
-              <option value="Thailand">Thailand</option>
-            </select>
-          </div>
-        </div>
-
->>>>>>> DEV
+        <LocationDropdowns />
         <div>
           <label htmlFor="facebook_url">Facebook URL</label>
           <input
