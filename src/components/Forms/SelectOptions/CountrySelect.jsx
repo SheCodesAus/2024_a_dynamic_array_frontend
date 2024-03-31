@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import getCountryStateCity from '../../../api/get-countryStateCity.js';
 import getCountries from '../../../api/get-countries.js';
 
 function useCountries(setCountryNames, setCountriesData) {
