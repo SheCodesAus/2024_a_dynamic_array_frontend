@@ -4,6 +4,12 @@
 .bg-dark {
     --bs-bg-opacity: 1;
     background-color: #1f2933 !important;
+
+}
+.fix-footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 .footer-container{
     display: flex;

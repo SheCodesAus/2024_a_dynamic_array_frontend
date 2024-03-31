@@ -7,7 +7,7 @@ import { FaLinkedin, FaFacebook } from "react-icons/fa";
 function Footer() {
   return (
     <>
-      <footer className="bg-dark">
+      <footer className="bg-dark fix-footer">
         <div className="main-container footer-container">
           <div className="footer-logo-link">
             <Link to="/">
