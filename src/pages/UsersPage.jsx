@@ -14,19 +14,18 @@ function UsersPage() {
     if (error) {
         return (
             <div className="error-container">
-                <p>{error.message}</p>
                 <p>Redirecting to home page...</p>
                 {setTimeout(() => {
                 navigate('/');
-                }, 5000)}
+                }, 10000)}
             </div>
         );
     }
 
-    const handleDeleteUser = async (username) => {
+    const handleDeleteUser = async (id) => {
         try {
-            await deleteUser(username);
-            const updatedUsers = users.filter(user => user.username !== username);
+            await deleteUser(id);
+            const updatedUsers = users.filter(user => user.id !== id);
             setUsers(updatedUsers);
         } catch (error) {
             console.error('Error deleting user:', error);
@@ -37,7 +36,7 @@ function UsersPage() {
     return (
         <div className="user-list">
             {users.map((userData, key) => {
-                return <UserCard key={key} userData={userData} onDelete={() => handleDeleteUser(userData.username)} />;
+                return <UserCard key={key} userData={userData} onDelete={() => handleDeleteUser(userData.id)} />;
             })}
         </div>
     );
