@@ -38,13 +38,10 @@ const router = createBrowserRouter([
       { path: "/privacy", element: <PrivacyPage /> },
       { path: "/termsandconditions", element: <TermsAndConditionsPage /> },
       { path: "/profile/:id", element: <ProfilePage /> },
-<<<<<<< HEAD
       { path: "/test", element: <TestPage /> },
-=======
       { path: "/users", element: <UsersPage /> },
       { path: "/users/:username", element: <UserPage /> },
       { path: "/update-password", element: <UpdatePasswordPage /> },
->>>>>>> DEV
     ],
   },
 ]);
