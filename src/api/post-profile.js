@@ -16,13 +16,15 @@ async function postProfile(
     is_seeking_mentorship) {
 
     const url = 
-    `${import.meta.env.VITE_API_URL}/profiles/`
+    // `${import.meta.env.VITE_API_URL}/profiles/`
     // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
-        // `http://127.0.0.1:8000/profiles/`;
+        `http://127.0.0.1:8000/profiles/`;
+    const token = window.localStorage.getItem("token");
     const response = await fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
+            "Authorization": `Token ${token}`
         },
         body: JSON.stringify({
             "bio": bio,
@@ -50,6 +52,7 @@ async function postProfile(
             throw new Error(fallbackError);
         
         });
+        console.log("data object from post-profile", data)
         const errorMessage = data?.detail ?? fallbackError;
         throw new Error(errorMessage);
     }
