@@ -9,22 +9,30 @@ import {
 } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function ProfileCard({ profile }) {
-  {
-    /* ------- fetching the data for username from user api----------*/
-    /*---------CURRENTLY NOT WORKING --------------*/
-  }
   const { user, isLoading, error } = useUser(profile.owner);
   const [username, setUsername] = useState("");
 
   useEffect(() => {
-    if (!isLoading && !error && user) {
-      setUsername(user.username);
-    }
-  }, [user, isLoading, error]);
+    console.log("Inside useEffect");
+    console.log("user:", user);
+    console.log("isLoading:", isLoading);
+    console.log("error:", error);
+    console.log("profile.owner:", profile.owner);
 
+    if (!isLoading && !error && user) {
+      if (profile.owner === user.id) {
+        console.log("firstname:", user.first_name);
+        setUsername(`${user.first_name} ${user.last_name}`);
+      } else {
+        setUsername("Sorry, no name is available!");
+      }
+    } else {
+      setUsername("Loading name...");
+    }
+  }, [user, isLoading, error, profile.owner]);
   if (!profile) {
     return <div>There are currently no Profiles available</div>;
   }
@@ -47,8 +55,7 @@ function ProfileCard({ profile }) {
 
           <div>
             {/*I am supposed to be retrieveing username from user object here, but havent been successful so far*/}
-            <h4>{username || "Loading name..."}</h4>
-
+            <h4>{isLoading ? "Loading name..." : username}</h4>
             <p>{profile.location}</p>
           </div>
           <div className="profile--card-header-share">
