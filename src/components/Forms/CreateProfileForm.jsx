@@ -64,9 +64,9 @@ function CreateProfileForm() {
       } else if (auth.token && profile.bio) {
         postProfile(
           profile.bio,
-          profile.city,
-          profile.state,
-          profile.country,
+          // profile.city,
+          // profile.state,
+          // profile.country,
           profile.location,
           profile.picture_url,
           profile.is_hidden,

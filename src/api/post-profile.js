@@ -1,8 +1,9 @@
 async function postProfile(
     bio,
-    city,
+    // city,
+    // country,
+    // state,
     location,
-    country,
     picture_url,
     is_hidden,
     number_of_endorsements,
@@ -16,9 +17,9 @@ async function postProfile(
     is_seeking_mentorship) {
 
     const url = 
-    `${import.meta.env.VITE_API_URL}/profiles/`
+    // `${import.meta.env.VITE_API_URL}/profiles/`
     // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
-        // `http://127.0.0.1:8000/profiles/`;
+        `http://127.0.0.1:8000/profiles/`;
     const token = window.localStorage.getItem("token");
     const response = await fetch(url, {
         method: "POST",
@@ -28,9 +29,10 @@ async function postProfile(
         },
         body: JSON.stringify({
             "bio": bio,
-            "city": city,
+            // "city": city,
+            // "state": state,
+            // "country": country,
             "location": location,
-            "country": country,
             "picture_url": picture_url,
             "is_hidden": is_hidden,
             "number_of_endorsements": number_of_endorsements,
