@@ -22,9 +22,31 @@ html {
   --med-blue: #647ACB;
   --light-blue: #E0E8F9;
   --off-white: #f5f7fa;
-  --light-red: #DE3A11;
+  --light-red: #ffebd9;
   --light-gray: #E4E7EB;
   --black: black;
+  --bs-blue: #008aff;
+  --bs-indigo: #6e00ff;
+  --bs-purple: #510FA8;
+  --bs-pink: #f074ad;
+  --bs-red: #ff5c75;
+  --bs-orange: #FFBE3D;
+  --bs-yellow: #ff9f1c;
+  --bs-green: #2dca8c;
+  --bs-teal: #50b5ff;
+  --bs-cyan: #4bd6e5;
+  --bs-white: #fff;
+  --bs-gray: #718096;
+  --bs-gray-dark: #2d3748;
+  --bs-gray-gray-100: #fafbfe;
+  --bs-gray-gray-200: #eff2f7;
+  --bs-gray-gray-300: #e2e8f0;
+  --bs-gray-gray-400: #cbd5e0;
+  --bs-gray-gray-500: #a0aec0;
+  --bs-gray-gray-600: #718096;
+  --bs-gray-gray-700: #4a5568;
+  --bs-gray-gray-800: #2d3748;
+  --bs-gray-gray-900: #273444;
 
 
   /* Headline Styles */
