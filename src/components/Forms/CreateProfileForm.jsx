@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom"; // import the useNavigate hook
 import { useAuth } from "../../hooks/use-auth";
 import ToggleSwitch from "./ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
-import LocationDropdowns from "./SelectOptions/TestPage.jsx";
-
+import LocationDropdowns from "./SelectOptions/LocationDropdowns.jsx";
 
 function CreateProfileForm() {
   const navigate = useNavigate(); // use the navigate hook
@@ -34,8 +33,8 @@ function CreateProfileForm() {
 
   // const [location, setLocation] = useState(); // using location to avoid conflict with state keyword and the database currently only has location
   // const changeLocation = (e) => {
-  //   setLocation(e.target.value);
-  //   profile.location = e.target.value;
+  //   setLocation(`${profile.city}, ${profile.state}, ${profile.country}`);
+  //   profile.location = `${profile.city}, ${profile.state}, ${profile.country}`;
   // };
   
   // const [country, setCountry] = useState();
@@ -60,15 +59,15 @@ function CreateProfileForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    profile.location = `${city}, ${state}, ${country}`;
+    console.log("profile", profile.location);
     const isValid = auth.token !== null;
 
     console.log("is valid payload", isValid)
-
     if (isValid) {
       if (
         !profile.bio ||
-        !(profile.city || profile.location || profile.country) ||
+        !(profile.city || profile.state || profile.country) ||
         !profile.contact_preference
       ) {
         alert(

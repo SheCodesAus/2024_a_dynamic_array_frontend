@@ -14,7 +14,6 @@ import { AuthProvider } from "./components/AuthProvider.jsx";
 import TermsAndConditionsPage from "./pages/TermsConditionsPage.jsx";
 import PrivacyPage from "./pages/PrivacyPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
-import TestPage from "./components/Forms/SelectOptions/TestPage.jsx";
 import UsersPage from "./pages/UsersPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
 import UpdatePasswordPage from "./pages/UpdatePasswordPage.jsx";
@@ -38,7 +37,6 @@ const router = createBrowserRouter([
       { path: "/privacy", element: <PrivacyPage /> },
       { path: "/termsandconditions", element: <TermsAndConditionsPage /> },
       { path: "/profile/:id", element: <ProfilePage /> },
-      { path: "/test", element: <TestPage /> },
       { path: "/users", element: <UsersPage /> },
       { path: "/users/:id", element: <UserPage /> },
       { path: "/update-password", element: <UpdatePasswordPage /> },
