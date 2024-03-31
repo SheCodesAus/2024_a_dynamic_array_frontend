@@ -34,13 +34,6 @@ function StateSelect({countryIso2, setStateIso2}) {
         }    
     };
 
-    // Event handler for form submission
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Handle form submission with selectedCountry, selectedState, and selectedCity values
-        console.log('Submitted values:', selectedStateName, iso2);
-    };
-
     return (
             <label>
                 State:

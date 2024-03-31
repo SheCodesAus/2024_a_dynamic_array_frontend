@@ -7,6 +7,7 @@ import ToggleSwitch from "./ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
 import LocationDropdowns from "./SelectOptions/LocationDropdowns.jsx";
 
+
 function CreateProfileForm() {
   const navigate = useNavigate(); // use the navigate hook
   const { auth, setAuth } = useAuth();
@@ -25,23 +26,15 @@ function CreateProfileForm() {
     is_seeking_mentorship: "false",
   });
 
-  // const [city, setCity] = useState();
-  // const changeCity = (e) => {
-  //   setCity(e.target.value);
-  //   profile.city = e.target.value;
-  // };
+  const [stateIso2, setStateIso2] = useState("");
+    profile.state = stateIso2;
 
-  // const [location, setLocation] = useState(); // using location to avoid conflict with state keyword and the database currently only has location
-  // const changeLocation = (e) => {
-  //   setLocation(`${profile.city}, ${profile.state}, ${profile.country}`);
-  //   profile.location = `${profile.city}, ${profile.state}, ${profile.country}`;
-  // };
-  
-  // const [country, setCountry] = useState();
-  // const changeCountry = (e) => {
-  //   setCountry(e.target.value);
-  //   profile.country = e.target.value;
-  // };
+  const [countryIso2, setCountryIso2] = useState("");
+    profile.country = countryIso2;
+
+  const [city, setSelectedCityId] = useState("");
+    profile.city = city;
+    profile.location = `${city}, ${stateIso2}, ${countryIso2}`;
 
   const [contact_preference, setPreference] = useState();
   const changePreference = (e) => {
@@ -59,26 +52,22 @@ function CreateProfileForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    profile.location = `${city}, ${state}, ${country}`;
-    console.log("profile", profile.location);
+
     const isValid = auth.token !== null;
 
     console.log("is valid payload", isValid)
     if (isValid) {
-      if (
-        !profile.bio ||
-        !(profile.city || profile.state || profile.country) ||
-        !profile.contact_preference
-      ) {
+      if (!profile.bio) {
         alert(
-          "Please complete minimum required fields - Bio, Location - either City, State or Country, and Contact Preference"
+          "Please complete add a bio to your profile before submitting."
         );
       } else if (auth.token && profile.bio) {
         postProfile(
           profile.bio,
           profile.city,
-          profile.location,
+          profile.state,
           profile.country,
+          profile.location,
           profile.picture_url,
           profile.is_hidden,
           profile.number_of_endorsements,
@@ -123,7 +112,7 @@ function CreateProfileForm() {
           />
         </div>
         <div>
-          <label htmlFor="profile_picture_url">Profile Picture URL</label>
+          <label htmlFor="picture_url">Profile Picture URL</label>
           <input
             type="url"
             id="profile_picture_url"
@@ -131,7 +120,7 @@ function CreateProfileForm() {
             onChange={handleChange}
           />
         </div>
-        <LocationDropdowns />
+        <LocationDropdowns countryIso2={countryIso2} stateIso2={stateIso2} setStateIso2={setStateIso2} setSelectedCityId={setSelectedCityId} setCountryIso2={setCountryIso2}/>
         <div>
           <label htmlFor="facebook_url">Facebook URL</label>
           <input
@@ -181,7 +170,7 @@ function CreateProfileForm() {
         <div className="preferences">
           <div className="email">
             <label htmlFor="contact_preference_select">Contact Preference</label>
-            <select value= {contact_preference} id="contact_preference_select" onChange={changePreference} defaultValue={""}>
+            <select value= {contact_preference} id="contact_preference_select" onChange={changePreference}>
               <option value=""></option>
               <option value="Email">Email</option>
               <option value="Facebook">Facebook</option>

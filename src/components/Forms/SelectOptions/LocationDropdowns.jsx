@@ -3,11 +3,11 @@ import StateSelect from "./StateSelect.jsx";
 import CitySelect from "./CitySelect.jsx";
 import React, {useState} from "react";
 
-function LocationDropdowns() {
+function LocationDropdowns({setCountryIso2, setStateIso2, setSelectedCityId, countryIso2, stateIso2, selectedCityId}) {
 
-    const [stateIso2, setStateIso2] = useState("");
-    const [countryIso2, setCountryIso2] = useState("");
-    const [cityIso2, setCityIso2] = useState("");
+    // const [stateIso2, setStateIso2] = useState("");
+    // const [countryIso2, setCountryIso2] = useState("");
+    // const [selectedCityId, setSelectedCityId] = useState("");
     
     return (
         <div>
@@ -20,7 +20,7 @@ function LocationDropdowns() {
             </div>
             <div>
                 { stateIso2 
-                    && <CitySelect countryIso2={countryIso2} stateIso2={stateIso2} setCityIso2={setCityIso2}/>}
+                    && <CitySelect countryIso2={countryIso2} stateIso2={stateIso2} setSelectedCityId={setSelectedCityId}/>}
             </div>
         </div>
     );
