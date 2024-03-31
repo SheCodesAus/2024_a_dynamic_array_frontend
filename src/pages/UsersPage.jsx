@@ -42,7 +42,7 @@ function UsersPage() {
         }
     };
 
- 
+
     return (
         <div className="user-list">
             {users.map((userData, key) => {
