@@ -105,8 +105,7 @@ function ProfileCard({ profile }) {
 
         <div className="profile--card-footer">
           <div className="profile--card-footer-endorsement">
-            <h4>Endorsement:</h4>
-            <p>What is supposed to go here?</p>
+            <h4>Endorsements: {profile.number_of_endorsements}</h4>
           </div>
 
           {/* -Note: if user has not provided links to a social media, then the icon just does not display */}
