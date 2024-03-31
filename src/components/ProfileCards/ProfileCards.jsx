@@ -26,7 +26,7 @@ function ProfileCards({ profiles }) {
   };
 
   const nextPage = () => {
-    if (currentPage !== Math.ceil(shuffledProfiles.length / postsPerPage)) {
+    if (currentPage !== Math.ceil(shuffledProfiles.length / profilesPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
