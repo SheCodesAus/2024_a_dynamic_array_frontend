@@ -49,8 +49,7 @@ async function postProfile(
     if (!response.ok){
         if (response.status === 403) {
             const data = await response.json();
-            console.log("data response", data)
-            const errorMessage = data.message 
+            const errorMessage = data.detail 
             throw new Error(errorMessage);
         } else {
             const fallbackError = "Error trying to create a profile.";
