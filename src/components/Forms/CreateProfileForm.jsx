@@ -215,7 +215,8 @@ function CreateProfileForm() {
         <div className="preferences">
           <div className="email">
             <label htmlFor="contact_preference">Contact Preference</label>
-            <select value= {contact_preference} id="contact_preference_select" onChange={changePreference}>
+            <select value= {contact_preference} id="contact_preference_select" onChange={changePreference} defaultValue={""}>
+              <option value=""></option>
               <option value="Email">Email</option>
               <option value="Facebook">Facebook</option>
               <option value="Instagram">Instagram</option>

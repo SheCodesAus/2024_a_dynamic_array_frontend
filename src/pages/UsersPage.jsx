@@ -14,11 +14,10 @@ function UsersPage() {
     if (error) {
         return (
             <div className="error-container">
-                <p>{error.message}</p>
                 <p>Redirecting to home page...</p>
                 {setTimeout(() => {
                 navigate('/');
-                }, 5000)}
+                }, 10000)}
             </div>
         );
     }
