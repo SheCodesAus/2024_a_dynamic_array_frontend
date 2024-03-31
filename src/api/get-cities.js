@@ -1,4 +1,5 @@
-// This function will fetch the list of cities from the API based on the selected state and country
+// This function will fetch a list of cityNames and an array of City data from the API 
+//filtered by the selected state and country
 
 async function getCities(countryIso2, stateIso2){
     var headers = new Headers();

@@ -1,4 +1,5 @@
-// This function will fetch the list of states from the API based on the selected country
+// This function will fetch a list of State Names and an array of State data from the API
+// filtered by the selected country
 
 async function getStates(countryIso2){
     var headers = new Headers();

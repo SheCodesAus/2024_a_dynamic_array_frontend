@@ -1,13 +1,16 @@
+// this component is used to render the country, state and city dropdowns
+// it uses the country, state and city select components to render the dropdowns
+// state dropdowns are dependent on the country dropdowns
+// and city dropdowns are dependent on the state dropdowns
+// the selected values are stored in state variables and passed as props between the components
+// the selected values are then used to update the profile object on the create profile form
+
 import CountrySelect from "./CountrySelect.jsx";
 import StateSelect from "./StateSelect.jsx";
 import CitySelect from "./CitySelect.jsx";
 import React, {useState} from "react";
 
 function LocationDropdowns({setCountryIso2, setStateIso2, setSelectedCityId, countryIso2, stateIso2, selectedCityId}) {
-
-    // const [stateIso2, setStateIso2] = useState("");
-    // const [countryIso2, setCountryIso2] = useState("");
-    // const [selectedCityId, setSelectedCityId] = useState("");
     
     return (
         <div>

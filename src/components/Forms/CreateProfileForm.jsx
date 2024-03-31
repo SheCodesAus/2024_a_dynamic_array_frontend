@@ -25,13 +25,14 @@ function CreateProfileForm() {
     is_seeking_mentorship: "false",
   });
 
+  // State variables to hold selected country, state, and city id values
   const [stateIso2, setStateIso2] = useState("");
-    profile.state = stateIso2;
-
   const [countryIso2, setCountryIso2] = useState("");
-    profile.country = countryIso2;
-
   const [city, setSelectedCityId] = useState("");
+
+  // Update the profile object with the selected country, state, and city values
+    profile.state = stateIso2;
+    profile.country = countryIso2;
     profile.city = city;
     profile.location = `${city}, ${stateIso2}, ${countryIso2}`;
 
