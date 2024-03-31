@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import getUser from "../api/get-user.js";
+import getUser from "../api/get-user";
 
 function useUser(username){
     const [user, setUser] = useState({});
@@ -7,15 +7,12 @@ function useUser(username){
     const [error,setError] = useState();
 
     useEffect(()=>{
-        console.log('Fetching user data for user ID:', username); 
         getUser(username)
         .then((user)=>{
-            console.log('User data fetched successfully:', username)
             setUser(user);
             setIsLoading(false);
         })
         .catch((error)=>{
-            console.error('Error fetching user data:', error);
             setError(error);
             setIsLoading(false);
         });
