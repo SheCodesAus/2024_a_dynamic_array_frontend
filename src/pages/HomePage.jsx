@@ -1,12 +1,17 @@
 import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
 import HomePageBanner from "../components/HomePage/HomePageBanner.jsx";
 import "../index.css";
 import "../components/HomePage/HomePage.css";
 import Statement from "../components/Statement/Statement.jsx";
 import FilterResults from "../components/FilterSection/FilterResults.jsx";
 import ProfileCards from "../components/ProfileCards/ProfileCards.jsx";
+import useProfiles from "../hooks/use-profiles.js";
 
 function HomePage() {
+  const { profiles, isLoading, error } = useProfiles();
+
+  useEffect(() => {}, [profiles]);
   return (
     <>
       <HomePageBanner />
@@ -20,7 +25,16 @@ function HomePage() {
             <h1>** Insert Filters here **</h1>
           </div>
           <div className="profile-card-container">
-            <ProfileCards />
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : error ? (
+              <p>
+                OOps, sorry we are having some trouble retrieving this
+                information!
+              </p>
+            ) : (
+              <ProfileCards profiles={profiles} />
+            )}
           </div>
         </div>
       </section>
