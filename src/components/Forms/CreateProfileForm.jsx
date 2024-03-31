@@ -6,7 +6,6 @@ import { useAuth } from "../../hooks/use-auth";
 import ToggleSwitch from "./ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
 
-
 function CreateProfileForm() {
   const navigate = useNavigate(); // use the navigate hook
   const { auth, setAuth } = useAuth();
@@ -36,7 +35,7 @@ function CreateProfileForm() {
     setLocation(e.target.value);
     profile.location = e.target.value;
   };
-  
+
   const [country, setCountry] = useState();
   const changeCountry = (e) => {
     setCountry(e.target.value);
@@ -62,7 +61,7 @@ function CreateProfileForm() {
 
     const isValid = auth.token !== null;
 
-    console.log("is valid payload", isValid)
+    console.log("is valid payload", isValid);
 
     if (isValid) {
       if (
@@ -90,15 +89,15 @@ function CreateProfileForm() {
           profile.contact_preference,
           profile.is_open_to_mentor,
           profile.is_seeking_mentorship
-        ).then((response) => {
-          navigate(`/profile/${response.id}`); // redirect to home page
-        })
-        .catch((error) => {
-          alert(error.message); // display error message to the user
-        });
+        )
+          .then((response) => {
+            navigate(`/profile/${response.id}`); // redirect to home page
+          })
+          .catch((error) => {
+            alert(error.message); // display error message to the user
+          });
       }
-    }
-    else {
+    } else {
       alert("You must be logged in to create a profile");
     }
   };
@@ -108,7 +107,7 @@ function CreateProfileForm() {
       <form>
         <div className="hide-profile">
           <p>Hide my profile</p>
-            <ToggleSwitch Name="is_hidden" />
+          <ToggleSwitch Name="is_hidden" />
         </div>
         <h2>CREATE A PROFILE</h2>
 
@@ -123,10 +122,10 @@ function CreateProfileForm() {
           />
         </div>
         <div>
-          <label htmlFor="profile_picture_url">Profile Picture URL</label>
+          <label htmlFor="picture_url">Profile Picture URL</label>
           <input
             type="url"
-            id="profile_picture_url"
+            id="picture_url"
             placeholder="Enter URL"
             onChange={handleChange}
           />
@@ -134,8 +133,8 @@ function CreateProfileForm() {
         <div className="location">
           <div className="area-div">
             <label htmlFor="area">Area</label>
-            <select 
-              id="area" 
+            <select
+              id="area"
               value={city}
               onChange={changeCity}
               defaultValue={"--City--"}
@@ -150,8 +149,12 @@ function CreateProfileForm() {
           </div>
           <div className="state-div">
             <label htmlFor="state_select">State</label>
-            <select value ={location} id="state_select" 
-              onChange={changeLocation} defaultValue={""}>
+            <select
+              value={location}
+              id="state_select"
+              onChange={changeLocation}
+              defaultValue={""}
+            >
               {/* options to be fetched by API in future release */}
               <option value=""></option>
               <option value="WA">WA</option>
@@ -165,7 +168,12 @@ function CreateProfileForm() {
           </div>
           <div className="country-div">
             <label htmlFor="country_select">Country</label>
-            <select value ={country} id="country_select" onChange={changeCountry} defaultValue={""}>
+            <select
+              value={country}
+              id="country_select"
+              onChange={changeCountry}
+              defaultValue={""}
+            >
               {/* options to be fetched by API in future release */}
               <option value=""></option>
               <option value="Australia">Australia</option>
@@ -227,8 +235,15 @@ function CreateProfileForm() {
 
         <div className="preferences">
           <div className="email">
-            <label htmlFor="contact_preference_select">Contact Preference</label>
-            <select value= {contact_preference} id="contact_preference_select" onChange={changePreference} defaultValue={""}>
+            <label htmlFor="contact_preference_select">
+              Contact Preference
+            </label>
+            <select
+              value={contact_preference}
+              id="contact_preference_select"
+              onChange={changePreference}
+              defaultValue={""}
+            >
               <option value=""></option>
               <option value="Email">Email</option>
               <option value="Facebook">Facebook</option>
@@ -241,7 +256,7 @@ function CreateProfileForm() {
           <div className="seeking-mentorship">
             <div className="hide-profile">
               <p>Seeking Mentorship</p>
-                <ToggleSwitch Name="is_seeking_mentorship" />
+              <ToggleSwitch Name="is_seeking_mentorship" />
             </div>
           </div>
           <div className="open-mentorship">

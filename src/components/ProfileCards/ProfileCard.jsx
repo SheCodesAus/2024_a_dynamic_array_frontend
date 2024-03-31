@@ -47,7 +47,9 @@ function ProfileCard({ profile }) {
         <div className="profile--card-header">
           <div className="profile-image">
             {profile.picture_url ? (
-              <div>{profile.picture_url}</div>
+              <div>
+                <img src={profile.picture_url} />
+              </div>
             ) : (
               <div>
                 {/*This is the placecard that can display instead if there is no profile image*/}
