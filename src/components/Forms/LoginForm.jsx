@@ -38,10 +38,10 @@ function LoginForm() {
   };
 
   return (
-    <section className="form-container">
+    <section className="login-form-container">
       <form>
         <h2>LOGIN</h2>
-        <div>
+        <div className="form-controller">
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -50,16 +50,16 @@ function LoginForm() {
             onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="form-controller">
           <label htmlFor="password">Password:</label>
           <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            onChange={handleChange}
+              type="password"
+              id="password"
+              placeholder="Password"
+              onChange={handleChange}
           />
         </div>
-        <button className="userbutton" type="submit" onClick={handleSubmit}>
+        <button className="btn btn-primary login-btn" type="submit" onClick={handleSubmit}>
           Login
         </button>
         <p className="login-link">

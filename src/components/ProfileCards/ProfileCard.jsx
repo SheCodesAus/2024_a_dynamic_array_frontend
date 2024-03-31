@@ -7,7 +7,13 @@ import {
   BsLinkedin,
 } from "react-icons/bs";
 
-function ProfileCard() {
+import { Link } from "react-router-dom";
+
+function ProfileCard({ profile }) {
+  if (!profile) {
+    return <div>There are currently no Profiles available</div>;
+  }
+  const profileLink = `/profile/${profile.id}`;
   return (
     <section className="profile-card-body-container">
       <div className="profile--card-container">

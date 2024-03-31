@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { useForm } from "@formspree/react";
 import "../Forms/ContactFormWithHelp.css";
 import "../Forms/SignupForm.css";
 import "../Buttons/CtaButton.css";
 import EmailDropdownMenu from "../EmailDropdown/EmailDropdownMenu";
+
 
 function ContactFormWithHelp() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -14,12 +16,15 @@ function ContactFormWithHelp() {
     subject: "",
   });
 
+  const [state, handleSubmit] = useForm("xqkrybww");
+
   const handleChange = (e) => {
-    setHelpFormData({ ...helpFormData, [e.target.name]: e.target.value });
+    setHelpFormData({...helpFormData, [e.target.name]: e.target.value});
   };
 
-  const handleSubmit = async (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+    handleSubmit(e);
 
     if (!helpFormData.name) {
       window.alert("Please enter your name ");
@@ -40,7 +45,7 @@ function ContactFormWithHelp() {
 
     setIsLoading(true);
     try {
-      const response = await fetch("https://formspree.io/f/mqkryavr", {
+      const response = await fetch("https://formspree.io/f/xqkrybww", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -49,7 +54,6 @@ function ContactFormWithHelp() {
       });
 
       if (response.ok) {
-        setSubmitSuccess(true);
         setHelpFormData({
           name: "",
           email: "",
@@ -69,7 +73,7 @@ function ContactFormWithHelp() {
   return (
     <>
       <section className="contact-with-help-container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleFormSubmit}>
           <div>
             <label htmlFor="name">Full Name</label>
             <input
@@ -91,12 +95,13 @@ function ContactFormWithHelp() {
             ></input>
           </div>
           <div>
+            <label htmlFor="subject">Subject</label>
             <EmailDropdownMenu
-              name="subject"
-              id="subject"
-              setSelectedSubject={(subject) =>
-                setHelpFormData({ ...helpFormData, subject })
-              }
+                name="subject"
+                id="subject"
+                setSelectedSubject={(subject) =>
+                    setHelpFormData({...helpFormData, subject})
+                }
             />
           </div>
           <div>
@@ -110,10 +115,12 @@ function ContactFormWithHelp() {
             ></textarea>
           </div>
           <div>
-            <button className="userbutton">Submit</button>
+            <button className="btn btn-primary contactus-btn" type="submit" disabled={isLoading}>
+              {isLoading ? "Submitting..." : "Submit"}
+            </button>
           </div>
           <div className="submit-success">
-            {submitSuccess && (
+            {state.succeeded && (
               <p> Thanks for reaching out! Your message was sent.</p>
             )}
           </div>
@@ -122,4 +129,5 @@ function ContactFormWithHelp() {
     </>
   );
 }
+
 export default ContactFormWithHelp;

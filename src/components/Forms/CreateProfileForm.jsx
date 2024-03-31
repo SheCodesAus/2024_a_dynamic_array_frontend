@@ -3,29 +3,51 @@ import postProfile from "../../api/post-profile";
 
 import { useNavigate } from "react-router-dom"; // import the useNavigate hook
 import { useAuth } from "../../hooks/use-auth";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch.jsx";
+import ToggleSwitch from "./ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
+
 
 function CreateProfileForm() {
   const navigate = useNavigate(); // use the navigate hook
   const { auth, setAuth } = useAuth();
+
   const [profile, setProfile] = useState({
     bio: "",
-    city: "",
-    state: "",
-    country: "",
     picture_url: "",
-    is_hidden: "False",
+    is_hidden: "false",
     number_of_endorsements: 0,
     facebook_url: "",
     instagram_url: "",
     github_url: "",
     linkedin_url: "",
     portfolio_url: "",
-    contact_preference: "",
-    is_open_to_mentor: "False",
-    is_seeking_mentorship: "False",
+    is_open_to_mentor: "false",
+    is_seeking_mentorship: "false",
   });
+
+  const [city, setCity] = useState();
+  const changeCity = (e) => {
+    setCity(e.target.value);
+    profile.city = e.target.value;
+  };
+
+  const [location, setLocation] = useState(); // using location to avoid conflict with state keyword and the database currently only has location
+  const changeLocation = (e) => {
+    setLocation(e.target.value);
+    profile.location = e.target.value;
+  };
+  
+  const [country, setCountry] = useState();
+  const changeCountry = (e) => {
+    setCountry(e.target.value);
+    profile.country = e.target.value;
+  };
+
+  const [contact_preference, setPreference] = useState();
+  const changePreference = (e) => {
+    setPreference(e.target.value);
+    profile.contact_preference = e.target.value;
+  };
 
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -35,17 +57,11 @@ function CreateProfileForm() {
     }));
   };
 
-  // handleOptionChange = changeEvent => {
-  //     this.setState({
-  //       selectedOption: changeEvent.target.value
-  //     });
-  //   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     if (
       !profile.bio ||
-      !(profile.city || profile.state || profile.country) ||
+      !(profile.city || profile.location || profile.country) ||
       !profile.contact_preference
     ) {
       alert(
@@ -55,12 +71,11 @@ function CreateProfileForm() {
       postProfile(
         profile.bio,
         profile.city,
-        profile.state,
+        profile.location,
         profile.country,
         profile.picture_url,
         profile.is_hidden,
         profile.number_of_endorsements,
-        profile.email_url,
         profile.facebook_url,
         profile.instagram_url,
         profile.github_url,
@@ -80,9 +95,7 @@ function CreateProfileForm() {
       <form>
         <div className="hide-profile">
           <p>Hide my profile</p>
-          <p>
             <ToggleSwitch Name="is_hidden" />
-          </p>
         </div>
         <h2>CREATE A PROFILE</h2>
 
@@ -105,12 +118,17 @@ function CreateProfileForm() {
             onChange={handleChange}
           />
         </div>
-
         <div className="location">
           <div className="area-div">
             <label htmlFor="area">Area</label>
-            <select id="area" onChange={handleChange}>
+            <select 
+              id="area" 
+              value={city}
+              onChange={changeCity}
+              defaultValue={"--City--"}
+            >
               {/* options to be fetched by API in future release */}
+              <option value=""></option>
               <option value="North">NORTH</option>
               <option value="East">EAST</option>
               <option value="South">SOUTH</option>
@@ -119,8 +137,10 @@ function CreateProfileForm() {
           </div>
           <div className="state-div">
             <label htmlFor="state">State</label>
-            <select id="state_select" onChange={handleChange}>
+            <select value ={location} id="state_select" 
+              onChange={changeLocation} defaultValue={""}>
               {/* options to be fetched by API in future release */}
+              <option value=""></option>
               <option value="WA">WA</option>
               <option value="ACT">ACT</option>
               <option value="NSW">NSW</option>
@@ -132,8 +152,9 @@ function CreateProfileForm() {
           </div>
           <div className="country-div">
             <label htmlFor="country">Country</label>
-            <select id="country_select" onChange={handleChange}>
+            <select value ={country} id="country_select" onChange={changeCountry} defaultValue={""}>
               {/* options to be fetched by API in future release */}
+              <option value=""></option>
               <option value="Australia">Australia</option>
               <option value="New Zealand">New Zealand</option>
               <option value="Indonesia">Indonesia</option>
@@ -194,13 +215,14 @@ function CreateProfileForm() {
         <div className="preferences">
           <div className="email">
             <label htmlFor="contact_preference">Contact Preference</label>
-            <select id="contact_preference_select" onChange={handleChange}>
-              <option value="email">Email</option>
-              <option value="facebook">Facebook</option>
-              <option value="instagram">Instagram</option>
-              <option value="github">Github</option>
-              <option value="linkedin">Linkedin</option>
-              <option value="portfolio">Portfolio</option>
+            <select value= {contact_preference} id="contact_preference_select" onChange={changePreference} defaultValue={""}>
+              <option value=""></option>
+              <option value="Email">Email</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Instagram">Instagram</option>
+              {/* <option value="Github">Github</option> */}
+              <option value="LinkedIn">LinkedIn</option>
+              {/* <option value="Portfolio">Portfolio</option> */}
             </select>
           </div>
           <div className="seeking-mentorship">
@@ -212,7 +234,7 @@ function CreateProfileForm() {
           <div className="open-mentorship">
             <div className="hide-profile">
               <p>Open to Mentoring</p>
-                <ToggleSwitch Name="is_open_to_mentor" />
+              <ToggleSwitch Name="is_open_to_mentor" />
             </div>
           </div>
         </div>

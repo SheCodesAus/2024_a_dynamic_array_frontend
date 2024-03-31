@@ -1,24 +1,19 @@
 import LoginForm from "../components/Forms/LoginForm";
-import { Link } from "react-router-dom";
-
+import loginSvg from "../assets/Illustrations/login.svg"
 import "../components/Login/Login.css";
-import name from "../assets/NavBar/name.png";
 
 function LoginPage() {
-  return (
-    <section className="signup-container">
-      <div className="diversitech-2">
-        <h3>
-          <img className="name" src={name} alt="Diversitech name logo" />
-        </h3>
-        <p className="illustration">An illustration belongs here</p>
-      </div>
+    return (
+        <section className="login-main-container">
+            <div className="login-page-image-container">
+                <img className="loginPageImage" src={loginSvg} alt="Diversitech name logo"/>
+            </div>
 
-      <div class="signup-form">
-        <LoginForm />
-      </div>
-    </section>
-  );
+            <div className="login-form-container">
+                <LoginForm/>
+            </div>
+        </section>
+    );
 }
+
 export default LoginPage;
-<LoginForm />;

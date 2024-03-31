@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import "./EmailDropdownMenu.css"
 function EmailDropdownMenu({ setSelectedSubject }) {
   const [selectedValue, setSelectedValue] = useState("");
 
@@ -11,7 +11,7 @@ function EmailDropdownMenu({ setSelectedSubject }) {
 
   return (
     <>
-      <select value={selectedValue} onChange={handleChange}>
+      <select value={selectedValue} onChange={handleChange} className="form-select">
         <option value="">Select a subject</option>
         <option value="Report Inappropriate Content">
           Report Inappropriate Content
