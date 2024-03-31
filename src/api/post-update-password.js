@@ -1,31 +1,29 @@
-async function postUser(
-  username,
-  password,
-  email,
-  first_name,
-  last_name,
-  accepted_terms
+async function postPasswordUpdate(
+  old_password,
+  new_password,
+  new_password_confirmed
 ) {
+
   const url =
-    `${import.meta.env.VITE_API_URL}/users/`
+    `${import.meta.env.VITE_API_URL}/update-password/`
     // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
-    // `http://127.0.0.1:8000/users/`;
+    // `http://127.0.0.1:8000/update-password/`;
+  const token = window.localStorage.getItem('token');
+  
   const response = await fetch(url, {
-    method: "POST",
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": `Token ${token}`,
     },
     body: JSON.stringify({
-      username: username,
-      password: password,
-      email: email,
-      first_name: first_name,
-      last_name: last_name,
-      accepted_terms: accepted_terms.toString(),
+      old_password: old_password,
+      new_password: new_password,
+      new_password_confirmed,
     }),
   });
   if (!response.ok) {
-    const fallbackError = "Error trying to signup";
+    const fallbackError = "Error trying to reset password";
     const data = await response.json().catch(() => {
       throw new Error(fallbackError);
     });
@@ -34,4 +32,4 @@ async function postUser(
   }
   return await response.json();
 }
-export default postUser;
+export default postPasswordUpdate;

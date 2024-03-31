@@ -95,12 +95,13 @@ function ContactFormWithHelp() {
             ></input>
           </div>
           <div>
+            <label htmlFor="subject">Subject</label>
             <EmailDropdownMenu
-              name="subject"
-              id="subject"
-              setSelectedSubject={(subject) =>
-                setHelpFormData({ ...helpFormData, subject })
-              }
+                name="subject"
+                id="subject"
+                setSelectedSubject={(subject) =>
+                    setHelpFormData({...helpFormData, subject})
+                }
             />
           </div>
           <div>
@@ -114,7 +115,7 @@ function ContactFormWithHelp() {
             ></textarea>
           </div>
           <div>
-            <button className="tn btn-primary contactus-btn" type="submit" disabled={isLoading}>
+            <button className="btn btn-primary contactus-btn" type="submit" disabled={isLoading}>
               {isLoading ? "Submitting..." : "Submit"}
             </button>
           </div>
