@@ -1,7 +1,18 @@
 @import '../../index.css';
 
-.footer {
-  display: none;
+
+.bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: #1f2933 !important;
+}
+.footer-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+}
+.footer-logo-link{
+    display: none;
 }
 
 .linkedin-icon svg:hover{
@@ -11,10 +22,12 @@
     color: #1877F2;
 }
 .footerItems{
-    display:flex;
-    gap:40px;
-    list-style:none;
-    margin-right:20px;
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: flex-start;
 }
 .logo-footer{
     width:4rem ;
@@ -24,7 +37,7 @@
    padding: 0.7rem;
 }
 .footerItems li a{
-    font: var(--headline-sm);
+    font: var(--body-sm);
     color:white;
     text-decoration: none;
 }
@@ -39,7 +52,9 @@
     display:flex;
     justify-content: center;
 }
-
+.socials{
+    display: flex;
+}
 .socials ul{
     display:flex;
     list-style: none;
@@ -58,10 +73,7 @@
 }
 
 @media (min-width: 640px) {
-    .bg-dark {
-        --bs-bg-opacity: 1;
-        background-color: #1f2933 !important;
-    }
+
     .footer-container{
         width: 100%;
         display: flex;
