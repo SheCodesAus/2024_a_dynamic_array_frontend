@@ -4,7 +4,7 @@ import "../components/Login/Login.css";
 
 function LoginPage() {
     return (
-        <section className="login-main-container">
+        <section className="login-main-container main-container">
             <div className="login-page-image-container">
                 <img className="loginPageImage" src={loginSvg} alt="Diversitech name logo"/>
             </div>
