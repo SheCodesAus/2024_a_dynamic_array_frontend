@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 350px;
+    max-width: 450px;
 }
 
 .form-controller {
@@ -28,7 +28,7 @@
     .login-main-container {
         display: grid;
         grid-template-rows: 1fr;
-        grid-template-columns: 40% 30%;
+        grid-template-columns: 1fr 1fr;
         gap: 0px 8rem;
         height: 100%;
     }
