@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function ProfileCard({ profile }) {
   {
@@ -17,13 +17,14 @@ function ProfileCard({ profile }) {
     /*---------CURRENTLY NOT WORKING --------------*/
   }
   const { user, isLoading, error } = useUser(profile.owner);
+  const [username, setUsername] = useState("");
+
   useEffect(() => {
-    console.log("Username:", user.username);
-  }, [user]);
-  const userData = { ...user };
-  {
-    /*----------------------------------------------------------*/
-  }
+    if (!isLoading && !error && user) {
+      setUsername(user.username);
+    }
+  }, [user, isLoading, error]);
+
   if (!profile) {
     return <div>There are currently no Profiles available</div>;
   }
@@ -38,6 +39,7 @@ function ProfileCard({ profile }) {
               <div>{profile.picture_url}</div>
             ) : (
               <div>
+                {/*This is the placecard that can display instead if there is no profile image*/}
                 <p> @@</p>
               </div>
             )}
@@ -45,9 +47,9 @@ function ProfileCard({ profile }) {
 
           <div>
             {/*I am supposed to be retrieveing username from user object here, but havent been successful so far*/}
-            {/* <h4>{user.username}</h4> */}
-            <h4>Karla Gaudet</h4>
-            <p>Front End& UX</p>
+            <h4>{username || "Loading name..."}</h4>
+
+            <p>{profile.location}</p>
           </div>
           <div className="profile--card-header-share">
             <div className="profile-header-social-menu">
