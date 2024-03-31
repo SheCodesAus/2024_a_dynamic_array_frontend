@@ -59,34 +59,47 @@ function CreateProfileForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (
-      !profile.bio ||
-      !(profile.city || profile.location || profile.country) ||
-      !profile.contact_preference
-    ) {
-      alert(
-        "Please complete minimum required fields - Bio, Location - either City, State or Country, and Contact Preference"
-      );
-    } else if (auth.token && profile.bio) {
-      postProfile(
-        profile.bio,
-        profile.city,
-        profile.location,
-        profile.country,
-        profile.picture_url,
-        profile.is_hidden,
-        profile.number_of_endorsements,
-        profile.facebook_url,
-        profile.instagram_url,
-        profile.github_url,
-        profile.linkedin_url,
-        profile.portfolio_url,
-        profile.contact_preference,
-        profile.is_open_to_mentor,
-        profile.is_seeking_mentorship
-      ).then((response) => {
-        navigate(`/profile/${response.id}`); // redirect to home page
-      });
+
+    const isValid = auth.token !== null;
+
+    console.log("is valid payload", isValid)
+
+    if (isValid) {
+      if (
+        !profile.bio ||
+        !(profile.city || profile.location || profile.country) ||
+        !profile.contact_preference
+      ) {
+        alert(
+          "Please complete minimum required fields - Bio, Location - either City, State or Country, and Contact Preference"
+        );
+      } else if (auth.token && profile.bio) {
+        postProfile(
+          profile.bio,
+          profile.city,
+          profile.location,
+          profile.country,
+          profile.picture_url,
+          profile.is_hidden,
+          profile.number_of_endorsements,
+          profile.facebook_url,
+          profile.instagram_url,
+          profile.github_url,
+          profile.linkedin_url,
+          profile.portfolio_url,
+          profile.contact_preference,
+          profile.is_open_to_mentor,
+          profile.is_seeking_mentorship
+        ).then((response) => {
+          navigate(`/profile/${response.id}`); // redirect to home page
+        })
+        .catch((error) => {
+          alert(error.message); // display error message to the user
+        });
+      }
+    }
+    else {
+      alert("You must be logged in to create a profile");
     }
   };
 
@@ -110,7 +123,7 @@ function CreateProfileForm() {
           />
         </div>
         <div>
-          <label htmlFor="picture_url">Profile Picture URL</label>
+          <label htmlFor="profile_picture_url">Profile Picture URL</label>
           <input
             type="url"
             id="profile_picture_url"
@@ -136,7 +149,7 @@ function CreateProfileForm() {
             </select>
           </div>
           <div className="state-div">
-            <label htmlFor="state">State</label>
+            <label htmlFor="state_select">State</label>
             <select value ={location} id="state_select" 
               onChange={changeLocation} defaultValue={""}>
               {/* options to be fetched by API in future release */}
@@ -151,7 +164,7 @@ function CreateProfileForm() {
             </select>
           </div>
           <div className="country-div">
-            <label htmlFor="country">Country</label>
+            <label htmlFor="country_select">Country</label>
             <select value ={country} id="country_select" onChange={changeCountry} defaultValue={""}>
               {/* options to be fetched by API in future release */}
               <option value=""></option>
@@ -214,7 +227,7 @@ function CreateProfileForm() {
 
         <div className="preferences">
           <div className="email">
-            <label htmlFor="contact_preference">Contact Preference</label>
+            <label htmlFor="contact_preference_select">Contact Preference</label>
             <select value= {contact_preference} id="contact_preference_select" onChange={changePreference} defaultValue={""}>
               <option value=""></option>
               <option value="Email">Email</option>
