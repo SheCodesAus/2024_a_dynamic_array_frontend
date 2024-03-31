@@ -112,7 +112,6 @@ function CreateProfileForm() {
         </div>
         <div>
           <label htmlFor="picture_url">Profile Picture URL</label>
-          <label htmlFor="picture_url">Profile Picture URL</label>
           <input
             type="url"
             id="picture_url"
@@ -170,7 +169,11 @@ function CreateProfileForm() {
         <div className="preferences">
           <div className="email">
             <label htmlFor="contact_preference_select">Contact Preference</label>
-            <select value= {contact_preference} id="contact_preference_select" onChange={changePreference}>
+            <select 
+              value= {contact_preference} 
+              id="contact_preference_select" 
+              onChange={changePreference}
+            >
               <option value=""></option>
               <option value="Email">Email</option>
               <option value="Facebook">Facebook</option>
