@@ -15,7 +15,7 @@ function useCountries(setCountryNames, setCountriesData) {
     }, []);
 }
 
-function CountrySelect(countryIso2) {
+function CountrySelect({setCountryIso2}) {
     // State variables to hold selected country, state, and city values
     const [selectedCountryName, setSelectedCountryName] = useState('');
     const [countriesData, setCountriesData] = useState([]);
@@ -32,8 +32,8 @@ function CountrySelect(countryIso2) {
 
         const selectedCountryData = countriesData.find(country => country.name === value);
         if (selectedCountryData) {
-            countryIso2 = selectedCountryData.iso2; // define the selected ISO2
-            console.log('ISO2 for selected country:', countryIso2);
+            setCountryIso2(selectedCountryData.iso2); // set the selected ISO2
+            console.log('ISO2 for selected country:', selectedCountryData.iso2);
         }    
     };
 
