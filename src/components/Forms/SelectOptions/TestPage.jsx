@@ -1,6 +1,6 @@
 import CountrySelect from "./CountrySelect.jsx";
 import StateSelect from "./StateSelect.jsx";
-// import CitySelect from "./CitySelect.jsx";
+import CitySelect from "./CitySelect.jsx";
 import React, {useState} from "react";
 
 function TestPage() {
@@ -15,8 +15,8 @@ function TestPage() {
             <CountrySelect setCountryIso2={setCountryIso2} />
             { countryIso2 
                 && <StateSelect countryIso2={countryIso2} setStateIso2={setStateIso2}/>}
-            {/* { stateIso2 
-                && <CitySelect cityIso2={cityIso2} setCityIso2={setCityIso2}/>} */}
+            { stateIso2 
+                && <CitySelect countryIso2={countryIso2} stateIso2={stateIso2} setCityIso2={setCityIso2}/>}
         </div>
     );
 }

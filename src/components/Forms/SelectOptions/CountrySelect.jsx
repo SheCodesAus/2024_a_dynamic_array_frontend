@@ -44,7 +44,6 @@ function CountrySelect({setCountryIso2}) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
             <label>
                 Country:
                 <select value={selectedCountryName} onChange={handleCountryChange}>
@@ -54,9 +53,6 @@ function CountrySelect({setCountryIso2}) {
                     ))}
                 </select>
             </label>
-            <br />
-            <button type="submit">Submit</button>
-        </form>
     );
 }
 

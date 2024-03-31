@@ -6,15 +6,13 @@ function useStates(countryIso2, setStateNames, setStatesData) {
         getStates(countryIso2).then(data => {
             setStateNames(data.stateNames);
             setStatesData(data.statesData);
-            console.log('State Names:', data.stateNames);
-            // console.log('Countries:', data.countriesData);
         }).catch(error => {
-            console.error('Error fetching countries data:', error);
+            console.error('Error fetching states data:', error);
         });
-    }, [countryIso2]); // Empty dependency array ensures useEffect runs only once on component mount
+    }, [countryIso2]); // dependency array ensures useEffect runs when countryIso2 changes
 }
 
-function StateSelect({countryIso2, setCityIso2}) {
+function StateSelect({countryIso2, setStateIso2}) {
     // State variables to hold selected country, state, and city values
     const [selectedStateName, setSelectedStateName] = useState('');
     const [statesData, setStatesData] = useState([]);
@@ -31,7 +29,7 @@ function StateSelect({countryIso2, setCityIso2}) {
 
         const selectedStateData = statesData.find(state => state.name === value);
         if (selectedStateData) {
-            setCityIso2(selectedStateData.iso2); // set the selected ISO2
+            setStateIso2(selectedStateData.iso2); // set the selected ISO2
             console.log('ISO2 for selected state:', selectedStateData.iso2);
         }    
     };
@@ -44,7 +42,6 @@ function StateSelect({countryIso2, setCityIso2}) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
             <label>
                 State:
                 <select value={selectedStateName} onChange={handleStateChange}>
@@ -54,9 +51,6 @@ function StateSelect({countryIso2, setCityIso2}) {
                     ))}
                 </select>
             </label>
-            <br />
-            <button type="submit">Submit</button>
-        </form>
     );
 }
 
