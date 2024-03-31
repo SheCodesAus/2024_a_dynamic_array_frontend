@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import getStates from '../../../api/get-states.js';
 
-function useStates(setStateNames, setStatesData) {
+function useStates(countryIso2, setStateNames, setStatesData) {
     useEffect(() => {
-        getStates().then(data => {
+        getStates(countryIso2).then(data => {
             setStateNames(data.stateNames);
             setStatesData(data.statesData);
-            // console.log('CountryNames:', data.countryNames);
+            console.log('State Names:', data.stateNames);
             // console.log('Countries:', data.countriesData);
         }).catch(error => {
             console.error('Error fetching countries data:', error);
         });
-    }, []);
+    }, [countryIso2]); // Empty dependency array ensures useEffect runs only once on component mount
 }
 
-function StateSelect({setCityIso2}) {
+function StateSelect({countryIso2, setCityIso2}) {
     // State variables to hold selected country, state, and city values
     const [selectedStateName, setSelectedStateName] = useState('');
     const [statesData, setStatesData] = useState([]);
     const [stateNames, setStateNames] = useState([]);
     // const [iso2, setSelectedIso2] = useState('');
 
-    useStates(setStateNames, setStatesData); // Empty dependency array ensures useEffect runs only once on component mount
+    useStates(countryIso2, setStateNames, setStatesData); 
 
     // Event handler to update selected country and fetch corresponding states
     const handleStateChange = (event) => {
@@ -48,7 +48,7 @@ function StateSelect({setCityIso2}) {
             <label>
                 State:
                 <select value={selectedStateName} onChange={handleStateChange}>
-                    <option value="">Select Country</option>
+                    <option value="">Select State</option>
                     {stateNames.map((stateName, index) => (
                         <option key={index} value={stateName}>{stateName}</option>
                     ))}

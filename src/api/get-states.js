@@ -1,5 +1,6 @@
 // This function will fetch the list of states from the API based on the selected country
-async function getStates({countryIso2}){
+
+async function getStates(countryIso2){
     var headers = new Headers();
     headers.append("X-CSCAPI-KEY", "akNCcDdWUndIVWk3SEZITG1lMWhvNkU4UWc0U1RsQmk0T3luQllseA==");
 
