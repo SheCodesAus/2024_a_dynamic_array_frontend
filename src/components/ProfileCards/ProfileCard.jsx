@@ -1,4 +1,5 @@
 import "../../components/ProfileCards/ProfileCard.css";
+import useUser from "../../hooks/use-user.js";
 import {
   BsShare,
   BsFillCheckCircleFill,
@@ -8,26 +9,59 @@ import {
 } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 function ProfileCard({ profile }) {
+  const { user, isLoading, error } = useUser(profile.owner);
+  const [username, setUsername] = useState("");
+
+  {
+    /* Retrieval of user first name and last name is still not working  */
+  }
+  useEffect(() => {
+    console.log("Inside useEffect");
+    console.log("user:", user);
+    console.log("isLoading:", isLoading);
+    console.log("error:", error);
+    console.log("profile.owner:", profile.owner);
+
+    if (!isLoading && !error && user) {
+      if (profile.owner === user.id) {
+        console.log("firstname:", user.first_name);
+        setUsername(`${user.first_name} ${user.last_name}`);
+      } else {
+        setUsername("Sorry, no name is available!");
+      }
+    } else {
+      setUsername("Loading name...");
+    }
+  }, [user, isLoading, error, profile.owner]);
   if (!profile) {
     return <div>There are currently no Profiles available</div>;
   }
+
   const profileLink = `/profile/${profile.id}`;
   return (
     <section className="profile-card-body-container">
       <div className="profile--card-container">
         <div className="profile--card-header">
           <div className="profile-image">
-            <img
-              src="https://via.placeholder.com/68"
-              alt="Profile Placeholder"
-            />
+            {profile.picture_url ? (
+              <div>
+                <img src={profile.picture_url} />
+              </div>
+            ) : (
+              <div>
+                {/*This is the placecard that can display instead if there is no profile image*/}
+                <p> @@</p>
+              </div>
+            )}
           </div>
 
           <div>
-            <h4>Sahar, Kavousi</h4>
-            <p>Front End& UX</p>
+            {/*I am supposed to be retrieveing username from user object here, but havent been successful so far*/}
+            <h4>{isLoading ? "Loading name..." : username}</h4>
+            <p>{profile.location}</p>
           </div>
           <div className="profile--card-header-share">
             <div className="profile-header-social-menu">
@@ -41,41 +75,70 @@ function ProfileCard({ profile }) {
         <div className="profile--card-body">
           <div className=" profile--card-body-title">Mentorship Status:</div>
           <div className="profile-Card-Body">
-            <div>
-              <BsFillCheckCircleFill />
-              <span style={{ marginLeft: "0.5rem" }}>Open to mentoring</span>
-            </div>
-            <div>
-              <BsFillCheckCircleFill />
-              <span style={{ marginLeft: "0.5rem" }}>Seeking mentorship</span>
-            </div>
+            {profile.is_open_to_mentor ? (
+              <div>
+                <BsFillCheckCircleFill />
+                <span style={{ marginLeft: "0.5rem" }}>Open to mentoring</span>
+              </div>
+            ) : (
+              <div>
+                <span>X</span>
+                <span style={{ marginLeft: "0.5rem" }}>
+                  Not open to mentoring
+                </span>
+              </div>
+            )}
           </div>
-          <hr className="hr" />
+
+          {profile.is_seeking_mentorship ? (
+            <div>
+              <BsFillCheckCircleFill />
+              <span style={{ marginLeft: "0.5rem" }}>Seeking Mentorship</span>
+            </div>
+          ) : (
+            <div>
+              <span>X</span>
+              <span style={{ marginLeft: "0.5rem" }}>
+                Not seeking mentorship
+              </span>
+            </div>
+          )}
         </div>
 
         <div className="profile--card-footer">
           <div className="profile--card-footer-endorsement">
-            <h4>Endorsement:</h4>
+            <h4>Endorsements: {profile.number_of_endorsements}</h4>
           </div>
+
+          {/* -Note: if user has not provided links to a social media, then the icon just does not display */}
+
           <div className="profile-card-action-container">
             <div className="profile-card-footer-social-media">
-              <a target="_blank" href="#">
-                <BsFacebook
-                  style={{ color: "#1877F2", width: "24px", height: "24px" }}
-                />
-              </a>
-              <a target="_blank" href="#">
-                <BsGithub
-                  style={{ color: "#4078c0", width: "24px", height: "24px" }}
-                />
-              </a>
-              <a target="_blank" href="#">
-                <BsLinkedin
-                  style={{ color: "#0077b5", width: "24px", height: "24px" }}
-                />
-              </a>
+              {profile.facebook_url && (
+                <a target="_blank" href={profile.facebook_url}>
+                  <BsFacebook
+                    style={{ color: "#1877F2", width: "24px", height: "24px" }}
+                  />
+                </a>
+              )}
+              {profile.github_url && (
+                <a target="_blank" href={profile.github_url}>
+                  <BsGithub
+                    style={{ color: "#4078c0", width: "24px", height: "24px" }}
+                  />
+                </a>
+              )}
+              {profile.linkedin_url && (
+                <a target="_blank" href={profile.linkedin_url}>
+                  <BsLinkedin
+                    style={{ color: "#0077b5", width: "24px", height: "24px" }}
+                  />
+                </a>
+              )}
             </div>
-            <button className="profile-card-footer-btn">Read More</button>
+            <Link className="profile-link" to={profileLink}>
+              <button className="profile-card-footer-btn">Read More</button>
+            </Link>
           </div>
         </div>
       </div>

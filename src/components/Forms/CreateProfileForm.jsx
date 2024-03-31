@@ -7,7 +7,6 @@ import ToggleSwitch from "./ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
 import LocationDropdowns from "./SelectOptions/LocationDropdowns.jsx";
 
-
 function CreateProfileForm() {
   const navigate = useNavigate(); // use the navigate hook
   const { auth, setAuth } = useAuth();
@@ -79,15 +78,15 @@ function CreateProfileForm() {
           profile.contact_preference,
           profile.is_open_to_mentor,
           profile.is_seeking_mentorship
-        ).then((response) => {
-          navigate(`/profile/${response.id}`); // redirect to home page
-        })
-        .catch((error) => {
-          alert(error.message); // display error message to the user
-        });
+        )
+          .then((response) => {
+            navigate(`/profile/${response.id}`); // redirect to home page
+          })
+          .catch((error) => {
+            alert(error.message); // display error message to the user
+          });
       }
-    }
-    else {
+    } else {
       alert("You must be logged in to create a profile");
     }
   };
@@ -97,7 +96,7 @@ function CreateProfileForm() {
       <form>
         <div className="hide-profile">
           <p>Hide my profile</p>
-            <ToggleSwitch Name="is_hidden" />
+          <ToggleSwitch Name="is_hidden" />
         </div>
         <h2>CREATE A PROFILE</h2>
 
@@ -113,9 +112,10 @@ function CreateProfileForm() {
         </div>
         <div>
           <label htmlFor="picture_url">Profile Picture URL</label>
+          <label htmlFor="picture_url">Profile Picture URL</label>
           <input
             type="url"
-            id="profile_picture_url"
+            id="picture_url"
             placeholder="Enter URL"
             onChange={handleChange}
           />
@@ -183,7 +183,7 @@ function CreateProfileForm() {
           <div className="seeking-mentorship">
             <div className="hide-profile">
               <p>Seeking Mentorship</p>
-                <ToggleSwitch Name="is_seeking_mentorship" />
+              <ToggleSwitch Name="is_seeking_mentorship" />
             </div>
           </div>
           <div className="open-mentorship">
