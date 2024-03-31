@@ -51,21 +51,24 @@ function ProfileCards({ profiles }) {
   };
 
   return (
-    <div className="profile-cards-container">
-      <div className="paginate-section">
+    <>
+      <div className="profile-cards-container">
         {currentProfiles.map((profile, index) => (
           <ProfileCard key={index} profile={profile} />
         ))}
-
-        <Paginate
-          profilesPerPage={profilesPerPage}
-          totalProfiles={shuffledProfiles.length}
-          paginate={paginate}
-          previousPage={previousPage}
-          nextPage={nextPage}
-        />
       </div>
-    </div>
+      <div className="paginate-section">
+        <div className="paginate-numbers">
+          <Paginate
+            profilesPerPage={profilesPerPage}
+            totalProfiles={shuffledProfiles.length}
+            paginate={paginate}
+            previousPage={previousPage}
+            nextPage={nextPage}
+          />
+        </div>
+      </div>
+    </>
   );
 }
 
