@@ -23,6 +23,5 @@ async function getCountries(){
     const countriesData = await response.json();
     const countryNames = countriesData.map(country => country.name);
     return {countryNames, countriesData};
-
 }
 export default getCountries;

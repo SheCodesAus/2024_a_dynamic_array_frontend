@@ -1,11 +1,16 @@
 import CountrySelect from "./CountrySelect.jsx";
-import React from "react";
+import React, {useState} from "react";
 
-function TestPage() {    
+function TestPage() {
+    const [countryIso2, setCountryIso2] = useState("");
+    //const [state, setState] = useState("");
+
     return (
         <div>
             <h1>Test Page</h1>
-            <CountrySelect />
+            <CountrySelect setCountryIso2={setCountryIso2} />
+            {/* <StateSelect countryIso2={countryIso2} setState={setState} /> */}
+{/* create the state select with parameters of countryIso2 */}
         </div>
     );
 }
