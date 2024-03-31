@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function UserCard(props) {
     const { userData, onDelete } = props;
-    const userLink = `users/${userData.username}`;
+    const userLink = `users/${userData.id}`;
 
     return (
         <section className="user-card-body-container">
