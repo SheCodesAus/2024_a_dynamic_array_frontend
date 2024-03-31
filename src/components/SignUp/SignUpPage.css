@@ -2,7 +2,7 @@
 .signup-main-container {
     display: flex;
     flex-direction: column;
-    margin-top: 5rem;
+    margin-top: 5rem !important;
 }
 
 .sign-up-form-image {
@@ -19,8 +19,7 @@
         grid-template-columns: 40% 30%;
         gap: 0px 2rem;
         height: 100%;
-        padding: 5rem;
-        margin: 5rem auto;
+
     }
 
     .sign-up-form-image {

@@ -50,8 +50,7 @@
         grid-template-columns: 1fr 1fr;
         gap: 0px;
         height: 100%;
-        max-width: 85%;
-        margin: 5rem auto;
+        margin-top: 5rem !important;
     }
 
     .about-header-text {

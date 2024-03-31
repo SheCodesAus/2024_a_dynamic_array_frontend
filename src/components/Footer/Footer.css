@@ -8,6 +8,7 @@
 .footer-container{
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 .footer-logo-link{
     display: none;
@@ -49,6 +50,8 @@
 .footer-section{
     display:flex;
     justify-content: center;
+    padding-left: 10px;
+
 }
 .footer-socials{
     display: flex;
@@ -57,7 +60,7 @@
     display:flex;
     list-style: none;
     gap:20px;
-    margin-right:20px;
+    margin-right:10px;
 }
 
 .footer-socials a{
