@@ -30,7 +30,7 @@ function LoginForm() {
         window.localStorage.setItem("user_id", response.user_id);
         setAuth({
           token: response.token,
-          userId: response.user_id,
+          user_id: response.user_id,
           username: response.username,
         });
         navigate("/"); // redirect to home page

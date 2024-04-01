@@ -18,7 +18,7 @@ function userPage() {
             window.alert(error.message);
             navigate("/");
         }
-    }, [error]);
+    }, [error, navigate]);
 
     const handleEditClick = () => {
         setIsEditing(true);

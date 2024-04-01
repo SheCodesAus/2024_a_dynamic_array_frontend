@@ -2,12 +2,26 @@ import UserCard from "../components/UserCard/UserCard";
 import useUsers from "../hooks/use-users";
 import deleteUser from "../api/delete-user";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import useAuth from "../hooks/use-auth";
 
 function UsersPage() {
     const navigate = useNavigate();
     const { auth } = useAuth();
     const { users, isLoading, error, setUsers } = useUsers();
+
+
+    useEffect(() => {
+        // Filter the users array to find the current user
+        const currentUser = users.find(user => user.id === auth.user_id);
+        // determine if current user is staff
+        const isStaff = currentUser ? currentUser.is_staff: false;
+        if (!isStaff) {
+            window.alert("You do not have permission to access these records");
+            navigate('/');
+        }
+    }, []);
+
 
     if (isLoading) {
         return <p>Loading...</p>;
