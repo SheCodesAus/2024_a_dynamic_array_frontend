@@ -6,7 +6,8 @@ import { useAuth } from "../../hooks/use-auth";
 import ToggleSwitch from "./ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
 import LocationDropdowns from "./SelectOptions/LocationDropdowns.jsx";
-import TagSelect from "./SelectOptions/ReactMultiselectDropdown.jsx";
+import TagSelect from "./SelectOptions/TagsMultiselectDropdown.jsx";
+import IndustrySelect from "./SelectOptions/IndustriesMultiselectDropdown.jsx";
 
 function CreateProfileForm() {
   const navigate = useNavigate(); // use the navigate hook
@@ -170,6 +171,8 @@ function CreateProfileForm() {
         <div className="tags and industries">
         <label htmlFor="tags">Tags</label>
           <TagSelect/>
+        <label htmlFor="industries">Industries</label>
+          <IndustrySelect/>
         </div>
         <div className="preferences">
           <div className="email">
