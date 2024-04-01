@@ -13,7 +13,7 @@
     overflow: hidden;
     width: 70vw;
    margin:3rem auto;
-    border: red 1px solid;
+ 
 }
 
 .profile-page-header{
@@ -45,6 +45,6 @@
     margin-bottom: 10rem;
     display: flex;
     flex-direction: column;
-    
+
     
 }
