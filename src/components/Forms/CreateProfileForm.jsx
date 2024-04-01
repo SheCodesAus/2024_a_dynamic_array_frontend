@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"; // import the useNavigate hook
 import { useAuth } from "../../hooks/use-auth";
 import ToggleSwitch from "./ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
+import LocationDropdowns from "./SelectOptions/LocationDropdowns.jsx";
 
 function CreateProfileForm() {
   const navigate = useNavigate(); // use the navigate hook
@@ -24,23 +25,16 @@ function CreateProfileForm() {
     is_seeking_mentorship: "false",
   });
 
-  const [city, setCity] = useState();
-  const changeCity = (e) => {
-    setCity(e.target.value);
-    profile.city = e.target.value;
-  };
+  // State variables to hold selected country, state, and city id values
+  const [stateIso2, setStateIso2] = useState("");
+  const [countryIso2, setCountryIso2] = useState("");
+  const [city, setSelectedCityId] = useState("");
 
-  const [location, setLocation] = useState(); // using location to avoid conflict with state keyword and the database currently only has location
-  const changeLocation = (e) => {
-    setLocation(e.target.value);
-    profile.location = e.target.value;
-  };
-
-  const [country, setCountry] = useState();
-  const changeCountry = (e) => {
-    setCountry(e.target.value);
-    profile.country = e.target.value;
-  };
+  // Update the profile object with the selected country, state, and city values
+    profile.state = stateIso2;
+    profile.country = countryIso2;
+    profile.city = city;
+    profile.location = `${city}, ${stateIso2}, ${countryIso2}`;
 
   const [contact_preference, setPreference] = useState();
   const changePreference = (e) => {
@@ -61,23 +55,19 @@ function CreateProfileForm() {
 
     const isValid = auth.token !== null;
 
-    console.log("is valid payload", isValid);
-
+    console.log("is valid payload", isValid)
     if (isValid) {
-      if (
-        !profile.bio ||
-        !(profile.city || profile.location || profile.country) ||
-        !profile.contact_preference
-      ) {
+      if (!profile.bio) {
         alert(
-          "Please complete minimum required fields - Bio, Location - either City, State or Country, and Contact Preference"
+          "Please complete add a bio to your profile before submitting."
         );
       } else if (auth.token && profile.bio) {
         postProfile(
           profile.bio,
-          profile.city,
+          // profile.city,
+          // profile.state,
+          // profile.country,
           profile.location,
-          profile.country,
           profile.picture_url,
           profile.is_hidden,
           profile.number_of_endorsements,
@@ -130,63 +120,7 @@ function CreateProfileForm() {
             onChange={handleChange}
           />
         </div>
-        <div className="location">
-          <div className="area-div">
-            <label htmlFor="area">Area</label>
-            <select
-              id="area"
-              value={city}
-              onChange={changeCity}
-              defaultValue={"--City--"}
-            >
-              {/* options to be fetched by API in future release */}
-              <option value=""></option>
-              <option value="North">NORTH</option>
-              <option value="East">EAST</option>
-              <option value="South">SOUTH</option>
-              <option value="West">WEST</option>
-            </select>
-          </div>
-          <div className="state-div">
-            <label htmlFor="state_select">State</label>
-            <select
-              value={location}
-              id="state_select"
-              onChange={changeLocation}
-              defaultValue={""}
-            >
-              {/* options to be fetched by API in future release */}
-              <option value=""></option>
-              <option value="WA">WA</option>
-              <option value="ACT">ACT</option>
-              <option value="NSW">NSW</option>
-              <option value="QLD">QLD</option>
-              <option value="VIC">VIC</option>
-              <option value="TAS">TAS</option>
-              <option value="SA">SA</option>
-            </select>
-          </div>
-          <div className="country-div">
-            <label htmlFor="country_select">Country</label>
-            <select
-              value={country}
-              id="country_select"
-              onChange={changeCountry}
-              defaultValue={""}
-            >
-              {/* options to be fetched by API in future release */}
-              <option value=""></option>
-              <option value="Australia">Australia</option>
-              <option value="New Zealand">New Zealand</option>
-              <option value="Indonesia">Indonesia</option>
-              <option value="Vietnam">Vietnam</option>
-              <option value="Singapore">Singapore</option>
-              <option value="China">China</option>
-              <option value="Thailand">Thailand</option>
-            </select>
-          </div>
-        </div>
-
+        <LocationDropdowns countryIso2={countryIso2} stateIso2={stateIso2} setStateIso2={setStateIso2} setSelectedCityId={setSelectedCityId} setCountryIso2={setCountryIso2}/>
         <div>
           <label htmlFor="facebook_url">Facebook URL</label>
           <input
@@ -235,14 +169,11 @@ function CreateProfileForm() {
 
         <div className="preferences">
           <div className="email">
-            <label htmlFor="contact_preference_select">
-              Contact Preference
-            </label>
-            <select
-              value={contact_preference}
-              id="contact_preference_select"
+            <label htmlFor="contact_preference_select">Contact Preference</label>
+            <select 
+              value= {contact_preference} 
+              id="contact_preference_select" 
               onChange={changePreference}
-              defaultValue={""}
             >
               <option value=""></option>
               <option value="Email">Email</option>

@@ -13,7 +13,7 @@
 /* NavBar Styling */
 .navbar{
     background-color:var(--light-gray);
-    position:fixed;
+    /* position:fixed; */
     left:0;
     top:0;
     width:100%;
