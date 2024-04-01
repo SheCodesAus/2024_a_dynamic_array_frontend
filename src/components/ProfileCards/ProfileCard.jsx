@@ -1,4 +1,5 @@
 import "../../components/ProfileCards/ProfileCard.css";
+import SocialMediaShare from "../ProfileCards/SocialMediaShare.jsx";
 import useUser from "../../hooks/use-user.js";
 import {
   BsShare,
@@ -14,6 +15,11 @@ import React, { useEffect, useState } from "react";
 function ProfileCard({ profile }) {
   const { user, isLoading, error } = useUser(profile.owner);
   const [username, setUsername] = useState("");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
   {
     /* Retrieval of user first name and last name is still not working  */
@@ -63,11 +69,14 @@ function ProfileCard({ profile }) {
             <h4>{isLoading ? "Loading name..." : username}</h4>
             <p>{profile.location}</p>
           </div>
+
           <div className="profile--card-header-share">
             <div className="profile-header-social-menu">
-              <button>
-                <BsShare />
-              </button>
+              <SocialMediaShare
+                dropdownOpen={dropdownOpen}
+                toggleDropdown={toggleDropdown}
+                profileId={profile.id}
+              />
             </div>
           </div>
         </div>
