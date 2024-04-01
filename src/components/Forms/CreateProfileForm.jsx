@@ -6,6 +6,7 @@ import { useAuth } from "../../hooks/use-auth";
 import ToggleSwitch from "./ToggleSwitch/ToggleSwitch.jsx";
 import "../../components/Forms/CreateProfile.css";
 import LocationDropdowns from "./SelectOptions/LocationDropdowns.jsx";
+import TagSelect from "./SelectOptions/ReactMultiselectDropdown.jsx";
 
 function CreateProfileForm() {
   const navigate = useNavigate(); // use the navigate hook
@@ -166,7 +167,10 @@ function CreateProfileForm() {
             onChange={handleChange}
           />
         </div>
-
+        <div className="tags and industries">
+        <label htmlFor="tags">Tags</label>
+          <TagSelect/>
+        </div>
         <div className="preferences">
           <div className="email">
             <label htmlFor="contact_preference_select">Contact Preference</label>
