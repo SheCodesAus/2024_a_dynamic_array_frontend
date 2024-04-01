@@ -13,7 +13,7 @@ function HomePage() {
 
   useEffect(() => {}, [profiles]);
   return (
-    <>
+    <div className="main-container">
       <HomePageBanner />
       <Statement />
       <section className="home-container">
@@ -40,7 +40,7 @@ function HomePage() {
       </section>
 
       <Outlet />
-    </>
+    </div>
   );
 }
 export default HomePage;
