@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import getUser from "../api/get-user";
 
-function useUser(id){
-    const [user, setUser] = useState({});
+function useUser(userId){
+    const [user, setUser] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [error,setError] = useState();
+    const [error, setError] = useState();
 
     useEffect(()=>{
-        getUser(id)
+        getUser(userId)
         .then((user)=>{
             setUser(user);
             setIsLoading(false);
@@ -16,7 +16,7 @@ function useUser(id){
             setError(error);
             setIsLoading(false);
         });
-    }, [id]);
-    return {user, isLoading, error}
+    }, [userId]);
+    return {user, isLoading, error, setUser };
 }
 export default useUser;
