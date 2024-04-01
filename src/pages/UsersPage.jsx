@@ -3,22 +3,19 @@ import useUsers from "../hooks/use-users";
 import deleteUser from "../api/delete-user";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import useAuth from "../hooks/use-auth";
 
 function UsersPage() {
     const navigate = useNavigate();
-    const { auth } = useAuth();
+    // const { auth } = useAuth();
     const { users, isLoading, error, setUsers } = useUsers();
-
+    const isStaffString = localStorage.getItem('is_staff');
+    const isStaff = isStaffString === 'true';
+    console.log(isStaff);
 
     useEffect(() => {
-        // Filter the users array to find the current user
-        const currentUser = users.find(user => user.id === auth.user_id);
-        // determine if current user is staff
-        const isStaff = currentUser ? currentUser.is_staff: false;
-        if (!isStaff) {
-            window.alert("You do not have permission to access these records");
-            navigate('/');
+        if(!isStaff) {
+            window.alert("You do not have permission to view these records");
+            navigate("/");
         }
     }, []);
 
@@ -28,22 +25,18 @@ function UsersPage() {
     }
 
     if (error) {
-        return (
-            <div className="error-container">
-                <p>Redirecting to home page...</p>
-                {setTimeout(() => {
+            window.alert(error.message);
+            {setTimeout(() => {
                 navigate('/');
                 }, 10000)}
-            </div>
-        );
     }
-
 
     const handleDeleteUser = async (userId) => {
         try {
             await deleteUser(userId);
             const updatedUsers = users.filter(user => user.id !== userId);
             setUsers(updatedUsers);
+            alert("User successfully deleted");
         } catch (error) {
             console.error('Error deleting user:', error);
         }

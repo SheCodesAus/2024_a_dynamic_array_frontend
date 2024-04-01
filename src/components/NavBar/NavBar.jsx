@@ -14,7 +14,8 @@ function NavBar() {
   const handleLogout = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("user_id");
-    setAuth({ token: null, user_id: null });
+    window.localStorage.removeItem("is_staff");
+    setAuth({ token: null, user_id: null, is_staff: null });
   };
 
   return (

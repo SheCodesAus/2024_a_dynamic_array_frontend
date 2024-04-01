@@ -53,6 +53,7 @@ function SignupForm() {
               setAuth({
                 token: response.token,
                 user_id: response.user_id,
+                is_staff: response.is_staff,
               });
               navigate("/"); // redirect to home page
             });
