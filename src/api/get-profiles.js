@@ -1,5 +1,8 @@
 async function getProfiles(){
-const url=`${import.meta.env.VITE_API_URL}/profiles`;
+// const url=`${import.meta.env.VITE_API_URL}/profiles`;
+// to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
+const url=`http://localhost:5173/profiles`;
+
 const response=await fetch(url,{method:"GET"});
 
 if (!response.ok) {

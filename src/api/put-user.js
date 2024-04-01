@@ -6,9 +6,9 @@ async function putUser(
     last_name,
   ) {
     const url =
-      `${import.meta.env.VITE_API_URL}/users/${userId}/`;
+      // `${import.meta.env.VITE_API_URL}/users/${userId}/`;
       // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
-      // `http://127.0.0.1:8000/users/${userId}/`;
+      `http://127.0.0.1:8000/users/${userId}/`;
     const token = window.localStorage.getItem('token');
     const response = await fetch(url, {
       method: "PUT",

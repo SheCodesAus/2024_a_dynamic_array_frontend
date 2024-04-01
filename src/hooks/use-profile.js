@@ -17,6 +17,6 @@ function useProfile(profileId){
             setIsLoading(false);
         });
     }, [profileId]);
-    return {profile, isLoading, error}
+    return {profile, isLoading, error, getProfile}
 }
 export default useProfile;
