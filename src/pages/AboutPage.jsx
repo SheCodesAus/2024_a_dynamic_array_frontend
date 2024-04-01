@@ -4,7 +4,7 @@ import aboutimg from "../assets/Illustrations/aboutUs.svg"
 function AboutPage() {
   return (
     <>
-      <section className="about-container">
+      <section className="main-container about-container">
         <div className="about-header-text">
           <h1> DIVERSITECH</h1>
           <p>
