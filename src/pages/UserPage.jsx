@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import useUser from "../hooks/use-user";
 import { useParams } from "react-router-dom";
 import UserDetails from "../components/UserCard/UserDetails";
@@ -10,6 +11,14 @@ function userPage() {
     const { userId } = useParams();
     const { user, setUser, isLoading, error} = useUser(userId);
     const [isEditing, setIsEditing] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (error) {
+            window.alert(error.message);
+            navigate("/");
+        }
+    }, [error]);
 
     const handleEditClick = () => {
         setIsEditing(true);

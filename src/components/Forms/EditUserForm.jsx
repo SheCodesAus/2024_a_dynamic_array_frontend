@@ -13,8 +13,6 @@ function EditUserForm(props) {
         last_name: user.last_name,
 });
 
-    console.log("edit user", user);
-
     const handleChange = (e) => {
        const { id, value } = e.target;
        setUpdatedUser((prevUser) => ({
@@ -42,6 +40,8 @@ function EditUserForm(props) {
                 updatedUser.last_name
             ).then((response) => {
                 onSave(response);
+            }).catch((error) => {
+                window.alert(error.message);
             });
         }
     };
