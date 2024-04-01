@@ -1,10 +1,12 @@
 import { useState } from "react";
 import postPasswordUpdate from "../../api/post-update-password";
+import { useAuth } from "../../hooks/use-auth";
 
 import { useNavigate, Link } from "react-router-dom"; // import the useNavigate hook
 
 function UpdatePasswordForm() {
     const navigate = useNavigate(); // use the navigate hook
+    const { auth, setAuth } = useAuth();
     const [password, setPassword] = useState({
         old_password: "",
         new_password: "",
@@ -29,8 +31,11 @@ function UpdatePasswordForm() {
                 password.new_password,
                 password.new_password_confirmed
             ).then(() => {
-              navigate("/login"); // redirect to login page
-              });
+                window.localStorage.removeItem("token");
+                window.localStorage.removeItem("user_id");
+                setAuth({ token: null, user_id: null });
+                navigate("/login"); // redirect to login page
+            });
         }
     };
 

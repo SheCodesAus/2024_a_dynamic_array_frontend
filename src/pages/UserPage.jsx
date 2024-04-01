@@ -4,6 +4,7 @@ import useUser from "../hooks/use-user";
 import { useParams } from "react-router-dom";
 import UserDetails from "../components/UserCard/UserDetails";
 import EditUserForm from "../components/Forms/EditUserForm";
+import { Link } from "react-router-dom";
 
 
 
@@ -33,9 +34,6 @@ function userPage() {
         return <p>Loading...</p>;
     }
 
-    if (error) {
-        return <p>{error.message}</p>;
-    }
 
     return (
         <div className="userdetails-main-container">
@@ -43,6 +41,7 @@ function userPage() {
                 <div>
                     <UserDetails user={user} />
                     <button onClick={handleEditClick}>Edit</button>
+                    <Link to='/update-password' className="button-link">Update Password</Link>
                 </div>
             )}
             {isEditing && (

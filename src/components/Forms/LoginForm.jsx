@@ -34,6 +34,8 @@ function LoginForm() {
           username: response.username,
         });
         navigate("/"); // redirect to home page
+      }).catch((error) => {
+        alert(error.message);
       });
     }
   };
