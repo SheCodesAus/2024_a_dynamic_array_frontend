@@ -1,7 +1,7 @@
-async function deleteUser(id) {
-    const url = `${import.meta.env.VITE_API_URL}/users/${id}`;
+async function deleteUser(userId) {
+    const url = `${import.meta.env.VITE_API_URL}/users/${userId}`;
     // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
-    // const url=`http://127.0.0.1:8000/users/${id}`;
+    // const url=`http://127.0.0.1:8000/users/${userId}`;
 
     const token = window.localStorage.getItem('token');
 
@@ -13,7 +13,7 @@ async function deleteUser(id) {
     });
    
     if (!response.ok) {
-        const fallbackError = `Error deleting user with user id ${id}`;
+        const fallbackError = `Error deleting user with user id ${userId}`;
     
         const data = await response.json().catch(() => {
           throw new Error(fallbackError);
