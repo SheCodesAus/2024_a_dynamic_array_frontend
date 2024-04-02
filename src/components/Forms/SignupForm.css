@@ -35,17 +35,16 @@ label {
 input,
 textarea,
 select {
-    /* font-family: var(--body-sm); */
-    display: flex;
     width: 100%;
-    align-items: baseline;
     height: 3rem;
     border: solid 1px var(--light-gray);
     border-radius: 4px;
+    padding-left: 0.8rem;
 }
 
 textarea {
     height: 20vh;
+    padding: 0.8rem;
 }
 
 .login-link {
@@ -53,11 +52,7 @@ textarea {
     text-align: center;
 }
 
-/* Add padding to placeholder text */
-input::placeholder {
-    padding: 10px;
-    /* Adjust the padding value as needed */
-}
+
 .accepted_terms-label{
     display: inline-block;
 
