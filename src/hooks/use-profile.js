@@ -7,8 +7,7 @@ function useProfile(profileId){
     const [error,setError] = useState();
 
     useEffect(()=>{
-        setIsLoading(true);
-        setError(null);
+      
 
         getProfile(profileId)
         .then((profile)=>{

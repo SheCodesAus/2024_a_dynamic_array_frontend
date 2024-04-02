@@ -4,7 +4,6 @@ import ExperienceCard from "./../components/ExperienceCard/ExperienceCard";
 import "../components/ProfilePage/ProfilePage.css";
 import useProfile from "../hooks/use-profile.js";
 import useUser from "../hooks/use-user.js";
-import { useParams } from "react-router-dom";
 
 import {
   BsShare,
@@ -17,23 +16,21 @@ import {
 } from "react-icons/bs";
 
 function ProfilePage({ profile }) {
-  const { id } = useParams();
-  const {
-    profile,
-    isLoading: profileLoading,
-    error: profileError,
-  } = useProfile(id);
+  if (!profile) {
+    return <div>Profile is undefined</div>;
+  }
+
   const {
     user,
     isLoading: userLoading,
     error: userError,
   } = useUser(profile.owner);
 
-  if (profileLoading || userLoading) {
+  if (userLoading) {
     return <div>Loading...</div>;
   }
 
-  if (profileError || userError) {
+  if (userError) {
     return <div>Error: Sorry, there was trouble loading this profile!</div>;
   }
 
