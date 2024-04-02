@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import getProfile from "../api/get-profile";
 
 function useProfile(profileId){
-    const [profile, setProfile] = useState();
+    const [profile, setProfile] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [error,setError] = useState();
 
