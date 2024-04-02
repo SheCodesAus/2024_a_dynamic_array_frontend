@@ -33,7 +33,7 @@
     display: none;
     width: 2rem;
     background: var(--white);
-    margin: 0 10px;
+    margin: 3.5rem 0rem;;
     border-radius: 25px;
     position: absolute;
     flex-direction: column;
@@ -44,7 +44,6 @@
   
   .ss_wrap .dd_list ul li {
     margin-bottom: 3px; /*spacing between items */
-    border:solid red 1px;
   }
 
   
