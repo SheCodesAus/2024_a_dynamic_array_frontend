@@ -75,7 +75,7 @@ input[type=checkbox]{
     width: 25px;
 }
 
-@media screen and (min-width:576px) {
+@media screen and (min-width:640px) {
 
 
     .signup-form div{
@@ -87,4 +87,15 @@ input[type=checkbox]{
     margin-top: 2rem;
     text-align: right;
 }
+}
+@media (min-width: 768px) {
+    .form-container {
+        max-width: 60%;
+    }
+}
+@media (min-width: 1024px) {
+    .form-container {
+        max-width: unset;
+        width: 100%;
+    }
 }

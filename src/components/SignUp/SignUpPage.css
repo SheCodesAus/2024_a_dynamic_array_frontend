@@ -2,7 +2,6 @@
 .signup-main-container {
     display: flex;
     flex-direction: column;
-    margin-top: 5rem !important;
 }
 
 .sign-up-form-image {
@@ -11,26 +10,49 @@
 
 /* Media Queries */
 
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 640px) {
+
 
     .signup-main-container {
-        display: grid;
-        grid-template-rows: 1fr;
-        grid-template-columns: 40% 30%;
-        gap: 0px 2rem;
-        height: 100%;
+        display: flex;
+        flex-direction: column;
 
     }
 
     .sign-up-form-image {
         display: block;
-        max-width: 500px;
-        height: 500px;
+        max-width: 350px;
+        height: 350px;
     }
 
     .signup-page-side {
         display: flex;
-        padding-top: 7.5rem;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sign-up-form-title {
+        margin: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .signup-main-container {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr 1fr;
+        gap: 0px 2rem;
+        height: 100%;
 
     }
+    .sign-up-form-image {
+        display: flex;
+
+        max-width: 500px;
+        height: 500px;
+    }
+
+
+
 }

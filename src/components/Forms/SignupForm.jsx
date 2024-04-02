@@ -36,7 +36,7 @@ function SignupForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const isValid = 
+    const isValid =
     !!user.username ||
     !!user.password ||
     !!user.email ||
@@ -84,7 +84,7 @@ function SignupForm() {
   return (
     <section className="form-container">
       <form className="signup-form">
-        <h2>SIGN UP</h2>
+        <h2 className="sign-up-form-title">SIGN UP</h2>
         <div>
           <label htmlFor="first_name">First Name</label>
           <input
