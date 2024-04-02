@@ -4,7 +4,7 @@ import contact from "../assets/Illustrations/contact.svg";
 
 function ContactPage() {
   return (
-    <div className="contactus-main-container">
+    <div className="main-container contactus-main-container">
         <section className="contact-us-header">
 
             <h1>Contact Us</h1>
