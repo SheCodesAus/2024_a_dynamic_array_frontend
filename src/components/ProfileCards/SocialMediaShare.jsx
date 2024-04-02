@@ -7,11 +7,15 @@ import {
   FacebookMessengerShareButton,
   WhatsappShareButton,
   EmailIcon,
+  FacebookIcon,
+  LinkedinIcon,
+  FacebookMessengerIcon,
+  WhatsappIcon,
 } from "react-share";
 import { BsShare } from "react-icons/bs";
 
 function SocialMediaShare({ dropdownOpen, toggleDropdown, profileId }) {
-  const shareUrl = `https://main--diversitech.netlify.app/${profileId}`;
+  const shareUrl = `https://main--diversitech.netlify.app/profile/${profileId}`;
 
   return (
     <div className="ss_wrap ss_wrap_1">
@@ -26,32 +30,40 @@ function SocialMediaShare({ dropdownOpen, toggleDropdown, profileId }) {
           <ul>
             <li>
               <EmailShareButton url={shareUrl} quote={"Checkout this profile!"}>
-                <EmailIcon size={32} round={true} />
+                <EmailIcon size={30} round={true} />
               </EmailShareButton>
             </li>
             <li>
               <FacebookShareButton
                 url={shareUrl}
                 quote={"Checkout this profile!"}
-              ></FacebookShareButton>
+              >
+                <FacebookIcon size={30} round={true} />
+              </FacebookShareButton>
             </li>
             <li>
               <LinkedinShareButton
                 url={shareUrl}
                 quote={"Checkout this profile!"}
-              ></LinkedinShareButton>
+              >
+                <LinkedinIcon size={30} round={true} />
+              </LinkedinShareButton>
             </li>
             <li>
               <FacebookMessengerShareButton
                 url={shareUrl}
                 quote={"Checkout this profile!"}
-              ></FacebookMessengerShareButton>
+              >
+                <FacebookMessengerIcon size={30} round={true} />
+              </FacebookMessengerShareButton>
             </li>
             <li>
               <WhatsappShareButton
                 url={shareUrl}
                 quote={"Checkout this profile!"}
-              ></WhatsappShareButton>
+              >
+                <WhatsappIcon size={30} round={true} />
+              </WhatsappShareButton>
             </li>
           </ul>
         </div>
