@@ -16,17 +16,25 @@ import {
   BsAlarm,
 } from "react-icons/bs";
 
-function ProfilePage() {
-  const { userid } = useParams();
+function ProfilePage({ profile }) {
   const { id } = useParams();
-  const { profile, isLoading, error } = useProfile(id);
+  const {
+    profile,
+    isLoading: profileLoading,
+    error: profileError,
+  } = useProfile(id);
+  const {
+    user,
+    isLoading: userLoading,
+    error: userError,
+  } = useUser(profile.owner);
 
-  if (isLoading) {
+  if (profileLoading || userLoading) {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
+  if (profileError || userError) {
+    return <div>Error: Sorry, there was trouble loading this profile!</div>;
   }
 
   return (
@@ -48,8 +56,8 @@ function ProfilePage() {
           <span>{profile.number_of_endorsements} Endorsements</span>
         </div>
         <div className="profile-details">
-          <h3>Full Name</h3>
-          <h2>User Name</h2>
+          <h3>{`${user.first_name} ${user.last_name}`}</h3>
+          <h2>{user.username}</h2>
           <p>{profile.location}</p>
           <div className="profile--card-body">
             <div className="profile-Card-Body">
