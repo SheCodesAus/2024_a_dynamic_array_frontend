@@ -5,9 +5,6 @@ async function getUser(userId) {
 
     const response = await fetch(url, {
       method: "GET",
-      headers: {
-        "Authorization": `Token ${token}`,
-      },
     });
 
 

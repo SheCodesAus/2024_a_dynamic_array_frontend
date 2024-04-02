@@ -11,6 +11,7 @@
 
 .statement-head-one, .statement-head-two{
     font: var(--headline-md);
+    margin-top: 1rem;
 }
 
 .statement-head-three{

@@ -14,15 +14,11 @@ function NavBar() {
   const { auth, setAuth } = useAuth();
   const userId = auth.user_id;
 
-  // const userProfile = profiles.filter(profile => profile.owner === userId);
-  // const hasProfile = userProfile.length > 0;
+  const userProfile = !!profiles && profiles.filter(profile => profile.owner === userId);
+  const hasProfile = userProfile.length > 0;
 
   const isAdmin = auth.is_staff;
   
-  console.log("on navbar page", profiles);
-  // console.log(userId);
-  // console.log("is admin", isAdmin);
-  // console.log("has profile", hasProfile);
 
   const handleLogout = () => {
     window.localStorage.removeItem("token");
@@ -75,15 +71,16 @@ function NavBar() {
                 <Link to={`/users/${auth.user_id}`}>Account</Link>
               )}
             </li>
-            <li>
-            {isAdmin ? (
-              <Link to="/users">
+            {!isAdmin && (
+              <li>
+                <Link to="/users">
                 User Admin
-              </Link>
-            ) : (
-              <Link to={`/profiles/${auth.user_id}`}>My Profile</Link>
+                </Link>
+              </li>
             )}
-            </li>
+            {!hasProfile && (
+              <Link to={`/profile/${userProfile.id}`}>My Profile</Link>
+            )}
             <li>
               {auth.token ? (
                 <Link to="/" onClick={handleLogout}>
