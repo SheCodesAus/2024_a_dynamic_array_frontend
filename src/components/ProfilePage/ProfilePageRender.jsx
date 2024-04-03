@@ -1,4 +1,6 @@
 import useUser from "../../hooks/use-user.js";
+import useProfile from "../../hooks/use-profile.js";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BsPlus } from "react-icons/bs";
 import { MdModeEdit } from "react-icons/md";
@@ -6,7 +8,6 @@ import ExperienceCard from "../ExperienceCard/ExperienceCard.jsx";
 import "../ProfilePage/ProfilePage.css";
 
 import {
-  BsShare,
   BsFillCheckCircleFill,
   BsFacebook,
   BsGithub,
@@ -15,23 +16,57 @@ import {
   BsAlarm,
 } from "react-icons/bs";
 
-function ProfilePageDetails({ profile }) {
-  console.log("Profile object:", profile);
+function ProfilePageDetails() {
+  const { id } = useParams();
+  // console.log("profile id:", id);
+  const {
+    profile,
+    isLoading: profileLoading,
+    error: profileError,
+  } = useProfile(id);
+  // console.log("profileDetails:", profile);
 
-  const { user, isLoading, error } = useUser(profile.owner);
+  // const {
+  //   user,
+  //   isLoading: userLoading,
+  //   error: userError,
+  // } = useUser(profile?.owner);
   const [username, setUsername] = useState("");
+  const [user, setUser] = useState(null);
+  const [userLoading, setUserLoading] = useState(true);
+  const [userError, setUserError] = useState(null);
 
   useEffect(() => {
-    if (!isLoading && !error && user) {
-      if (profile.owner === user.id) {
-        setUsername(`${user.first_name} ${user.last_name}`);
-      } else {
-        setUsername("Sorry, no name is available!");
-      }
-    } else {
-      setUsername("Loading name...");
+    // Check if profile data is available and not loading
+    if (profile && !profileLoading) {
+      // Fetch user data only when profile data is available
+      const fetchUserData = async () => {
+        try {
+          const userData = useUser(profile.owner);
+          setUser(userData); // Set user data
+          setUsername(`${userData.first_name} ${userData.last_name}`); // Update username based on user data
+          console.log("userData:", userData);
+        } catch (error) {
+          setUserError(error);
+        } finally {
+          setUserLoading(false);
+        }
+      };
+
+      fetchUserData();
     }
-  }, [user, isLoading, error, profile.owner]);
+  }, [profile, profileLoading]);
+
+  if (profileLoading || userLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (profileError) {
+    return <p>Sorry, we can't load the profile information!</p>;
+  }
+  if (userError) {
+    return <p>Sorry we cant load the user information!</p>;
+  }
 
   return (
     <section className="profile-page-body">
