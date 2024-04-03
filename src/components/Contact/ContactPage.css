@@ -9,9 +9,7 @@
 input, textarea, select{
     font-family: 'Open Sans', sans-serif;
 }
-textarea::placeholder{
-    padding: 0.8rem;
-}
+
 .contact-us-header{
     display:flex;
     flex-direction: column;
