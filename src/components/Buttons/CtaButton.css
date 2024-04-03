@@ -2,16 +2,23 @@
 
 .cta-button-banner{
     background-color: var(--med-blue);
-    color: var(--off-white);
-    width: 10em;
+    color: var(--light-blue);
+    width: 12em;
     height: 3rem;
     border-radius: 1.5rem;
     margin-top: 2em;
-    margin-right:1rem;
+    /*margin-right:1rem;*/
+    border: none;
 }
 
 .cta-button-banner:hover{
-    background-color: var(--light-red);
+    background-color: transparent;
+    border: 2px solid var(--orange-800);
+    color: var(--cool-grey-1000);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 1s;
+    transition-timing-function: ease;
 }
 
 .userbutton{
