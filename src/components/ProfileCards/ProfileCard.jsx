@@ -8,6 +8,7 @@ import {
   BsGithub,
   BsLinkedin,
 } from "react-icons/bs";
+import { CgProfile } from "react-icons/cg";
 
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -54,7 +55,7 @@ function ProfileCard({ profile }) {
             ) : (
               <div>
                 {/*This is the placecard that can display instead if there is no profile image*/}
-                <p> @@</p>
+                <CgProfile size={64} className="profile--card-placeholder-icon"/>
               </div>
             )}
           </div>
@@ -101,7 +102,7 @@ function ProfileCard({ profile }) {
             </div>
           ) : (
             <div>
-              <span>X</span>
+              <BsFillCheckCircleFill />
               <span style={{ marginLeft: "0.5rem" }}>
                 Not seeking mentorship
               </span>
