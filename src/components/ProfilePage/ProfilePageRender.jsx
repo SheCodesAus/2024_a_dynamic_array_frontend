@@ -6,6 +6,7 @@ import { BsPlus } from "react-icons/bs";
 import { MdModeEdit } from "react-icons/md";
 import ExperienceCard from "../ExperienceCard/ExperienceCard.jsx";
 import "../ProfilePage/ProfilePage.css";
+import placeholder from "../../assets/Illustrations/placeholder.png";
 
 import {
   BsFillCheckCircleFill,
@@ -68,7 +69,9 @@ function ProfilePageDetails() {
             {profile.picture_url ? (
               <img src={profile.picture_url} alt="Profile" />
             ) : (
-              <p>@@</p>
+              <p>
+                <img src={placeholder}></img>
+              </p>
             )}
           </div>
           <span>{profile.number_of_endorsements} Endorsements</span>
