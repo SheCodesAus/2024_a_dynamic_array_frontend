@@ -6,27 +6,32 @@
     background-color: #1f2933 !important;
 
 }
-.fix-footer{
+
+.fix-footer {
     position: fixed;
     bottom: 0;
     width: 100%;
 }
-.footer-container{
+
+.footer-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.footer-logo-link{
+
+.footer-logo-link {
     display: none;
 }
 
-.linkedin-icon svg:hover{
+.linkedin-icon svg:hover {
     color: #0077b5;
 }
-.facebook-icon svg:hover{
+
+.facebook-icon svg:hover {
     color: #1877F2;
 }
-.footerItems{
+
+.footerItems {
     display: flex;
     list-style: none;
     flex-direction: column;
@@ -34,63 +39,71 @@
     justify-content: center;
     align-items: flex-start;
 }
-.logo-footer{
-    width:4rem ;
+
+.logo-footer {
+    width: 4rem;
     height: 4rem;
 }
-.footer-logo-link{
-   padding: 0.7rem;
-}
-.footerItems li a{
+
+
+/* .footer-logo-link {
+    padding: 0.7rem;
+} */
+
+.footerItems li a {
     font: var(--body-sm);
-    color:white;
+    color: white;
     text-decoration: none;
 }
 
-.footerItems li a:hover{
+.footerItems li a:hover {
     color: var(--bs-white);
     text-decoration: underline;
 
 }
 
-.footer-section{
-    display:flex;
+.footer-section {
+    display: flex;
     justify-content: center;
     padding-left: 10px;
 
 }
-.footer-socials{
+
+.footer-socials {
     display: flex;
 }
-.footer-socials ul{
-    display:flex;
+
+.footer-socials ul {
+    display: flex;
     list-style: none;
-    gap:20px;
-    margin-right:10px;
+    gap: 20px;
+    margin-right: 10px;
 }
 
-.footer-socials a{
+.footer-socials a {
     text-decoration: underline;
     font: var(--headline-sm);
-    color:white;
+    color: white;
 }
 
-.footer-socials a:hover{
+.footer-socials a:hover {
     color: var(--black);
 }
 
 @media (min-width: 640px) {
 
-    .footer-container{
+    .footer-container {
         width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-    .footer-logo-link{
+
+    .footer-logo-link {
         display: inline-block;
     }
+
     .footerItems {
 
         flex-direction: row;
