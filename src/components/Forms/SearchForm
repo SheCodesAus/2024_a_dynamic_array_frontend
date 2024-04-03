@@ -1,0 +1,41 @@
+import IndustrySelect from "./SelectOptions/IndustriesMultiselectDropdown";
+// industry select component contains hook, handleChange to set selectedIndustries
+
+import TagSelect from "./SelectOptions/TagsMultiselectDropdown";
+// contains fetch hook, handleChange to set selectedTags
+
+import CountrySelect from "./SelectOptions/CountrySelect";
+// contains fetch hook, handleChange to set countryNames and countriesData. 
+// inside the handleChange is a function that sets a variable in LocationDrop downs component
+
+import StateSelect from "./SelectOptions/StateSelect";
+// contains fetch hook, handleChange to set stateNames and StatesData
+
+import CitySelect from "./SelectOptions/CitySelect";
+// contains fetch hook, handleChange to set CityNames and CitiesData
+
+import FilterResults from "../FilterSection/FilterResults.jsx";
+// where the qSet will be passed into for display
+
+import LocationDropdowns from "./SelectOptions/LocationDropdowns.jsx";
+import ProfileCards from "../ProfileCards/ProfileCards";
+// where selections can be made for locations
+
+function SearchForm() {
+    const [q, setQ] = useState(""); // set search query to empty string
+    const [searchParam] = useState(["tags", "industries", "country", "state", "city"])
+
+
+
+    return (
+        <section className="search-form-container">
+
+            <IndustrySelect></IndustrySelect>
+            <FilterResults q={q} searchParam={searchParam}></FilterResults>
+            <ProfileCards></ProfileCards>
+        </section>
+    );
+}
+export default SearchForm;
+
+
