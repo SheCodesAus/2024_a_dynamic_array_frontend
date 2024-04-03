@@ -1,6 +1,6 @@
 import Multiselect from 'multiselect-react-dropdown';
 import getTags from '../../../api/get-tags.js';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // Custom hook created to fetch and set the list of tags from the API
 function useTags(setTagOptions) {
@@ -14,40 +14,26 @@ function useTags(setTagOptions) {
     }, []); // Empty dependency array ensures useEffect runs only once on component mount
 }
 
-function TagSelect() { // props passed in
+function TagSelect({setSelectedTags}) { // props passed in
 
-    const [tagOptions, setTagOptions] = useState([]);
-    const [selectedTags, setSelectedTags] = useState([]);
+    const [tagOptions, setTagOptions] = useState([]); // creating the state for the drop down labels
     
-    useTags(setTagOptions); // custom hook from above being used inside the country select function
+    useTags(setTagOptions);
 
+    const multiSelectRef = useRef(null); // creating a reference to the multiselect component
 
-    const handleCheckboxChange = (event) => {
-        const { value, checked } = event.target;
-        const updatedTags = checked
-          ? [...selectedTags, value]
-          : selectedTags.filter((item) => item !== value);
-        setSelectedTags(updatedTags);
-        onChange(updatedTags);
-      };
-    
-    //   const handleRemove = (event) => {
-    //     const { value, checked } = event.target;
-    //     const updatedTags = checked
-    //       ? [...selectedTags, value]
-    //       : selectedTags.filter((item) => item !== value);
-    //     setSelectedTags(updatedTags);
-    //     onChange(updatedTags);
-    //   };
+    const handleCheckboxChange = () => {
+        setSelectedTags(multiSelectRef.current.getSelectedItems().map((tag) => tag.name)) // setting the selected tags to the state
+    }
 
-return (
-<Multiselect
-    options={tagOptions} // Options to display in the dropdown
-    selectedValues={selectedTags} // Preselected value to persist in dropdown
-    onSelect={handleCheckboxChange} // Function will trigger on select event
-    // onRemove={this.onRemove} // Function will trigger on remove event
-    displayValue="name" // Property name to display in the dropdown options
-/>
-)
+    return (
+        <Multiselect
+            options={tagOptions} // Options to display in the dropdown
+            onSelect={handleCheckboxChange} // Function will trigger on select event
+            onRemove={handleCheckboxChange} // Function will trigger on remove event
+            displayValue="name" // Property name to display in the dropdown options
+            ref={multiSelectRef} // Reference to the multiselect component
+        />
+    )
 }
 export default TagSelect;
