@@ -1,6 +1,6 @@
 async function getTags(){
     const url=`${import.meta.env.VITE_API_URL}/tags/`;
-    // const url=`http://127.0.0.1:8000/tags/`;
+
     const response=await fetch(url,{method:"GET"});
     
     if (!response.ok) {

@@ -29,7 +29,6 @@ function ProfileCard({ profile }) {
   useEffect(() => {
     if (!isLoading && !error && user) {
       if (profile.owner === user.id) {
-        console.log("firstname:", user.first_name);
         setUsername(`${user.first_name} ${user.last_name}`);
       } else {
         setUsername("Sorry, no name is available!");

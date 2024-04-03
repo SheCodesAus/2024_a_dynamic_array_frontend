@@ -1,15 +1,24 @@
 import { Link, Outlet } from "react-router-dom";
 import "../NavBar/NavBar.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "../../hooks/use-auth";
+import useProfiles from "../../hooks/use-profiles";
 
 import close from "../../assets/NavBar/close.png";
 import menu from "../../assets/NavBar/menu.png";
 import logo from "../../assets/NavBar/logo.png";
 
 function NavBar() {
+  const { profiles, setProfiles } = useProfiles();
   const [menuOpen, setMenuOpen] = useState(false);
   const { auth, setAuth } = useAuth();
+  const userId = auth.user_id;
+
+  const userProfile = !!profiles && profiles.filter(profile => profile.owner === userId);
+  const hasProfile = userProfile.length > 0;
+
+  const isAdmin = auth.is_staff;
+  
 
   const handleLogout = () => {
     window.localStorage.removeItem("token");
@@ -52,14 +61,26 @@ function NavBar() {
             <li>
               <Link to="/contact">Contact Us</Link>
             </li>
-            {/* </ul>
-        </div> */}
-
-            {/* <div className="signup">
-          <ul> */}
+            
             <li>
-              <Link to="/signup">Sign Up</Link>
+              {!auth.token ? (
+                <Link to="/signup">
+                  Sign Up
+                </Link>
+              ) : (
+                <Link to={`/users/${auth.user_id}`}>Account</Link>
+              )}
             </li>
+            {isAdmin && (
+              <li>
+                <Link to="/users">
+                User Admin
+                </Link>
+              </li>
+            )}
+            {hasProfile && (
+              <Link to={`/profile/${userProfile.id}`}>My Profile</Link>
+            )}
             <li>
               {auth.token ? (
                 <Link to="/" onClick={handleLogout}>
