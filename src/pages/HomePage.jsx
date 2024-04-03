@@ -9,6 +9,8 @@ import ProfileCards from "../components/ProfileCards/ProfileCards.jsx";
 import useProfiles from "../hooks/use-profiles.js";
 import TagSelect from "../components/Forms/SelectOptions/TagsMultiselectDropdown.jsx";
 import IndustrySelect from "../components/Forms/SelectOptions/IndustriesMultiselectDropdown.jsx";
+import LocationDropdowns from "../components/Forms/SelectOptions/LocationDropdowns.jsx";
+import ToggleSwitch from "../components/Forms/ToggleSwitch/ToggleSwitch.jsx";
 
 //---------FILTERING PROFILE CARD LOGIC----------------
 
@@ -39,7 +41,11 @@ function HomePage() {
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedIndustries, setSelectedIndustries] = useState([]);
   const filteredProfiles = filterProfiles(profiles, selectedTags, selectedIndustries)
-  
+  // State variables to hold selected country, state, and city id values
+  const [stateIso2, setStateIso2] = useState("");
+  const [countryIso2, setCountryIso2] = useState("");
+  const [city, setSelectedCityId] = useState("");
+
   console.log("SelectedTags:",selectedTags);
   console.log("FilteredProfiles:", filteredProfiles);
   console.log("SelectedIndustries:", selectedIndustries);
@@ -51,14 +57,22 @@ function HomePage() {
       <Statement />
       <section className="home-container">
         <div className="filter-results">
-          <FilterResults />
+          <LocationDropdowns countryIso2={countryIso2} stateIso2={stateIso2} setStateIso2={setStateIso2} setSelectedCityId={setSelectedCityId} setCountryIso2={setCountryIso2}/>
+          <div className="hide-profile">
+            <p>Seeking Mentorship</p>
+            <ToggleSwitch Name="is_seeking_mentorship" />
+          </div>
+          <div className="open-mentorship">
+            <div className="hide-profile">
+              <p>Open to Mentoring</p>
+              <ToggleSwitch Name="is_open_to_mentor" />
+            </div>
+          </div>
         </div>
         <div className="home-body-container">
           <div className="filter-container">
-            Tag Filter:
-            <TagSelect setSelectedTags={setSelectedTags} />
-            Industry Filter:
-            <IndustrySelect setSelectedIndustries={setSelectedIndustries} />
+            Tag Filter:<TagSelect setSelectedTags={setSelectedTags} />
+            Industry Filter:<IndustrySelect setSelectedIndustries={setSelectedIndustries} />
           </div>
           <div className="profile-card-container">
             {isLoading ? (
