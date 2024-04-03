@@ -29,6 +29,7 @@ function ProfilePageDetails() {
   const [userLoading, setUserLoading] = useState(true);
   const [userError, setUserError] = useState(null);
   const userData = useUser(profile.owner);
+  const tags = profile.tags;
 
   console.log("profile.owner:", profile.owner);
   useEffect(() => {
@@ -57,8 +58,8 @@ function ProfilePageDetails() {
   if (userError) {
     return <p>Sorry we cant load the user information!</p>;
   }
-  console.log("tags:", profile.tags);
-
+  console.log("tags:", profile.tags.length);
+  console.log("profile data:", profile);
   return (
     <section className="profile-page-body">
       <div className="profile-page-container">
@@ -119,18 +120,18 @@ function ProfilePageDetails() {
         </div>
         <hr className="hr" />
         <div className="skills-section">
-          <h3>{profile.tags}</h3>
+          <h3>Tags:</h3>
           <div className="skill-tags">
-            <div>Development</div>
-            <div>Development</div>
-            <div>Development</div>
+            <div>{profile.tags}</div>
           </div>
           <div>
-            <h3>Industry Tags:</h3>
             <div className="industry-tags">
-              <div>Security</div>
-              <div>Security</div>
-              <div>Security</div>
+              <h3>Industry Tags:</h3>
+              <ul>
+                {profile.industries.map((industry, index) => (
+                  <li key={index}>{industry}</li>
+                ))}
+              </ul>
             </div>
           </div>
           <a target="_blank" href="#">
