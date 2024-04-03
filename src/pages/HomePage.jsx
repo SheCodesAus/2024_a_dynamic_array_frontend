@@ -10,23 +10,29 @@ import useProfiles from "../hooks/use-profiles.js";
 import TagSelect from "../components/Forms/SelectOptions/TagsMultiselectDropdown.jsx";
 import IndustrySelect from "../components/Forms/SelectOptions/IndustriesMultiselectDropdown.jsx";
 
-//filtering profile card logic
+//---------FILTERING PROFILE CARD LOGIC----------------
 
-function doesProfileMatchTags(profileTags, filterTags) { //function to check if the profile tags match the filter tags
-  return filterTags.every((filterTag) => profileTags.includes(filterTag)) //return true if all the filter tags are included in the profile tags
-}
+    //function to check if the profile tags match the filter tags
+    function doesProfileMatchTags(profileTags, filterTags) { 
+      //return true if all the filter tags are included in the profile tags
+      return filterTags.every((filterTag) => profileTags.includes(filterTag))
+    }
+    //function to check if the profile Industries match the filter Industries
+    function doesProfileMatchIndustries(profileIndustries, filterIndustries) {
+      //return true if all the filter Industries are included in the profile industries 
+      return filterIndustries.every((filterIndustry) => profileIndustries.includes(filterIndustry))
+    }
+    //function to check if the profile information matches the filter tags and filter Industries
+    function doesProfileMatchAllFilters(profileTags, filterTags, profileIndustries, filterIndustries) {
+      //return true if the profile matches all the filters
+      return doesProfileMatchTags(profileTags, filterTags) && doesProfileMatchIndustries(profileIndustries, filterIndustries) 
+    }
 
-function doesProfileMatchIndustries(profileIndustries, filterIndustries) { //function to check if the profile Industries match the filter Industries
-  return filterIndustries.every((filterIndustry) => profileIndustries.includes(filterIndustry)) //return true if all the filter Industries are included in the profile tags
-}
-
-function doesProfileMatchAllFilters(profileTags, filterTags, profileIndustries, filterIndustries) { //function to check if the profile matches the filter tags and filter Industries
-  return doesProfileMatchTags(profileTags, filterTags) && doesProfileMatchIndustries(profileIndustries, filterIndustries) //return true if the profile matches the filter tags and filter Industries
-}
-
-  function filterProfiles(profiles, filterTags, filterIndustries) { //function to filter the profiles based on the filter tags
-  return (profiles.filter((profile) => doesProfileMatchAllFilters(profile.tags, profile.industries, filterTags, filterIndustries))) //return the profiles that match the filter tags
-}
+    //function to filter the profiles based on the filters
+    function filterProfiles(profiles, filterTags, filterIndustries) { 
+      //return the profiles that match the filter tags
+      return (profiles.filter((profile) => doesProfileMatchAllFilters(profile.tags, profile.industries, filterTags, filterIndustries)))
+    }
 
 function HomePage() {
   const { profiles, isLoading, error } = useProfiles();
