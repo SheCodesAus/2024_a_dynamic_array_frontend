@@ -19,7 +19,7 @@ html {
   /*page colors*/
   --bg-light: ffffff;
   --dark-blue: #2D3A8c;
-  --med-blue: #647ACB;
+  --med-blue: #19216c;
   --light-blue: #E0E8F9;
   --off-white: #f5f7fa;
   --light-red: #ffebd9;
@@ -47,6 +47,42 @@ html {
   --bs-gray-gray-700: #4a5568;
   --bs-gray-gray-800: #2d3748;
   --bs-gray-gray-900: #273444;
+
+  /*added Figma colors*/
+  /* Indigo */
+  --indigo-100: #BED0F7;
+  --indigo-200: #98AEEB;
+  --indigo-300: #7B93DB;
+  --indigo-400: #647ACB;
+  --indigo-500: #4C63B6;
+  --indigo-600: #4055A8;
+  --indigo-700: #35469C;
+  --indigo-800: #2D3A8C;
+  --indigo-900: #19216C;
+
+  /* Orange */
+  --orange-100: #FFEBD9;
+  --orange-200: #FFD0B5;
+  --orange-300: #FFB088;
+  --orange-400: #FF9466;
+  --orange-500: #F9703E;
+  --orange-600: #F35627;
+  --orange-700: #DE3A11;
+  --orange-800: #C52707;
+  --orange-900: #AD1D07;
+  --orange-1000: #841003;
+
+  /* Neutrals */
+  --cool-grey-100: #F5F7FA;
+  --cool-grey-200: #E4E7EB;
+  --cool-grey-300: #CBD2D9;
+  --cool-grey-400: #9AA5B1;
+  --cool-grey-500: #7B8794;
+  --cool-grey-600: #616E7C;
+  --cool-grey-700: #52606D;
+  --cool-grey-800: #3E4C59;
+  --cool-grey-900: #323F4B;
+  --cool-grey-1000: #1F2933;
 
 
   /* Headline Styles */
@@ -78,31 +114,35 @@ html {
 
 }
 
-.btn{
+.btn {
 
   width: 100%;
-  height:2rem;
-  border-radius:1.5rem;
+  height: 2rem;
+  border-radius: 1.5rem;
   background-color: #19216c;
   color: #fff;
   font-weight: bold;
 }
-.btn.btn-primary{
+
+.btn.btn-primary {
 
   background-color: #19216c;
   color: #fff;
   font-weight: bold;
 }
-.btn.btn-primary:hover{
+
+.btn.btn-primary:hover {
   background-color: #bed0f7;
   cursor: pointer;
   color: #1f2933;
 }
-.main-container{
+
+.main-container {
   margin: 0;
   padding: 0.4rem;
   width: 100%;
 }
+
 /*dark/light mode*/
 @media (prefers-color-scheme: light) {
   :root {
@@ -120,40 +160,35 @@ html {
 }
 
 @media (min-width: 640px) {
-  .main-container{
+  .main-container {
     margin: 0;
-    padding: 2rem;
     width: 100%;
   }
 }
+
 @media (min-width: 768px) {
-  .main-container{
-
-    padding: 2rem;
+  .main-container {
     width: 90%;
     margin: 0 auto;
   }
 }
+
 @media (min-width: 1024px) {
-  .main-container{
-
-    padding: 2rem;
+  .main-container {
     width: 90%;
     margin: 0 auto;
   }
 }
-@media (min-width: 1280px) {
-  .main-container{
 
-    padding: 2rem;
+@media (min-width: 1280px) {
+  .main-container {
     width: 85%;
     margin: 0 auto;
   }
 }
-@media (min-width: 1536px) {
-  .main-container{
 
-    padding: 2rem;
+@media (min-width: 1536px) {
+  .main-container {
     width: 75%;
     margin: 0 auto;
   }
