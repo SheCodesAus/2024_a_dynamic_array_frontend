@@ -114,6 +114,18 @@ html {
 
 }
 
+/* Define styles for your wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the wrapper takes up at least the full viewport height */
+}
+
+/* Define styles for your content */
+.content {
+  flex: 1; /* Fill remaining space */
+}
+
 .btn {
 
   width: 100%;
@@ -142,6 +154,7 @@ html {
   padding: 0.4rem;
   width: 100%;
 }
+
 
 /*dark/light mode*/
 @media (prefers-color-scheme: light) {
