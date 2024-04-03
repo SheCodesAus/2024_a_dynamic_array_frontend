@@ -1,6 +1,6 @@
 async function getUser(userId) {
     const url = `${import.meta.env.VITE_API_URL}/users/${userId}`;
-    // const url=`http://127.0.0.1:8000/users/${userId}/`;
+
     const token = window.localStorage.getItem('token');
 
     const response = await fetch(url, {
