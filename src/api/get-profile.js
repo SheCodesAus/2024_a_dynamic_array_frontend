@@ -1,11 +1,8 @@
 async function getProfile(profileId){
-<<<<<<< HEAD
+
     const url = `${import.meta.env.VITE_API_URL}/profile/${profileId}`;
    
-=======
-    const url = `${import.meta.env.VITE_API_URL}profile/${profileId}`;
 
->>>>>>> DEV
     const response = await fetch (url,{method:"GET"});
 
     if (!response.ok) {
