@@ -74,7 +74,7 @@ function ProfilePageDetails() {
           <span>{profile.number_of_endorsements} Endorsements</span>
         </div>
         <div className="profile-details">
-          <h3>{username}</h3>
+          <h3>Username: {username}</h3>
           <h3>{user.username}</h3>
           <h3>{user.email}</h3>
           <p>{profile.location}</p>
