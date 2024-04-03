@@ -13,6 +13,8 @@ import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
 function ProfileCard({ profile }) {
+  console.log("profile in profile card:", profile);
+
   const { user, isLoading, error } = useUser(profile.owner);
   const [username, setUsername] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -25,12 +27,6 @@ function ProfileCard({ profile }) {
     /* Retrieval of user first name and last name is still not working  */
   }
   useEffect(() => {
-    console.log("Inside useEffect");
-    console.log("user:", user);
-    console.log("isLoading:", isLoading);
-    console.log("error:", error);
-    console.log("profile.owner:", profile.owner);
-
     if (!isLoading && !error && user) {
       if (profile.owner === user.id) {
         console.log("firstname:", user.first_name);
