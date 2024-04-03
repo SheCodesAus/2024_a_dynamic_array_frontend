@@ -11,7 +11,6 @@ function useProfiles (){
         .then((profiles) =>{
             setProfiles(profiles);
             setIsLoading(false);
-            console.log("inside profiles hook", profiles);
         })
         .catch((error)=>{
             setError(error);
