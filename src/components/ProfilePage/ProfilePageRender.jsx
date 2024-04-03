@@ -18,44 +18,34 @@ import {
 
 function ProfilePageDetails() {
   const { id } = useParams();
-  // console.log("profile id:", id);
   const {
     profile,
     isLoading: profileLoading,
     error: profileError,
   } = useProfile(id);
-  // console.log("profileDetails:", profile);
 
-  // const {
-  //   user,
-  //   isLoading: userLoading,
-  //   error: userError,
-  // } = useUser(profile?.owner);
   const [username, setUsername] = useState("");
   const [user, setUser] = useState(null);
   const [userLoading, setUserLoading] = useState(true);
   const [userError, setUserError] = useState(null);
+  const userData = useUser(profile.owner);
 
+  console.log("profile.owner:", profile.owner);
   useEffect(() => {
     // Check if profile data is available and not loading
-    if (profile && !profileLoading) {
-      // Fetch user data only when profile data is available
-      const fetchUserData = async () => {
-        try {
-          const userData = useUser(profile.owner);
-          setUser(userData); // Set user data
-          setUsername(`${userData.first_name} ${userData.last_name}`); // Update username based on user data
-          console.log("userData:", userData);
-        } catch (error) {
-          setUserError(error);
-        } finally {
-          setUserLoading(false);
-        }
-      };
-
-      fetchUserData();
+    if (userData.user) {
+      try {
+        setUser(userData.user); // Set user data
+        console.log("userData:", userData);
+        setUsername(`${userData.user.first_name} ${userData.user.last_name}`); // Update username based on user data
+        setUserLoading(false);
+        console.log("username:", username);
+      } catch (error) {
+        setUserError(error);
+        setUserLoading(false);
+      }
     }
-  }, [profile, profileLoading]);
+  }, [userData]);
 
   if (profileLoading || userLoading) {
     return <p>Loading...</p>;
@@ -67,6 +57,7 @@ function ProfilePageDetails() {
   if (userError) {
     return <p>Sorry we cant load the user information!</p>;
   }
+  console.log("tags:", profile.tags);
 
   return (
     <section className="profile-page-body">
@@ -82,8 +73,9 @@ function ProfilePageDetails() {
           <span>{profile.number_of_endorsements} Endorsements</span>
         </div>
         <div className="profile-details">
-          <h3>{`${user.first_name} ${user.last_name}`}</h3>
-          <h2>{user.username}</h2>
+          <h3>{username}</h3>
+          <h3>{user.username}</h3>
+          <h3>{user.email}</h3>
           <p>{profile.location}</p>
           <div className="profile--card-body">
             <div className="profile-Card-Body">
@@ -127,7 +119,7 @@ function ProfilePageDetails() {
         </div>
         <hr className="hr" />
         <div className="skills-section">
-          <h3>Skill Tags: yet to be developed</h3>
+          <h3>{profile.tags}</h3>
           <div className="skill-tags">
             <div>Development</div>
             <div>Development</div>
