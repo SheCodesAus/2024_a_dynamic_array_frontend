@@ -9,6 +9,8 @@ import {
   BsLinkedin,
 } from "react-icons/bs";
 
+import placeholder from "../../assets/Illustrations/placeholder.png";
+
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 
@@ -54,7 +56,13 @@ function ProfileCard({ profile }) {
             ) : (
               <div>
                 {/*This is the placecard that can display instead if there is no profile image*/}
-                <p> @@</p>
+                <p>
+                   
+                  <img
+                    src={placeholder}
+                    alt="a placeholder image as a profile picture was not provided"
+                  ></img>
+                </p>
               </div>
             )}
           </div>
