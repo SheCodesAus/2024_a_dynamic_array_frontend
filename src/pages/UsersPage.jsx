@@ -1,4 +1,5 @@
 import UserCard from "../components/UserCard/UserCard";
+import "../pages/UsersPage.css";
 import useUsers from "../hooks/use-users";
 import deleteUser from "../api/delete-user";
 import { useNavigate } from "react-router-dom";

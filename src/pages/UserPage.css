@@ -1,1 +1,58 @@
 /* css styling to be applied. Url to this is /users/<int:pk> */
+
+.userdetails-main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .userdetails-main-container > div {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .userdetails-main-container > div button {
+    margin-top: 10px;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .userdetails-main-container > div button:hover {
+    background-color: #d74422;
+  }
+  
+  .confirmation-popup {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .confirmation-popup button {
+    margin-top: 10px;
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .confirmation-popup button:hover {
+    background-color: #d74422;
+  }
+  
