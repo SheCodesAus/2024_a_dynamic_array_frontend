@@ -25,15 +25,10 @@ function ProfileCard({ profile }) {
     /* Retrieval of user first name and last name is still not working  */
   }
   useEffect(() => {
-    console.log("Inside useEffect");
-    console.log("user:", user);
-    console.log("isLoading:", isLoading);
-    console.log("error:", error);
-    console.log("profile.owner:", profile.owner);
+
 
     if (!isLoading && !error && user) {
       if (profile.owner === user.id) {
-        console.log("firstname:", user.first_name);
         setUsername(`${user.first_name} ${user.last_name}`);
       } else {
         setUsername("Sorry, no name is available!");
