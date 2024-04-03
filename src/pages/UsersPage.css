@@ -1,1 +1,6 @@
 /* css styling to be applied. Url to this is /users/*/
+
+.users-main-container {
+    display: flex;
+    flex-direction: column;
+}
