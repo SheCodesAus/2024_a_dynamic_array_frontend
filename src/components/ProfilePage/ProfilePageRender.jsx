@@ -122,7 +122,11 @@ function ProfilePageDetails() {
         <div className="skills-section">
           <h3>Tags:</h3>
           <div className="skill-tags">
-            <div>{profile.tags}</div>
+            <ul>
+              {profile.tags.map((tag, index) => (
+                <li key={index}>{tag}</li>
+              ))}
+            </ul>
           </div>
           <div>
             <div className="industry-tags">
