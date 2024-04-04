@@ -51,7 +51,7 @@ function ProfileCard({ profile }) {
           <div className="profile-image">
             {profile.picture_url ? (
               <div>
-                <img src={profile.picture_url} />
+                <p>@@</p>
               </div>
             ) : (
               <div>
