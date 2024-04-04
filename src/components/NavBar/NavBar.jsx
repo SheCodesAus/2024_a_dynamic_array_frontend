@@ -42,11 +42,9 @@ function NavBar() {
                         <Link to={`/users/${auth.user_id}`}>Account</Link>
                     )}
                     {isAdmin && (
-                        <li>
                             <Link to="/users">
                                 User Admin
                             </Link>
-                        </li>
                     )}
                     {hasProfile && (
                         <Link to={`/profile/${userProfile.id}`}>My Profile</Link>
