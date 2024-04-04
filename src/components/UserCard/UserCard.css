@@ -1,16 +1,41 @@
 @import '../../index.css';
 
-
-.user--card-container {
+.user-card-body-container {
     display: flex;
-    flex-direction: column;
-    border: #EBE9EA solid 1px;
-    background-color: white;
-    color: rgba(0, 0, 0, 0.87);
-    -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .user--card-container {
+    background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    width: 280px;
-}
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .user--card-container h5 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .user--card-container p {
+    margin-bottom: 20px;
+  }
+  
+  .user--card-container button {
+    background-color:#19216C ;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .user--card-container button:hover {
+    background-color: #616E7C;
+  }
+  
