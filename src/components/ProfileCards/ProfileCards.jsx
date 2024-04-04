@@ -36,7 +36,7 @@ function ProfileCards({ profiles }) {
     const allProfiles = profiles.flat();
     const shuffled = shuffleArray(allProfiles);
     setShuffledProfiles(shuffled);
-  }, []);
+  }, [profiles]); //remount every time the profiles change
 
   //the function to shuffle the array elements(Fisher-Yates algorithm)
   const shuffleArray = (array) => {

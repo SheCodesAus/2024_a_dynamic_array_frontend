@@ -9,6 +9,8 @@ async function getIndustries(){
         const errorMessage = data?.detail ?? fallbackError;
         throw new Error(errorMessage);
     }
-    return await response.json();
+    const industriesData = await response.json();
+    const industryOptions = industriesData.map(industry => ({name: industry.industry_name, id: industry.id}));
+    return {industryOptions};
     }
     export default getIndustries;
