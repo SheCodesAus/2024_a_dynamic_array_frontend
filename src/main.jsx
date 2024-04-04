@@ -13,10 +13,10 @@ import LoginPage from "./pages/LoginPage.jsx";
 import { AuthProvider } from "./components/AuthProvider.jsx";
 import TermsAndConditionsPage from "./pages/TermsConditionsPage.jsx";
 import PrivacyPage from "./pages/PrivacyPage.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
 import UsersPage from "./pages/UsersPage.jsx";
 import UserPage from "./pages/UserPage.jsx";
 import UpdatePasswordPage from "./pages/UpdatePasswordPage.jsx";
+import ProfilePageDetails from "./components/ProfilePage/ProfilePageRender.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
       { path: "/login", element: <LoginPage /> },
       { path: "/privacy", element: <PrivacyPage /> },
       { path: "/termsandconditions", element: <TermsAndConditionsPage /> },
-      { path: "/profile/:id", element: <ProfilePage /> },
+      { path: "/profile/:id", element: <ProfilePageDetails /> },
       { path: "/users", element: <UsersPage /> },
       { path: "/users/:userId", element: <UserPage /> },
       { path: "/update-password", element: <UpdatePasswordPage /> },

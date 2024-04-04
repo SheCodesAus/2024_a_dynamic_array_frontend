@@ -2,6 +2,7 @@ import "../../components/ProfileCards/ProfileCards.css";
 import ProfileCard from "./ProfileCard";
 import { useState, useEffect } from "react";
 import Paginate from "../ProfileCards/Paginate.jsx";
+import { Link } from "react-router-dom";
 
 function ProfileCards({ profiles }) {
   const [shuffledProfiles, setShuffledProfiles] = useState([]);
