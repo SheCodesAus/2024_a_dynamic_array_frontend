@@ -49,12 +49,18 @@ function ProfileCard({ profile }) {
           <div className="profile-image">
             {profile.picture_url ? (
               <div>
-                <img src={profile.picture_url} />
+                <p>@@</p>
               </div>
             ) : (
               <div>
                 {/*This is the placecard that can display instead if there is no profile image*/}
-                <p> @@</p>
+                <p>
+                   
+                  <img
+                    src={placeholder}
+                    alt="a placeholder image as a profile picture was not provided"
+                  ></img>
+                </p>
               </div>
             )}
           </div>
