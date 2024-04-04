@@ -2,6 +2,7 @@ import "../../components/ProfileCards/ProfileCards.css";
 import ProfileCard from "./ProfileCard";
 import { useState, useEffect } from "react";
 import Paginate from "../ProfileCards/Paginate.jsx";
+import { Link } from "react-router-dom";
 
 function ProfileCards({ profiles }) {
   const [shuffledProfiles, setShuffledProfiles] = useState([]);
@@ -35,7 +36,7 @@ function ProfileCards({ profiles }) {
     const allProfiles = profiles.flat();
     const shuffled = shuffleArray(allProfiles);
     setShuffledProfiles(shuffled);
-  }, []);
+  }, [profiles]); //remount every time the profiles change
 
   //the function to shuffle the array elements(Fisher-Yates algorithm)
   const shuffleArray = (array) => {
