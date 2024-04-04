@@ -229,6 +229,11 @@ function ProfilePageDetails() {
               <p>
                 <Link to="/signup">Sign Up</Link> today!
               </p>
+              <p> Already a member? </p>
+              <p>
+                {" "}
+                <Link to="/login">Log in</Link> to see Contact details
+              </p>
             </div>
           )}
         </div>
