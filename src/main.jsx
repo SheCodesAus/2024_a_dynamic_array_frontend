@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {createBrowserRouter, Outlet, RouterProvider} from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import CreateProfilePage from "./pages/CreateProfilePage.jsx";
@@ -22,10 +22,13 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <>
-        <NavBar />
-        <Footer />
-      </>
+          <div className="wrapper">
+            <NavBar/>
+            <div className="content">
+            <Outlet/>
+            </div>
+            <Footer/>
+          </div>
     ),
     children: [
       { path: "/", element: <HomePage /> },
