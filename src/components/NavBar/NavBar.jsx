@@ -29,8 +29,8 @@ function NavBar() {
     return (
         <div className="mobile-container">
             <div className="topNav">
-                <a className="active">DiversiTech</a>
-                <div className={`${"nav-Links"} ${menuOpen ? "showItem" : "hideItem"}`}>
+                <Link className="active" to="/">DiversiTech</Link>
+                <div className={`${"nav-Links"} ${menuOpen ? "nav-showItem" : "nav-hideItem"}`}>
                     <Link to="/">Home</Link>
                     <Link to="/about">About Us</Link>
                     <Link to="/contact">Contact Us</Link>
@@ -60,7 +60,7 @@ function NavBar() {
                     )}
 
                 </div>
-                <a className="icon">
+                <a className="icon hamburgerIcon">
                     {menuOpen ? <CgClose size={18} onClick={() => setMenuOpen(!menuOpen)}/> :
                         <RxHamburgerMenu onClick={() => setMenuOpen(!menuOpen)} size={24}/>}
                 </a>
