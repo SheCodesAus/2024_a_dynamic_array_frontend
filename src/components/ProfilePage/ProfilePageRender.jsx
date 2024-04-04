@@ -16,6 +16,7 @@ import {
     BsAlarm,
 } from "react-icons/bs";
 import {IoIosCloseCircle} from "react-icons/io";
+import useExperiences from "../../hooks/use-experiences.js";
 
 function ProfilePageDetails() {
     const {id} = useParams();
