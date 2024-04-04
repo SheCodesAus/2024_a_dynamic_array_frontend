@@ -1,4 +1,4 @@
-//This function fetches the list of country names and an array of country data from the API 
+//This function fetches the list of country names and an array of country data from the API
 //it uses the list of country names to populate the dropdown and when a country is selected
 //it grabs the iso2 code for the selected country to be used in the state API and dropdown component.
 
@@ -30,17 +30,17 @@ function CountrySelect({setCountryIso2}) { // props passed in from LocationDropd
     const handleCountryChange = (event) => {
         const value = event.target.value;
         setSelectedCountryName(value);
-        
+
         // and fetch and set corresponding states
         const selectedCountryData = countriesData.find(country => country.name === value);
         if (selectedCountryData) {
             setCountryIso2(selectedCountryData.iso2); // set the selected ISO2
-        }    
+        }
     };
 
     return (
-            <label>
-                Country:
+            <label className="select-label">
+                Country
                 <select value={selectedCountryName} onChange={handleCountryChange}>
                     <option value="">Select Country</option>
                     {countryNames.map((countryName, index) => (
