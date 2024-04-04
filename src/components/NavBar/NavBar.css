@@ -12,6 +12,13 @@
     position: relative;
 }
 
+.nav-hideItem {
+    display: none;
+}
+
+.nav-showItem {
+    display: block;
+}
 
 .topNav a {
     color: white;
@@ -28,9 +35,11 @@
     right: 0;
     top: 0;
 }
+
 .topNav a.icon:hover {
     cursor: pointer;
 }
+
 .nav-Links a:hover {
     background-color: var(--bs-gray-gray-200);
     color: var(--cool-grey-900);
@@ -42,6 +51,21 @@
 }
 
 @media screen and (min-width: 640px) {
+    .topNav {
+        display: flex;
+    }
 
+    .nav-Links {
+        display: flex;
+        flex: 1;
+        justify-content: flex-end;
+    }
 
+    .hamburgerIcon {
+        display: none !important;
+    }
+
+    .nav-hideItem {
+        display: flex !important;
+    }
 }
