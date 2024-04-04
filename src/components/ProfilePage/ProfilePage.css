@@ -48,3 +48,8 @@
 
     
 }
+
+.sign-up-message{
+    border: black solid 2px;
+    padding:1rem;
+}

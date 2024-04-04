@@ -1,12 +1,13 @@
 import useUser from "../../hooks/use-user.js";
 import useProfile from "../../hooks/use-profile.js";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BsPlus } from "react-icons/bs";
 import { MdModeEdit } from "react-icons/md";
 import ExperienceCard from "../ExperienceCard/ExperienceCard.jsx";
 import "../ProfilePage/ProfilePage.css";
 import placeholder from "../../assets/Illustrations/placeholder.png";
+import { useAuth } from "../../hooks/use-auth";
 
 import {
   BsFillCheckCircleFill,
@@ -31,6 +32,7 @@ function ProfilePageDetails() {
   const [userError, setUserError] = useState(null);
   const userData = useUser(profile.owner);
   const tags = profile.tags;
+  const { auth, setAuth } = useAuth();
 
   console.log("profile.owner:", profile.owner);
   useEffect(() => {
@@ -169,49 +171,65 @@ function ProfilePageDetails() {
           <ExperienceCard />
         </div>
         <div className="contact-info">
-          Contact Info
-          <div>
-            <p>Contact Preference: {profile.contact_preference}</p>
-          </div>
-          {profile.facebook_url && (
-            <a target="_blank" href={profile.facebook_url}>
-              <BsFacebook
-                style={{ color: "#1877F2", width: "24px", height: "24px" }}
-              />{" "}
-              Facebook
-            </a>
-          )}
-          {profile.github_url && (
-            <a target="_blank" href={profile.github_url}>
-              <BsGithub
-                style={{ color: "#4078c0", width: "24px", height: "24px" }}
-              />{" "}
-              GitHub
-            </a>
-          )}
-          {profile.linkedin_url && (
-            <a target="_blank" href={profile.linkedin_url}>
-              <BsLinkedin
-                style={{ color: "#0077b5", width: "24px", height: "24px" }}
-              />{" "}
-              LinkedIn
-            </a>
-          )}
-          {profile.instagram_url && (
-            <a target="_blank" href={profile.linkedin_url}>
-              <BsInstagram
-                style={{ color: "#0077b5", width: "24px", height: "24px" }}
-              />{" "}
-              Instagram
-            </a>
-          )}
-          {profile.portfolio_url && (
-            <a target="_blank" href={profile.linkedin_url}>
-              <BsAlarm
-                style={{ color: "#0077b5", width: "24px", height: "24px" }}
-              />{" "}
-              Website
-            </a>
+          {auth.token ? (
+            <>
+              <p> Contact Info</p>
+
+              <p>Contact Preference: {profile.contact_preference}</p>
+
+              {profile.facebook_url && (
+                <a target="_blank" href={profile.facebook_url}>
+                  <BsFacebook
+                    style={{ color: "#1877F2", width: "24px", height: "24px" }}
+                  />{" "}
+                  Facebook
+                </a>
+              )}
+              {profile.github_url && (
+                <a target="_blank" href={profile.github_url}>
+                  <BsGithub
+                    style={{ color: "#4078c0", width: "24px", height: "24px" }}
+                  />{" "}
+                  GitHub
+                </a>
+              )}
+              {profile.linkedin_url && (
+                <a target="_blank" href={profile.linkedin_url}>
+                  <BsLinkedin
+                    style={{ color: "#0077b5", width: "24px", height: "24px" }}
+                  />{" "}
+                  LinkedIn
+                </a>
+              )}
+              {profile.instagram_url && (
+                <a target="_blank" href={profile.linkedin_url}>
+                  <BsInstagram
+                    style={{ color: "#0077b5", width: "24px", height: "24px" }}
+                  />{" "}
+                  Instagram
+                </a>
+              )}
+              {profile.portfolio_url && (
+                <a target="_blank" href={profile.linkedin_url}>
+                  <BsAlarm
+                    style={{ color: "#0077b5", width: "24px", height: "24px" }}
+                  />{" "}
+                  Website
+                </a>
+              )}
+            </>
+          ) : (
+            <div className="sign-up-message">
+              <p>
+                Unlock the full potential of our platform by registering today!
+                Once you're a member, you'll gain access to full profiles and
+                the ability to contact individuals. Don't miss out on valuable
+                connections.{" "}
+              </p>
+              <p>
+                <Link to="/signup">Sign Up</Link> today!
+              </p>
+            </div>
           )}
         </div>
       </div>
