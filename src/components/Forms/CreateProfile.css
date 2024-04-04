@@ -6,10 +6,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 10rem;
+    padding: 1rem;
     margin: 0px auto;
-    width: 50vw;
-    height: auto;
+    width: 90vw;
+    max-width: 500px; /* Added maximum width for larger screens */
+    height:auto;
     background-color: var(--off-white);
 }
 
@@ -20,6 +21,7 @@
     top: 0;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
 }
 
 .create-profile-form {
@@ -27,13 +29,14 @@
     justify-content: center;
     align-items: center;
 }
-
+.create-profile-form-title{
+    padding-top: 20px;
+}
 
 .hide-profile {
     display: flex;
-    margin-bottom: 3rem;
-    padding-top: 10px;
-    gap: 0 1rem;
+    padding-top: 20px;
+    justify-content: flex-end;
 }
 
 .hide-profile p:first-child {
@@ -43,6 +46,7 @@
 .location,
 .preferences {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -53,7 +57,6 @@
 .seeking-mentorship,
 .open-mentorship {
     flex: 1;
-    margin-right: 2rem;
 }
 
 .country-div,
@@ -64,10 +67,10 @@
 .open-mentorship,
 .seeking-mentorship {
     display: flex;
-    margin: 8% auto;
 }
 
-@media screen and (max-width:830px) {
+
+@media screen and (min-width:640px) {
 
     .preferences,
     .location {
