@@ -117,7 +117,7 @@
 .profile-card-footer-btn {
     height: 2rem;
     width: 6rem;
-    background-color: var(--orange-600);
+    background-color: var(--med-blue);
     color: var( --cool-grey-100);
     font-weight: bold;
     border: none;
@@ -126,7 +126,7 @@
 }
 
 .profile-card-footer-btn:hover {
-    background-color: var(--orange-400); /* slightly darker shade of orange on hover */
+    background-color: var(--bs-blue); /* slightly darker shade of orange on hover */
 }
 
 
@@ -146,7 +146,7 @@
     display: inline-block; /* Display icons as inline-block elements */
   }
 .profile--card-placeholder-icon{
-    color: var(--orange-600);
+    color: var(--med-blue);
 }
 @media screen and (min-width:640px) {
 
