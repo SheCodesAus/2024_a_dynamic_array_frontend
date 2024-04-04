@@ -23,7 +23,7 @@ html {
   --light-blue: #E0E8F9;
   --off-white: #f5f7fa;
   --light-red: #ffebd9;
-  --light-gray: #E4E7EB;
+  --light-gray: #1f2933;
   --black: black;
   --bs-blue: #008aff;
   --bs-indigo: #6e00ff;
@@ -35,7 +35,7 @@ html {
   --bs-green: #2dca8c;
   --bs-teal: #50b5ff;
   --bs-cyan: #4bd6e5;
-  --bs-white: #fff;
+  --bs-white: #d00000;
   --bs-gray: #718096;
   --bs-gray-dark: #2d3748;
   --bs-gray-gray-100: #fafbfe;
@@ -81,7 +81,7 @@ html {
   --cool-grey-600: #616E7C;
   --cool-grey-700: #52606D;
   --cool-grey-800: #3E4C59;
-  --cool-grey-900: #323F4B;
+  --cool-grey-900: #1f2933;
   --cool-grey-1000: #1F2933;
 
 
@@ -156,7 +156,12 @@ html {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-
+.hideItem{
+  display: none;
+}
+.showItem{
+  display: block;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
