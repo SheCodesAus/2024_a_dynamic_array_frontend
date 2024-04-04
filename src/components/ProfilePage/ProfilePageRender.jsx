@@ -81,7 +81,7 @@ function ProfilePageDetails() {
         <div className="profile-details">
           <h3>{username}</h3>
           <h3>Username: {user.username}</h3>
-          <h3>{user.email}</h3>
+
           <p>{profile.location}</p>
           <div className="profile--card-body">
             <div className="profile-Card-Body">
@@ -176,6 +176,9 @@ function ProfilePageDetails() {
               <p> Contact Info</p>
 
               <p>Contact Preference: {profile.contact_preference}</p>
+              <p>
+                Email: <h4>{user.email}</h4>
+              </p>
 
               {profile.facebook_url && (
                 <a target="_blank" href={profile.facebook_url}>
