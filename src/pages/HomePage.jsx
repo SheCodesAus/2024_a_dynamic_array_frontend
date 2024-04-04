@@ -66,37 +66,88 @@ function HomePage() {
   const [stateIso2, setStateIso2] = useState("");
   const [countryIso2, setCountryIso2] = useState("");
   const [city, setSelectedCityId] = useState("");
+  const [seekMentorValue, setSeekMentorValue] = useState("");
+  const [openMentorValue, setOpenMentorValue] = useState("");
+  const [tagValue, setTagValue] = useState("");
+  const [industryValue, setIndustryValue] = useState("");
+  const [locationValue, setLocationValue] = useState("");
 
-  console.log("SelectedTags:", selectedTags);
-  console.log("FilteredProfiles:", filteredProfiles);
-  console.log("SelectedIndustries:", selectedIndustries);
-  console.log("Profiles:", profiles);
+  // console.log("SelectedTags:", selectedTags);
+  // console.log("FilteredProfiles:", filteredProfiles);
+  // console.log("SelectedIndustries:", selectedIndustries);
+  // console.log("Profiles:", profiles);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    switch (name) {
+      case "seekMentor":
+        setSeekMentorValue(value);
+        break;
+      case "openMentor":
+        setOpenMentorValue(value);
+        break;
+      case "tag":
+        setTagValue(value);
+        break;
+      case "industry":
+        setIndustryValue(value);
+        break;
+      case "location":
+        setLocationValue(value);
+        break;
+      default:
+        break;
+    }
+  };
+  console.log("filters:", { tagValue });
   return (
     <div className="main-container">
       <HomePageBanner />
       <Statement />
       <section className="home-container">
         <div className="filter-results">
-          <p>Filters: </p>
+          <p>
+            Filters: {seekMentorValue} {openMentorValue}
+            {tagValue}
+            {industryValue}
+            {locationValue}
+          </p>
         </div>
         <div className="home-body-container">
           <div className="filter-container">
+            <p>Seeking Mentorship</p>
+            <ToggleSwitch
+              Name="is_seeking_mentorship"
+              onChange={handleChange}
+              name="seekMentor"
+            />
+            <p>Open to Mentoring</p>
+            <ToggleSwitch
+              Name="is_open_to_mentor"
+              onChange={handleChange}
+              name="openMentor"
+            />
+            Tag Filter:
+            <TagSelect
+              name="tag"
+              setSelectedTags={setSelectedTags}
+              onChange={handleChange}
+            />
+            Industry Filter:
+            <IndustrySelect
+              name="industry"
+              setSelectedIndustries={setSelectedIndustries}
+              onChange={handleChange}
+            />
             <LocationDropdowns
               countryIso2={countryIso2}
               stateIso2={stateIso2}
               setStateIso2={setStateIso2}
               setSelectedCityId={setSelectedCityId}
               setCountryIso2={setCountryIso2}
+              name="location"
+              onChange={handleChange}
             />
-            Tag Filter:
-            <TagSelect setSelectedTags={setSelectedTags} />
-            Industry Filter:
-            <IndustrySelect setSelectedIndustries={setSelectedIndustries} />
-            <p>Seeking Mentorship</p>
-            <ToggleSwitch Name="is_seeking_mentorship" />
-            <p>Open to Mentoring</p>
-            <ToggleSwitch Name="is_open_to_mentor" />
           </div>
           <div className="profile-card-container">
             {isLoading ? (
