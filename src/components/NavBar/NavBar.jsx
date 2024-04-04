@@ -18,7 +18,7 @@ function NavBar() {
   const hasProfile = userProfile.length > 0;
 
   const isAdmin = auth.is_staff;
-  
+
 
   const handleLogout = () => {
     window.localStorage.removeItem("token");
@@ -61,7 +61,7 @@ function NavBar() {
             <li>
               <Link to="/contact">Contact Us</Link>
             </li>
-            
+
             <li>
               {!auth.token ? (
                 <Link to="/signup">
@@ -93,7 +93,6 @@ function NavBar() {
           </ul>
         </div>
       </nav>
-      <Outlet />
     </>
   );
 }
