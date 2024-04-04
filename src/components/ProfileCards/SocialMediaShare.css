@@ -1,39 +1,44 @@
 .ss_wrap {
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
   }
-  
+
   .ss_wrap .ss_btn {
     background: var(--white);
     color: var(--icon-clr);
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 20px;
     border-radius: 50%;
     cursor: pointer;
-    border: black solid 1px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
   }
-  
+.ss_wrap .ss_btn:hover {
+  background-color: var(--cool-grey-300);
+}
   .ss_btn .icon {
     display: flex;
+    color: var(--cool-grey-800);
   }
-  
+
   .ss_wrap .dd_list {
     position: absolute;
-  top: 60px; 
-  left: 20%; 
-  transform: translateX(-50%);
-  z-index: 1000;
+    top: 60px;
+    left: 20%;
+    transform: translateX(-50%);
+    z-index: 1000;
   }
-  
+
   .ss_wrap .dd_list ul {
     display: none;
-    width: 2rem;
+    /*width: 2rem;*/
     background: var(--white);
-    margin: 3.5rem 0rem;;
+    margin: 2.8rem 0rem;;
     border-radius: 25px;
     position: absolute;
     flex-direction: column;
@@ -41,27 +46,27 @@
     right: 20px;
     border: blue solid 1px;
   }
-  
+
   .ss_wrap .dd_list ul li {
     margin-bottom: 3px; /*spacing between items */
   }
 
-  
-  
+
+
   /* social share 1 */
   .ss_wrap.ss_wrap_1 .dd_list {
     top: 0;
     left: 60px;
   }
-  
-  
+
+
   .ss_wrap .dd_list.open ul {
     display: block; /* Show the dropdown when open */
     border: yellow solid 1px;
   }
 
-  
-  
+
+
   .dd_list ul li EmailShareButton {
     color:black;
     z-index:1000;
@@ -76,9 +81,9 @@
     align-items: center;
     color: var(--icon-clr);
     text-decoration:none;
-    
+
   } */
-/*   
+/*
   .ss_wrap .dd_list ul:before {
     content: "";
     position: absolute;
