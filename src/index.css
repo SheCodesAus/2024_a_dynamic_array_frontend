@@ -114,7 +114,19 @@ html {
 
 }
 
-.btn{
+/* Define styles for your wrapper */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /
+}
+
+/* Define styles for your content */
+.content {
+  flex: 1; /* Fill remaining space */
+}
+
+.btn {
 
   width: 100%;
   height:2rem;
@@ -139,6 +151,7 @@ html {
   padding: 0.4rem;
   width: 100%;
 }
+
 .select-label{
   display: flex;
   flex-direction: column;
@@ -154,7 +167,7 @@ html {
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
-/*dark/light mode*/
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
