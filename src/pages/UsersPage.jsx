@@ -46,6 +46,7 @@ function UsersPage() {
 
   return (
     <div className="users-main-container u-main-container">
+      <h1 className="admin-header">Users - Admin Page</h1>
       <div className="user-card">
         {users.map((userData, key) => {
           return (
