@@ -1,4 +1,4 @@
-async function getExperiences(){
+async function getExperiences(profileId){
     const url=`${import.meta.env.VITE_API_URL}/profile/${profileId}/experiences`;
     // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
     // const url=`http://127.0.0.1:8000/profiles`;

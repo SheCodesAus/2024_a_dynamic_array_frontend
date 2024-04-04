@@ -1,5 +1,6 @@
 import useUser from "../../hooks/use-user.js";
 import useProfile from "../../hooks/use-profile.js";
+import useExperiences from "../../hooks/use-experiences.js";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BsPlus } from "react-icons/bs";
@@ -30,6 +31,9 @@ function ProfilePageDetails() {
   const [userError, setUserError] = useState(null);
   const userData = useUser(profile.owner);
   const tags = profile.tags;
+
+
+  const {experiences , isLoading, error} = useExperiences(id);
 
   console.log("profile.owner:", profile.owner);
   useEffect(() => {
@@ -160,11 +164,14 @@ function ProfilePageDetails() {
             </a>
           </div>
         </div>
+
         <div className="experience-card-container">
-          <ExperienceCard />
-          <ExperienceCard />
-          <ExperienceCard />
+        {experiences.map((experienceData, key) => {
+                return <ExperienceCard key={key} experienceData={experienceData} />;
+            })}
         </div>
+
+
         <div className="contact-info">
           Contact Info
           <div>

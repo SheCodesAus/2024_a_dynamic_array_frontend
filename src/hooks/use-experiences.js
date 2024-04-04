@@ -1,13 +1,15 @@
 import {useState, useEffect} from 'react';
 import getExperiences from '../api/get-experiences';
 
-function useExperiences (){
+function useExperiences (id){
+
+    const profileId = id;
     const [experiences, setExperiences] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] =useState();
 
     useEffect(()=> {
-        getExperiences()
+        getExperiences(profileId)
         .then((experiences) =>{
             setExperiences(experiences);
             setIsLoading(false);
