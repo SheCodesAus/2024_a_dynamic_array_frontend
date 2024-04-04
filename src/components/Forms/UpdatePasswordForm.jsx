@@ -79,7 +79,11 @@ function UpdatePasswordForm() {
             onChange={handleChange}
           />
         </div>
-        <button className="userbutton" type="submit" onClick={handleSubmit}>
+        <button
+          className="btn btn-primary"
+          type="submit"
+          onClick={handleSubmit}
+        >
           Update Password!
         </button>
       </form>
