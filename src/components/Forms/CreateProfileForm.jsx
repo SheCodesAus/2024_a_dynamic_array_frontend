@@ -99,88 +99,89 @@ function CreateProfileForm() {
       <form>
         <div className="hide-profile">
           <p>Hide my profile</p>
-          <ToggleSwitch Name="is_hidden" />
+          <ToggleSwitch Name="is_hidden"/>
         </div>
-        <h2>CREATE A PROFILE</h2>
+        <h2 className="create-profile-form-title">CREATE A PROFILE</h2>
 
         <div>
           <label htmlFor="bio">BIO</label>
           <textarea
-            id="bio"
-            rows={4}
-            cols={50}
-            placeholder="Write a bio of at least 3 sentences"
-            onChange={handleChange}
+              id="bio"
+              rows={4}
+              cols={50}
+              placeholder="Write a bio of at least 3 sentences"
+              onChange={handleChange}
           />
         </div>
         <div>
           <label htmlFor="picture_url">Profile Picture URL</label>
           <input
-            type="url"
-            id="picture_url"
-            placeholder="Enter URL"
-            onChange={handleChange}
+              type="url"
+              id="picture_url"
+              placeholder="Enter URL"
+              onChange={handleChange}
           />
         </div>
-        <LocationDropdowns countryIso2={countryIso2} stateIso2={stateIso2} setStateIso2={setStateIso2} setSelectedCityId={setSelectedCityId} setCountryIso2={setCountryIso2}/>
+        <LocationDropdowns countryIso2={countryIso2} stateIso2={stateIso2} setStateIso2={setStateIso2}
+                           setSelectedCityId={setSelectedCityId} setCountryIso2={setCountryIso2}/>
         <div>
           <label htmlFor="facebook_url">Facebook URL</label>
           <input
-            type="url"
-            id="facebook_url"
-            placeholder="Enter URL"
-            onChange={handleChange}
+              type="url"
+              id="facebook_url"
+              placeholder="Enter URL"
+              onChange={handleChange}
           />
         </div>
         <div>
           <label htmlFor="instagram_url">Instagram URL:</label>
           <input
-            type="url"
-            id="instagram_url"
-            placeholder="Enter URL"
-            onChange={handleChange}
+              type="url"
+              id="instagram_url"
+              placeholder="Enter URL"
+              onChange={handleChange}
           />
         </div>
         <div>
           <label htmlFor="github_url">Github URL</label>
           <input
-            type="url"
-            id="github_url"
-            placeholder="Enter URL"
-            onChange={handleChange}
+              type="url"
+              id="github_url"
+              placeholder="Enter URL"
+              onChange={handleChange}
           />
         </div>
         <div>
           <label htmlFor="linkedin_url">Linkedin URL</label>
           <input
-            type="url"
-            id="linkedin_url"
-            placeholder="Enter URL"
-            onChange={handleChange}
+              type="url"
+              id="linkedin_url"
+              placeholder="Enter URL"
+              onChange={handleChange}
           />
         </div>
         <div>
           <label htmlFor="portfolio_url">Portfolio URL</label>
           <input
-            type="url"
-            id="portfolio_url"
-            placeholder="Enter URL"
-            onChange={handleChange}
+              type="url"
+              id="portfolio_url"
+              placeholder="Enter URL"
+              onChange={handleChange}
           />
         </div>
         <div className="tags and industries">
-        <label htmlFor="tags">Tags</label>
+          <label htmlFor="tags">Tags</label>
           <TagSelect/>
-        <label htmlFor="industries">Industries</label>
+          <label htmlFor="industries">Industries</label>
           <IndustrySelect/>
         </div>
-        <div className="preferences">
+        <div className="Contact-preferences">
           <div className="email">
             <label htmlFor="contact_preference_select">Contact Preference</label>
-            <select 
-              value= {contact_preference} 
-              id="contact_preference_select" 
-              onChange={changePreference}
+            <select
+                value={contact_preference}
+                id="contact_preference_select"
+                onChange={changePreference}
             >
               <option value=""></option>
               <option value="Email">Email</option>
@@ -191,25 +192,29 @@ function CreateProfileForm() {
               {/* <option value="Portfolio">Portfolio</option> */}
             </select>
           </div>
+          </div>
+          <div className="preferences">
           <div className="seeking-mentorship">
             <div className="hide-profile">
               <p>Seeking Mentorship</p>
-              <ToggleSwitch Name="is_seeking_mentorship" />
+              <ToggleSwitch Name="is_seeking_mentorship"/>
             </div>
           </div>
           <div className="open-mentorship">
             <div className="hide-profile">
               <p>Open to Mentoring</p>
-              <ToggleSwitch Name="is_open_to_mentor" />
+              <ToggleSwitch Name="is_open_to_mentor"/>
             </div>
           </div>
+
         </div>
 
-        <button className="userbutton" type="submit" onClick={handleSubmit}>
+        <button className="btn btn-primary my-2" type="submit" onClick={handleSubmit}>
           Create Profile
         </button>
       </form>
     </section>
   );
 }
+
 export default CreateProfileForm;
