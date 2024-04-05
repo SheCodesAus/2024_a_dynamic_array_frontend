@@ -57,7 +57,7 @@ input, textarea, select{
     padding: 10rem 2rem;
 }
 
-@media screen and (min-width:576px) {
+@media screen and (min-width:640px) {
     .contact-form-container{
         display:flex;
         flex-direction:row;
