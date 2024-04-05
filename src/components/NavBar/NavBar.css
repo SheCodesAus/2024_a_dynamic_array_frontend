@@ -53,6 +53,7 @@
 @media screen and (min-width: 640px) {
     .topNav {
         display: flex;
+
     }
 
     .nav-Links {
