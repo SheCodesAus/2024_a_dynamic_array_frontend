@@ -1,4 +1,4 @@
-import "../components/Privacy/PrivacyPage.css";
+import React from 'react';
 
 function PrivacyPage() {
   return (
