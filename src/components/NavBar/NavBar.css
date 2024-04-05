@@ -53,6 +53,7 @@
 @media screen and (min-width: 640px) {
     .topNav {
         display: flex;
+
     }
 
     .nav-Links {
@@ -67,5 +68,21 @@
 
     .nav-hideItem {
         display: flex !important;
+    }
+
+    .topNav a {
+        font-size: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .topNav a {
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .topNav a {
+        font-size: 17px;
     }
 }
