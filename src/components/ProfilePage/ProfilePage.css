@@ -1,8 +1,8 @@
 .profile-page-container {
     display: flex;
     flex-direction: column;
-  
-   height: 100%;
+
+    /*height: 100%;*/
     border: #EBE9EA solid 1px;
     background-color: white;
     color: rgba(0, 0, 0, 0.87);
@@ -11,13 +11,13 @@
     border-radius: 10px;
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
     overflow: hidden;
-    width: 70vw;
-   margin:3rem auto;
- 
+    width: 100%;
+    margin: 3rem auto;
+
 }
 
-.profile-page-header{
-    padding: 0 16px;
+.profile-page-header {
+    padding: 0 1rem;
     margin: 0;
     display: flex;
     flex-direction: row;
@@ -30,26 +30,81 @@
     z-index: 500;
 }
 
-.profile-details, 
-.bio-section, 
-.skills-section, 
-.industry-tags, 
-.experiences-section, 
-.experience-card-container,
-.contact-info
-{
-    margin:1.5rem;
+.profile-details,
+.bio-section,
+.skills-section,
+.experiences-section,
+.profile-page-render--experience-container,
+.contact-info {
+    margin: 1.5rem;
 }
+.industry-tags ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+.industry-tags ul li {
 
-.contact-info{
+    background-color: var(--bs-gray);
+    list-style-type: none;
+    margin: 0.4rem;
+    border-radius: 4px;
+    padding: 0.4rem;
+    color: var(--off-white);
+
+}
+.contact-info {
     margin-bottom: 10rem;
     display: flex;
     flex-direction: column;
 
-    
+
 }
 
-.sign-up-message{
+.sign-up-message {
     border: black solid 2px;
-    padding:1rem;
+    padding: 1rem;
+}
+
+.profile-page-render--card-body {
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.profile-page-render--skill-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.skill-tags ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+.skill-tags ul li {
+    background-color: var(--bs-gray);
+    list-style-type: none;
+    margin: 0.4rem;
+    border-radius: 4px;
+    padding: 0.4rem;
+    color: var(--off-white);
+}
+.profile-page-render--experience-container{
+    display: flex;
+    flex-direction: column;
+}
+.experiences-section-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.2rem 0;
 }
