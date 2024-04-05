@@ -6,8 +6,10 @@ import { useState, useEffect } from "react";
 import { BsPlus } from "react-icons/bs";
 import { MdModeEdit } from "react-icons/md";
 import ExperienceCard from "../ExperienceCard/ExperienceCard.jsx";
+import CreateExperienceForm from "../Forms/CreateExperienceForm.jsx";
 import "../ProfilePage/ProfilePage.css";
 import { useAuth } from "../../hooks/use-auth";
+
 
 import {
   BsFillCheckCircleFill,
@@ -36,6 +38,15 @@ function ProfilePageDetails() {
 
 
   const {experiences , isLoading, error} = useExperiences(id);
+
+
+ 
+    const [experiencePopUp, setExperiencePopUp] = useState(false)
+
+  
+   
+      
+    
 
 
   console.log("profile.owner:", profile.owner);
@@ -160,8 +171,8 @@ function ProfilePageDetails() {
                 style={{ color: "#4078c0", width: "24px", height: "24px" }}
               />
             </a>
-            <a target="_blank" href="#">
-              <BsPlus
+            <a onClick={() => setExperiencePopUp(true)} >
+              <BsPlus 
                 style={{ color: "#4078c0", width: "24px", height: "24px" }}
               />
             </a>
@@ -246,7 +257,12 @@ function ProfilePageDetails() {
           )}
         </div>
       </div>
+      <div>
+           
+            {experiencePopUp ? <CreateExperienceForm id={id} trigger={experiencePopUp} setTrigger={setExperiencePopUp}/> : null}
+        </div>
     </section>
+    
   );
 }
 
