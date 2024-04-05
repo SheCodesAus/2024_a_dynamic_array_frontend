@@ -1,4 +1,4 @@
-import "../components/TermsAndConditions/TermsAndConditions.css";
+import React from 'react';
 
 function TermsAndConditionsPage() {
   return (
