@@ -1,10 +1,9 @@
 import { Outlet } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import HomePageBanner from "../components/HomePage/HomePageBanner.jsx";
 import "../index.css";
 import "../components/HomePage/HomePage.css";
 import Statement from "../components/Statement/Statement.jsx";
-import FilterResults from "../components/FilterSection/FilterResults.jsx";
 import ProfileCards from "../components/ProfileCards/ProfileCards.jsx";
 import useProfiles from "../hooks/use-profiles.js";
 import TagSelect from "../components/Forms/SelectOptions/TagsMultiselectDropdown.jsx";
@@ -66,78 +65,43 @@ function HomePage() {
   const [stateIso2, setStateIso2] = useState("");
   const [countryIso2, setCountryIso2] = useState("");
   const [city, setSelectedCityId] = useState("");
-  const [seekMentorValue, setSeekMentorValue] = useState("");
-  const [openMentorValue, setOpenMentorValue] = useState("");
-  const [tagValue, setTagValue] = useState("");
-  const [industryValue, setIndustryValue] = useState("");
-  const [locationValue, setLocationValue] = useState("");
+  const [seekMentorValue, setSeekMentorValue] = useState(null);
+  const [openMentorValue, setOpenMentorValue] = useState(null);
+  const multiSelectRef = useRef(null); // creating a reference to the multiselect component
 
-  // console.log("SelectedTags:", selectedTags);
-  // console.log("FilteredProfiles:", filteredProfiles);
-  // console.log("SelectedIndustries:", selectedIndustries);
-  // console.log("Profiles:", profiles);
+  console.log("selectedIndustries in HomePage:", selectedIndustries);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    switch (name) {
-      case "seekMentor":
-        setSeekMentorValue(value);
-        break;
-      case "openMentor":
-        setOpenMentorValue(value);
-        break;
-      case "tag":
-        setTagValue(value);
-        break;
-      case "industry":
-        setIndustryValue(value);
-        break;
-      case "location":
-        setLocationValue(value);
-        break;
-      default:
-        break;
-    }
-  };
-  console.log("filters:", { tagValue });
+  console.log("SelectedTags:", selectedTags);
+  console.log("FilteredProfiles:", filteredProfiles);
+  console.log("SelectedIndustries:", selectedIndustries);
+  console.log("Profiles:", profiles);
+
   return (
     <div className="main-container">
       <HomePageBanner />
       <Statement />
       <section className="home-container">
         <div className="filter-results">
-          <p>
-            Filters: {seekMentorValue} {openMentorValue}
-            {tagValue}
-            {industryValue}
-            {locationValue}
-          </p>
+          <p>Filters: </p>
+          {selectedTags.map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+          {selectedIndustries.map((industry) => (
+            <span key={industry}>{industry}</span>
+          ))}
         </div>
         <div className="home-body-container">
           <div className="filter-container">
-            <p>Seeking Mentorship</p>
-            <ToggleSwitch
-              Name="is_seeking_mentorship"
-              onChange={handleChange}
-              name="seekMentor"
-            />
-            <p>Open to Mentoring</p>
-            <ToggleSwitch
-              Name="is_open_to_mentor"
-              onChange={handleChange}
-              name="openMentor"
-            />
+            <p className="toggle">Open to Mentoring</p>
+            <ToggleSwitch Name="is_open_to_mentor" />
+            <p className="toggle">Seeking Mentorship</p>
+            <ToggleSwitch Name="is_seeking_mentorship" />
             Tag Filter:
-            <TagSelect
-              name="tag"
-              setSelectedTags={setSelectedTags}
-              onChange={handleChange}
-            />
+            <TagSelect name="tag" setSelectedTags={setSelectedTags} />
             Industry Filter:
             <IndustrySelect
               name="industry"
               setSelectedIndustries={setSelectedIndustries}
-              onChange={handleChange}
             />
             <LocationDropdowns
               countryIso2={countryIso2}
@@ -146,7 +110,7 @@ function HomePage() {
               setSelectedCityId={setSelectedCityId}
               setCountryIso2={setCountryIso2}
               name="location"
-              onChange={handleChange}
+              // onChange={handleChange}
             />
           </div>
           <div className="profile-card-container">
