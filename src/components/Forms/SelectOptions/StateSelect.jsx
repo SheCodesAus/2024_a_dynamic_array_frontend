@@ -1,4 +1,4 @@
-//This function takes the country ISO2 code and fetches the list of state names and state data from the API 
+//This function takes the country ISO2 code and fetches the list of state names and state data from the API
 //it uses the list of state names to populate the dropdown and when a state is selected
 //it grabs the iso2 code for the selected state to be used in the city API and dropdown component.
 
@@ -26,20 +26,20 @@ function StateSelect({countryIso2, setStateIso2}) { // props passed in from Loca
 
     useStates(countryIso2, setStateNames, setStatesData); // custom hook from above being used inside the state select function
 
-    // Event handler to update selected state 
+    // Event handler to update selected state
     const handleStateChange = (event) => {
         const value = event.target.value;
         setSelectedStateName(value);
-        
+
         //and fetch and set corresponding stateIso2
         const selectedStateData = statesData.find(state => state.name === value);
         if (selectedStateData) {
             setStateIso2(selectedStateData.iso2); // set the selected ISO2
-        }    
+        }
     };
 
     return (
-            <label>
+            <label className="form-controller">
                 State:
                 <select value={selectedStateName} onChange={handleStateChange}>
                     <option value="">Select State</option>

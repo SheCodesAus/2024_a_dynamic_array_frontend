@@ -8,6 +8,7 @@ import {
   BsGithub,
   BsLinkedin,
 } from "react-icons/bs";
+import profilePlaceHolder from "./../../assets/Profile/profile-placeholder96.png"
 import { IoIosCloseCircle } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 
@@ -56,7 +57,8 @@ function ProfileCard({ profile }) {
             ) : (
               <div>
                 {/*This is the placecard that can display instead if there is no profile image*/}
-                <CgProfile size={64} className="profile--card-placeholder-icon"/>
+                {/*<CgProfile size={64} className="profile--card-placeholder-icon"/>*/}
+                <img src={profilePlaceHolder} className="profile--card-placeholder-icon"/>
               </div>
             )}
           </div>
