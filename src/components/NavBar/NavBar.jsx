@@ -70,7 +70,7 @@ function NavBar() {
           {hasProfile && (
             <Link
               onClick={() => setMenuOpen(!menuOpen)}
-              to={`/profile/${userProfile[0]}`}
+              to={`/profile/${userProfile.id}`}
             >
               My Profile
             </Link>
@@ -79,7 +79,7 @@ function NavBar() {
             <Link
               to="/"
               onClick={() => {
-                handleLogout;
+                handleLogout();
                 setMenuOpen(!menuOpen);
               }}
             >
