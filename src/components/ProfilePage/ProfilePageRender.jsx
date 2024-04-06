@@ -38,18 +38,11 @@ function ProfilePageDetails() {
 
 
   const {experiences , isLoading, error} = useExperiences(id);
-
-
- 
-    const [experiencePopUp, setExperiencePopUp] = useState(false)
-
-  
-   
-      
-    
+  const [experiencePopUp, setExperiencePopUp] = useState(false)
 
 
   console.log("profile.owner:", profile.owner);
+
   useEffect(() => {
     // Check if profile data is available and not loading
     if (userData.user) {
@@ -78,6 +71,8 @@ function ProfilePageDetails() {
     }
     console.log("tags:", profile.tags.length);
     console.log("profile data:", profile);
+    console.log("user_id:", user.id);
+ 
     return (
         <section className="profile-page-body main-container">
             <div className="profile-page-container">
@@ -162,6 +157,8 @@ function ProfilePageDetails() {
         <hr className="hr" />
         <div className="experiences-section">
           <h3>Experiences</h3>
+          
+          {auth.token && user.id==profile.owner ? ( 
           <div className="experience-icons">
             <a target="_blank" href="#">
               <MdModeEdit
@@ -173,7 +170,11 @@ function ProfilePageDetails() {
                 style={{ color: "#4078c0", width: "24px", height: "24px" }}
               />
             </a>
-          </div>
+          </div> ) : (
+            <br/>
+          )}
+
+
         </div>
 
         <div className="experience-card-container">
@@ -257,6 +258,7 @@ function ProfilePageDetails() {
            
             {experiencePopUp ? <CreateExperienceForm id={id} trigger={experiencePopUp} setTrigger={setExperiencePopUp}/> : null}
         </div>
+        </section>
     );
 }
 

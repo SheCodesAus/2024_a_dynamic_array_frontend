@@ -5,9 +5,10 @@ async function postExperience(
     picture_url, 
     is_present_experience,
     start_date, 
-    end_date) {
+    end_date,
+    profileId ) {
     
-    const url = `${import.meta.env.VITE_API_URL}/profiles/${profileId}/experiences/`;
+    const url = `${import.meta.env.VITE_API_URL}/profile/${profileId}/experiences/`;
     const token =window.localStorage.getItem("token");
 
      const response = await fetch(url, {
