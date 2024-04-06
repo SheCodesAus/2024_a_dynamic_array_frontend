@@ -2,7 +2,6 @@ import Multiselect from 'multiselect-react-dropdown';
 import getTags from '../../../api/get-tags.js';
 import React, { useState, useEffect, useRef } from 'react';
 
-// Custom hook created to fetch and set the list of tags from the API
 function useTags(setTagOptions) {
     useEffect(() => {
         getTags().then(data => {
@@ -11,29 +10,32 @@ function useTags(setTagOptions) {
         }).catch(error => {
             console.error('Error fetching tags:', error);
         });
-    }, []); // Empty dependency array ensures useEffect runs only once on component mount
+    }, []);
 }
 
-function TagSelect({setSelectedTags}) { // props passed in
+function TagSelect({ setSelectedTags, margin }) {
+    const [tagOptions, setTagOptions] = useState([]);
 
-    const [tagOptions, setTagOptions] = useState([]); // creating the state for the drop down labels
-    
     useTags(setTagOptions);
 
-    const multiSelectRef = useRef(null); // creating a reference to the multiselect component
+    const multiSelectRef = useRef(null);
 
     const handleCheckboxChange = () => {
-        setSelectedTags(multiSelectRef.current.getSelectedItems().map((tag) => tag.name)) // setting the selected tags to the state
+        setSelectedTags(multiSelectRef.current.getSelectedItems().map((tag) => tag.name))
     }
 
+    const style = margin ? { margin } : {};
+
     return (
-        <Multiselect
-            options={tagOptions} // Options to display in the dropdown
-            onSelect={handleCheckboxChange} // Function will trigger on select event
-            onRemove={handleCheckboxChange} // Function will trigger on remove event
-            displayValue="name" // Property name to display in the dropdown options
-            ref={multiSelectRef} // Reference to the multiselect component
-        />
+        <div style={style}>
+            <Multiselect
+                options={tagOptions}
+                onSelect={handleCheckboxChange}
+                onRemove={handleCheckboxChange}
+                displayValue="name"
+                ref={multiSelectRef}
+            />
+        </div>
     )
 }
 export default TagSelect;

@@ -117,7 +117,7 @@
 .profile-card-footer-btn {
     height: 2rem;
     width: 6rem;
-    background-color: var(--med-blue);
+    background-color: var(--indigo-500);
     color: var( --cool-grey-100);
     font-weight: bold;
     border: none;
