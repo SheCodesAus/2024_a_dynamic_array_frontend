@@ -6,6 +6,7 @@ import EditUserForm from "../components/Forms/EditUserForm";
 import { Link } from "react-router-dom";
 import deleteUser from "../api/delete-user";
 import useAuth from "../hooks/use-auth";
+import ModalDeleteConfirmation from "../components/Modal/ModalDeleteConfirmation";
 import "../pages/UserPage.css";
 
 function userPage() {
@@ -81,21 +82,11 @@ function userPage() {
       )}
       {isEditing && <EditUserForm user={user} onSave={handleSave} />}
       {showConfirmation && (
-        <div className="confirmation-popup">
-          <p>Are you sure you want to delete your account?</p>
-          <p>
-            If you hold a profile on this site, this will also be deleted upon
-            user account deletion.
-          </p>
-          <div className="user-button-container">
-            <button className="user-button" onClick={handleConfirmDelete}>
-              Yes
-            </button>
-            <button className="user-button" onClick={handleCancelDelete}>
-              No
-            </button>
-          </div>
-        </div>
+        <ModalDeleteConfirmation
+          onConfirm={handleConfirmDelete}
+          onCancel={handleCancelDelete}
+          showModal={showConfirmation}
+        />
       )}
     </div>
   );
