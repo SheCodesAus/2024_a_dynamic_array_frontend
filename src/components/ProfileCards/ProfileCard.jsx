@@ -8,7 +8,7 @@ import {
   BsGithub,
   BsLinkedin,
 } from "react-icons/bs";
-import profilePlaceHolder from "./../../assets/Profile/profile-placeholder96.png"
+import profilePlaceHolder from "./../../assets/Profile/profile-placeholder96.png";
 import { IoIosCloseCircle } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 
@@ -52,13 +52,19 @@ function ProfileCard({ profile }) {
           <div className="profile-image">
             {profile.picture_url ? (
               <div>
-                <p>@@</p>
+                <img
+                  src={profile.picture_url}
+                  className="profile--card-placeholder-icon"
+                />
               </div>
             ) : (
               <div>
                 {/*This is the placecard that can display instead if there is no profile image*/}
                 {/*<CgProfile size={64} className="profile--card-placeholder-icon"/>*/}
-                <img src={profilePlaceHolder} className="profile--card-placeholder-icon"/>
+                <img
+                  src={profilePlaceHolder}
+                  className="profile--card-placeholder-icon"
+                />
               </div>
             )}
           </div>
@@ -85,12 +91,12 @@ function ProfileCard({ profile }) {
           <div className="profile-Card-Body">
             {profile.is_open_to_mentor ? (
               <div>
-                <BsFillCheckCircleFill  className="tick-icon"/>
+                <BsFillCheckCircleFill className="tick-icon" />
                 <span style={{ marginLeft: "0.5rem" }}>Open to mentoring</span>
               </div>
             ) : (
               <div>
-                <IoIosCloseCircle className="close-icon"/>
+                <IoIosCloseCircle className="close-icon" />
                 <span style={{ marginLeft: "0.5rem" }}>
                   Not open to mentoring
                 </span>
@@ -100,12 +106,12 @@ function ProfileCard({ profile }) {
 
           {profile.is_seeking_mentorship ? (
             <div>
-              <BsFillCheckCircleFill className="tick-icon"/>
+              <BsFillCheckCircleFill className="tick-icon" />
               <span style={{ marginLeft: "0.5rem" }}>Seeking Mentorship</span>
             </div>
           ) : (
             <div>
-              <IoIosCloseCircle className="close-icon"/>
+              <IoIosCloseCircle className="close-icon" />
               <span style={{ marginLeft: "0.5rem" }}>
                 Not seeking mentorship
               </span>
@@ -118,31 +124,29 @@ function ProfileCard({ profile }) {
           <div className="profile--card-footer-endorsement">
             <h4>Endorsements: {profile.number_of_endorsements}</h4>
           </div>
-
           {/* -Note: if user has not provided links to a social media, then the icon just does not display */}
-
           <div className="profile-card-action-container">
             <div className="profile-card-footer-social-media">
               {profile.facebook_url && (
-                  <a target="_blank" href={profile.facebook_url}>
-                    <BsFacebook
-                        style={{color: "#1877F2", width: "24px", height: "24px"}}
-                    />
-                  </a>
+                <a target="_blank" href={profile.facebook_url}>
+                  <BsFacebook
+                    style={{ color: "#1877F2", width: "24px", height: "24px" }}
+                  />
+                </a>
               )}
               {profile.github_url && (
-                  <a target="_blank" href={profile.github_url}>
-                    <BsGithub
-                        style={{color: "#4078c0", width: "24px", height: "24px"}}
-                    />
-                  </a>
+                <a target="_blank" href={profile.github_url}>
+                  <BsGithub
+                    style={{ color: "#4078c0", width: "24px", height: "24px" }}
+                  />
+                </a>
               )}
               {profile.linkedin_url && (
-                  <a target="_blank" href={profile.linkedin_url}>
-                    <BsLinkedin
-                        style={{color: "#0077b5", width: "24px", height: "24px"}}
-                    />
-                  </a>
+                <a target="_blank" href={profile.linkedin_url}>
+                  <BsLinkedin
+                    style={{ color: "#0077b5", width: "24px", height: "24px" }}
+                  />
+                </a>
               )}
             </div>
             <Link className="profile-link" to={profileLink}>
