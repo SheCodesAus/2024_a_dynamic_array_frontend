@@ -38,4 +38,8 @@
   .user--card-container button:hover {
     background-color: #616E7C;
   }
+
+  .user--card-container a {
+    color: var(--orange-500);
+  }
   

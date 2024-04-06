@@ -1,36 +1,37 @@
 .user-detail-body-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
-  }
-  
-  .user-card-container {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 400px;
-  }
-  
-  .user-details-title {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .user-details-list {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .user-details-list li {
-    margin-bottom: 10px;
-  }
-  
-  .user-details-list strong {
-    font-weight: bold;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+}
+
+.user-card-container {
+  padding: 20px;
+  border: 1px solid #EBE9EA;
+  border-radius: 10px;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.87);
+  box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  width: 300px;
+}
+
+.user-details-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.user-details-list {
+  list-style: none;
+  padding: 0;
+}
+
+.user-details-list li {
+  margin-bottom: 10px;
+}
+
+.user-details-list li strong {
+  font-weight: bold;
+}
   
