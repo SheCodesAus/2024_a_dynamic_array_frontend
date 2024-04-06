@@ -1,6 +1,8 @@
 import "../../components/Footer/Footer.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/NavBar/logo.png";
+import ModalTerms from "../Modal/ModalTerms";
+import ModalPrivacy from "../Modal/ModalPrivacy";
 import { FaLinkedin, FaFacebook } from "react-icons/fa";
 
 
@@ -21,10 +23,10 @@ function Footer() {
           <div className="footer-section">
             <ul className="footerItems">
               <li>
-                <Link to="/termsandconditions">Terms and Conditions</Link>
+                <ModalTerms />
               </li>
               <li>
-                <Link to="/privacy">Privacy Policy</Link>
+                <ModalPrivacy />
               </li>
             </ul>
           </div>
