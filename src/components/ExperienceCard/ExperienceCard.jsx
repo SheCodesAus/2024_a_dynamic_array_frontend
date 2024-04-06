@@ -6,6 +6,24 @@ function ExperienceCard(props) {
 
   const { experienceData } = props;
 
+
+  function parseDate(date){
+    
+    // alert(date);
+  
+    let new_date = String(date).split('-');
+    const month = new_date[1] - 1;
+    const year = new_date[0];
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+    console.log(new_date)
+    console.log(month)
+    console.log(year)
+    new_date =  String(monthNames[month] + " " + year);
+    return new_date;
+  }
+  
+
   return (
     <div className="experience-card-container">
       <div className="Project-image">
@@ -16,13 +34,17 @@ function ExperienceCard(props) {
         />
       </div>
 
+
       <div>
         <p>Type of experience: {experienceData.experience_type} </p>
-        {!experienceData.end_date ? (
-        <p> {experienceData.start_date} </p>
-        ):(
-        <p>{experienceData.start_date} - {experienceData.end_date} </p>
-        )}
+        {!experienceData.end_date && !experienceData.is_present_experience
+        ? <p> {parseDate(experienceData.start_date)} </p>
+        :<>
+          {experienceData.is_present_experience 
+          ? <p>{parseDate(experienceData.start_date)} - Present </p>
+          : <p>{parseDate(experienceData.start_date)} - {parseDate(experienceData.end_date)} </p>
+          }
+          </>}
          <br/><p>{experienceData.description} </p>
       </div>
 
