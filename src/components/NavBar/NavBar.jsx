@@ -50,7 +50,7 @@ function NavBar() {
                         <Link onClick={() => setMenuOpen(!menuOpen)} to={`/profile/${userProfile.id}`}>My Profile</Link>
                     )}
                     {auth.token ? (
-                        <Link to="/" onClick={() => {handleLogout;setMenuOpen(!menuOpen)}}>
+                        <Link to="/" onClick={() => {handleLogout();setMenuOpen(!menuOpen)}}>
                             Logout
                         </Link>
                     ) : (
