@@ -105,7 +105,10 @@ function HomePage() {
             <p className="toggle">Seeking Mentorship</p>
             <ToggleSwitch Name="is_seeking_mentorship" />
             Tag Filter:
-            <TagSelect name="tag" setSelectedTags={setSelectedTags} />
+            <TagSelect 
+              name="tag" 
+              setSelectedTags={setSelectedTags} 
+            />
             Industry Filter:
             <IndustrySelect
               name="industry"

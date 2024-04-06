@@ -31,12 +31,19 @@ function CreateProfileForm() {
   const [stateIso2, setStateIso2] = useState("");
   const [countryIso2, setCountryIso2] = useState("");
   const [city, setSelectedCityId] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedIndustries, setSelectedIndustries] = useState([]);
 
+  console.log("selectedTags in CreateProfileForm:", selectedTags);
+  console.log("selectedIndustries in CreateProfileForm:", selectedIndustries);
+  
   // Update the profile object with the selected country, state, and city values
     profile.state = stateIso2;
     profile.country = countryIso2;
     profile.city = city;
     profile.location = `${city}, ${stateIso2}, ${countryIso2}`;
+    profile.tags = selectedTags;
+    profile.industries = selectedIndustries;
 
   const [contact_preference, setPreference] = useState();
   const changePreference = (e) => {
@@ -66,9 +73,9 @@ function CreateProfileForm() {
       } else if (auth.token && profile.bio) {
         postProfile(
           profile.bio,
-          // profile.city,
-          // profile.state,
-          // profile.country,
+          profile.city,
+          profile.state,
+          profile.country,
           profile.location,
           profile.picture_url,
           profile.is_hidden,
@@ -80,7 +87,9 @@ function CreateProfileForm() {
           profile.portfolio_url,
           profile.contact_preference,
           profile.is_open_to_mentor,
-          profile.is_seeking_mentorship
+          profile.is_seeking_mentorship,
+          profile.tags,
+          profile.industries
         )
           .then((response) => {
             navigate(`/profile/${response.id}`); // redirect to home page
@@ -122,8 +131,12 @@ function CreateProfileForm() {
               onChange={handleChange}
           />
         </div>
-        <LocationDropdowns countryIso2={countryIso2} stateIso2={stateIso2} setStateIso2={setStateIso2}
-                           setSelectedCityId={setSelectedCityId} setCountryIso2={setCountryIso2}/>
+        <LocationDropdowns 
+          countryIso2={countryIso2} 
+          stateIso2={stateIso2} 
+          setStateIso2={setStateIso2}
+          setSelectedCityId={setSelectedCityId}
+          setCountryIso2={setCountryIso2}/>
         <div>
           <label htmlFor="facebook_url">Facebook URL</label>
           <input
@@ -171,9 +184,15 @@ function CreateProfileForm() {
         </div>
         <div className="tags and industries">
           <label htmlFor="tags">Tags</label>
-          <TagSelect/>
+          <TagSelect
+            name="tag" 
+            setSelectedTags={setSelectedTags} 
+          />
           <label htmlFor="industries">Industries</label>
-          <IndustrySelect/>
+          <IndustrySelect
+            name="industry"
+            setSelectedIndustries={setSelectedIndustries}
+          />
         </div>
         <div className="Contact-preferences">
           <div className="email">
