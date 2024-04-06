@@ -1,0 +1,83 @@
+@import "../../index.css";
+
+.user-form-container {
+    margin-bottom: 2rem;
+  
+  }
+  
+  .user-form-container form h2 {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  
+  .user-form-container  {
+    top: 0;
+    right: 0;
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    padding: 1rem;
+    margin: 0px auto;
+    height: auto;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .user-form-container label {
+    display: flex;
+    align-items: baseline;
+    margin-top: 1.5rem;
+    font-family: 'Open Sans', sans-serif;
+    margin-bottom: 4px;
+  }
+  
+  .user-form-container input,
+  .user-form-container textarea,
+  .user-form-container select {
+    width: 100%;
+    height: 3rem;
+    border: solid 1px var(--light-gray);
+    border-radius: 4px;
+    padding-left: 0.8rem;
+  }
+  
+  .user-form-container textarea {
+    height: 20vh;
+    padding: 0.8rem;
+  }
+  
+  .user-form-container .contactus-btn {
+    margin: 3rem 0 0.6rem;
+  }
+  
+  .user-form-container input[type='checkbox'] {
+    width: 25px;
+  }
+
+  #last_name{
+    margin-bottom: 2rem;
+  }
+  
+  @media screen and (min-width: 640px) {
+    .user-form-container div {
+      width: 100%;
+    }
+  
+    .user-form-container .login-link {
+      margin-top: 2rem;
+      text-align: right;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .user-form-container .form-container {
+      max-width: 60%;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .user-form-container .form-container {
+      max-width: unset;
+      width: 100%;
+    }
+  }

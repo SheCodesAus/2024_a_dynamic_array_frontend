@@ -1,58 +1,87 @@
-/* css styling to be applied. Url to this is /users/<int:pk> */
+@import "../index.css";
 
 .userdetails-main-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .userdetails-main-container > div {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-  }
-  
-  .userdetails-main-container > div button {
-    margin-top: 10px;
-    background-color: #ff6347;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .userdetails-main-container > div button:hover {
-    background-color: #d74422;
-  }
-  
-  .confirmation-popup {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
-    text-align: center;
-    margin-top: 20px;
-  }
-  
-  .confirmation-popup button {
-    margin-top: 10px;
-    background-color: #ff6347;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .confirmation-popup button:hover {
-    background-color: #d74422;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.userdetails-main-container > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+}
+
+.user-button-container {
+  display: flex;
+  flex-direction: row;
+  margin-top:1rem;
+}
+
+.user-button-container button,
+.user-button-container a {
+  height: 2rem;
+  width: 6rem;
+  background-color: var(--indigo-500);
+  color: var(--cool-grey-100);
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  text-decoration: none; /* Remove underline from links */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.user-button-container button {
+  margin: 0 .5rem;
+}
+
+.userdetails-main-container > div button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--indigo-500);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.userdetails-main-container > div button:hover {
+  background-color: #0056b3;
+}
+
+.confirmation-popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  margin-top: 20px;
+}
+
+.confirmation-popup button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--indigo-500);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirmation-popup button:hover {
+  background-color: #0056b3;
+}
