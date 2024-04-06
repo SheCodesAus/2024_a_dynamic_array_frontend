@@ -29,32 +29,32 @@ function NavBar() {
     return (
         <div className="mobile-container">
             <div className="topNav">
-                <Link className="active" to="/">DiversiTech</Link>
+                <Link className="active" onClick={() => setMenuOpen(!menuOpen)} to="/">DiversiTech</Link>
                 <div className={`${"nav-Links"} ${menuOpen ? "nav-showItem" : "nav-hideItem"}`}>
-                    <Link to="/">Home</Link>
-                    <Link to="/about">About Us</Link>
-                    <Link to="/contact">Contact Us</Link>
+                    <Link onClick={() => setMenuOpen(!menuOpen)} to="/">Home</Link>
+                    <Link onClick={() => setMenuOpen(!menuOpen)} to="/about">About Us</Link>
+                    <Link onClick={() => setMenuOpen(!menuOpen)} to="/contact">Contact Us</Link>
                     {!auth.token ? (
-                        <Link to="/signup">
+                        <Link onClick={() => setMenuOpen(!menuOpen)} to="/signup">
                             Sign Up
                         </Link>
                     ) : (
-                        <Link to={`/users/${auth.user_id}`}>Account</Link>
+                        <Link onClick={() => setMenuOpen(!menuOpen)} to={`/users/${auth.user_id}`}>Account</Link>
                     )}
                     {isAdmin && (
-                            <Link to="/users">
+                            <Link onClick={() => setMenuOpen(!menuOpen)} to="/users">
                                 User Admin
                             </Link>
                     )}
                     {hasProfile && (
-                        <Link to={`/profile/${userProfile.id}`}>My Profile</Link>
+                        <Link onClick={() => setMenuOpen(!menuOpen)} to={`/profile/${userProfile.id}`}>My Profile</Link>
                     )}
                     {auth.token ? (
-                        <Link to="/" onClick={handleLogout}>
+                        <Link to="/" onClick={() => {handleLogout;setMenuOpen(!menuOpen)}}>
                             Logout
                         </Link>
                     ) : (
-                        <Link to="/login">Login</Link>
+                        <Link onClick={() => setMenuOpen(!menuOpen)} to="/login">Login</Link>
                     )}
 
                 </div>

@@ -81,48 +81,53 @@ function HomePage() {
       <HomePageBanner />
       <Statement />
       <section className="home-container">
-        <div className="filter-results">
-          <p>Filters: </p>
-          {selectedTags.map((tag) => (
-            <span key={tag}>{tag}</span>
-          ))}
-          {selectedIndustries.map((industry) => (
-            <span key={industry}>{industry}</span>
-          ))}
-        </div>
+        {/*<div className="filter-results hideItem">*/}
+        {/*  <p>Filters: </p>*/}
+        {/*  {selectedTags.map((tag) => (*/}
+        {/*    <span key={tag}>{tag}</span>*/}
+        {/*  ))}*/}
+        {/*  {selectedIndustries.map((industry) => (*/}
+        {/*    <span key={industry}>{industry}</span>*/}
+        {/*  ))}*/}
+        {/*</div>*/}
         <div className="home-body-container">
           <div className="filter-container">
-            <p className="toggle">Open to Mentoring</p>
-            <ToggleSwitch Name="is_open_to_mentor" />
-            <p className="toggle">Seeking Mentorship</p>
-            <ToggleSwitch Name="is_seeking_mentorship" />
+
             Tag Filter:
-            <TagSelect name="tag" setSelectedTags={setSelectedTags} />
+            <TagSelect name="tag" margin={'0 0 1.5rem'} setSelectedTags={setSelectedTags}/>
             Industry Filter:
             <IndustrySelect
-              name="industry"
-              setSelectedIndustries={setSelectedIndustries}
+                name="industry"
+                setSelectedIndustries={setSelectedIndustries}
             />
             <LocationDropdowns
-              countryIso2={countryIso2}
-              stateIso2={stateIso2}
-              setStateIso2={setStateIso2}
-              setSelectedCityId={setSelectedCityId}
-              setCountryIso2={setCountryIso2}
-              name="location"
-              // onChange={handleChange}
+                countryIso2={countryIso2}
+                stateIso2={stateIso2}
+                setStateIso2={setStateIso2}
+                setSelectedCityId={setSelectedCityId}
+                setCountryIso2={setCountryIso2}
+                name="location"
+                // onChange={handleChange}
             />
+            <div className="home-page-switch-container mt-2 mb-2">
+              <p className="toggle">Open to Mentoring</p>
+              <ToggleSwitch Name="is_open_to_mentor"/>
+            </div>
+            <div className="home-page-switch-container mb-2">
+              <p className="toggle">Seeking Mentorship</p>
+              <ToggleSwitch Name="is_seeking_mentorship"/>
+            </div>
           </div>
           <div className="profile-card-container">
             {isLoading ? (
-              <p>Loading...</p>
+                <p>Loading...</p>
             ) : error ? (
-              <p>
-                OOps, sorry we are having some trouble retrieving this
-                information!
-              </p>
+                <p>
+                  OOps, sorry we are having some trouble retrieving this
+                  information!
+                </p>
             ) : (
-              <ProfileCards profiles={filteredProfiles} />
+                <ProfileCards profiles={filteredProfiles}/>
             )}
           </div>
         </div>

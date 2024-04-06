@@ -1,4 +1,4 @@
-//This function takes the state ISO2 code and fetches the list of city names and an array of city data from the API 
+//This function takes the state ISO2 code and fetches the list of city names and an array of city data from the API
 //it uses the list of city names to populate the dropdown and when a city is selected
 //it grabs the id for the selected city to be set in state and posted.
 
@@ -18,7 +18,7 @@ function useCities(countryIso2, stateIso2, setCityNames, setCitiesData) {
 }
 
 function CitySelect({countryIso2, stateIso2, setSelectedCityId}) { // props passed in from LocationDropdowns component
-    
+
     // State variables to hold selected city and city data
     const [selectedCityName, setSelectedCityName] = useState('');
     const [citiesData, setCitiesData] = useState([]);
@@ -26,20 +26,20 @@ function CitySelect({countryIso2, stateIso2, setSelectedCityId}) { // props pass
 
     useCities(countryIso2, stateIso2, setCityNames, setCitiesData); // custom hook from above being used inside the city select function
 
-    // Event handler to update selected city 
+    // Event handler to update selected city
     const handleCityChange = (event) => {
         const value = event.target.value;
         setSelectedCityName(value);
-        
+
         //and fetch and set corresponding cityId
         const selectedCityData = citiesData.find(city => city.name === value);
         if (selectedCityData) {
             setSelectedCityId(selectedCityData.id); // set the selected id
-        }     
+        }
     };
 
     return (
-            <label>
+            <label className="form-controller">
                 City:
                 <select value={selectedCityName} onChange={handleCityChange}>
                     <option value="">Select City</option>

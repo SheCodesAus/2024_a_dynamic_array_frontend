@@ -20,8 +20,6 @@
     width: 100%;
     justify-content: center;
     align-items: center;
-    /*padding: 5em;*/
-    padding-bottom: 50px;
 }
 
 .header-text {
@@ -45,9 +43,10 @@
 }
 
 .header-headline {
-    font: var(--headline-xl);
+    font: var(--headline-lg);
     color: var(--dark-blue);
     text-align: center;
+    line-height: 1.7;
 }
 
 .header-subheadline {
@@ -74,9 +73,10 @@
   border:solid black 0.5px;
   flex-direction: row;
     display: flex;
-    margin: 2rem 5rem;
+    flex-wrap: wrap;
+    margin: 0 1.8rem;
    padding:1rem;
-  
+
 }
 
 .filter-results span {
@@ -85,9 +85,9 @@
     background-color: #f0f0f0; /* Example: Set background color */
     padding: .25rem; /* Example: Add padding */
     border-radius: 5px; /* Example: Add rounded corners */
-    
+
   }
-  
+
 
 
 .home-body-container {
@@ -99,20 +99,30 @@
 .filter-container {
     display: flex;
     flex-direction: column;
-    flex:  1 3rem;
-    margin: 2rem ;
     padding: 2rem;
-    height: 30vh;
+    background-color: #eff3fd;
 }
 
 .profile-card-container {
-    margin-top:4rem;
+    margin-top:2rem;
     flex: 3;
 }
 
+.home-page-switch-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
-
-
+.filter-container .multiSelectContainer input{
+    background-color: #ffffff !important;
+}
+.filter-container .multiSelectContainer .searchWrapper{
+    padding: unset;
+}
+.filter-container .select-label select{
+    background-color: #ffffff !important;
+}
 /* Media Queries */
 
 @media screen and (min-width: 640px) {
