@@ -30,6 +30,7 @@ body.active-modal {
 
 .modal {
     top: 10%;
+    margin: auto;
     z-index: 1000;
 }
 
