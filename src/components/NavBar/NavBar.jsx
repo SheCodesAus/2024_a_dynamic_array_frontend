@@ -22,7 +22,6 @@ function NavBar() {
 
   const isAdmin = auth.is_staff;
 
-  console.log("userProfile", { userProfile });
   const handleLogout = () => {
     window.localStorage.removeItem("token");
     window.localStorage.removeItem("user_id");
@@ -62,7 +61,7 @@ function NavBar() {
               Account
             </Link>
           )}
-          {isAdmin && (
+          {auth.token && isAdmin && (
             <Link onClick={() => setMenuOpen(!menuOpen)} to="/users">
               User Admin
             </Link>
@@ -70,7 +69,7 @@ function NavBar() {
           {hasProfile && (
             <Link
               onClick={() => setMenuOpen(!menuOpen)}
-              to={`/profile/${userProfile.id}`}
+              to={`/profile/${userProfile[0]}`}
             >
               My Profile
             </Link>
