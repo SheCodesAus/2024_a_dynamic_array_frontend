@@ -140,6 +140,10 @@ html {
 /* Define styles for your content */
 .content {
     flex: 1; /* Fill remaining space */
+    width: 100%;
+    background-image: linear-gradient(rgb(206, 229, 253), rgb(255, 255, 255));
+    background-size: 100% 20%;
+    background-repeat: no-repeat;
 }
 
 .btn {
@@ -161,6 +165,20 @@ html {
 
 .btn.btn-primary:hover {
     background-color: #bed0f7;
+    cursor: pointer;
+    color: #1f2933;
+}
+
+
+.btn.btn-secondary {
+
+    background-color: var(--bs-red);
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn.btn-secondary:hover {
+    background-color: var(--bs-cyan);
     cursor: pointer;
     color: #1f2933;
 }
@@ -194,6 +212,21 @@ select, input, textarea {
     border: none !important;
 }
 
+.m-0 {
+    margin:  0 !important;
+}
+.ml-0{
+    margin-left: 0 !important;
+}
+.mr-0{
+    margin-right: 0 !important;
+}
+.mt-0{
+    margin-top: 0 !important;
+}
+.mb-0{
+    margin-bottom: 0 !important;
+}
 .my-1 {
     margin-top: 1rem;
     margin-bottom: 1rem;
