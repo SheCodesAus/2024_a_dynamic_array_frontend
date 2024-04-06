@@ -5,8 +5,10 @@ import { useState, useEffect } from "react";
 import { BsPlus } from "react-icons/bs";
 import { MdModeEdit } from "react-icons/md";
 import ExperienceCard from "../ExperienceCard/ExperienceCard.jsx";
+import CreateExperienceForm from "../Forms/CreateExperienceForm.jsx";
 import "../ProfilePage/ProfilePage.css";
 import {useAuth} from "../../hooks/use-auth";
+
 import {
     BsFillCheckCircleFill,
     BsFacebook,
@@ -36,9 +38,11 @@ function ProfilePageDetails() {
 
 
   const {experiences , isLoading, error} = useExperiences(id);
+  const [experiencePopUp, setExperiencePopUp] = useState(false)
 
 
   console.log("profile.owner:", profile.owner);
+
   useEffect(() => {
     // Check if profile data is available and not loading
     if (userData.user) {
@@ -67,6 +71,8 @@ function ProfilePageDetails() {
     }
     console.log("tags:", profile.tags.length);
     console.log("profile data:", profile);
+    console.log("user_id:", user.id);
+ 
     return (
         <section className="profile-page-body main-container">
             <div className="profile-page-container">
@@ -118,63 +124,64 @@ function ProfilePageDetails() {
                 </div>
                 <hr className="hr"/>
 
-                <div className="bio-section">
-                    <h3>Bio:</h3>
-                    <p>{profile.bio}</p>
-                </div>
-                <hr className="hr"/>
-                <div className="skills-section profile-page-render--skill-container">
-                    <div>
-                        <h3>Tags:</h3>
-                        <div className="skill-tags">
-                            <ul>
-                                {profile.tags.map((tag, index) => (
-                                    <li key={index}>{tag}</li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div>
-                            <div className="industry-tags">
-                                <h3>Industry Tags:</h3>
-                                <ul>
-                                    {profile.industries.map((industry, index) => (
-                                        <li key={index}>{industry}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <a target="_blank" href="#">
-                            <MdModeEdit
-                                style={{color: "#4078c0", width: "24px", height: "24px"}}
-                            />
-                        </a>
-                    </div>
+        <div className="bio-section">
+          <h3>Bio:</h3>
+          <p>{profile.bio}</p>
+        </div>
+        <hr className="hr" />
+        <div className="skills-section">
+          <h3>Tags:</h3>
+          <div className="skill-tags">
+            <ul>
+              {profile.tags.map((tag, index) => (
+                <li key={index}>{tag}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div className="industry-tags">
+              <h3>Industry Tags:</h3>
+              <ul>
+                {profile.industries.map((industry, index) => (
+                  <li key={index}>{industry}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <a target="_blank" href="#">
+            <MdModeEdit
+              style={{ color: "#4078c0", width: "24px", height: "24px" }}
+            />
+          </a>
+        </div>
+        <hr className="hr" />
+        <div className="experiences-section">
+          <h3>Experiences</h3>
+          
+          {auth.token && user.id==profile.owner ? ( 
+          <div className="experience-icons">
+            <a target="_blank" href="#">
+              <MdModeEdit
+                style={{ color: "#4078c0", width: "24px", height: "24px" }}
+              />
+            </a>
+            <a onClick={() => setExperiencePopUp(true)} >
+              <BsPlus 
+                style={{ color: "#4078c0", width: "24px", height: "24px" }}
+              />
+            </a>
+          </div> ) : (
+            <br/>
+          )}
 
-                </div>
-                <hr className="hr"/>
-                <div className="profile-page-render--experience-container">
-                    <div className="experiences-section-header">
-                        <h3>Experiences</h3>
-                        <div className="experience-icons">
-                            <a target="_blank" href="#">
-                                <MdModeEdit
-                                    style={{color: "#4078c0", width: "24px", height: "24px"}}
-                                />
-                            </a>
-                            <a target="_blank" href="#">
-                                <BsPlus
-                                    style={{color: "#4078c0", width: "24px", height: "24px"}}
-                                />
-                            </a>
-                        </div>
-                    </div>
-                    <div className="profile-page-render-experience-cards-container">
-                        {experiences.map((experienceData, key) => {
-                            return <ExperienceCard key={key} experienceData={experienceData} />;
-                        })}
-                    </div>
+
+        </div>
+
+        <div className="experience-card-container">
+        {experiences.map((experienceData, key) => {
+                return <ExperienceCard key={key} experienceData={experienceData} />;
+            })}
+        </div>
 
                 </div>
                 <div className="contact-info">
@@ -247,7 +254,10 @@ function ProfilePageDetails() {
                         </div>
                     )}
                 </div>
-            </div>
+      <div>
+           
+            {experiencePopUp ? <CreateExperienceForm id={id} trigger={experiencePopUp} setTrigger={setExperiencePopUp}/> : null}
+        </div>
         </section>
     );
 }
