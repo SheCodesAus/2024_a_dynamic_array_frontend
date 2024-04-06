@@ -23,7 +23,7 @@ function useUser(userId){
         }
       }, [userId]);
     
-      return { user, isLoading, error, useUser };
+      return { user, isLoading, error, setUser };
     }
     
     export default useUser;
