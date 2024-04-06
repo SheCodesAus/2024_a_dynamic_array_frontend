@@ -42,7 +42,7 @@ function ProfilePageDetails() {
 
 
   console.log("profile.owner:", profile.owner);
-
+  console.log("auth", auth);
   useEffect(() => {
     // Check if profile data is available and not loading
     if (userData.user) {
@@ -158,13 +158,9 @@ function ProfilePageDetails() {
         <div className="experiences-section">
           <h3>Experiences</h3>
           
-          {auth.token && user.id==profile.owner ? ( 
+          {auth.token && auth.user_id==profile.owner ? ( 
           <div className="experience-icons">
-            <a target="_blank" href="#">
-              <MdModeEdit
-                style={{ color: "#4078c0", width: "24px", height: "24px" }}
-              />
-            </a>
+           
             <a onClick={() => setExperiencePopUp(true)} >
               <BsPlus 
                 style={{ color: "#4078c0", width: "24px", height: "24px" }}
@@ -179,7 +175,7 @@ function ProfilePageDetails() {
 
         <div className="experience-card-container">
         {experiences.map((experienceData, key) => {
-                return <ExperienceCard key={key} experienceData={experienceData} />;
+                return <ExperienceCard key={key} experienceData={experienceData} profileOwner={user.id} />;
             })}
         </div>
 

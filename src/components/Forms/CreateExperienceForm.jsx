@@ -14,7 +14,7 @@ function CreateExperienceForm(props) {
         picture_url: "",
         is_present_experience: false,
         start_date: "",
-        end_date: "",
+        end_date: null,
         profile: `${profileId}`
       });
 
@@ -132,6 +132,7 @@ function CreateExperienceForm(props) {
                         <input
                             type="text"
                             id="end_date"
+                            disabled={experience.is_present_experience}
                             placeholder="MM/YYYY"
                             onChange={handleChange}
                         />
