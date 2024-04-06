@@ -1,11 +1,11 @@
 import React from "react";
-import "./CreateExperienceForm.css" 
+import "./CreateExperienceForm.css"
 import postExperience from "../../api/post-experience";
 import { useState } from "react";
 
 function CreateExperienceForm(props) {
     const profileId = props.id;
-    
+
 
     const [experience, setExperience] = useState({
         experience_type: "",
@@ -27,7 +27,7 @@ function CreateExperienceForm(props) {
       };
 
       function parseDate(month, year){
-    
+
         // alert(date);
         var dd = "01";
         var mm = month.getMonth() + 1; //January is 0!
@@ -39,15 +39,15 @@ function CreateExperienceForm(props) {
         date =  dd + "-" + mm + "-" + yyyy;
         console.log(date);
         return date.toString();
-       
+
       }
-      
+
 
     //   }
       const handleSubmit = (event) => {
         event.preventDefault();
         props.setTrigger(false);
-        if (experience.description && experience.experience_url 
+        if (experience.description && experience.experience_url
             && experience.picture_url && experience.start_date) {
             postExperience(
                 experience.experience_type,
@@ -60,13 +60,13 @@ function CreateExperienceForm(props) {
                 experience.profile,
                 profileId
                 ).then((response) => {
-           
+
             console.log(response);
             console.log(experience.start_date);
             console.log(experience.end_date);
 
             event.preventDefault();
-         
+
         });
         }
         };
@@ -136,20 +136,17 @@ function CreateExperienceForm(props) {
                             onChange={handleChange}
                         />
                     </div>
-                    <div>
-                        <label htmlFor="is_present_experience">Present: </label>
+                    <div className='present-container-checkbox'>
                         <input
                             type="checkbox"
                             id="is_present_experience"
                             onChange={handleChange}
                         />
+                        <label htmlFor="is_present_experience m-0">Present</label>
                     </div>
 
-
-                    
-
-                    <button type="submit" onClick={handleSubmit} className="close btn">Save</button>
-                    <button onClick={() => props.setTrigger(false)} className="close btn">Close</button>
+                    <button type="submit" onClick={handleSubmit} className="close btn btn-primary mb-1 mt-2">Save</button>
+                    <button onClick={() => props.setTrigger(false)} className="close btn btn-secondary">Close</button>
                     {props.children}
                 </form>
             </div>

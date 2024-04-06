@@ -70,23 +70,27 @@
 }
 
 .filter-results {
-  border:solid black 0.5px;
-  flex-direction: row;
+    border: solid black 0.5px;
+    flex-direction: row;
     display: flex;
     flex-wrap: wrap;
     margin: 0 1.8rem;
-   padding:1rem;
+    padding: 1rem;
 
 }
 
 .filter-results span {
-    display: inline-block; /* Make tags display in a line */
-    margin-left:1rem;
-    background-color: #f0f0f0; /* Example: Set background color */
-    padding: .25rem; /* Example: Add padding */
-    border-radius: 5px; /* Example: Add rounded corners */
+    display: inline-block;
+    /* Make tags display in a line */
+    margin-left: 1rem;
+    background-color: #f0f0f0;
+    /* Example: Set background color */
+    padding: .25rem;
+    /* Example: Add padding */
+    border-radius: 5px;
+    /* Example: Add rounded corners */
 
-  }
+}
 
 
 
@@ -104,25 +108,28 @@
 }
 
 .profile-card-container {
-    margin-top:2rem;
+    margin-top: 2rem;
     flex: 3;
 }
 
-.home-page-switch-container{
+.home-page-switch-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.filter-container .multiSelectContainer input{
+.filter-container .multiSelectContainer input {
     background-color: #ffffff !important;
 }
-.filter-container .multiSelectContainer .searchWrapper{
+
+.filter-container .multiSelectContainer .searchWrapper {
     padding: unset;
 }
-.filter-container .select-label select{
+
+.filter-container .select-label select {
     background-color: #ffffff !important;
 }
+
 /* Media Queries */
 
 @media screen and (min-width: 640px) {
@@ -171,6 +178,10 @@
     .header-subheadline {
 
         text-align: left;
+    }
+
+    .profile-card-container {
+        margin-top: unset;
     }
 }
 

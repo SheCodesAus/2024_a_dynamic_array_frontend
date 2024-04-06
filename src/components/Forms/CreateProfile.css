@@ -9,14 +9,18 @@
     padding: 1rem;
     margin: 0px auto;
     width: 90vw;
-    max-width: 500px; /* Added maximum width for larger screens */
-    height:auto;
-    background-color: var(--off-white);
+    max-width: 500px;
+    /* Added maximum width for larger screens */
+    height: auto;
+    /* background-color: var(--off-white); */
+    background-color: #ffffff;
+
 }
 
 .create-profile-container {
     display: flex;
-    background-color: var(--white);
+    /* background-color: var(--white); */
+    background-color: #f2f5f7;
     overflow: hidden;
     top: 0;
     justify-content: center;
@@ -29,7 +33,8 @@
     justify-content: center;
     align-items: center;
 }
-.create-profile-form-title{
+
+.create-profile-form-title {
     padding-top: 20px;
 }
 
@@ -75,7 +80,8 @@
     .preferences,
     .location {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: baseline;
         /* Change to column layout on smaller screens */
     }
 
