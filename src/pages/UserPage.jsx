@@ -11,7 +11,7 @@ import useAuth from "../hooks/use-auth";
 
 function userPage() {
     const { userId } = useParams();
-    const { user, setUser, isLoading, error} = useUser(userId);
+    const { user, isLoading, error, setUser} = useUser(userId);
     const [isEditing, setIsEditing] = useState(false);
     const [showConfirmation, setShowConfirmation] = useState(false);
     const navigate = useNavigate();
