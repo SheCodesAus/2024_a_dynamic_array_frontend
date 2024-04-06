@@ -26,6 +26,24 @@ function CreateExperienceForm(props) {
         }));
       };
 
+      function parseDate(month, year){
+    
+        // alert(date);
+        var dd = "01";
+        var mm = month.getMonth() + 1; //January is 0!
+        var yyyy = year;
+
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        date =  dd + "-" + mm + "-" + yyyy;
+        console.log(date);
+        return date.toString();
+       
+      }
+      
+
+    //   }
       const handleSubmit = (event) => {
         event.preventDefault();
         props.setTrigger(false);
@@ -44,11 +62,16 @@ function CreateExperienceForm(props) {
                 ).then((response) => {
            
             console.log(response);
+            console.log(experience.start_date);
+            console.log(experience.end_date);
+
             event.preventDefault();
          
         });
         }
         };
+        console.log(experience.start_date);
+        console.log(experience.end_date);
 
     return (
 
@@ -98,16 +121,18 @@ function CreateExperienceForm(props) {
                     <div>
                         <label htmlFor="start_date">Start Date: </label>
                         <input
-                            type="date"
+                            type="text"
                             id="start_date"
+                            placeholder="MM/YYYY"
                             onChange={handleChange}
                         />
                     </div>
                     <div>
                         <label htmlFor="end_date">End Date: </label>
                         <input
-                            type="date"
+                            type="text"
                             id="end_date"
+                            placeholder="MM/YYYY"
                             onChange={handleChange}
                         />
                     </div>
@@ -121,7 +146,7 @@ function CreateExperienceForm(props) {
                     </div>
 
 
-
+                    
 
                     <button type="submit" onClick={handleSubmit} className="close btn">Save</button>
                     <button onClick={() => props.setTrigger(false)} className="close btn">Close</button>
