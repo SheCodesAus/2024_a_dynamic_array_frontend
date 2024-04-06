@@ -148,6 +148,7 @@ function CreateExperienceForm(props) {
 
                     <button type="submit" onClick={handleSubmit} className="close btn btn-primary mb-1 mt-2">Save</button>
                     <button onClick={() => props.setTrigger(false)} className="close btn btn-secondary">Close</button>
+                    <button id="delete-project-button" type="submit" onClick={handleDelete}>Delete</button>
                     {props.children}
                 </form>
             </div>

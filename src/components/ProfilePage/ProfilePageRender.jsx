@@ -19,6 +19,7 @@ import {
 } from "react-icons/bs";
 import {IoIosCloseCircle} from "react-icons/io";
 import useExperiences from "../../hooks/use-experiences.js";
+import EditExperienceForm from "../Forms/EditExperienceForm.jsx";
 
 function ProfilePageDetails() {
     const {id} = useParams();
@@ -39,7 +40,7 @@ function ProfilePageDetails() {
 
   const {experiences , isLoading, error} = useExperiences(id);
   const [experiencePopUp, setExperiencePopUp] = useState(false)
-
+  const [editExperiencePopUp, setEditExperiencePopUp] = useState(false)
 
   console.log("profile.owner:", profile.owner);
   console.log("auth", auth);
@@ -253,6 +254,10 @@ function ProfilePageDetails() {
       <div>
            
             {experiencePopUp ? <CreateExperienceForm id={id} trigger={experiencePopUp} setTrigger={setExperiencePopUp}/> : null}
+        </div>
+        <div>
+           
+            {experiencePopUp ? <EditExperienceForm trigger={editExperiencePopUp} setTrigger={setEditExperiencePopUp}/> : null}
         </div>
         </section>
     );

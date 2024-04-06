@@ -31,7 +31,7 @@ function EditExperienceForm(props) {
         event.preventDefault();
         if (experience.description || experience.experience_url
             || experience.picture_url || experience.start_date || experience.end_date || experience.is_present_experience) {
-        putExperience(
+        putProject(
             experienceData.experience_type,
             experienceData.description,
             experienceData.experience_url,
@@ -43,29 +43,21 @@ function EditExperienceForm(props) {
         ).then((response) => {
         console.log(response);
         
-        });            window.location.reload();
-
+        });
         
         }
         
         };
 
         const handleDelete = (event) => {
-
             event.preventDefault();
-               props.setTrigger(false);
             deleteExperience(experienceId).then((response) => {
                 console.log(response);
-              
-             
-
-            }
-            );
-            window.location.reload();
+            });
         };
 return(
-        <div className="popup">
-        <div className="popup-inner">
+        <div className="popup-edit">
+        <div className="popup-inner-edit">
             <form>
                 <div>
                     <label htmlFor="experience_type">Experience type: </label>
@@ -136,7 +128,7 @@ return(
 
                 <button type="submit" onClick={handleSubmit} className="close btn btn-primary mb-1 mt-2">Save</button>
                 <button onClick={() => props.setTrigger(false)} className="close btn btn-secondary">Close</button>
-                <button id="delete-experience-button" type="submit" onClick={handleDelete} className="close btn btn-secondary">Delete</button>
+                <button id="delete-project-button" type="submit" onClick={handleDelete}>Delete</button>
                 {props.children}
             </form>
         </div>

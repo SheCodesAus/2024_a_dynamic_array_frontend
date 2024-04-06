@@ -2,11 +2,14 @@ import "../../components/ExperienceCard/ExperienceCard.css";
 import { BsLink45Deg } from "react-icons/bs";
 import { MdModeEdit } from "react-icons/md";
 import {useAuth} from "../../hooks/use-auth";
+import EditExperienceForm from "../Forms/EditExperienceForm";
+import { useState } from "react";
 
 function ExperienceCard(props) {
 
   const { experienceData, profileOwner } = props;
   const {auth, setAuth} = useAuth();
+  const [editExperiencePopUp, setEditExperiencePopUp] = useState(false)
 
   function parseDate(date){
     
@@ -27,10 +30,10 @@ function ExperienceCard(props) {
 
   return (
 
-    
+
     <div className="experience-card-container">
-        {auth.token && auth.user_id==profileOwner
-        ? (<a target="_blank" href="#">
+{auth.token && auth.user_id==profileOwner
+        ? (<a onClick={() => setEditExperiencePopUp(true)}>
               <MdModeEdit
                 style={{ color: "#4078c0", width: "24px", height: "24px" }}
               />
@@ -65,7 +68,13 @@ function ExperienceCard(props) {
           />
         </a>
       </div>
+      <div>
+           
+           {editExperiencePopUp ? <EditExperienceForm experienceId={experienceData.id} trigger={editExperiencePopUp} setTrigger={setEditExperiencePopUp}/> : null}
+       </div>
     </div>
+
+    
   );
 }
 
