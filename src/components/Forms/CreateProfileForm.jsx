@@ -33,9 +33,6 @@ function CreateProfileForm() {
   const [city, setSelectedCityId] = useState("");
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedIndustries, setSelectedIndustries] = useState([]);
-
-  console.log("selectedTags in CreateProfileForm:", selectedTags);
-  console.log("selectedIndustries in CreateProfileForm:", selectedIndustries);
   
   // Update the profile object with the selected country, state, and city values
     profile.state = stateIso2;
@@ -44,21 +41,22 @@ function CreateProfileForm() {
     profile.location = `${city}, ${stateIso2}, ${countryIso2}`;
     profile.tags = selectedTags;
     profile.industries = selectedIndustries;
-
-  const [contact_preference, setPreference] = useState();
-  const changePreference = (e) => {
-    setPreference(e.target.value);
-    profile.contact_preference = e.target.value;
-  };
-
-  const handleChange = (event) => {
-    const { id, value } = event.target;
-    setProfile((prevProfile) => ({
-      ...prevProfile,
-      [id]: value,
-    }));
-  };
-
+    
+    const [contact_preference, setPreference] = useState();
+    const changePreference = (e) => {
+      setPreference(e.target.value);
+      profile.contact_preference = e.target.value;
+    };
+    
+    const handleChange = (event) => {
+      const { id, value } = event.target;
+      console.log(event.target)
+      setProfile((prevProfile) => ({
+        ...prevProfile,
+        [id]: value,
+      }));
+    };
+    
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -108,7 +106,9 @@ function CreateProfileForm() {
       <form>
         <div className="hide-profile">
           <p>Hide my profile</p>
-          <ToggleSwitch Name="is_hidden"/>
+          <ToggleSwitch
+            onChange={handleChange}
+            Name="is_hidden"/>
         </div>
         <h2 className="create-profile-form-title">CREATE A PROFILE</h2>
 
@@ -216,13 +216,17 @@ function CreateProfileForm() {
           <div className="seeking-mentorship">
             <div className="hide-profile">
               <p>Seeking Mentorship</p>
-              <ToggleSwitch Name="is_seeking_mentorship"/>
+              <ToggleSwitch
+                onChange={handleChange}
+                Name="is_seeking_mentorship"/>
             </div>
           </div>
           <div className="open-mentorship">
             <div className="hide-profile">
               <p>Open to Mentoring</p>
-              <ToggleSwitch Name="is_open_to_mentor"/>
+              <ToggleSwitch
+                onChange={handleChange}
+                Name="is_open_to_mentor"/>
             </div>
           </div>
 
