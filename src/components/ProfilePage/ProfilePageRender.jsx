@@ -190,9 +190,9 @@ function ProfilePageDetails() {
                             <p> Contact Info</p>
 
                             <p>Contact Preference: {profile.contact_preference}</p>
-                            <p>
-                                Email: <h4>{user.email}</h4>
-                            </p>
+                            <div>
+                                Email: <p>{user.email}</p>
+                            </div>
 
                             {profile.facebook_url && (
                                 <a target="_blank" href={profile.facebook_url}>
