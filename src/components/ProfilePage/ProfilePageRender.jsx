@@ -1,9 +1,8 @@
 import useUser from "../../hooks/use-user.js";
 import useProfile from "../../hooks/use-profile.js";
-import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { BsPlus } from "react-icons/bs";
-import { FaPlus } from "react-icons/fa6";
+import {useParams, Link} from "react-router-dom";
+import {useState, useEffect} from "react";
+import {FaPlus} from "react-icons/fa6";
 import ExperienceCard from "../ExperienceCard/ExperienceCard.jsx";
 import CreateExperienceForm from "../Forms/CreateExperienceForm.jsx";
 import "../ProfilePage/ProfilePage.css";
@@ -37,27 +36,27 @@ function ProfilePageDetails() {
     const {auth, setAuth} = useAuth();
 
 
-  const {experiences , isLoading, error} = useExperiences(id);
-  const [experiencePopUp, setExperiencePopUp] = useState(false)
+    const {experiences, isLoading, error} = useExperiences(id);
+    const [experiencePopUp, setExperiencePopUp] = useState(false)
 
 
-  console.log("profile.owner:", profile.owner);
+    console.log("profile.owner:", profile.owner);
 
-  useEffect(() => {
-    // Check if profile data is available and not loading
-    if (userData.user) {
-      try {
-        setUser(userData.user); // Set user data
-        console.log("userData:", userData);
-        setUsername(`${userData.user.first_name} ${userData.user.last_name}`); // Update username based on user data
-        setUserLoading(false);
-        console.log("username:", username);
-      } catch (error) {
-        setUserError(error);
-        setUserLoading(false);
-      }
-    }
-  }, [userData]);
+    useEffect(() => {
+        // Check if profile data is available and not loading
+        if (userData.user) {
+            try {
+                setUser(userData.user); // Set user data
+                console.log("userData:", userData);
+                setUsername(`${userData.user.first_name} ${userData.user.last_name}`); // Update username based on user data
+                setUserLoading(false);
+                console.log("username:", username);
+            } catch (error) {
+                setUserError(error);
+                setUserLoading(false);
+            }
+        }
+    }, [userData]);
 
     if (profileLoading || userLoading) {
         return <p>Loading...</p>;
@@ -124,13 +123,13 @@ function ProfilePageDetails() {
                 </div>
                 <hr className="hr"/>
 
-        <div className="bio-section">
-          <h3>Bio:</h3>
-          <p>{profile.bio}</p>
-        </div>
-
-
+                <div className="bio-section">
+                    <h3>Bio:</h3>
+                    <p>{profile.bio}</p>
                 </div>
+
+
+            </div>
             <div className="other-info-container">
                 <div className="skills-section">
                     <h3>Tags:</h3>
@@ -151,11 +150,7 @@ function ProfilePageDetails() {
                             </ul>
                         </div>
                     </div>
-                    {/*<a target="_blank" href="#">*/}
-                    {/*    <MdModeEdit*/}
-                    {/*        style={{color: "#4078c0", width: "24px", height: "24px"}}*/}
-                    {/*    />*/}
-                    {/*</a>*/}
+
                 </div>
                 <div className="profile-page-render-experiences-section">
                     <h3>Experiences</h3>
@@ -164,7 +159,7 @@ function ProfilePageDetails() {
                         <div className="experience-icons">
                             <a onClick={() => setExperiencePopUp(true)}>
                                 <FaPlus size={24}
-                                    style={{color: "#4078c0", width: "24px", height: "24px"}}
+                                        style={{color: "#4078c0", width: "24px", height: "24px"}}
                                 />
                             </a>
                         </div>) : (
@@ -176,7 +171,8 @@ function ProfilePageDetails() {
 
                 <div className="experience-cards-container">
                     {experiences.map((experienceData, key) => {
-                        return <div className="mb-1"><ExperienceCard key={key} experienceData={experienceData}/></div>;
+                        return <div className="mb-1"><ExperienceCard key={key} experienceData={experienceData}
+                                                                     profileOwner={user.id}/></div>;
                     })}
                 </div>
             </div>
@@ -210,50 +206,51 @@ function ProfilePageDetails() {
                             <a target="_blank" href={profile.linkedin_url} className="experience-contact-info">
                                 <BsLinkedin
                                     style={{color: "#0077B5", width: "24px", height: "24px"}}
-                                    />{" "}
-                                    LinkedIn
-                                </a>
-                            )}
-                            {profile.instagram_url && (
-                                <a target="_blank" href={profile.instagram_url} className="experience-contact-info">
-                                    <BsInstagram
-                                        style={{color: "#f9ce34", width: "24px", height: "24px"}}
-                                    />{" "}
-                                    Instagram
-                                </a>
-                            )}
-                            {profile.portfolio_url && (
-                                <a target="_blank" href={profile.portfolio_url} className="experience-contact-info">
-                                    <BsGlobe2
-                                        style={{color: "#0077b5", width: "24px", height: "24px"}}
-                                    />{" "}
-                                    Website
-                                </a>
-                            )}
-                        </>
-                    ) : (
-                        <div className="sign-up-message">
-                            <p>
-                                Unlock the full potential of our platform by registering today!
-                                Once you're a member, you'll gain access to full profiles and
-                                the ability to contact individuals. Don't miss out on valuable
-                                connections.{" "}
-                            </p>
-                            <p>
-                                <Link to="/signup">Sign Up</Link> today!
-                            </p>
-                            <p> Already a member? </p>
-                            <p>
-                                {" "}
-                                <Link to="/login">Log in</Link> to see Contact details
-                            </p>
-                        </div>
-                    )}
-                </div>
-      <div>
+                                />{" "}
+                                LinkedIn
+                            </a>
+                        )}
+                        {profile.instagram_url && (
+                            <a target="_blank" href={profile.instagram_url} className="experience-contact-info">
+                                <BsInstagram
+                                    style={{color: "#f9ce34", width: "24px", height: "24px"}}
+                                />{" "}
+                                Instagram
+                            </a>
+                        )}
+                        {profile.portfolio_url && (
+                            <a target="_blank" href={profile.portfolio_url} className="experience-contact-info">
+                                <BsGlobe2
+                                    style={{color: "#0077b5", width: "24px", height: "24px"}}
+                                />{" "}
+                                Website
+                            </a>
+                        )}
+                    </>
+                ) : (
+                    <div className="sign-up-message">
+                        <p>
+                            Unlock the full potential of our platform by registering today!
+                            Once you're a member, you'll gain access to full profiles and
+                            the ability to contact individuals. Don't miss out on valuable
+                            connections.{" "}
+                        </p>
+                        <p>
+                            <Link to="/signup">Sign Up</Link> today!
+                        </p>
+                        <p> Already a member? </p>
+                        <p>
+                            {" "}
+                            <Link to="/login">Log in</Link> to see Contact details
+                        </p>
+                    </div>
+                )}
+            </div>
+            <div>
 
-            {experiencePopUp ? <CreateExperienceForm id={id} trigger={experiencePopUp} setTrigger={setExperiencePopUp}/> : null}
-        </div>
+                {experiencePopUp ?
+                    <CreateExperienceForm id={id} trigger={experiencePopUp} setTrigger={setExperiencePopUp}/> : null}
+            </div>
         </section>
     );
 }

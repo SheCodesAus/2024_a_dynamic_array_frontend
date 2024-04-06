@@ -14,7 +14,7 @@ function CreateExperienceForm(props) {
         picture_url: "",
         is_present_experience: false,
         start_date: "",
-        end_date: "",
+        end_date: null,
         profile: `${profileId}`
       });
 
@@ -132,6 +132,7 @@ function CreateExperienceForm(props) {
                         <input
                             type="text"
                             id="end_date"
+                            disabled={experience.is_present_experience}
                             placeholder="MM/YYYY"
                             onChange={handleChange}
                         />
@@ -147,6 +148,7 @@ function CreateExperienceForm(props) {
 
                     <button type="submit" onClick={handleSubmit} className="close btn btn-primary mb-1 mt-2">Save</button>
                     <button onClick={() => props.setTrigger(false)} className="close btn btn-secondary">Close</button>
+                    <button id="delete-project-button" type="submit" onClick={handleDelete}>Delete</button>
                     {props.children}
                 </form>
             </div>
