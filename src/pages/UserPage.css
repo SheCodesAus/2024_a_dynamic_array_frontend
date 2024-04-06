@@ -53,5 +53,11 @@
   }
 
   .confirmation-popup button:hover {
-    background-color: #d74422;
-  }
+    background-color: #d74422;  }
+
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+}
+
