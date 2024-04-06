@@ -1,45 +1,65 @@
 import UserCard from "../components/UserCard/UserCard";
+import "../pages/UsersPage.css";
 import useUsers from "../hooks/use-users";
 import deleteUser from "../api/delete-user";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 function UsersPage() {
-    const navigate = useNavigate();
-    const { users, isLoading, error, setUsers } = useUsers();
+  const navigate = useNavigate();
+  // const { auth } = useAuth();
+  const { users, isLoading, error, setUsers } = useUsers();
+  const isStaffString = localStorage.getItem("is_staff");
+  const isStaff = isStaffString === "true";
+  console.log(isStaff);
 
-    if (isLoading) {
-        return <p>Loading...</p>;
+  useEffect(() => {
+    if (!isStaff) {
+      window.alert("You do not have permission to view these records");
+      navigate("/");
     }
+  }, []);
 
-    if (error) {
-        return (
-            <div className="error-container">
-                <p>Redirecting to home page...</p>
-                {setTimeout(() => {
-                navigate('/');
-                }, 10000)}
-            </div>
-        );
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    window.alert(error.message);
+    {
+      setTimeout(() => {
+        navigate("/");
+      }, 10000);
     }
+  }
 
-    const handleDeleteUser = async (username) => {
-        try {
-            await deleteUser(username);
-            const updatedUsers = users.filter(user => user.username !== username);
-            setUsers(updatedUsers);
-        } catch (error) {
-            console.error('Error deleting user:', error);
-        }
-    };
+  const handleDeleteUser = async (userId) => {
+    try {
+      await deleteUser(userId);
+      const updatedUsers = users.filter((user) => user.id !== userId);
+      setUsers(updatedUsers);
+      alert("User successfully deleted");
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
+  };
 
- 
-    return (
-        <div className="user-list">
-            {users.map((userData, key) => {
-                return <UserCard key={key} userData={userData} onDelete={() => handleDeleteUser(userData.username)} />;
-            })}
-        </div>
-    );
-};
+  return (
+    <div className="users-main-container u-main-container">
+      <h1 className="admin-header">Users - Admin Page</h1>
+      <div className="user-card">
+        {users.map((userData, key) => {
+          return (
+            <UserCard
+              key={key}
+              userData={userData}
+              onDelete={() => handleDeleteUser(userData.id)}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 export default UsersPage;

@@ -1,8 +1,9 @@
 async function postProfile(
     bio,
-    city,
+    // city,
+    // country,
+    // state,
     location,
-    country,
     picture_url,
     is_hidden,
     number_of_endorsements,
@@ -17,8 +18,7 @@ async function postProfile(
 
     const url = 
     `${import.meta.env.VITE_API_URL}/profiles/`
-    // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
-        // `http://127.0.0.1:8000/profiles/`;
+
     const token = window.localStorage.getItem("token");
     const response = await fetch(url, {
         method: "POST",
@@ -28,9 +28,10 @@ async function postProfile(
         },
         body: JSON.stringify({
             "bio": bio,
-            "city": city,
+            // "city": city,
+            // "state": state,
+            // "country": country,
             "location": location,
-            "country": country,
             "picture_url": picture_url,
             "is_hidden": is_hidden,
             "number_of_endorsements": number_of_endorsements,
@@ -47,15 +48,16 @@ async function postProfile(
         })
     });
     if (!response.ok){
-        const fallbackError = "Error trying to signup";
-        const data = await response.json().catch(() => {
+        if (response.status === 403) {
+            const data = await response.json();
+            const errorMessage = data.detail 
+            throw new Error(errorMessage);
+        } else {
+            const fallbackError = "Error trying to create a profile.";
             throw new Error(fallbackError);
-        
-        });
-        console.log("data object from post-profile", data)
-        const errorMessage = data?.detail ?? fallbackError;
-        throw new Error(errorMessage);
-    }
+            }
+        }
     return await response.json();
 }
+
 export default postProfile;

@@ -6,19 +6,12 @@
     padding: 1rem;
     margin-top: 5rem;
 }
-input, textarea, select{
-    font-family: 'Open Sans', sans-serif;
-}
-textarea::placeholder{
-    padding: 0.8rem;
-}
 .contact-us-header{
-    /*margin-top: 5rem;*/
-    /*margin-bottom: 2rem;*/
     display:flex;
     flex-direction: column;
     font-family: 'Open Sans', sans-serif;
-
+    margin-bottom: 2rem;
+    margin-top: 5.5rem;
 }
 
 .contact-us-header h1{
@@ -29,7 +22,6 @@ textarea::placeholder{
 }
 .contact-form-container{
     display: flex;
-    /* width: 100%; */
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
@@ -61,12 +53,12 @@ textarea::placeholder{
     padding: 10rem 2rem;
 }
 
-@media screen and (min-width:576px) {
+@media screen and (min-width:640px) {
     .contact-form-container{
         display:flex;
         flex-direction:row;
         flex-wrap: wrap;
-        margin: 0rem 5rem;
+
     }
         .contactus-page-image{
         width: 100%;
@@ -83,7 +75,7 @@ textarea::placeholder{
         display: flex;
         flex-direction: column;
         font-family: 'Open Sans', sans-serif;
-        margin: 2rem 5rem;
+        margin: 5rem 0;
     }
 
 

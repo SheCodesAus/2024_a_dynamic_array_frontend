@@ -1,0 +1,43 @@
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top:2rem;
+    flex-direction: column;
+   
+  }
+
+  .paginate-numbers{
+    display:flex;
+    margin-bottom: 10rem;
+  }
+
+  .paginate-section{
+    display: flex;
+  flex-direction: column;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5rem;
+  }
+  
+  .pagination {
+    list-style-type: none;
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .page-number {
+    cursor: pointer;
+    padding: 0.3rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .page-number:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .page-number.active {
+    background-color: #007bff;
+    color: #fff;
+  }

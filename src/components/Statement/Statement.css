@@ -9,10 +9,19 @@
     text-align: center;
 }
 
-.statement-head-one, .statement-head-two{
+.statement-head-one{
     font: var(--headline-md);
+    margin-top: 1rem;
 }
+.statement-head-two{
+    font: var(--body-lg);
+    margin-top: 1rem;
+    line-height: 2;
 
+}
 .statement-head-three{
+    font: var(--body-lg);
     margin-top:2rem;
+    font-weight: 600;
+    line-height: 2;
 }

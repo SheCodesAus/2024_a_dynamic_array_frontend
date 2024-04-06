@@ -1,5 +1,8 @@
 async function getProfile(profileId){
-    const url = `${import.meta.env.VITE_API_URL}/profiles/${profileId}`;
+
+    const url = `${import.meta.env.VITE_API_URL}/profile/${profileId}`;
+   
+
     const response = await fetch (url,{method:"GET"});
 
     if (!response.ok) {
@@ -11,6 +14,8 @@ async function getProfile(profileId){
         throw new Error(errorMessage);
     }
     const profileData = await response.json();
+
+   
     return profileData;
 
 }

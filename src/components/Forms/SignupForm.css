@@ -35,17 +35,16 @@ label {
 input,
 textarea,
 select {
-    /* font-family: var(--body-sm); */
-    display: flex;
     width: 100%;
-    align-items: baseline;
     height: 3rem;
     border: solid 1px var(--light-gray);
     border-radius: 4px;
+    padding-left: 0.8rem;
 }
 
 textarea {
     height: 20vh;
+    padding: 0.8rem;
 }
 
 .login-link {
@@ -53,11 +52,7 @@ textarea {
     text-align: center;
 }
 
-/* Add padding to placeholder text */
-input::placeholder {
-    padding: 10px;
-    /* Adjust the padding value as needed */
-}
+
 .accepted_terms-label{
     display: inline-block;
 
@@ -80,7 +75,7 @@ input[type=checkbox]{
     width: 25px;
 }
 
-@media screen and (min-width:576px) {
+@media screen and (min-width:640px) {
 
 
     .signup-form div{
@@ -92,4 +87,15 @@ input[type=checkbox]{
     margin-top: 2rem;
     text-align: right;
 }
+}
+@media (min-width: 768px) {
+    .form-container {
+        max-width: 60%;
+    }
+}
+@media (min-width: 1024px) {
+    .form-container {
+        max-width: unset;
+        width: 100%;
+    }
 }

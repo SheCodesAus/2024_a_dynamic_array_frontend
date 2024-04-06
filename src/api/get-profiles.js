@@ -1,5 +1,6 @@
 async function getProfiles(){
 const url=`${import.meta.env.VITE_API_URL}/profiles`;
+
 const response=await fetch(url,{method:"GET"});
 
 if (!response.ok) {

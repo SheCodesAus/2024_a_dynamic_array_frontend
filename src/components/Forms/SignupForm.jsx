@@ -35,25 +35,48 @@ function SignupForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    user.accepted_terms = isChecked;
-    if (!user.username || !user.password || !user.accepted_terms) {
-      alert("Please provide a username, password, and accept the terms and conditions");
-      } else if (user.username && user.password && user.accepted_terms) {
-          postUser(
-            user.username,
-            user.password,
-            user.email,
-            user.first_name,
-            user.last_name,
-            user.accepted_terms,
-          ).then(() => {
-            postLogin(user.username, user.password).then((response) => {
-              window.localStorage.setItem("token", response.token);
-              setAuth({ token: response.token });
-              navigate("/"); // redirect to home page
+
+    const isValid =
+    !!user.username ||
+    !!user.password ||
+    !!user.email ||
+    !!user.first_name ||
+    !!user.last_name ||
+    !!user.accepted_terms
+
+    if (isValid) {
+      user.accepted_terms = isChecked;
+      if (!user.username || !user.password || !user.accepted_terms) {
+        alert("Please provide a username, password, and accept the terms and conditions");
+        } else if (user.username && user.password && user.accepted_terms) {
+            postUser(
+              user.username,
+              user.password,
+              user.email,
+              user.first_name,
+              user.last_name,
+              user.accepted_terms,
+            ).then(() => {
+              postLogin(user.username, user.password).then((response) => {
+                window.localStorage.setItem("token", response.token);
+                window.localStorage.setItem("user_id", response.user_id);
+                window.localStorage.setItem("is_staff", response.is_staff);
+                setAuth({
+                  token: response.token,
+                  user_id: response.user_id,
+                  is_staff: response.is_staff,
+                });
+                navigate("/"); // redirect to home page
+              })
+              .catch((error) => {
+                alert(error.message);
+              });
+            })
+            .catch((error) => {
+              alert(error.message);
             });
-          });
-        }
+          }
+      }
   };
 
 
@@ -61,7 +84,7 @@ function SignupForm() {
   return (
     <section className="form-container">
       <form className="signup-form">
-        <h2>SIGN UP</h2>
+        <h2 className="sign-up-form-title">SIGN UP</h2>
         <div>
           <label htmlFor="first_name">First Name</label>
           <input

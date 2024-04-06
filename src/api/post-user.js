@@ -8,8 +8,7 @@ async function postUser(
 ) {
   const url =
     `${import.meta.env.VITE_API_URL}/users/`
-    // to test in local: comment line above and uncomment line below (also check url in line below matches your local backend url)
-    // `http://127.0.0.1:8000/users/`;
+
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -26,12 +25,22 @@ async function postUser(
   });
   if (!response.ok) {
     const fallbackError = "Error trying to signup";
+    
     const data = await response.json().catch(() => {
       throw new Error(fallbackError);
     });
-    const errorMessage = data?.detail ?? fallbackError;
+
+    let errorMessage = fallbackError;
+
+    if (data && data.username && Array.isArray(data.username)) {
+      errorMessage = data.username[0];
+    } else if (data && data.email && Array.isArray(data.email)) {
+      errorMessage = data.email[0];
+    }
     throw new Error(errorMessage);
   }
   return await response.json();
+
 }
+
 export default postUser;

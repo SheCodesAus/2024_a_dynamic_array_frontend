@@ -11,9 +11,9 @@
     -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     border-radius: 10px;
-    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    width: 280px;
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 0%), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    /* overflow: hidden; */
+    width: 320px;
 }
 
 .profile--card-header {
@@ -27,16 +27,16 @@
     justify-content: space-between;
     align-items: center;
     height: 120px;
-    z-index: 500;
-
 }
 
 .profile-image img {
-    width: 68px;
-    /* Adjust width and height as needed */
-    height: 68px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
-    /* For a circular shape */
+    border: none; /* Remove border */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box-shadow */
+    transition: all .2s;
+    background-color: white;
 }
 
 .profile--card-header .profile--card-header-share {
@@ -70,16 +70,22 @@
     padding-bottom: 10px;
 }
 
-.profile-Card-Body {
-    padding: 5px;
-}
+/*.profile-Card-Body {*/
+/*    padding: 5px;*/
+/*}*/
 
+.close-icon{
+    color: var(--bs-red);
+}
+.tick-icon{
+    color: var(--bs-green);
+}
 .hr {
-    height: 2px;
+    height: 1px;
     border-width: 0;
-    color: gray;
+    color: var(--cool-grey-500);
     background-color: gray;
-    margin-top: 20px;
+    margin: 10px 5px;
 }
 
 .profile--card-footer {
@@ -111,10 +117,38 @@
 .profile-card-footer-btn {
     height: 2rem;
     width: 6rem;
+    background-color: var(--indigo-500);
+    color: var( --cool-grey-100);
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.profile-card-footer-btn:hover {
+    background-color: var(--bs-blue); /* slightly darker shade of orange on hover */
 }
 
 
-@media screen and (min-width:576px) {
+/* Styling Social Media Share icon menu*/
+
+.dd-list ul {
+    display: flex; /* Display list items in a row */
+    list-style: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+  }
+
+  .dd-list ul li {
+    margin-right: 10px; /* Add some space between list items */
+  }
+
+  .dd-list ul li .icon {
+    display: inline-block; /* Display icons as inline-block elements */
+  }
+.profile--card-placeholder-icon{
+    color: var(--med-blue);
+}
+@media screen and (min-width:640px) {
 
     .profile--card-container {
         width: 350px;

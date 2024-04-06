@@ -27,12 +27,17 @@ function LoginForm() {
     } else if (credentials.username && credentials.password) {
       postLogin(credentials.username, credentials.password).then((response) => {
         window.localStorage.setItem("token", response.token);
+        window.localStorage.setItem("user_id", response.user_id);
+        window.localStorage.setItem("is_staff", response.is_staff);
         setAuth({
           token: response.token,
-          userID: response.user_id,
+          user_id: response.user_id,
+          is_staff: response.is_staff,
           username: response.username,
         });
         navigate("/"); // redirect to home page
+      }).catch((error) => {
+        alert(error.message);
       });
     }
   };

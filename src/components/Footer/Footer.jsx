@@ -1,42 +1,50 @@
 import "../../components/Footer/Footer.css";
 import { Link } from "react-router-dom";
 import logo from "../../assets/NavBar/logo.png";
+import ModalTerms from "../Modal/ModalTerms";
+import ModalPrivacy from "../Modal/ModalPrivacy";
+import { FaLinkedin, FaFacebook } from "react-icons/fa";
+
 
 function Footer() {
   return (
     <>
-      <footer className="footer">
-        <div className="logo-link">
-          <Link to="/">
-            <img
-              className="logo"
-              src={logo}
-              alt="Image of DiversiTech's logo"
-            />
-          </Link>
-        </div>
-        <div className="footer-section">
-          <ul className="footerItems">
-            <li>
-              <Link to="/termsandconditions">Ts & Cs</Link>
-            </li>
-            <li>
-              <Link to="/privacy">Privacy</Link>
-            </li>
-          </ul>
-        </div>
-        <div className="socials">
-          <ul>
-            <li>
-              <Link to="/signup">I</Link>
-            </li>
-            <li>
-              <Link to="/login">FB</Link>
-            </li>
-          </ul>
+      <footer className="bg-dark fix-footer">
+        <div className="main-container footer-container">
+          <div className="footer-logo-link">
+            <Link to="/">
+              <img
+                  className="logo-footer"
+                  src={logo}
+                  alt="Image of DiversiTech's logo"
+              />
+            </Link>
+          </div>
+          <div className="footer-section">
+            <ul className="footerItems">
+              <li>
+                <ModalTerms />
+              </li>
+              <li>
+                <ModalPrivacy />
+              </li>
+            </ul>
+          </div>
+          <div className="footer-socials">
+            <ul>
+              <li>
+                <Link className="linkedin-icon" to="/signup"> <FaLinkedin size={24}/></Link>
+              </li>
+              <li>
+                <Link className="facebook-icon" to="/login"> <FaFacebook size={24}/></Link>
+              </li>
+            </ul>
+          </div>
+
         </div>
       </footer>
     </>
   );
 }
+
 export default Footer;
