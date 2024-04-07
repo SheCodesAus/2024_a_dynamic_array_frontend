@@ -2,7 +2,6 @@ import useUser from "../../hooks/use-user.js";
 import useProfile from "../../hooks/use-profile.js";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { BsPlus } from "react-icons/bs";
 import { FaPlus } from "react-icons/fa6";
 import ExperienceCard from "../ExperienceCard/ExperienceCard.jsx";
 import CreateExperienceForm from "../Forms/CreateExperienceForm.jsx";
@@ -37,27 +36,27 @@ function ProfilePageDetails() {
     const {auth, setAuth} = useAuth();
 
 
-  const {experiences , isLoading, error} = useExperiences(id);
-  const [experiencePopUp, setExperiencePopUp] = useState(false)
+    const {experiences, isLoading, error} = useExperiences(id);
+    const [experiencePopUp, setExperiencePopUp] = useState(false)
 
 
-  console.log("profile.owner:", profile.owner);
+    console.log("profile.owner:", profile.owner);
 
-  useEffect(() => {
-    // Check if profile data is available and not loading
-    if (userData.user) {
-      try {
-        setUser(userData.user); // Set user data
-        console.log("userData:", userData);
-        setUsername(`${userData.user.first_name} ${userData.user.last_name}`); // Update username based on user data
-        setUserLoading(false);
-        console.log("username:", username);
-      } catch (error) {
-        setUserError(error);
-        setUserLoading(false);
-      }
-    }
-  }, [userData]);
+    useEffect(() => {
+        // Check if profile data is available and not loading
+        if (userData.user) {
+            try {
+                setUser(userData.user); // Set user data
+                console.log("userData:", userData);
+                setUsername(`${userData.user.first_name} ${userData.user.last_name}`); // Update username based on user data
+                setUserLoading(false);
+                console.log("username:", username);
+            } catch (error) {
+                setUserError(error);
+                setUserLoading(false);
+            }
+        }
+    }, [userData]);
 
     if (profileLoading || userLoading) {
         return <p>Loading...</p>;
@@ -124,11 +123,36 @@ function ProfilePageDetails() {
                 </div>
                 <hr className="hr"/>
 
-        <div className="bio-section">
-          <h3>Bio:</h3>
-          <p>{profile.bio}</p>
-        </div>
+                <div className="bio-section">
+                    <h3>Bio:</h3>
+                    <p>{profile.bio}</p>
+                </div>
 
+            </div>
+            <div className="other-info-container">
+                <div className="skills-section">
+                    <h3>Tags:</h3>
+                    <div className="skill-tags">
+                        <ul>
+                            {profile.tags.map((tag, index) => (
+                                <li key={index}>{tag}</li>
+                            ))}
+                        </ul>
+                    </div>
+                    <div>
+                        <div className="industry-tags">
+                            <h3>Industry Tags:</h3>
+                            <ul>
+                                {profile.industries.map((industry, index) => (
+                                    <li key={index}>{industry}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div className="profile-page-render-experiences-section">
+                    <h3>Experiences</h3>
 
                 </div>
             <div className="other-info-container">
@@ -176,7 +200,8 @@ function ProfilePageDetails() {
 
                 <div className="experience-cards-container">
                     {experiences.map((experienceData, key) => {
-                        return <div className="mb-1"><ExperienceCard key={key} experienceData={experienceData}/></div>;
+                        return <div className="mb-1"><ExperienceCard key={key} experienceData={experienceData}
+                                                                     profileOwner={user.id}/></div>;
                     })}
                 </div>
             </div>
