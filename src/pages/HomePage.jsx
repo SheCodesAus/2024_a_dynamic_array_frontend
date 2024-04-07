@@ -13,24 +13,18 @@ import ToggleSwitch from "../components/Forms/ToggleSwitch/ToggleSwitch.jsx";
 
 //---------FILTERING PROFILE CARD LOGIC----------------
 
-//function to check if the profile tags match the filter tags
+//function to check if the multiselects (tags and industries) on profile match the same multiselects as the filters
 function doesProfileMatchMultiSelect(profileMultiSelect, filterMultiSelect) {
-  //return true if all the filter tags are included in the profile tags
+  //return true if all the multiselects that are selected in the filter are included in the profile array that we expect to return
   return filterMultiSelect.every((filterMultiSelect) => 
     profileMultiSelect.includes(filterMultiSelect)
   );
 }
-// //function to check if the profile Industries match the filter Industries
-// function doesProfileMatchIndustries(profileIndustries, filterIndustries) {
-//   //return true if all the filter Industries are included in the profile industries
-//   return filterIndustries.every((filterIndustry) =>
-//     profileIndustries.includes(filterIndustry)
-//   );
-// }
 
-function doesProfileMatchToggle(profileToggle, filterToggle) {
+
+function doesProfileMatchSingleSelect(profileSingleSelect, filterSingleSelect) {
   //return true if the profile matches the filter
-  return profileToggle === filterToggle;
+  return profileSingleSelect === filterSingleSelect;
 }
 
 //function to filter the profiles based on the filters
@@ -40,27 +34,32 @@ function filterProfiles(
   filterIndustries,
   filterIsOpenToMentor,
   filterIsSeekingMentorship,
-  // filterIsSeekingMentorship, 
-  // filterCountryIso2, 
-  // filterStateIso2, 
-  // filterArea
+  filterCountryIso2, 
+  filterStateIso2, 
+  filterArea
   ) {
-    //return the profiles that match the filters that have been set
     if (filterTags.length === 0 && 
         filterIndustries.length === 0 && 
         filterIsOpenToMentor === false &&
-        filterIsSeekingMentorship === false
+        filterIsSeekingMentorship === false &&
+        filterCountryIso2 === "" &&
+        filterStateIso2 === "" &&
+        filterArea === ""
         ) {
       return profiles;
     }
   
-    return profiles.filter((profile) =>
+    return profiles.filter((profile) => {
+      console.log("filterArea, profile.area", filterArea, profile.area);
       // true if the profile matches all the filters
-      doesProfileMatchMultiSelect(profile.tags, filterTags) &&
+      return doesProfileMatchMultiSelect(profile.tags, filterTags) &&
       doesProfileMatchMultiSelect(profile.industries, filterIndustries) &&
-      (!filterIsOpenToMentor || doesProfileMatchToggle(profile.is_open_to_mentor, filterIsOpenToMentor)) &&
-      (!filterIsSeekingMentorship || doesProfileMatchToggle(profile.is_seeking_mentorship, filterIsSeekingMentorship))
-    );
+      (!filterIsOpenToMentor || doesProfileMatchSingleSelect(profile.is_open_to_mentor, filterIsOpenToMentor)) &&
+      (!filterIsSeekingMentorship || doesProfileMatchSingleSelect(profile.is_seeking_mentorship, filterIsSeekingMentorship)) &&
+      (!filterCountryIso2 || doesProfileMatchSingleSelect(profile.country, filterCountryIso2)) &&
+      (!filterStateIso2 || doesProfileMatchSingleSelect(profile.state, filterStateIso2)) &&
+      (!filterArea || doesProfileMatchSingleSelect(Number(profile.area), filterArea))
+  });
 }
 
 function HomePage() {
@@ -91,13 +90,15 @@ function HomePage() {
   const isOpenToMentorToggle = toggles.is_open_to_mentor;
   const isSeekingMentorshipToggle = toggles.is_seeking_mentorship;
 
-
   const filteredProfiles = filterProfiles(
     profiles,
     selectedTags,
     selectedIndustries,
     isOpenToMentorToggle,
-    isSeekingMentorshipToggle
+    isSeekingMentorshipToggle,
+    countryIso2,
+    stateIso2,
+    area
   );
 
   // console.log("Profiles:", profiles);
@@ -110,7 +111,6 @@ function HomePage() {
   console.log("StateIso2:", stateIso2);
   console.log("CountryIso2:", countryIso2); 
   console.log("Area:", area);
-  
 
   return (
     <div className="main-container">
