@@ -14,74 +14,103 @@ import ToggleSwitch from "../components/Forms/ToggleSwitch/ToggleSwitch.jsx";
 //---------FILTERING PROFILE CARD LOGIC----------------
 
 //function to check if the profile tags match the filter tags
-function doesProfileMatchTags(profileTags, filterTags) {
+function doesProfileMatchMultiSelect(profileMultiSelect, filterMultiSelect) {
   //return true if all the filter tags are included in the profile tags
-  return filterTags.every((filterTag) => profileTags.includes(filterTag));
-}
-//function to check if the profile Industries match the filter Industries
-function doesProfileMatchIndustries(profileIndustries, filterIndustries) {
-  //return true if all the filter Industries are included in the profile industries
-  return filterIndustries.every((filterIndustry) =>
-    profileIndustries.includes(filterIndustry)
+  return filterMultiSelect.every((filterMultiSelect) => 
+    profileMultiSelect.includes(filterMultiSelect)
   );
 }
-//function to check if the profile information matches the filter tags and filter Industries
-function doesProfileMatchAllFilters(
-  profileTags,
-  filterTags,
-  profileIndustries,
-  filterIndustries
-) {
-  //return true if the profile matches all the filters
-  return (
-    doesProfileMatchTags(profileTags, filterTags) &&
-    doesProfileMatchIndustries(profileIndustries, filterIndustries)
-  );
+// //function to check if the profile Industries match the filter Industries
+// function doesProfileMatchIndustries(profileIndustries, filterIndustries) {
+//   //return true if all the filter Industries are included in the profile industries
+//   return filterIndustries.every((filterIndustry) =>
+//     profileIndustries.includes(filterIndustry)
+//   );
+// }
+
+function doesProfileMatchToggle(profileToggle, filterToggle) {
+  //return true if the profile matches the filter
+  return profileToggle === filterToggle;
 }
 
 //function to filter the profiles based on the filters
-function filterProfiles(profiles, filterTags, filterIndustries) {
-  //return the profiles that match the filter tags
-  if (filterTags.length === 0 && filterIndustries.length === 0) {
-    return profiles;
-  } else {
+function filterProfiles(
+  profiles, 
+  filterTags, 
+  filterIndustries,
+  filterIsOpenToMentor,
+  filterIsSeekingMentorship,
+  // filterIsSeekingMentorship, 
+  // filterCountryIso2, 
+  // filterStateIso2, 
+  // filterArea
+  ) {
+    //return the profiles that match the filters that have been set
+    if (filterTags.length === 0 && 
+        filterIndustries.length === 0 && 
+        filterIsOpenToMentor === false &&
+        filterIsSeekingMentorship === false
+        ) {
+      return profiles;
+    }
+  
     return profiles.filter((profile) =>
-      doesProfileMatchAllFilters(
-        profile.tags,
-        profile.industries,
-        filterTags,
-        filterIndustries
-      )
+      // true if the profile matches all the filters
+      doesProfileMatchMultiSelect(profile.tags, filterTags) &&
+      doesProfileMatchMultiSelect(profile.industries, filterIndustries) &&
+      (!filterIsOpenToMentor || doesProfileMatchToggle(profile.is_open_to_mentor, filterIsOpenToMentor)) &&
+      (!filterIsSeekingMentorship || doesProfileMatchToggle(profile.is_seeking_mentorship, filterIsSeekingMentorship))
     );
-  }
 }
 
 function HomePage() {
   const { profiles, isLoading, error } = useProfiles();
   const [selectedTags, setSelectedTags] = useState([]);
   const [selectedIndustries, setSelectedIndustries] = useState([]);
-  const filteredProfiles = filterProfiles(
-    profiles,
-    selectedTags,
-    selectedIndustries
-  );
+
+  
   // State variables to hold selected country, state, and city id values
   const [stateIso2, setStateIso2] = useState("");
   const [countryIso2, setCountryIso2] = useState("");
-  const [city, setSelectedCityId] = useState("");
-  const multiSelectRef = useRef(null); // creating a reference to the multiselect component
+  const [area, setSelectedCityId] = useState("");
+  // const multiSelectRef = useRef(null); // creating a reference to the multiselect component
+  const [toggles, setToggles] = useState({
+    is_open_to_mentor: false,
+    is_seeking_mentorship: false
+  });
   
   // change handler for the toggle switch
   const handleChange = (event) => {
     const { id, value } = event.target;
-    console.log(event.target)
+    setToggles((prevToggles) => ({
+      ...prevToggles,
+      [id]: value,
+    }));
   };
 
+  const isOpenToMentorToggle = toggles.is_open_to_mentor;
+  const isSeekingMentorshipToggle = toggles.is_seeking_mentorship;
+
+
+  const filteredProfiles = filterProfiles(
+    profiles,
+    selectedTags,
+    selectedIndustries,
+    isOpenToMentorToggle,
+    isSeekingMentorshipToggle
+  );
+
+  // console.log("Profiles:", profiles);
+  console.log("Toggles outside:", toggles);
+  console.log("isOpenToMentorToggle:", isOpenToMentorToggle);
+  console.log("isSeekingMentorhip:",isSeekingMentorshipToggle);
   console.log("SelectedTags:", selectedTags);
   console.log("FilteredProfiles:", filteredProfiles);
   console.log("SelectedIndustries:", selectedIndustries);
   console.log("StateIso2:", stateIso2);
-  console.log("CountryIso2:", countryIso2);  
+  console.log("CountryIso2:", countryIso2); 
+  console.log("Area:", area);
+  
 
   return (
     <div className="main-container">
