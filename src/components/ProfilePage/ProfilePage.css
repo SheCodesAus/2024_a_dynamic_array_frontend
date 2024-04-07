@@ -134,3 +134,7 @@
 .experience-contact-info:hover{
     text-decoration: underline;
 }
+
+img{
+    object-fit: cover;
+}
