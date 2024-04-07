@@ -10,6 +10,7 @@
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
     overflow: hidden;
     width: 100%;
+    min-width: 250px;
     margin: 0;
 }
 
@@ -137,4 +138,33 @@
 
 img{
     object-fit: cover;
+}
+
+
+@media screen and (min-width: 640px) {
+    .experience-cards-container{
+        margin: 1rem;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 32px;
+        align-items: center;
+        justify-content: flex-start;
+    }
+}
+
+@media screen and  (min-width: 768px) {
+
+}
+
+@media screen and (min-width: 1024px) {
+
+}
+
+@media screen and  (min-width: 1280px) {
+
+}
+
+@media screen and (min-width: 1536px) {
+
 }
