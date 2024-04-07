@@ -56,9 +56,6 @@ function filterProfiles(profiles, filterTags, filterIndustries) {
   }
 }
 
-
-
-
 function HomePage() {
   const { profiles, isLoading, error } = useProfiles();
   const [selectedTags, setSelectedTags] = useState([]);
@@ -72,17 +69,19 @@ function HomePage() {
   const [stateIso2, setStateIso2] = useState("");
   const [countryIso2, setCountryIso2] = useState("");
   const [city, setSelectedCityId] = useState("");
-  const [seekMentorValue, setSeekMentorValue] = useState(null);
-  const [openMentorValue, setOpenMentorValue] = useState(null);
   const multiSelectRef = useRef(null); // creating a reference to the multiselect component
-
-  console.log("selectedIndustries in HomePage:", selectedIndustries);
+  
+  // change handler for the toggle switch
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    console.log(event.target)
+  };
 
   console.log("SelectedTags:", selectedTags);
   console.log("FilteredProfiles:", filteredProfiles);
   console.log("SelectedIndustries:", selectedIndustries);
-  console.log("Profiles:", profiles);
-
+  console.log("StateIso2:", stateIso2);
+  console.log("CountryIso2:", countryIso2);  
 
   return (
     <div className="main-container">
@@ -123,11 +122,15 @@ function HomePage() {
             />
             <div className="home-page-switch-container mt-2 mb-2">
               <p className="toggle">Open to Mentoring</p>
-              <ToggleSwitch Name="is_open_to_mentor"/>
+              <ToggleSwitch
+                onChange={handleChange}
+                Name="is_open_to_mentor"/>
             </div>
             <div className="home-page-switch-container mb-2">
               <p className="toggle">Seeking Mentorship</p>
-              <ToggleSwitch Name="is_seeking_mentorship"/>
+              <ToggleSwitch
+                onChange={handleChange}
+                Name="is_seeking_mentorship"/>
             </div>
           </div>
           <div className="profile-card-container">
