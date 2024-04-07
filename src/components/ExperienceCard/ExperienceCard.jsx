@@ -5,7 +5,6 @@ import {useAuth} from "../../hooks/use-auth";
 import EditExperienceForm from "../Forms/EditExperienceForm";
 import { useState } from "react";
 import React from "react";
-import {Link} from "react-router-dom";
 
 
 function ExperienceCard(props) {

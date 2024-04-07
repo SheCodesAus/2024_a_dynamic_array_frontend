@@ -40,3 +40,29 @@
     align-items: center;
     padding: 1rem 1rem 0;
 }
+
+@media screen and (min-width: 640px) {
+    .experience-card-container {
+        max-width: 290px;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and  (min-width: 768px) {
+    .experience-card-container {
+        max-width: 350px;
+        min-width: 250px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+}
+
+@media screen and  (min-width: 1280px) {
+
+}
+
+@media screen and (min-width: 1536px) {
+
+}

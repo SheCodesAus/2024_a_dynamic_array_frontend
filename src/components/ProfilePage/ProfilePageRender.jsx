@@ -121,7 +121,7 @@ function ProfilePageDetails() {
             )}
           </div>
         </div>
-        <hr className="hr" />
+        {/*<hr className="hr" />*/}
 
         <div className="bio-section">
           <h3>Bio:</h3>
@@ -149,16 +149,12 @@ function ProfilePageDetails() {
               </ul>
             </div>
           </div>
-          {/*<a target="_blank" href="#">*/}
-          {/*    <MdModeEdit*/}
-          {/*        style={{color: "#4078c0", width: "24px", height: "24px"}}*/}
-          {/*    />*/}
-          {/*</a>*/}
+
         </div>
         <div className="profile-page-render-experiences-section">
           <h3>Experiences</h3>
 
-          {auth.token && user.id == profile.owner ? (
+          {auth.token && user.id === profile.owner ? (
             <div className="experience-icons">
               <a onClick={() => setExperiencePopUp(true)}>
                 <FaPlus

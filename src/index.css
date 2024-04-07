@@ -345,7 +345,7 @@ select, input, textarea {
     flex-direction: column;
 }
 
-@media (min-width: 640px) {
+@media screen and (min-width: 640px) {
     .main-container {
         margin: 0;
         padding: 2rem;
@@ -353,7 +353,7 @@ select, input, textarea {
     }
 }
 
-@media (min-width: 768px) {
+@media screen and  (min-width: 768px) {
     .main-container {
 
         padding: 2rem;
@@ -362,7 +362,7 @@ select, input, textarea {
     }
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
     .main-container {
 
         padding: 2rem;
@@ -371,7 +371,7 @@ select, input, textarea {
     }
 }
 
-@media (min-width: 1280px) {
+@media screen and  (min-width: 1280px) {
     .main-container {
 
         padding: 2rem;
@@ -380,7 +380,7 @@ select, input, textarea {
     }
 }
 
-@media (min-width: 1536px) {
+@media screen and (min-width: 1536px) {
     .main-container {
 
         padding: 2rem;
