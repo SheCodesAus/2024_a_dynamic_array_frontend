@@ -141,7 +141,8 @@ function SignupForm() {
                 onChange={toggleCheckbox}
             />
             <label className="accepted_terms-label" htmlFor="accepted_terms">I have read the
-                <ModalPrivacy /> and accept the
+                <ModalPrivacy /> 
+                and accepted the
                 <ModalTerms />
             </label>
 
