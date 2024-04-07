@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 function ProfileCards({ profiles }) {
   const [shuffledProfiles, setShuffledProfiles] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [profilesPerPage] = useState(3);
+  const [profilesPerPage] = useState(12);
 
   const indexOfLastProfile = currentPage * profilesPerPage;
   const indexOfFirstProfile = indexOfLastProfile - profilesPerPage;

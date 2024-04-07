@@ -1,23 +1,34 @@
-import React, { Component } from "react";
+import React, {useState} from "react";
 import "./ToggleSwitch.scss";
 
-class ToggleSwitch extends Component {
-  render() {
-    return (
-      <div className="toggle-switch">
-        <input
-          type="checkbox"
-          className="toggle-switch-checkbox"
-          name={this.props.Name}
-          id={this.props.Name}
-        />
-        <label className="toggle-switch-label" htmlFor={this.props.Name}>
-          <span className="toggle-switch-inner" />
-          <span className="toggle-switch-switch" />
-        </label>
-      </div>
-    );
-  }
+function ToggleSwitch(props) {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+    props.onChange({
+      target: {
+      id: props.Name,
+      value: !isChecked
+    }});
+  };
+
+  return (
+    <div className="toggle-switch">
+      <input
+        type="checkbox"
+        className="toggle-switch-checkbox"
+        name={props.Name}
+        id={props.Name}
+        checked={isChecked}
+        onChange={handleOnChange}
+      />
+      <label className="toggle-switch-label" htmlFor={props.Name}>
+        <span className="toggle-switch-inner" />
+        <span className="toggle-switch-switch" />
+      </label>
+    </div>
+  );
 }
 
 export default ToggleSwitch;
