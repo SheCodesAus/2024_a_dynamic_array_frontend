@@ -18,7 +18,7 @@ import {
 } from "react-icons/bs";
 import { IoIosCloseCircle } from "react-icons/io";
 import useExperiences from "../../hooks/use-experiences.js";
-import EditExperienceForm from "../Forms/EditExperienceForm.jsx";
+
 
 function ProfilePageDetails() {
   const { id } = useParams();
@@ -129,108 +129,6 @@ function ProfilePageDetails() {
           <p>{profile.bio}</p>
         </div>
       </div>
-<<<<<<< HEAD
-          </div>
-          <a target="_blank" href="#">
-            <MdModeEdit
-              style={{ color: "#4078c0", width: "24px", height: "24px" }}
-            />
-          </a>
-        </div>
-        <hr className="hr" />
-        <div className="experiences-section">
-          <h3>Experiences</h3>
-          
-          {auth.token && auth.user_id==profile.owner ? ( 
-          <div className="experience-icons">
-           
-            <a onClick={() => setExperiencePopUp(true)} >
-              <BsPlus 
-                style={{ color: "#4078c0", width: "24px", height: "24px" }}
-              />
-            </a>
-          </div> ) : (
-            <br/>
-          )}
-
-
-        </div>
-
-        <div className="experience-card-container">
-        {experiences.map((experienceData, key) => {
-                return <ExperienceCard key={key} experienceData={experienceData} profileOwner={user.id} />;
-            })}
-        </div>
-
-                </div>
-                <div className="contact-info">
-                    {auth.token ? (
-                        <>
-                            <p> Contact Info</p>
-
-                            <p>Contact Preference: {profile.contact_preference}</p>
-                            <div>
-                                Email: <p>{user.email}</p>
-                            </div>
-
-                            {profile.facebook_url && (
-                                <a target="_blank" href={profile.facebook_url}>
-                                    <BsFacebook
-                                        style={{color: "#1877F2", width: "24px", height: "24px"}}
-                                    />{" "}
-                                    Facebook
-                                </a>
-                            )}
-                            {profile.github_url && (
-                                <a target="_blank" href={profile.github_url}>
-                                    <BsGithub
-                                        style={{color: "#4078c0", width: "24px", height: "24px"}}
-                                    />{" "}
-                                    GitHub
-                                </a>
-                            )}
-                            {profile.linkedin_url && (
-                                <a target="_blank" href={profile.linkedin_url}>
-                                    <BsLinkedin
-                                        style={{color: "#0077b5", width: "24px", height: "24px"}}
-                                    />{" "}
-                                    LinkedIn
-                                </a>
-                            )}
-                            {profile.instagram_url && (
-                                <a target="_blank" href={profile.linkedin_url}>
-                                    <BsInstagram
-                                        style={{color: "#0077b5", width: "24px", height: "24px"}}
-                                    />{" "}
-                                    Instagram
-                                </a>
-                            )}
-                            {profile.portfolio_url && (
-                                <a target="_blank" href={profile.linkedin_url}>
-                                    <BsAlarm
-                                        style={{color: "#0077b5", width: "24px", height: "24px"}}
-                                    />{" "}
-                                    Website
-                                </a>
-                            )}
-                        </>
-                    ) : (
-                        <div className="sign-up-message">
-                            <p>
-                                Unlock the full potential of our platform by registering today!
-                                Once you're a member, you'll gain access to full profiles and
-                                the ability to contact individuals. Don't miss out on valuable
-                                connections.{" "}
-                            </p>
-                            <p>
-                                <Link to="/signup">Sign Up</Link> today!
-                            </p>
-                            <p> Already a member? </p>
-                            <p>
-                                {" "}
-                                <Link to="/login">Log in</Link> to see Contact details
-                            </p>
-=======
 
       <div className="other-info-container">
         <div className="skills-section">
@@ -250,7 +148,6 @@ function ProfilePageDetails() {
                   <li key={index}>{industry}</li>
                 ))}
               </ul>
->>>>>>> DEV
             </div>
           </div>
 
