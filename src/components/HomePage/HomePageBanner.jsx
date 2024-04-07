@@ -32,7 +32,7 @@ function Banner() {
                   <button className="cta-button-banner">Sign Up</button>
                 </Link>
               )}
-              {((!hasProfile && auth.token) || !auth.token) && (
+              {(!hasProfile && auth.token) && (
                 <Link to="create-profile">
                   <button className="cta-button-banner">
                     Create a Profile
