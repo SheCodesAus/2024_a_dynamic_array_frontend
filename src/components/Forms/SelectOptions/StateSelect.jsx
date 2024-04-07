@@ -29,8 +29,12 @@ function StateSelect({countryIso2, setStateIso2}) { // props passed in from Loca
     // Event handler to update selected state
     const handleStateChange = (event) => {
         const value = event.target.value;
-        setSelectedStateName(value);
-
+        if (value === "") {
+            setSelectedStateName("");
+            setStateIso2("");
+        } else {
+            setSelectedStateName(value);
+        }
         //and fetch and set corresponding stateIso2
         const selectedStateData = statesData.find(state => state.name === value);
         if (selectedStateData) {
@@ -42,7 +46,7 @@ function StateSelect({countryIso2, setStateIso2}) { // props passed in from Loca
             <label className="form-controller">
                 State:
                 <select value={selectedStateName} onChange={handleStateChange}>
-                    <option value="">Select State</option>
+                    <option value="">Not Selected</option>
                     {stateNames.map((stateName, index) => (
                         <option key={index} value={stateName}>{stateName}</option>
                     ))}

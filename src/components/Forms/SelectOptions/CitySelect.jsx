@@ -29,8 +29,12 @@ function CitySelect({countryIso2, stateIso2, setSelectedCityId}) { // props pass
     // Event handler to update selected city
     const handleCityChange = (event) => {
         const value = event.target.value;
-        setSelectedCityName(value);
-
+        if (value === "") {
+            setSelectedCityName("");
+            setSelectedCityId("");
+        } else {
+            setSelectedCityName(value);
+        }
         //and fetch and set corresponding cityId
         const selectedCityData = citiesData.find(city => city.name === value);
         if (selectedCityData) {
@@ -42,7 +46,7 @@ function CitySelect({countryIso2, stateIso2, setSelectedCityId}) { // props pass
             <label className="form-controller">
                 City:
                 <select value={selectedCityName} onChange={handleCityChange}>
-                    <option value="">Select City</option>
+                    <option value="">Not Selected</option>
                     {cityNames.map((cityName, index) => (
                         <option key={index} value={cityName}>{cityName}</option>
                     ))}
