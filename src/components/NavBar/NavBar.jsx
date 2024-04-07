@@ -20,7 +20,8 @@ function NavBar() {
       .map((profile) => profile.id);
   const hasProfile = userProfile.length > 0;
 
-  const isAdmin = auth.is_staff;
+  const isAdmin = auth.is_staff === true;
+
 
   const handleLogout = () => {
     window.localStorage.removeItem("token");
