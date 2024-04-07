@@ -31,27 +31,32 @@ function CreateProfileForm() {
   const [stateIso2, setStateIso2] = useState("");
   const [countryIso2, setCountryIso2] = useState("");
   const [city, setSelectedCityId] = useState("");
-
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [selectedIndustries, setSelectedIndustries] = useState([]);
+  
   // Update the profile object with the selected country, state, and city values
     profile.state = stateIso2;
     profile.country = countryIso2;
     profile.city = city;
     profile.location = `${city}, ${stateIso2}, ${countryIso2}`;
-
-  const [contact_preference, setPreference] = useState();
-  const changePreference = (e) => {
-    setPreference(e.target.value);
-    profile.contact_preference = e.target.value;
-  };
-
-  const handleChange = (event) => {
-    const { id, value } = event.target;
-    setProfile((prevProfile) => ({
-      ...prevProfile,
-      [id]: value,
-    }));
-  };
-
+    profile.tags = selectedTags;
+    profile.industries = selectedIndustries;
+    
+    const [contact_preference, setPreference] = useState();
+    const changePreference = (e) => {
+      setPreference(e.target.value);
+      profile.contact_preference = e.target.value;
+    };
+    
+    const handleChange = (event) => {
+      const { id, value } = event.target;
+      console.log(event.target)
+      setProfile((prevProfile) => ({
+        ...prevProfile,
+        [id]: value,
+      }));
+    };
+    
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -66,9 +71,9 @@ function CreateProfileForm() {
       } else if (auth.token && profile.bio) {
         postProfile(
           profile.bio,
-          // profile.city,
-          // profile.state,
-          // profile.country,
+          profile.city,
+          profile.state,
+          profile.country,
           profile.location,
           profile.picture_url,
           profile.is_hidden,
@@ -80,7 +85,9 @@ function CreateProfileForm() {
           profile.portfolio_url,
           profile.contact_preference,
           profile.is_open_to_mentor,
-          profile.is_seeking_mentorship
+          profile.is_seeking_mentorship,
+          profile.tags,
+          profile.industries
         )
           .then((response) => {
             navigate(`/profile/${response.id}`); // redirect to home page
@@ -99,7 +106,9 @@ function CreateProfileForm() {
       <form>
         <div className="hide-profile">
           <p>Hide my profile</p>
-          <ToggleSwitch Name="is_hidden"/>
+          <ToggleSwitch
+            onChange={handleChange}
+            Name="is_hidden"/>
         </div>
         <h2 className="create-profile-form-title">CREATE A PROFILE</h2>
 
@@ -122,8 +131,12 @@ function CreateProfileForm() {
               onChange={handleChange}
           />
         </div>
-        <LocationDropdowns countryIso2={countryIso2} stateIso2={stateIso2} setStateIso2={setStateIso2}
-                           setSelectedCityId={setSelectedCityId} setCountryIso2={setCountryIso2}/>
+        <LocationDropdowns 
+          countryIso2={countryIso2} 
+          stateIso2={stateIso2} 
+          setStateIso2={setStateIso2}
+          setSelectedCityId={setSelectedCityId}
+          setCountryIso2={setCountryIso2}/>
         <div>
           <label htmlFor="facebook_url">Facebook URL</label>
           <input
@@ -171,9 +184,15 @@ function CreateProfileForm() {
         </div>
         <div className="tags and industries">
           <label htmlFor="tags">Tags</label>
-          <TagSelect/>
+          <TagSelect
+            name="tag" 
+            setSelectedTags={setSelectedTags} 
+          />
           <label htmlFor="industries">Industries</label>
-          <IndustrySelect/>
+          <IndustrySelect
+            name="industry"
+            setSelectedIndustries={setSelectedIndustries}
+          />
         </div>
         <div className="Contact-preferences">
           <div className="email">
@@ -197,13 +216,17 @@ function CreateProfileForm() {
           <div className="seeking-mentorship">
             <div className="hide-profile">
               <p>Seeking Mentorship</p>
-              <ToggleSwitch Name="is_seeking_mentorship"/>
+              <ToggleSwitch
+                onChange={handleChange}
+                Name="is_seeking_mentorship"/>
             </div>
           </div>
           <div className="open-mentorship">
             <div className="hide-profile">
               <p>Open to Mentoring</p>
-              <ToggleSwitch Name="is_open_to_mentor"/>
+              <ToggleSwitch
+                onChange={handleChange}
+                Name="is_open_to_mentor"/>
             </div>
           </div>
 
