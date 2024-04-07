@@ -19,7 +19,6 @@ import {
 import { IoIosCloseCircle } from "react-icons/io";
 import useExperiences from "../../hooks/use-experiences.js";
 
-
 function ProfilePageDetails() {
   const { id } = useParams();
   const {
@@ -176,24 +175,21 @@ function ProfilePageDetails() {
         </div>
 
         <div className="experience-cards-container">
-          {experiences.map((experienceData, key) => {
-            return (
+          {experiences.length === 0 ? (
+            <div>
+              <p>This profile has no experiences to display at the moment</p>
+            </div>
+          ) : (
+            experiences.map((experienceData, key) => (
               <div className="mb-1">
-                {experiences.length === 0 ? (
-                  <p>
-                    {" "}
-                    This profile has no experiences to display at the moment
-                  </p>
-                ) : (
-                  <ExperienceCard
-                    key={key}
-                    experienceData={experienceData}
-                    profileOwner={user.id}
-                  />
-                )}
+                <ExperienceCard
+                  key={key}
+                  experienceData={experienceData}
+                  profileOwner={user.id}
+                />
               </div>
-            );
-          })}
+            ))
+          )}
         </div>
       </div>
 
