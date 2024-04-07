@@ -131,26 +131,32 @@ function ProfilePageDetails() {
 
       <div className="other-info-container">
         <div className="skills-section">
-          <h3>Tags:</h3>
-          <div className="skill-tags">
-            <ul>
-              {profile.tags.map((tag, index) => (
-                <li key={index}>{tag}</li>
-              ))}
-            </ul>
-          </div>
+          {profile.tags.length === 0 ? null : (
+            <>
+              <h3>Tags:</h3>
+              <div className="skill-tags">
+                <ul>
+                  {profile.tags.map((tag, index) => (
+                    <li key={index}>{tag}</li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
           <div>
-            <div className="industry-tags">
-              <h3>Industry Tags:</h3>
-              <ul>
-                {profile.industries.map((industry, index) => (
-                  <li key={index}>{industry}</li>
-                ))}
-              </ul>
-            </div>
+            {profile.industries.length === 0 ? null : (
+              <div className="industry-tags">
+                <h3>Industry Tags:</h3>
+                <ul>
+                  {profile.industries.map((industry, index) => (
+                    <li key={index}>{industry}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-
         </div>
+
         <div className="profile-page-render-experiences-section">
           <h3>Experiences</h3>
 
@@ -172,16 +178,24 @@ function ProfilePageDetails() {
           {experiences.map((experienceData, key) => {
             return (
               <div className="mb-1">
-                <ExperienceCard
-                  key={key}
-                  experienceData={experienceData}
-                  profileOwner={user.id}
-                />
+                {experiences.length === 0 ? (
+                  <p>
+                    {" "}
+                    This profile has no experiences to display at the moment
+                  </p>
+                ) : (
+                  <ExperienceCard
+                    key={key}
+                    experienceData={experienceData}
+                    profileOwner={user.id}
+                  />
+                )}
               </div>
             );
           })}
         </div>
       </div>
+
       <div className="contact-info">
         {auth.token ? (
           <>
