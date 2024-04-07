@@ -10,7 +10,7 @@ function Footer() {
   return (
     <>
       <footer className="bg-dark fix-footer">
-        <div className="main-container footer-container">
+        <div className="footer-container">
           <div className="footer-logo-link">
             <Link to="/">
               <img

@@ -5,7 +5,6 @@ import {useAuth} from "../../hooks/use-auth";
 import EditExperienceForm from "../Forms/EditExperienceForm";
 import { useState } from "react";
 import React from "react";
-import {Link} from "react-router-dom";
 
 
 function ExperienceCard(props) {
@@ -35,13 +34,7 @@ function ExperienceCard(props) {
 
 
     <div className="experience-card-container">
-{auth.token && auth.user_id==profileOwner
-        ? (<a onClick={() => setEditExperiencePopUp(true)}>
-              <MdModeEdit
-                style={{ color: "#4078c0", width: "24px", height: "24px" }}
-              />
-            </a>)
-        : <br/>}    
+
       <div className="Project-image">
         <img
           src={experienceData.picture_url}
@@ -51,11 +44,13 @@ function ExperienceCard(props) {
 
         <div>
             <div className="experience-card-edit-section">
-            <Link to='/experiences'>
-                <MdModeEdit size={28}
-                    style={{color: "#4078c0", width: "24px", height: "24px"}}
-                />
-            </Link>
+                {auth.token && auth.user_id===profileOwner
+                    ? (<a onClick={() => setEditExperiencePopUp(true)}>
+                        <MdModeEdit
+                            style={{ color: "#4078c0", width: "24px", height: "24px" }}
+                        />
+                    </a>)
+                    : <br/>}
             </div>
             <div className="experience-card-title">
                 <p><strong>Type of experience:</strong> {experienceData.experience_type} </p>
@@ -81,12 +76,12 @@ function ExperienceCard(props) {
         </a>
       </div>
       <div>
-           
+
            {editExperiencePopUp ? <EditExperienceForm experienceId={experienceData.id} trigger={editExperiencePopUp} setTrigger={setEditExperiencePopUp}/> : null}
        </div>
     </div>
 
-    
+
   );
 }
 

@@ -1,8 +1,8 @@
 async function postProfile(
     bio,
-    // city,
-    // country,
-    // state,
+    city,
+    country,
+    state,
     location,
     picture_url,
     is_hidden,
@@ -14,7 +14,9 @@ async function postProfile(
     portfolio_url,
     contact_preference,
     is_open_to_mentor,
-    is_seeking_mentorship) {
+    is_seeking_mentorship,
+    tags,
+    industries,) {
 
     const url = 
     `${import.meta.env.VITE_API_URL}/profiles/`
@@ -28,9 +30,9 @@ async function postProfile(
         },
         body: JSON.stringify({
             "bio": bio,
-            // "city": city,
-            // "state": state,
-            // "country": country,
+            "city": city,
+            "state": state,
+            "country": country,
             "location": location,
             "picture_url": picture_url,
             "is_hidden": is_hidden,
@@ -43,8 +45,8 @@ async function postProfile(
             "contact_preference": contact_preference,
             "is_open_to_mentor": is_open_to_mentor,
             "is_seeking_mentorship": is_seeking_mentorship,
-            "tags": [],// to be implemented
-            "industries": [],// to be implemented
+            "tags": tags,// to be implemented
+            "industries": industries,// to be implemented
         })
     });
     if (!response.ok){
