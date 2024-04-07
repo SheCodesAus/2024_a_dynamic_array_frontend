@@ -84,6 +84,10 @@ html {
     --cool-grey-900: #1f2933;
     --cool-grey-1000:   #1F2933;
 
+    --github-icon-color: #171515;
+    --linkedin-icon-color: #0077B5;
+    --facebook-icon-color: #1877F2;
+    --insta-icon-color: #f9ce34;
 
     /* Headline Styles */
     --headline-xl: 600 37px/37px 'Open Sans', sans-serif;
@@ -140,6 +144,10 @@ html {
 /* Define styles for your content */
 .content {
     flex: 1; /* Fill remaining space */
+    width: 100%;
+    background-image: linear-gradient(rgb(206, 229, 253), rgb(255, 255, 255));
+    background-size: 100% 20%;
+    background-repeat: no-repeat;
 }
 
 .btn {
@@ -161,6 +169,20 @@ html {
 
 .btn.btn-primary:hover {
     background-color: #bed0f7;
+    cursor: pointer;
+    color: #1f2933;
+}
+
+
+.btn.btn-secondary {
+
+    background-color: var(--bs-red);
+    color: #fff;
+    font-weight: bold;
+}
+
+.btn.btn-secondary:hover {
+    background-color: var(--bs-cyan);
     cursor: pointer;
     color: #1f2933;
 }
@@ -194,6 +216,21 @@ select, input, textarea {
     border: none !important;
 }
 
+.m-0 {
+    margin:  0 !important;
+}
+.ml-0{
+    margin-left: 0 !important;
+}
+.mr-0{
+    margin-right: 0 !important;
+}
+.mt-0{
+    margin-top: 0 !important;
+}
+.mb-0{
+    margin-bottom: 0 !important;
+}
 .my-1 {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -246,6 +283,9 @@ select, input, textarea {
     margin-right: 2rem;
 }
 
+.p-2 {
+    padding: 2rem;
+}
 .py-2 {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -305,7 +345,7 @@ select, input, textarea {
     flex-direction: column;
 }
 
-@media (min-width: 640px) {
+@media screen and (min-width: 640px) {
     .main-container {
         margin: 0;
         padding: 2rem;
@@ -313,7 +353,7 @@ select, input, textarea {
     }
 }
 
-@media (min-width: 768px) {
+@media screen and  (min-width: 768px) {
     .main-container {
 
         padding: 2rem;
@@ -322,7 +362,7 @@ select, input, textarea {
     }
 }
 
-@media (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
     .main-container {
 
         padding: 2rem;
@@ -331,7 +371,7 @@ select, input, textarea {
     }
 }
 
-@media (min-width: 1280px) {
+@media screen and  (min-width: 1280px) {
     .main-container {
 
         padding: 2rem;
@@ -340,7 +380,7 @@ select, input, textarea {
     }
 }
 
-@media (min-width: 1536px) {
+@media screen and (min-width: 1536px) {
     .main-container {
 
         padding: 2rem;

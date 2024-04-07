@@ -42,15 +42,22 @@ function doesProfileMatchAllFilters(
 //function to filter the profiles based on the filters
 function filterProfiles(profiles, filterTags, filterIndustries) {
   //return the profiles that match the filter tags
-  return profiles.filter((profile) =>
-    doesProfileMatchAllFilters(
-      profile.tags,
-      profile.industries,
-      filterTags,
-      filterIndustries
-    )
-  );
+  if (filterTags.length === 0 && filterIndustries.length === 0) {
+    return profiles;
+  } else {
+    return profiles.filter((profile) =>
+      doesProfileMatchAllFilters(
+        profile.tags,
+        profile.industries,
+        filterTags,
+        filterIndustries
+      )
+    );
+  }
 }
+
+
+
 
 function HomePage() {
   const { profiles, isLoading, error } = useProfiles();
@@ -76,6 +83,7 @@ function HomePage() {
   console.log("SelectedIndustries:", selectedIndustries);
   console.log("Profiles:", profiles);
 
+
   return (
     <div className="main-container">
       <HomePageBanner />
@@ -94,7 +102,11 @@ function HomePage() {
           <div className="filter-container">
 
             Tag Filter:
-            <TagSelect name="tag" margin={'0 0 1.5rem'} setSelectedTags={setSelectedTags}/>
+            <TagSelect 
+              name="tag" 
+              margin={'0 0 1.5rem'} 
+              setSelectedTags={setSelectedTags}/>
+
             Industry Filter:
             <IndustrySelect
                 name="industry"

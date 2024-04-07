@@ -6,7 +6,7 @@
     align-items: center;
     margin-top: 20px;
   }
-  
+
   .userdetails-main-container > div {
     background-color: #fff;
     border-radius: 10px;
@@ -15,7 +15,7 @@
     width: 300px;
     text-align: center;
   }
-  
+
   .userdetails-main-container > div button {
     margin-top: 10px;
     background-color: #ff6347;
@@ -26,11 +26,11 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
+
   .userdetails-main-container > div button:hover {
     background-color: #d74422;
   }
-  
+
   .confirmation-popup {
     background-color: #fff;
     border-radius: 10px;
@@ -40,7 +40,7 @@
     text-align: center;
     margin-top: 20px;
   }
-  
+
   .confirmation-popup button {
     margin-top: 10px;
     background-color: #ff6347;
@@ -51,8 +51,13 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
+
   .confirmation-popup button:hover {
-    background-color: #d74422;
-  }
-  
+    background-color: #d74422;  }
+
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+}
+

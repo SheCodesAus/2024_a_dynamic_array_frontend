@@ -1,27 +1,56 @@
 @import '../../index.css';
 
-.statement{
+.statement {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding:1rem;
+    padding: 1rem;
     text-align: center;
 }
 
-.statement-head-one{
+.statement-head-one {
     font: var(--headline-md);
     margin-top: 1rem;
 }
-.statement-head-two{
+
+.statement-head-two {
     font: var(--body-lg);
     margin-top: 1rem;
     line-height: 2;
 
 }
-.statement-head-three{
+
+.statement-head-three {
     font: var(--body-lg);
-    margin-top:2rem;
+    margin-top: 2rem;
     font-weight: 600;
     line-height: 2;
+}
+
+@media (min-width: 640px) {
+
+    .statement-head-one {
+        font: var(--headline-lg);
+        margin-top: 1rem;
+    }
+    .statement-head-two {
+        font: var(--headline-sm);
+        margin-top: 2rem;
+        font-weight: 600;
+
+    }
+    .statement-head-three {
+        font: var(--headline-md);
+        margin-top: 4rem;
+        font-weight: 600;
+        line-height: 2;
+    }
+
+}
+@media (min-width: 1024px) {
+    .statement-head-one {
+        font: var(--headline-xl);
+        margin-top: 1rem;
+    }
 }

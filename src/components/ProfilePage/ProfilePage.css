@@ -1,8 +1,6 @@
 .profile-page-container {
     display: flex;
     flex-direction: column;
-
-    /*height: 100%;*/
     border: #EBE9EA solid 1px;
     background-color: white;
     color: rgba(0, 0, 0, 0.87);
@@ -12,8 +10,7 @@
     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
     overflow: hidden;
     width: 100%;
-    margin: 3rem auto;
-
+    margin: 0;
 }
 
 .profile-page-header {
@@ -38,6 +35,10 @@
 .contact-info {
     margin: 1.5rem;
 }
+.bio-section{
+ border-top: var(--bs-gray-gray-400) 1px solid;
+    padding-top: 1rem;
+}
 .industry-tags ul{
     display: flex;
     flex-direction: row;
@@ -56,7 +57,6 @@
 
 }
 .contact-info {
-    margin-bottom: 10rem;
     display: flex;
     flex-direction: column;
 
@@ -107,4 +107,34 @@
     justify-content: space-between;
     align-items: center;
     margin: 1.2rem 0;
+}
+
+.experience-cards-container{
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+
+}
+.profile-page-render-experiences-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 1rem;
+}
+.experience-contact-info{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.5rem 0;
+    gap: 1rem;
+    align-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+.experience-contact-info:hover{
+    text-decoration: underline;
+}
+
+img{
+    object-fit: cover;
 }

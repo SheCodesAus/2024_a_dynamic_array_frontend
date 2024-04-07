@@ -1,0 +1,35 @@
+.popup{
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.2);
+display:flex;
+Justify-content: center;
+align-items: center;
+}
+
+.popup-inner {
+position: relative;
+padding: 32px;
+width: 100%;
+max-width: 648px;
+background-color:#FFF;
+}
+
+.popup-inner .close-btn {
+position: absolute;
+top: 16px;
+right:16px;
+}
+.present-container-checkbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.present-container-checkbox label{
+    margin-top: unset;
+    margin-bottom: unset;
+    margin-left: 1rem;
+}

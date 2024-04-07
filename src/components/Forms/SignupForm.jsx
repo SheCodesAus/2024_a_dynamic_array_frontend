@@ -1,6 +1,8 @@
 import { useState } from "react";
 import postUser from "../../api/post-user";
 import postLogin from "../../api/post-login";
+import ModalTerms from "../Modal/ModalTerms";
+import ModalPrivacy from "../Modal/ModalPrivacy";
 
 import { useNavigate, Link } from "react-router-dom"; // import the useNavigate hook
 import { useAuth } from "../../hooks/use-auth";
@@ -139,8 +141,9 @@ function SignupForm() {
                 onChange={toggleCheckbox}
             />
             <label className="accepted_terms-label" htmlFor="accepted_terms">I have read the
-                <Link to="/privacy"> Privacy Policy </Link> and accept the
-                <Link to="/termsandconditions"> Terms and Conditions </Link>
+                <ModalPrivacy /> 
+                and accepted the
+                <ModalTerms />
             </label>
 
             {/*<label>{isChecked ? 'Checked' : 'Unchecked'}</label>*/}
