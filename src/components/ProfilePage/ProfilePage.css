@@ -35,6 +35,10 @@
 .contact-info {
     margin: 1.5rem;
 }
+.bio-section{
+ border-top: var(--bs-gray-gray-400) 1px solid;
+    padding-top: 1rem;
+}
 .industry-tags ul{
     display: flex;
     flex-direction: row;
