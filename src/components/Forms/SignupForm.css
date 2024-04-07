@@ -54,7 +54,7 @@ textarea {
 
 
 .accepted_terms-label{
-    display: inline-block;
+    margin: auto;
 
 }
 .accept_terms-container{
@@ -65,6 +65,18 @@ textarea {
     flex-direction: row;
     align-content: center;
     align-items: center;
+}
+
+.accepted_terms-label > .btn-modal {
+    background: white;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.accepted_terms-label > .btn-modal:hover {
+    background: #19216c;
+    color: white;
+    cursor: pointer;
 }
 
 .contactus-btn{

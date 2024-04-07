@@ -17,9 +17,9 @@ export default function Modal() {
 
   return (
     <>
-      <button onClick={toggleModal} className="btn-modal">
-        T&Cs
-      </button>
+      <a href="#" onClick={toggleModal} className="btn-modal">
+        Terms and Conditions
+      </a>
 
       {modal && (
         <div className="modal">
