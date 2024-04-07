@@ -41,6 +41,10 @@
     padding: 1rem 1rem 0;
 }
 
+img{
+    object-fit: cover;
+}
+
 @media screen and (min-width: 640px) {
     .experience-card-container {
         max-width: 290px;
