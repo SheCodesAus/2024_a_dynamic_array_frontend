@@ -29,7 +29,12 @@ function CountrySelect({setCountryIso2}) { // props passed in from LocationDropd
     // Event handler to update selected country
     const handleCountryChange = (event) => {
         const value = event.target.value;
+        if (value === "") {
+            setSelectedCountryName("");
+            setCountryIso2("");
+        } else {
         setSelectedCountryName(value);
+        }
 
         // and fetch and set corresponding states
         const selectedCountryData = countriesData.find(country => country.name === value);
@@ -42,7 +47,7 @@ function CountrySelect({setCountryIso2}) { // props passed in from LocationDropd
             <label className="select-label">
                 Country
                 <select value={selectedCountryName} onChange={handleCountryChange}>
-                    <option value="">Select Country</option>
+                    <option value="">Not Selected</option>
                     {countryNames.map((countryName, index) => (
                         <option key={index} value={countryName}>{countryName}</option>
                     ))}
