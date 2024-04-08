@@ -195,7 +195,7 @@ function ProfilePageDetails() {
           <div>
             {profile.industries.length === 0 ? null : (
               <div className="industry-tags">
-                <h3>Industry Tags:</h3>
+                <h3>Industry Categories:</h3>
                 <ul>
                   {profile.industries.map((industry, index) => (
                     <li key={index}>{industry}</li>
