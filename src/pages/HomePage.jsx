@@ -59,7 +59,7 @@ function filterProfiles(
       (!filterCountryIso2 || doesProfileMatchSingleSelect(profile.country, filterCountryIso2)) &&
       (!filterStateIso2 || doesProfileMatchSingleSelect(profile.state, filterStateIso2)) &&
       (!filterArea || doesProfileMatchSingleSelect(Number(profile.area), filterArea))
-  });
+   });
 }
 
 function HomePage() {
@@ -170,8 +170,13 @@ function HomePage() {
                   OOps, sorry we are having some trouble retrieving this
                   information!
                 </p>
-            ) : (
+            ) : 
+              filteredProfiles.length > 0 ? (
                 <ProfileCards profiles={filteredProfiles}/>
+            ):(
+              <p>
+                Sorry, there are no profiles matching your selected filters
+              </p>
             )}
           </div>
         </div>
