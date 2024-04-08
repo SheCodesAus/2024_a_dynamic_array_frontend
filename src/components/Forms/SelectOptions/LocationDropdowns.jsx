@@ -21,10 +21,10 @@ function LocationDropdowns({setCountryIso2, setStateIso2, setSelectedCityId, cou
                 { countryIso2 
                     && <StateSelect countryIso2={countryIso2} setStateIso2={setStateIso2}/>}
             </div>
-            <div>
+            {/* <div>
                 { stateIso2 
                     && <CitySelect countryIso2={countryIso2} stateIso2={stateIso2} setSelectedCityId={setSelectedCityId}/>}
-            </div>
+            </div> */}
         </div>
     );
 }
