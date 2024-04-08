@@ -1,8 +1,8 @@
 async function postProfile(
     bio,
-    city,
-    country,
+    area,
     state,
+    country,
     location,
     picture_url,
     is_hidden,
@@ -30,7 +30,7 @@ async function postProfile(
         },
         body: JSON.stringify({
             "bio": bio,
-            "city": city,
+            "area": area,
             "state": state,
             "country": country,
             "location": location,

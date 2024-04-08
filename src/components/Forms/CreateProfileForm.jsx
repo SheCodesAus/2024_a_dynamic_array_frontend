@@ -37,7 +37,7 @@ function CreateProfileForm() {
   // Update the profile object with the selected country, state, and city values
     profile.state = stateIso2;
     profile.country = countryIso2;
-    profile.city = city;
+    profile.area = city;
     profile.location = `${city}, ${stateIso2}, ${countryIso2}`;
     profile.tags = selectedTags;
     profile.industries = selectedIndustries;
@@ -71,7 +71,7 @@ function CreateProfileForm() {
       } else if (auth.token && profile.bio) {
         postProfile(
           profile.bio,
-          profile.city,
+          profile.area,
           profile.state,
           profile.country,
           profile.location,

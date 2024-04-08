@@ -74,7 +74,7 @@ function userPage() {
             <button className="user-button" onClick={handleDeleteClick}>
               Delete
             </button>
-            <button className="user-button">
+            <button className="user-button change-password-btn">
               <Link to="/update-password">Update Password</Link>
             </button>
           </div>
