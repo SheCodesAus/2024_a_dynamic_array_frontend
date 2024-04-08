@@ -14,13 +14,18 @@ import { CgProfile } from "react-icons/cg";
 
 import { Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import getCountries from "../../api/get-countries";
+import getStates from "../../api/get-states";
 
 function ProfileCard({ profile }) {
-  console.log("profile in profile card:", profile);
+  // console.log("profile in profile card:", profile);
 
   const { user, isLoading, error } = useUser(profile.owner);
   const [username, setUsername] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [countryName, setCountryName] = useState("");
+  const [stateName, setStateName] = useState("");
+  const [areaName, setAreaName] = useState("");
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
@@ -29,6 +34,33 @@ function ProfileCard({ profile }) {
   {
     /* Retrieval of user first name and last name is still not working  */
   }
+console.log("profile.country", profile.country);
+  useEffect(() => {
+    if (profile.country) {
+      getCountries().then((data) => {
+        const country = data.countriesData.find(
+          (country) => country.iso2 === profile.country
+        );
+        setCountryName(country.name);
+      });
+    }
+  }, [profile.country]);
+
+  const countryIso2 = profile.country;
+
+  useEffect(() => {
+    if (profile.state) {
+      getStates(countryIso2).then((data) => {
+        const state = data.statesData.find(
+          (state) => state.iso2 === profile.state
+        );
+        setStateName(state.name);
+      });
+    }
+  }, [profile.state]);
+
+  const stateIso2 = profile.state;
+
   useEffect(() => {
     if (!isLoading && !error && user) {
       if (profile.owner === user.id) {
@@ -72,7 +104,10 @@ function ProfileCard({ profile }) {
           <div>
             {/*I am supposed to be retrieveing username from user object here, but havent been successful so far*/}
             <h4>{isLoading ? "Loading name..." : username}</h4>
-            <p>{profile.location}</p>
+            {/* <p>{!(areaName) ? ("") : (areaName)}</p> */}
+            <p>{!(stateName) ? ("") : (stateName)}</p>
+            <p>{!(countryName) ? ("") : (countryName)}</p>
+
           </div>
 
           <div className="profile--card-header-share">
