@@ -6,7 +6,7 @@ async function putExperience(
     is_present_experience,
     start_date, 
     end_date, experienceId) {
-    const url = `${import.meta.env.VITE_API_URL}/experience/${experienceId}`;
+    const url = `${import.meta.env.VITE_API_URL}/experience/${experienceId}/`;
     const token =window.localStorage.getItem("token");
 
      const response = await fetch(url, {

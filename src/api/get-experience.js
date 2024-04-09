@@ -1,5 +1,5 @@
 async function getExperience(experienceId) {
-    const url = `${import.meta.env.VITE_API_URL}/experience/${experienceId}`;
+    const url = `${import.meta.env.VITE_API_URL}/experience/${experienceId}/`;
     const response = await fetch(url, {method: 'GET'});
 
     if(!response.ok){
