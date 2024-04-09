@@ -18,8 +18,6 @@ import getCountries from "../../api/get-countries";
 import getStates from "../../api/get-states";
 
 function ProfileCard({ profile }) {
-  // console.log("profile in profile card:", profile);
-
   const { user, isLoading, error } = useUser(profile.owner);
   const [username, setUsername] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -45,13 +43,11 @@ function ProfileCard({ profile }) {
           const country = data.countriesData.find(
             (country) => country.iso2 === profile.country
           );
-          console.log("country in use effect:", country);
           setCountryName(country.name);
         });
       }
     }
   }, [profile.country, profile.owner, user.id, countryName]);
-  console.log("profile:",profile.owner, "profile.country:",profile.country, "countryName:", countryName);
   
   let countryIso2 = profile.country;
   
@@ -68,7 +64,6 @@ function ProfileCard({ profile }) {
           }
       }
   }, [profile.state, profile.owner, user.id, countryIso2]);
-  console.log("profile:",profile.owner, "profile.state:",profile.state ,"stateName:", stateName);
 
   useEffect(() => {
     if (!isLoading && !error && user) {

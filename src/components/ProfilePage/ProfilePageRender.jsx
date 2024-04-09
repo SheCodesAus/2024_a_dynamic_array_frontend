@@ -41,12 +41,9 @@ function ProfilePageDetails() {
   const [countryName, setCountryName] = useState("");
   const [stateName, setStateName] = useState("");
   const [areaName, setAreaName] = useState("");
-  console.log ( "areaName:", areaName);
 
   const { experiences, isLoading, error } = useExperiences(id);
   const [experiencePopUp, setExperiencePopUp] = useState(false);
-
-  console.log("profile.owner:", profile.owner);
 
   useEffect(() => {
     if (profile.country) {
@@ -91,10 +88,8 @@ function ProfilePageDetails() {
     if (userData.user) {
       try {
         setUser(userData.user); // Set user data
-        console.log("userData:", userData);
         setUsername(`${userData.user.first_name} ${userData.user.last_name}`); // Update username based on user data
         setUserLoading(false);
-        console.log("username:", username);
       } catch (error) {
         setUserError(error);
         setUserLoading(false);
@@ -112,12 +107,7 @@ function ProfilePageDetails() {
   if (userError) {
     return <p>Sorry we cant load the user information!</p>;
   }
-  console.log("tags:", profile.tags.length);
-  console.log("profile data:", profile);
-  console.log("user_id:", user.id);
 
-
-  console.log("countryName:", countryName);
   return (
     <section className="profile-page-body main-container">
       <div className="profile-page-container">
