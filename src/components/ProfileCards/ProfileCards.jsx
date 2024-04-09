@@ -55,7 +55,7 @@ function ProfileCards({ profiles }) {
     <>
       <div className="profile-cards-container">
         {currentProfiles.map((profile, index) => (
-          <ProfileCard key={index} profile={profile} />
+          <ProfileCard key={index} profile={profile}/>
         ))}
       </div>
       <div className="paginate-section">

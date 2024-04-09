@@ -1,5 +1,5 @@
 async function deleteExperience(experienceId) {
-    const url = `${import.meta.env.VITE_API_URL}/experience/${experienceId}`;
+    const url = `${import.meta.env.VITE_API_URL}/experience/${experienceId}/`;
 
     const token =window.localStorage.getItem("token");
 

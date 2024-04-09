@@ -2,7 +2,7 @@ import useUser from "../../hooks/use-user.js";
 import useProfile from "../../hooks/use-profile.js";
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { FaPlus } from "react-icons/fa6";
+import { FaHouseMedicalCircleExclamation, FaPlus } from "react-icons/fa6";
 import ExperienceCard from "../ExperienceCard/ExperienceCard.jsx";
 import CreateExperienceForm from "../Forms/CreateExperienceForm.jsx";
 import "../ProfilePage/ProfilePage.css";
@@ -18,6 +18,10 @@ import {
 } from "react-icons/bs";
 import { IoIosCloseCircle } from "react-icons/io";
 import useExperiences from "../../hooks/use-experiences.js";
+import getCountries from "../../api/get-countries.js";
+import getStates from "../../api/get-states.js";
+import getCities from "../../api/get-cities.js";
+import { MdOutlineExpandCircleDown } from "react-icons/md";
 
 function ProfilePageDetails() {
   const { id } = useParams();
@@ -34,21 +38,58 @@ function ProfilePageDetails() {
   const userData = useUser(profile.owner);
   const tags = profile.tags;
   const { auth, setAuth } = useAuth();
+  const [countryName, setCountryName] = useState("");
+  const [stateName, setStateName] = useState("");
+  const [areaName, setAreaName] = useState("");
 
   const { experiences, isLoading, error } = useExperiences(id);
   const [experiencePopUp, setExperiencePopUp] = useState(false);
 
-  console.log("profile.owner:", profile.owner);
+  useEffect(() => {
+    if (profile.country) {
+      getCountries().then((data) => {
+        const country = data.countriesData.find(
+          (country) => country.iso2 === profile.country
+        );
+        setCountryName(country.name);
+      });
+    }
+  }, [profile.country]);
+
+  const countryIso2 = profile.country;
+
+  useEffect(() => {
+    if (profile.state) {
+      getStates(countryIso2).then((data) => {
+        const state = data.statesData.find(
+          (state) => state.iso2 === profile.state
+        );
+        setStateName(state.name);
+      });
+    }
+  }, [profile.state]);
+
+  const stateIso2 = profile.state;
+
+  // TO BE IMPLEMENTED AND DEBUGGED WHEN AREA API IS AVAILABLE
+  // useEffect(() => {
+  //   if (profile.area) {
+  //     getCities(countryIso2, stateIso2).then((data) => {
+  //       const city = data.citiesData.find(
+  //         (city) => city.id === profile.area
+  //       );
+  //       setAreaName(city.name);
+  //     });
+  //   }
+  // }, [profile.area]);
 
   useEffect(() => {
     // Check if profile data is available and not loading
     if (userData.user) {
       try {
         setUser(userData.user); // Set user data
-        console.log("userData:", userData);
         setUsername(`${userData.user.first_name} ${userData.user.last_name}`); // Update username based on user data
         setUserLoading(false);
-        console.log("username:", username);
       } catch (error) {
         setUserError(error);
         setUserLoading(false);
@@ -66,9 +107,6 @@ function ProfilePageDetails() {
   if (userError) {
     return <p>Sorry we cant load the user information!</p>;
   }
-  console.log("tags:", profile.tags.length);
-  console.log("profile data:", profile);
-  console.log("user_id:", user.id);
 
   return (
     <section className="profile-page-body main-container">
@@ -86,8 +124,9 @@ function ProfilePageDetails() {
         <div className="profile-details">
           <h3>{username}</h3>
           <h3>Username: {user.username}</h3>
-
-          <p>{profile.location}</p>
+          <p>{!(areaName) ? ("") : (areaName)}</p>
+          <p>{!(stateName) ? ("") : (stateName)}</p>
+          <p>{!(countryName) ? ("") : (countryName)}</p>
           <div className="profile-page-render--card-body">
             <div className="profile-Card-Body">
               {profile.is_open_to_mentor ? (
@@ -146,7 +185,7 @@ function ProfilePageDetails() {
           <div>
             {profile.industries.length === 0 ? null : (
               <div className="industry-tags">
-                <h3>Industry Tags:</h3>
+                <h3>Industry Categories:</h3>
                 <ul>
                   {profile.industries.map((industry, index) => (
                     <li key={index}>{industry}</li>

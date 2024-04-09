@@ -1,5 +1,5 @@
 async function deleteUser(username) {
-    const url = `${import.meta.env.VITE_API_URL}/users/${username}`;
+    const url = `${import.meta.env.VITE_API_URL}/users/${username}/`;
 
     const token = window.localStorage.getItem('token');
 
