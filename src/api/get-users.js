@@ -1,5 +1,5 @@
 async function getUsers(){
-    const url=`${import.meta.env.VITE_API_URL}/users`;
+    const url=`${import.meta.env.VITE_API_URL}/users/`;
 
 
     const token = window.localStorage.getItem('token');

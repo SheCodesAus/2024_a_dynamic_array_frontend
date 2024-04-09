@@ -6,7 +6,6 @@ function useTags(setTagOptions) {
     useEffect(() => {
         getTags().then(data => {
             setTagOptions(data.tagOptions);
-            console.log(data.tagOptions);
         }).catch(error => {
             console.error('Error fetching tags:', error);
         });

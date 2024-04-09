@@ -50,7 +50,6 @@ function filterProfiles(
     }
   
     return profiles.filter((profile) => {
-      console.log("filterArea, profile.area", filterArea, profile.area);
       // true if the profile matches all the filters
       return doesProfileMatchMultiSelect(profile.tags, filterTags) &&
       doesProfileMatchMultiSelect(profile.industries, filterIndustries) &&
@@ -100,17 +99,6 @@ function HomePage() {
     stateIso2,
     area
   );
-
-  // console.log("Profiles:", profiles);
-  console.log("Toggles outside:", toggles);
-  console.log("isOpenToMentorToggle:", isOpenToMentorToggle);
-  console.log("isSeekingMentorhip:",isSeekingMentorshipToggle);
-  console.log("SelectedTags:", selectedTags);
-  console.log("FilteredProfiles:", filteredProfiles);
-  console.log("SelectedIndustries:", selectedIndustries);
-  console.log("StateIso2:", stateIso2);
-  console.log("CountryIso2:", countryIso2); 
-  console.log("Area:", area);
 
   return (
     <div className="main-container">

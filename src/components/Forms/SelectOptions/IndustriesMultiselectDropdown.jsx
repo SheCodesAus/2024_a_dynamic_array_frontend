@@ -7,7 +7,6 @@ function useIndusty(setIndustryOptions) {
     useEffect(() => {
         getIndustries().then(data => {
             setIndustryOptions(data.industryOptions);
-            console.log(data.industryOptions);
         }).catch(error => {
             console.error('Error fetching industy:', error);
         });
