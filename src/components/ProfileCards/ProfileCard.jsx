@@ -23,8 +23,9 @@ function ProfileCard({ profile }) {
   const { user, isLoading, error } = useUser(profile.owner);
   const [username, setUsername] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [countryName, setCountryName] = useState("");
+
   const [stateName, setStateName] = useState("");
+  const [countryName, setCountryName] = useState("");
   const [areaName, setAreaName] = useState("");
 
   const toggleDropdown = () => {
@@ -34,32 +35,40 @@ function ProfileCard({ profile }) {
   {
     /* Retrieval of user first name and last name is still not working  */
   }
-console.log("profile.country", profile.country);
   useEffect(() => {
-    if (profile.country) {
-      getCountries().then((data) => {
-        const country = data.countriesData.find(
-          (country) => country.iso2 === profile.country
-        );
-        setCountryName(country.name);
-      });
+    if (profile.owner === user.id) {
+      if (!profile.country || profile.country === "") {
+        setCountryName("");
+      } else
+      if (profile.country) {
+        getCountries().then((data) => {
+          const country = data.countriesData.find(
+            (country) => country.iso2 === profile.country
+          );
+          console.log("country in use effect:", country);
+          setCountryName(country.name);
+        });
+      }
     }
-  }, [profile.country]);
-
-  const countryIso2 = profile.country;
-
+  }, [profile.country, profile.owner, user.id, countryName]);
+  console.log("profile:",profile.owner, "profile.country:",profile.country, "countryName:", countryName);
+  
+  let countryIso2 = profile.country;
+  
   useEffect(() => {
-    if (profile.state) {
-      getStates(countryIso2).then((data) => {
-        const state = data.statesData.find(
-          (state) => state.iso2 === profile.state
-        );
-        setStateName(state.name);
-      });
-    }
-  }, [profile.state]);
-
-  const stateIso2 = profile.state;
+      if (profile.owner === user.id) {
+        if (!profile.state || profile.state === "") {
+          setStateName("");
+         } else if
+          (profile.state || profile.country) {
+            getStates(countryIso2).then((data) => {
+              const state = data.statesData.find((state) => state.iso2 === profile.state);
+              setStateName(state.name);
+            });
+          }
+      }
+  }, [profile.state, profile.owner, user.id, countryIso2]);
+  console.log("profile:",profile.owner, "profile.state:",profile.state ,"stateName:", stateName);
 
   useEffect(() => {
     if (!isLoading && !error && user) {
